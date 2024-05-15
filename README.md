@@ -4,17 +4,21 @@
     - matplotlib
     - numpy
     - (and various other machine learning packages)
+
 # How to view locally the website
 open the *_build/htmtl/index.html* file from your favorite browser 
+
 # How to build a new page and push to public
 run *build.zsh* file
 <span style="color: red">
 General remark: It is important to run this with the activated python enviroment in the terminal you use to program the jupyternotebooks.</span>
+
 # How to just build locally and not push to public
 run *jupyter-book build .* \
 On how to run locally see top \
 <span style="color: red">
 General remark: It is important to run this with the activated python enviroment in the terminal you use to program the jupyternotebooks.</span>
+
 # How to organize Chapters
 First a general explanation how jupyter-book works. The _toc.yml file is the organizer keeping everything at bay and defining the structure.\
  If we want to add a new page, we simply add * - file <path/filename> * to the end of the file ( where the other -file commands are). To have supchapters it is important to now that ```#``` are seen as big page titles whereas ```##``` are the "true" supchapters of a page. 
