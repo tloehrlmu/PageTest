@@ -8,3 +8,7 @@ chapters:
 - file: notebooks
 - file: markdown-notebooks
 - file: jupyter_try
+- file: subchapterTest/bigChapter
+  sections:
+  - file: subchapterTest/plot_adaboost_regression.ipynb
+  - file: subchapterTest/plot_classifier_comparison.ipynb
