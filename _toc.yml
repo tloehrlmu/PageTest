@@ -12,3 +12,7 @@ chapters:
   sections:
   - file: subchapterTest/plot_adaboost_regression.ipynb
   - file: subchapterTest/plot_classifier_comparison.ipynb
+- file: subchapterTestMD/main
+  sections:
+  - file: subchapterTestMD/plot_adaboost_regression
+  - file: subchapterTestMD/plot_classifier_comparison
