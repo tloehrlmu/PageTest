@@ -1,4 +1,4 @@
-# Requierements 
+# Requirements 
 Please see a detailed package list in the `requirements.txt`. 
 ```
 pip install -r requirements.txt
