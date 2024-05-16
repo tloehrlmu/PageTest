@@ -1,22 +1,32 @@
-# Requierements for the webpage to run locally
+# Requierements for the webpage to run locally via `pip<3> install`
     - jupyter-book
     - ghp-import
     - matplotlib
     - numpy
     - (and various other machine learning packages)
 
-# How to view locally the website
-open the *_build/htmtl/index.html* file from your favorite browser 
+# How to just build locally and not push to public
+run 
+```
+jupyter-book build .
+```
 
-# How to build a new page and push to public
-run *build.zsh* file \
-The changes will only be made public if *build.zsh* is called in the git *main* branch.
+On how to run locally see top \
 <span style="color: red">
 General remark: It is important to run this with the activated python enviroment in the terminal you use to program the jupyternotebooks.</span>
 
-# How to just build locally and not push to public
-run *jupyter-book build .* \
-On how to run locally see top \
+
+# How to view locally the website
+open the line after `build/htmtl/index.html` in the terminal from your favorite browser 
+
+# How to build a new page and push to public
+run the following commands in the terminal:
+```
+chmod +x build.zsh
+./build.zsh
+``` 
+
+The changes will only be made public if *build.zsh* is called in the git *main* branch.
 <span style="color: red">
 General remark: It is important to run this with the activated python enviroment in the terminal you use to program the jupyternotebooks.</span>
 

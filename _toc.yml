@@ -17,7 +17,9 @@ chapters:
 - file: chapter-srcUncertainty/intro
 - file: chapter-auxilary/intro
 - file: chapter-modelingAproxUncertainty/intro
-- file: chapter-probabilityEstimation/intro
+- file: chapter-pe-calibration/intro
+- file: chapter-pe-ensemble/intro
+- file: chapter-pe-scoring/intro
 - file: chapter-mle_and_fisher/intro
 - file: chapter-generative_models/intro
 - file: chapter-gaussianprocess/intro
