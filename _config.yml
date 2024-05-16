@@ -10,6 +10,9 @@ logo: logo.png
 execute:
   execute_notebooks: cache
 
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
