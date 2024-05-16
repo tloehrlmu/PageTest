@@ -19,7 +19,7 @@ chapters:
 - file: chapter-modelingAproxUncertainty/intro
 - file: chapter-pe-calibration/intro
 - file: chapter-pe-ensemble/intro
-- file: chapter-pe-scoring/intro
+- file: chapter-pe-scoring/scoring
 - file: chapter-mle_and_fisher/intro
 - file: chapter-generative_models/intro
 - file: chapter-gaussianprocess/intro
