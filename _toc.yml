@@ -1,0 +1,31 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: startPage
+chapters:
+- file: markdown
+- file: notebooks
+- file: markdown-notebooks
+- file: jupyter_try
+- file: subchapterTest/bigChapter
+  sections:
+  - file: subchapterTest/plot_adaboost_regression.ipynb
+  - file: subchapterTest/plot_classifier_comparison.ipynb
+- file: chapter-prelude/intro
+- file: chapter-intro/intro
+- file: chapter-srcUncertainty/intro
+- file: chapter-auxilary/intro
+- file: chapter-modelingAproxUncertainty/intro
+- file: chapter-probabilityEstimation/intro
+- file: chapter-mle_and_fisher/intro
+- file: chapter-generative_models/intro
+- file: chapter-gaussianprocess/intro
+- file: chapter-deep_neuralnetwork/intro
+- file: chapter-credal_sets/intro
+- file: chapter-reliable_classification/intro
+- file: chapter-conformel_classification/intro
+- file: chapter-conformel_regression/intro
+- file: chapter-setValued_utilityMaximization/intro
+
+
