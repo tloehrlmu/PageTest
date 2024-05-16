@@ -1,3 +1,6 @@
 jupyter-book clean .
 jupyter-book build .
-ghp-import -n -p -f _build/html
+if [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then
+  echo "Publishing to main branch"
+  ghp-import -n -p -f _build/html
+fi
