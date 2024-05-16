@@ -39,6 +39,3 @@ It is important to notice that the creation of the page is top to bottom.
 Thus all chapters of <mainPage> are structured before the chapters of subPages ( the natural way when you think about it).
 ## Option 2: Use one file (not recommended I think)
 Just write one big juypter file and structure the chapters with ```#``` indicating the main page name. ```##``` and ```###```for the supchapters.
-
-
-
