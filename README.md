@@ -27,7 +27,19 @@ chmod +x build.zsh
 ./build.zsh
 ``` 
 
-The changes will only be made public if *build.zsh* is called in the git *main* branch.
+The changes will only be made public if *build.zsh* is called in the git *main* branch. \
+## Technical explanation what is happening:
+The script runs 
+``` 
+jupyter-book clean .
+jupyter-book build .
+```
+to build the book. Then the command ```ghp-import -n -p -f _build/html``` is executed.
+This will push the entire html files in *_build/html* to the *gh-pages* branch and GitHub will update the webpage based on that branch. \
+But this commands **deletes** everything that has prior been on the *gh-pages* branch. \
+That is the reason why I have written the *build.zsh* to only run the command when on the main branch.
+So our goal is to always have the desired content we want online, to be on the main branch.
+
 <span style="color: red">
 General remark: It is important to run this with the activated python enviroment you use to program the notebooks.</span>
 
