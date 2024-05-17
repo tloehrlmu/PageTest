@@ -5,13 +5,17 @@ pip install -r requirements.txt
 ```
 
 # How to just build locally without pushing to public?
+Run the following command on your local branch !!**not main**!!.
 ```
+bash build.zsh
+```
+Alternatively:
+```
+jupyter-book clean .
 jupyter-book build .
 ```
-
-On how to run locally see below \
 <span style="color: red">
-General remark: It is important to run this with the activated python enviroment in the terminal you use to program the jupyternotebooks.</span>
+General remark: It is important to run this with the activated python environment you use to program the notebooks.</span>
 
 # How to view locally the website?
 Please open/copy the link line after `build/htmtl/index.html` in the terminal from your favorite browser.
@@ -25,7 +29,7 @@ chmod +x build.zsh
 
 The changes will only be made public if *build.zsh* is called in the git *main* branch.
 <span style="color: red">
-General remark: It is important to run this with the activated python enviroment in the terminal you use to program the jupyternotebooks.</span>
+General remark: It is important to run this with the activated python enviroment you use to program the notebooks.</span>
 
 # How to organize Chapters?
 1. First a general explanation how jupyter-book works. The `_toc.yml` file is the organizer keeping everything at bay and defining the structure.\
