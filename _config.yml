@@ -10,6 +10,21 @@ logo: logo.png
 execute:
   execute_notebooks: cache
 
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      tex:
+        macros:
+          "N": "\\mathbb{N}"
+          "floor": ["\\lfloor#1\\rfloor", 1]
+          "bmat" : ["\\left[\\begin{array}"]
+          "emat" : ["\\end{array}\\right]"]
+          "defeq" : ["\\mathrel{\\vcenter{\\baselineskip0.5ex \\lineskiplimit0pt
+			\\hbox{\\footnotesize.}\\hbox{\\footnotesize.}}}%
+	        ="]
+          "given" : ["\\, | \\,"]
+
 launch_buttons:
   colab_url: "https://colab.research.google.com"
 
@@ -48,6 +63,7 @@ parse:
     # - smartquotes
     - substitution
     - tasklist
+
 
 # HTML-specific settings
 html:
