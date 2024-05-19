@@ -24,6 +24,64 @@ sphinx:
 			\\hbox{\\footnotesize.}\\hbox{\\footnotesize.}}}%
 	        ="]
           "given" : ["\\, | \\,"]
+          "cX" : ["\\mathcal{X}"]
+          "cY" : ["\\mathcal{Y}"]
+          "cH" : ["\\mathcal{H}"]
+          "cD" : ["\\mathcal{D}"]
+          "hath": ["\\hat{h}"]
+          "haty": ["\\hat{y}"]
+          "hatp": ["\\hat{p}"]
+          "sety": ["\\widehat{Y}"]
+          "argmin": ["\\operatorname*{argmin}"]
+          "argmax": ["\\operatorname*{argmax}"]
+          "db": ["\\set{M}"]
+          "fkt": ["#1(\\cdot)",1]
+          "chrfkt": ["\\mathbb{I}_{#1}",1]
+          "kref": ["(\\ref{#1})",1]
+          "convto": ["(\\rightarrow"]
+          "fft": ["(#1 :  #2 \\rightarrow #3",3]
+          "with": ["\\,  | \\,"]
+          "sothat": ["\\,  : \\,"]
+          "defi": ["\\stackrel{\\on{df}}{=}"]
+          "set": ["\\mathcal{#1}",1]
+          "Prob": ["P"]
+          "prob": ["p"]
+          "impl": ["\\Rightarrow"]
+          "on": ["\\operatorname"]
+          "groesser": ["\\raisebox{#1mm}{} \\raisebox{-#1mm}{}",1]
+          "sgroesser": ["\\groesser{1.20}"]
+          "xleftr": ["\\left( \\groesser{1.35} "]
+          "xleftg": ["\\left\\{ \\groesser{1.35} "]
+          "fftm": ["\\fft{#1}{#2}{#3} \\, ,\\, #4 \\mapsto #5",5]
+          "gdw": ["\\Leftrightarrow"]
+          "gdwbd": ["\\stackrel{\\on{df}}{\\Leftrightarrow}"]
+          "est": ["{est}"]
+          "epd": ["\\Leftrightarrow_{\\on{def}}"]
+          "fromto": ["\\longrightarrow"]
+          "pref": ["\\succ"]
+          "evalue": ["\\mathbf{E}"]
+          "variance": ["\\mathbf{V}"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 launch_buttons:
   colab_url: "https://colab.research.google.com"
