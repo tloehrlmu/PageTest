@@ -61,6 +61,7 @@ sphinx:
           "pref": ["\\succ"]
           "evalue": ["\\mathbf{E}"]
           "variance": ["\\mathbf{V}"]
+          "mmp": ["",1]
 
 
 

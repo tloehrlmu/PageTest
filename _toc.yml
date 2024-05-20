@@ -27,6 +27,8 @@ chapters:
 - file: chapter-credal_sets/intro
 - file: chapter-reliable_classification/intro
 - file: chapter-conformel_classification/intro
+  sections:
+  - file: chapter-conformel_classification/hypothesis-excurs
 - file: chapter-conformel_regression/intro
 - file: chapter-setValued_utilityMaximization/intro
 
