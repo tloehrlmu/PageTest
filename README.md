@@ -1,10 +1,12 @@
-# Requirements 
+# 🧰 Toolbox for Uncertainty Quantification in Machine Learning
+
+## Requirements 
 Please see a detailed package list in the `requirements.txt`. 
 ```
 pip install -r requirements.txt
 ```
 
-# How to just build locally without pushing to public?
+## How to just build locally without pushing to public?
 Run the following command on your local branch !!**not main**!!.
 ```
 bash build.zsh
@@ -17,18 +19,19 @@ jupyter-book build .
 <span style="color: red">
 General remark: It is important to run this with the activated python environment you use to program the notebooks.</span>
 
-# How to view locally the website?
+## How to view locally the website?
 Please open/copy the link line after `build/htmtl/index.html` in the terminal from your favorite browser.
 
-# How to build a new page and push to public with GiHub Workflow?
+## How to build a new page and push to public with GiHub Workflow?
 run the following commands in the terminal:
 ```
 chmod +x build.zsh
 ./build.zsh
 ``` 
 
-The changes will only be made public if *build.zsh* is called in the git *main* branch. \
-## Technical explanation what is happening:
+The changes will only be made public if *build.zsh* is called in the git *main* branch. 
+
+### Technical explanation what is happening:
 The script runs 
 ``` 
 jupyter-book clean .
@@ -43,13 +46,13 @@ So our goal is to always have the desired content we want online, to be on the m
 <span style="color: red">
 General remark: It is important to run this with the activated python enviroment you use to program the notebooks.</span>
 
-# How to organize Chapters?
+## How to organize Chapters?
 1. First a general explanation how jupyter-book works. The `_toc.yml` file is the organizer keeping everything at bay and defining the structure.\
 1. If we want to add a new chapter page, we simply add * - file <path/filename> * to the end of the file (where the other -file commands are). 
 1. To have supchapters it is important to now that ```#``` are seen as big page titles whereas ```##``` are the "true" supchapters of a page. 
 
 Thus when adding content we have the two options:
-## Option 1: Use mutliple files
+### Option 1: Use mutliple files
 First put everthing nice and tight into a folder *<folder>*.\
 Then create some kind of <mainPage> (markdown or jupyterNotebook does not really matter. I recommend jupyterNoteBook) for the chapter (probably explaining math stuff). \
 Then create additionally files (probably jupyterBooks but really is not important) and add your content there.\
@@ -64,13 +67,13 @@ Then you have to add the following to the _toc.yml file:
 It is important to notice that the creation of the page is top to bottom.
 Thus all chapters of <mainPage> are structured before the chapters of subPages ( the natural way when you think about it).
 
-## Option 2: Use one file (not recommended I think)
+### Option 2: Use one file (not recommended I think)
 Just write one big juypter file and structure the chapters with ```#``` indicating the main page name. ```##``` and ```###```for the supchapters.
 
-# What is the uniform style for the documentation?
+## What is the uniform style for the documentation?
 At least one example each chapter?
 
-# Citation
+## Citation
 If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
 
 ```
