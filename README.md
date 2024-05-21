@@ -49,7 +49,7 @@ General remark: It is important to run this with the activated python enviroment
 ## How to organize Chapters?
 1. First a general explanation how jupyter-book works. The `_toc.yml` file is the organizer keeping everything at bay and defining the structure.\
 1. If we want to add a new chapter page, we simply add * - file <path/filename> * to the end of the file (where the other -file commands are). 
-1. To have supchapters it is important to now that ```#``` are seen as big page titles whereas ```##``` are the "true" supchapters of a page. 
+1. To have supchapters it is important to now that `#` are seen as big page titles whereas `##` are the "true" supchapters of a page. 
 
 Thus when adding content we have the two options:
 ### Option 1: Use mutliple files
@@ -68,10 +68,17 @@ It is important to notice that the creation of the page is top to bottom.
 Thus all chapters of <mainPage> are structured before the chapters of subPages ( the natural way when you think about it).
 
 ### Option 2: Use one file (not recommended I think)
-Just write one big juypter file and structure the chapters with ```#``` indicating the main page name. ```##``` and ```###```for the supchapters.
+Just write one big juypter file and structure the chapters with `#` indicating the main page name. `##` and `###`for the supchapters.
 
 ## What is the uniform style for the documentation?
-At least one example each chapter?
+
+We use one `#` **once** for the main title of each chapter. 
+For addtional subtitles, we add one more `#` then (i.e., `##` and `###`, better no `####` for simplicity). 
+
+Note that we do **not** add `#` for the context in each MarkDown cell, 
+which means, we create pure `latex-like` texts which align with the survey paper. 
+
+At least one example per chapter?
 
 ## Citation
 If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
