@@ -1,4 +1,4 @@
-# 🧰 Toolbox for Uncertainty Quantification in Machine Learning
+# 🧰 Toolbox for Uncertainty Quantification in <br> Machine Learning and Artificial Intelligence
 
 ## Requirements 
 Please see a detailed package list in the `requirements.txt`. 
