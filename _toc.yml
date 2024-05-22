@@ -18,8 +18,8 @@ chapters:
 - file: chapter-auxilary/intro
 - file: chapter-modelingAproxUncertainty/intro
   sections:
-  - file: chapter-modelingAproxUncertainty/Version-space-learning.ipynb
-  - file: chapter-modelingAproxUncertainty/Bayesian-inference.ipynb
+  - file: chapter-modelingAproxUncertainty/Version-space-learning
+  - file: chapter-modelingAproxUncertainty/Bayesian-inference
 - file: chapter-pe-calibration/intro
 - file: chapter-pe-ensemble/intro
 - file: chapter-pe-scoring/scoring
@@ -32,5 +32,5 @@ chapters:
 - file: chapter-conformel_classification/intro
 - file: chapter-conformel_regression/intro
 - file: chapter-setValued_utilityMaximization/intro
-
+- file: References.md
 
