@@ -47,13 +47,13 @@ So our goal is to always have the desired content we want online, to be on the m
 General remark: It is important to run this with the activated python enviroment you use to program the notebooks.</span>
 
 ## How to organize Chapters?
-1. First a general explanation how jupyter-book works. The `_toc.yml` file is the organizer keeping everything at bay and defining the structure.\
+1. First a general explanation how jupyter-book works. The `_toc.yml` file is the organizer keeping everything at bay and defining the structure.
 1. If we want to add a new chapter page, we simply add * - file <path/filename> * to the end of the file (where the other -file commands are). 
 1. To have supchapters it is important to now that `#` are seen as big page titles whereas `##` are the "true" supchapters of a page. 
 
 Thus when adding content we have the two options:
 ### Option 1: Use mutliple files
-First put everthing nice and tight into a folder *<folder>*.\
+First put everthing nice and tight into a folder *<folder>*. \
 Then create some kind of <mainPage> (markdown or jupyterNotebook does not really matter. I recommend jupyterNoteBook) for the chapter (probably explaining math stuff). \
 Then create additionally files (probably jupyterBooks but really is not important) and add your content there.\
 Then you have to add the following to the _toc.yml file:
