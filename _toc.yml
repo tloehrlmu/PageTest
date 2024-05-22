@@ -18,8 +18,8 @@ chapters:
 - file: chapter-auxilary/intro
 - file: chapter-modelingAproxUncertainty/intro
   sections:
-  - file: modelingAproxUncertainty/Version-space-learning.ipynb
-  - file: modelingAproxUncertainty/Bayesian-inference.ipynb
+  - file: chapter-modelingAproxUncertainty/Version-space-learning.ipynb
+  - file: chapter-modelingAproxUncertainty/Bayesian-inference.ipynb
 - file: chapter-pe-calibration/intro
 - file: chapter-pe-ensemble/intro
 - file: chapter-pe-scoring/scoring
