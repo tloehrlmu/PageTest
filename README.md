@@ -93,12 +93,12 @@ we replace them into the Markdown format (See examples as below).
 | \emph{text}      | \*text\*    |
 | ``text''         | "text" |
 | \given           | \vert  |
-| \citep{gnei_sp05}| ({cite:t}`gnei_sp05`)  |
-| \citet{gnei_sp05} | {cite:t}`gnei_sp05`  |
-| \cite{gnei_sp05} | {cite:t}`gnei_sp05`  |
+| \citep{gnei_sp05}| ({cite:t}\`gnei_sp05\`)  |
+| \citet{gnei_sp05} | {cite:t}\`gnei_sp05\`  |
+| \cite{gnei_sp05} | {cite:t}\`gnei_sp05\`  |
 | \\"i             | ï  |
 | \prob            | p |
-| \ref{eq:xxxx}    | {eq}`xxxx` |
+| \ref{eq:xxxx}    | {eq}\`xxxx\` |
 | \begin{equation}\label{xxx}...\end{equation} | \$\$......\$\$(xxxx) |
 | yyyyy.\footnote{xxxx} | yyyyy.[^footNoteIdentifier] .... Somewhere: [^footNoteIdentifier]: xxxxx |
 
