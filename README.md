@@ -78,11 +78,17 @@ For addtional subtitles, we add one more `#` then (i.e., `##` and `###`, better 
 Note that we do **not** add `#` for the content in each Markdown cell, 
 which means, we create pure `latex-like` texts which align with the survey paper. 
 
-- convert \emph{text} to *text*
-- convert ``text'' to "text"
-- convert \given to \vert
-- convert \citep{gnei_sp05} to ({cite:t}`gnei_sp05`)
-- convert \"i to ï
+For those originally in Latex `.tex` format, 
+we replace them into the Markdown format (See examples as below).
+
+| Latex            | Markdown            |
+|:----------------:|:-------------------:|
+| \emph{text}      | *text*    |
+| ``text''         | "text" |
+| \given           | \vert  |
+| \citep{gnei_sp05}| ({cite:t}`gnei_sp05`)  |
+| \\"i             | ï  |
+
 
 At least one example per chapter?
 
