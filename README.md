@@ -78,6 +78,11 @@ For addtional subtitles, we add one more `#` then (i.e., `##` and `###`, better 
 Note that we do **not** add `#` for the content in each Markdown cell, 
 which means, we create pure `latex-like` texts which align with the survey paper. 
 
+For code cells, if we use any python packages, 
+please make sure:
+1. They are in the `requirements.txt`. If not, please add them.
+1. import them (e.g., `import numpy as np`).
+
 For those originally appear in Latex `.tex` format, 
 we replace them into the Markdown format (See examples as below).
 
@@ -100,11 +105,6 @@ we replace them into the Markdown format (See examples as below).
 - \vec?
 
 At least one example per chapter?
-
-For code cells, if we use any python packages, 
-please make sure:
-1. They are in the `requirements.txt`. If not, please add them.
-1. import them (e.g., `import numpy as np`).
 
 ## Citation
 If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
