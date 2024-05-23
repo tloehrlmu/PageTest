@@ -101,6 +101,11 @@ we replace them into the Markdown format (See examples as below).
 
 At least one example per chapter?
 
+For code cells, if we use any python packages, 
+please make sure:
+1. They are in the `requirements.txt`. If not, please add them.
+1. import them (e.g., `import numpy as np`).
+
 ## Citation
 If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
 

@@ -4,7 +4,6 @@
 format: jb-book
 root: startPage
 chapters:
-# - file: markdown
 # - file: notebooks
 # - file: markdown-notebooks
 # - file: jupyter_try
@@ -29,5 +28,6 @@ chapters:
 - file: chapter-conformel_classification/intro
 - file: chapter-conformel_regression/intro
 - file: chapter-setValued_utilityMaximization/intro
+- file: references
 
 
