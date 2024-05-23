@@ -16,6 +16,9 @@ chapters:
 - file: chapter-srcUncertainty/intro
 - file: chapter-auxilary/intro
 - file: chapter-modelingAproxUncertainty/intro
+  sections:
+  - file: chapter-modelingAproxUncertainty/Version-space-learning
+  - file: chapter-modelingAproxUncertainty/Bayesian-inference
 - file: chapter-pe-calibration/calibration
 - file: chapter-pe-ensemble/ensemble
 - file: chapter-pe-scoring/scoring
@@ -29,5 +32,4 @@ chapters:
 - file: chapter-conformel_regression/intro
 - file: chapter-setValued_utilityMaximization/intro
 - file: references
-
 
