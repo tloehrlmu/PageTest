@@ -75,8 +75,14 @@ Just write one big juypter file and structure the chapters with `#` indicating t
 We use one `#` **once** for the main title of each chapter. 
 For addtional subtitles, we add one more `#` then (i.e., `##` and `###`, better no `####` for simplicity). 
 
-Note that we do **not** add `#` for the context in each MarkDown cell, 
+Note that we do **not** add `#` for the content in each Markdown cell, 
 which means, we create pure `latex-like` texts which align with the survey paper. 
+
+- convert \emph{text} to *text*
+- convert ``text'' to "text"
+- convert \given to \vert
+- convert \citep{gnei_sp05} to ({cite:t}`gnei_sp05`)
+- convert \"i to ï
 
 At least one example per chapter?
 
