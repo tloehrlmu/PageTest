@@ -4,14 +4,13 @@
 format: jb-book
 root: startPage
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
-- file: jupyter_try
-- file: subchapterTest/bigChapter
-  sections:
-  - file: subchapterTest/plot_adaboost_regression.ipynb
-  - file: subchapterTest/plot_classifier_comparison.ipynb
+# - file: notebooks
+# - file: markdown-notebooks
+# - file: jupyter_try
+# - file: subchapterTest/bigChapter
+#   sections:
+#   - file: subchapterTest/plot_adaboost_regression.ipynb
+#   - file: subchapterTest/plot_classifier_comparison.ipynb
 - file: chapter-prelude/intro
 - file: chapter-intro/intro
 - file: chapter-srcUncertainty/intro
@@ -20,8 +19,8 @@ chapters:
   sections:
   - file: chapter-modelingAproxUncertainty/Version-space-learning
   - file: chapter-modelingAproxUncertainty/Bayesian-inference
-- file: chapter-pe-calibration/intro
-- file: chapter-pe-ensemble/intro
+- file: chapter-pe-calibration/calibration
+- file: chapter-pe-ensemble/ensemble
 - file: chapter-pe-scoring/scoring
 - file: chapter-mle_and_fisher/intro
 - file: chapter-generative_models/intro
@@ -32,4 +31,5 @@ chapters:
 - file: chapter-conformel_classification/intro
 - file: chapter-conformel_regression/intro
 - file: chapter-setValued_utilityMaximization/intro
+- file: references
 

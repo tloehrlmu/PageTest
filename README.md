@@ -47,13 +47,13 @@ So our goal is to always have the desired content we want online, to be on the m
 General remark: It is important to run this with the activated python enviroment you use to program the notebooks.</span>
 
 ## How to organize Chapters?
-1. First a general explanation how jupyter-book works. The `_toc.yml` file is the organizer keeping everything at bay and defining the structure.\
+1. First a general explanation how jupyter-book works. The `_toc.yml` file is the organizer keeping everything at bay and defining the structure.
 1. If we want to add a new chapter page, we simply add * - file <path/filename> * to the end of the file (where the other -file commands are). 
 1. To have supchapters it is important to now that `#` are seen as big page titles whereas `##` are the "true" supchapters of a page. 
 
 Thus when adding content we have the two options:
 ### Option 1: Use mutliple files
-First put everthing nice and tight into a folder *<folder>*.\
+First put everthing nice and tight into a folder *<folder>*. \
 Then create some kind of <mainPage> (markdown or jupyterNotebook does not really matter. I recommend jupyterNoteBook) for the chapter (probably explaining math stuff). \
 Then create additionally files (probably jupyterBooks but really is not important) and add your content there.\
 Then you have to add the following to the _toc.yml file:
@@ -75,8 +75,34 @@ Just write one big juypter file and structure the chapters with `#` indicating t
 We use one `#` **once** for the main title of each chapter. 
 For addtional subtitles, we add one more `#` then (i.e., `##` and `###`, better no `####` for simplicity). 
 
-Note that we do **not** add `#` for the context in each MarkDown cell, 
+Note that we do **not** add `#` for the content in each Markdown cell, 
 which means, we create pure `latex-like` texts which align with the survey paper. 
+
+For code cells, if we use any python packages, 
+please make sure:
+1. They are in the `requirements.txt`. If not, please add them.
+1. import them (e.g., `import numpy as np`).
+
+For those originally appear in Latex `.tex` format, 
+we replace them into the Markdown format (See examples as below).
+
+| Latex            | Markdown            |
+|:----------------:|:-------------------:|
+| \emph{text}      | \*text\*    |
+| ``text''         | "text" |
+| \given           | \vert  |
+| \citep{gnei_sp05}| ({cite:t}`gnei_sp05`)  |
+| \citet{gnei_sp05} | {cite:t}`gnei_sp05`  |
+| \cite{gnei_sp05} | {cite:t}`gnei_sp05`  |
+| \\"i             | ï  |
+| \prob            | p |
+| \ref{eq:xxxx}    | {eq}`xxxx` |
+| \begin{equation}\label{xxx}...\end{equation} | \$\$......\$\$(xxxx) |
+| yyyyy.\footnote{xxxx} | yyyyy.[^footNoteIdentifier] .... Somewhere: [^footNoteIdentifier]: xxxxx |
+
+### TODO: 
+- cf.\ Section
+- \vec?
 
 At least one example per chapter?
 
