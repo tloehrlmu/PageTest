@@ -91,11 +91,12 @@ we replace them into the Markdown format (See examples as below).
 | \cite{gnei_sp05} | {cite:t}`gnei_sp05`  |
 | \\"i             | ï  |
 | \prob            | p |
+| \ref{eq:xxxx}    | {eq}`xxxx` |
+| \begin{equation}\label{xxx}...\end{equation} | $$......$$(xxxx) |
+| yyyyy.\footnote{xxxx} | yyyyy.[^footNoteIdentifier] .... Somewhere: [^footNoteIdentifier]: xxxxx |
 
 ### TODO: 
-- \ref & \label
 - cf.\ Section
-- footnote
 - \vec?
 
 At least one example per chapter?
