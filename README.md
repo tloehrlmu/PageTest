@@ -92,7 +92,7 @@ we replace them into the Markdown format (See examples as below).
 | \\"i             | ï  |
 | \prob            | p |
 | \ref{eq:xxxx}    | {eq}`xxxx` |
-| \begin{equation}\label{xxx}...\end{equation} | $$......$$(xxxx) |
+| \begin{equation}\label{xxx}...\end{equation} | \$\$......\$\$(xxxx) |
 | yyyyy.\footnote{xxxx} | yyyyy.[^footNoteIdentifier] .... Somewhere: [^footNoteIdentifier]: xxxxx |
 
 ### TODO: 
