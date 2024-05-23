@@ -78,6 +78,8 @@ For addtional subtitles, we add one more `#` then (i.e., `##` and `###`, better 
 Note that we do **not** add `#` for the content in each Markdown cell, 
 which means, we create pure `latex-like` texts which align with the survey paper. 
 
+Import packages in the first code cell on the page at the top.
+
 For code cells, if we use any python packages, 
 please make sure:
 1. They are in the `requirements.txt`. If not, please add them.
