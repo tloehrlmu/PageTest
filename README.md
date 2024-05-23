@@ -102,7 +102,6 @@ we replace them into the Markdown format (See examples as below).
 
 ### TODO: 
 - cf.\ Section
-- \vec?
 
 At least one example per chapter?
 

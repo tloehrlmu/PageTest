@@ -16,7 +16,8 @@ sphinx:
     mathjax3_config:
       tex:
         macros:
-          "N": "\\mathbb{N}"
+          "N": ["\\mathbb{N}"]
+          "vec": ["\\boldsymbol{#1}",1]
           "floor": ["\\lfloor#1\\rfloor", 1]
           "bmat" : ["\\left[\\begin{array}"]
           "emat" : ["\\end{array}\\right]"]
