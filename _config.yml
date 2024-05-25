@@ -5,10 +5,67 @@ title: My sample book
 author: The Jupyter Book Community
 logo: logo.png
 
-# Force re-execution of notebooks on each build.
+# Use cache of notebooks for build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: cache
+
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      tex:
+        macros:
+          "N": ["\\mathbb{N}"]
+          "vec": ["\\boldsymbol{#1}",1]
+          "floor": ["\\lfloor#1\\rfloor", 1]
+          "bmat" : ["\\left[\\begin{array}"]
+          "emat" : ["\\end{array}\\right]"]
+          "defeq" : ["\\mathrel{\\vcenter{\\baselineskip0.5ex \\lineskiplimit0pt
+			\\hbox{\\footnotesize.}\\hbox{\\footnotesize.}}}%
+	        ="]
+          "given" : ["\\, | \\,"]
+          "cX" : ["\\mathcal{X}"]
+          "cY" : ["\\mathcal{Y}"]
+          "cH" : ["\\mathcal{H}"]
+          "cD" : ["\\mathcal{D}"]
+          "hath": ["\\hat{h}"]
+          "haty": ["\\hat{y}"]
+          "hatp": ["\\hat{p}"]
+          "sety": ["\\widehat{Y}"]
+          "argmin": ["\\operatorname*{argmin}"]
+          "argmax": ["\\operatorname*{argmax}"]
+          "db": ["\\set{M}"]
+          "fkt": ["#1(\\cdot)",1]
+          "chrfkt": ["\\mathbb{I}_{#1}",1]
+          "kref": ["(\\ref{#1})",1]
+          "convto": ["(\\rightarrow"]
+          "fft": ["(#1 :  #2 \\rightarrow #3",3]
+          "with": ["\\,  | \\,"]
+          "sothat": ["\\,  : \\,"]
+          "defi": ["\\stackrel{\\on{df}}{=}"]
+          "set": ["\\mathcal{#1}",1]
+          "Prob": ["P"]
+          "prob": ["p"]
+          "impl": ["\\Rightarrow"]
+          "on": ["\\operatorname"]
+          "groesser": ["\\raisebox{#1mm}{} \\raisebox{-#1mm}{}",1]
+          "sgroesser": ["\\groesser{1.20}"]
+          "xleftr": ["\\left( \\groesser{1.35} "]
+          "xleftg": ["\\left\\{ \\groesser{1.35} "]
+          "fftm": ["\\fft{#1}{#2}{#3} \\, ,\\, #4 \\mapsto #5",5]
+          "gdw": ["\\Leftrightarrow"]
+          "gdwbd": ["\\stackrel{\\on{df}}{\\Leftrightarrow}"]
+          "est": ["{est}"]
+          "epd": ["\\Leftrightarrow_{\\on{def}}"]
+          "fromto": ["\\longrightarrow"]
+          "pref": ["\\succ"]
+          "evalue": ["\\mathbf{E}"]
+          "variance": ["\\mathbf{V}"]
+          "mmp": ["",1]
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -21,9 +78,8 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+  url: https://github.com/Advueu963/PageTest # Online location of your book
+  branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
@@ -47,16 +103,18 @@ parse:
     - substitution
     - tasklist
 
+
 # HTML-specific settings
 html:
   favicon                   : ""  # A path to a favicon image
-  use_edit_page_button      : false  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
-  use_repository_button     : false  # Whether to add a link to your repository button
-  use_issues_button         : false  # Whether to add an "open an issue" button
+  use_edit_page_button      : true  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
+  use_repository_button     : true  # Whether to add a link to your repository button
+  use_issues_button         : true  # Whether to add an "open an issue" button
   use_multitoc_numbering    : true   # Continuous numbering across parts/chapters
   extra_footer              : |
     <section>
-            {{ content }}
+        For comprehensive discussions please contact one of our team members: 
+        {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
 
             <div style="margin-top: 50px;" id="disqus_thread"></div>
 
@@ -69,7 +127,7 @@ html:
             })();
             </script>
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </section>  # Will be displayed underneath the footer.
+        </section> 
   google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
   baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/

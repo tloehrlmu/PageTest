@@ -1,31 +1,59 @@
-# Requierements for the webpage to run locally
-    - jupyter-book
-    - ghp-import
-    - matplotlib
-    - numpy
-    - (and various other machine learning packages)
+# 🧰 Toolbox for Uncertainty Quantification in <br> Machine Learning and Artificial Intelligence
 
-# How to view locally the website
-open the *_build/htmtl/index.html* file from your favorite browser 
+## Requirements 
+Please see a detailed package list in the `requirements.txt`. 
+```
+pip install -r requirements.txt
+```
 
-# How to build a new page and push to public
-run *build.zsh* file \
-The changes will only be made public if *build.zsh* is called in the git *main* branch.
+## How to just build locally without pushing to public?
+Run the following command on your local branch !!**not main**!!.
+```
+bash build.zsh
+```
+Alternatively:
+```
+jupyter-book clean .
+jupyter-book build .
+```
 <span style="color: red">
-General remark: It is important to run this with the activated python enviroment in the terminal you use to program the jupyternotebooks.</span>
+General remark: It is important to run this with the activated python environment you use to program the notebooks.</span>
 
-# How to just build locally and not push to public
-run *jupyter-book build .* \
-On how to run locally see top \
+## How to view locally the website?
+Please open/copy the link line after `build/htmtl/index.html` in the terminal from your favorite browser.
+
+## How to build a new page and push to public with GiHub Workflow?
+run the following commands in the terminal:
+```
+chmod +x build.zsh
+./build.zsh
+``` 
+
+The changes will only be made public if *build.zsh* is called in the git *main* branch. 
+
+### Technical explanation what is happening:
+The script runs 
+``` 
+jupyter-book clean .
+jupyter-book build .
+```
+to build the book. Then the command ```ghp-import -n -p -f _build/html``` is executed.
+This will push the entire html files in *_build/html* to the *gh-pages* branch and GitHub will update the webpage based on that branch. \
+But this commands **deletes** everything that has prior been on the *gh-pages* branch. \
+That is the reason why I have written the *build.zsh* to only run the command when on the main branch.
+So our goal is to always have the desired content we want online, to be on the main branch.
+
 <span style="color: red">
-General remark: It is important to run this with the activated python enviroment in the terminal you use to program the jupyternotebooks.</span>
+General remark: It is important to run this with the activated python enviroment you use to program the notebooks.</span>
 
-# How to organize Chapters
-First a general explanation how jupyter-book works. The _toc.yml file is the organizer keeping everything at bay and defining the structure.\
- If we want to add a new page, we simply add * - file <path/filename> * to the end of the file ( where the other -file commands are). To have supchapters it is important to now that ```#``` are seen as big page titles whereas ```##``` are the "true" supchapters of a page. 
- Thus when adding content we have the two options
-## Option 1: Use mutliple files
-First put everthing nice and tight into a folder *<folder>*.\
+## How to organize Chapters?
+1. First a general explanation how jupyter-book works. The `_toc.yml` file is the organizer keeping everything at bay and defining the structure.
+1. If we want to add a new chapter page, we simply add * - file <path/filename> * to the end of the file (where the other -file commands are). 
+1. To have supchapters it is important to now that `#` are seen as big page titles whereas `##` are the "true" supchapters of a page. 
+
+Thus when adding content we have the two options:
+### Option 1: Use mutliple files
+First put everthing nice and tight into a folder *<folder>*. \
 Then create some kind of <mainPage> (markdown or jupyterNotebook does not really matter. I recommend jupyterNoteBook) for the chapter (probably explaining math stuff). \
 Then create additionally files (probably jupyterBooks but really is not important) and add your content there.\
 Then you have to add the following to the _toc.yml file:
@@ -38,5 +66,65 @@ Then you have to add the following to the _toc.yml file:
 ```
 It is important to notice that the creation of the page is top to bottom.
 Thus all chapters of <mainPage> are structured before the chapters of subPages ( the natural way when you think about it).
-## Option 2: Use one file (not recommended I think)
-Just write one big juypter file and structure the chapters with ```#``` indicating the main page name. ```##``` and ```###```for the supchapters.
+
+### Option 2: Use one file (not recommended I think)
+Just write one big juypter file and structure the chapters with `#` indicating the main page name. `##` and `###`for the supchapters.
+
+## What is the uniform style for the documentation?
+
+We use one `#` **once** for the main title of each chapter. 
+For addtional subtitles, we add one more `#` then (i.e., `##` and `###`, better no `####` for simplicity). 
+
+Note that we do **not** add `#` for the content in each Markdown cell, 
+which means, we create pure `latex-like` texts which align with the survey paper. 
+
+Import packages in the first code cell on the page at the top.
+
+For code cells, if we use any python packages, 
+please make sure:
+1. They are in the `requirements.txt`. If not, please add them.
+1. import them (e.g., `import numpy as np`).
+
+For those originally appear in Latex `.tex` format, 
+we replace them into the Markdown format (See examples as below).
+
+| Latex            | Markdown            |
+|:----------------:|:-------------------:|
+| \emph{text}      | \*text\*    |
+| ``text''         | "text" |
+| \given           | \vert  |
+| \citep{gnei_sp05}| ({cite:t}\`gnei_sp05\`)  |
+| \citet{gnei_sp05} | {cite:t}\`gnei_sp05\`  |
+| \cite{gnei_sp05} | {cite:t}\`gnei_sp05\`  |
+| \\"i             | ï  |
+| \prob            | p |
+| \ref{eq:xxxx}    | {eq}\`xxxx\` |
+| \begin{equation}\label{xxx}...\end{equation} | \$\$......\$\$(xxxx) |
+| yyyyy.\footnote{xxxx} | yyyyy.[^footNoteIdentifier] .... Somewhere: [^footNoteIdentifier]: xxxxx |
+
+### TODO: 
+- cf.\ Section
+
+At least one example per chapter?
+
+## Citation
+If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
+
+```
+@article{DBLP:journals/ml/HullermeierW21,
+  author       = {Eyke H{\"{u}}llermeier and
+                  Willem Waegeman},
+  title        = {Aleatoric and epistemic uncertainty in machine learning: an introduction
+                  to concepts and methods},
+  journal      = {Mach. Learn.},
+  volume       = {110},
+  number       = {3},
+  pages        = {457--506},
+  year         = {2021},
+  url          = {https://doi.org/10.1007/s10994-021-05946-3},
+  doi          = {10.1007/S10994-021-05946-3},
+  timestamp    = {Fri, 14 May 2021 08:31:53 +0200},
+  biburl       = {https://dblp.org/rec/journals/ml/HullermeierW21.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+```
