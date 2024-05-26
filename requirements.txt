@@ -5,3 +5,10 @@ scikit-learn
 pandas
 numpy
 properscoring
+scipy
+pyparsing
+pytorch
+statsmodels
+tqdm
+joblib
+pgmpy

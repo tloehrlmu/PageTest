@@ -70,13 +70,15 @@ Thus all chapters of <mainPage> are structured before the chapters of subPages (
 ### Option 2: Use one file (not recommended I think)
 Just write one big juypter file and structure the chapters with `#` indicating the main page name. `##` and `###`for the supchapters.
 
-## What is the uniform style for the documentation?
+## What are uniform styles for the documentation?
 
 We use one `#` **once** for the main title of each chapter. 
-For addtional subtitles, we add one more `#` then (i.e., `##` and `###`, better no `####` for simplicity). 
+For additional subtitles, we add one more `#` then (i.e., `##` and `###`, better no `####` for simplicity). 
 
 Note that we do **not** add `#` for the content in each Markdown cell, 
 which means, we create pure `latex-like` texts which align with the survey paper. 
+
+We add an extra `sub-chapter` (another `.ipynb` file) in chapter folders for additional information or examples.
 
 Import packages in the first code cell on the page at the top.
 
@@ -94,16 +96,20 @@ we replace them into the Markdown format (See examples as below).
 | ``text''         | "text" |
 | \given           | \vert  |
 | \citep{gnei_sp05}| ({cite:t}\`gnei_sp05\`)  |
-| \citet{gnei_sp05} | {cite:t}\`gnei_sp05\`  |
+| \citet{gnei_sp05}| {cite:t}\`gnei_sp05\`  |
 | \cite{gnei_sp05} | {cite:t}\`gnei_sp05\`  |
 | \\"i             | ï  |
 | \prob            | p |
 | \ref{eq:xxxx}    | {eq}\`xxxx\` |
 | \begin{equation}\label{xxx}...\end{equation} | \$\$......\$\$(xxxx) |
-| yyyyy.\footnote{xxxx} | yyyyy.[^footNoteIdentifier] .... Somewhere: [^footNoteIdentifier]: xxxxx |
+| yyyyy.\footnote{xxxx} | yyyyy.[^footNoteIdentifier] *`in the last Markdown cell`* [^footNoteIdentifier]: xxxxx |
+
+Note that we follow the rule from the original paper, 
+i.e. after the punctuation such as ".".
 
 ### TODO: 
 - cf.\ Section
+- domain name (feedback link)
 
 At least one example per chapter?
 
