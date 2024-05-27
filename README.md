@@ -102,10 +102,11 @@ we replace them into the Markdown format (See examples as below).
 | \prob            | p |
 | \ref{eq:xxxx}    | {eq}\`xxxx\` |
 | \begin{equation}\label{xxx}...\end{equation} | \$\$......\$\$(xxxx) |
-| yyyyy.\footnote{xxxx} | yyyyy.[^footNoteIdentifier] *`in the last Markdown cell`* [^footNoteIdentifier]: xxxxx |
+| yyyyy\footnote{xxxx}. | yyyyy[^footNoteIdentifier]. *`in the last Markdown cell` or anywhere* [^footNoteIdentifier]: xxxxx |
 
-Note that we follow the rule from the original paper, 
-i.e. after the punctuation such as ".".
+Note that we consistently apply the `footrule` before the punctuation such as ".". \
+Also, 
+there is no space between the last character and the [^footNoteIdentifier]
 
 ### TODO: 
 - cf.\ Section
