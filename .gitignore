@@ -1,2 +1,6 @@
 _build
 *.DS_Store
+*.ipynb_checkpoints
+
+# ignore virtual environment
+venv/

@@ -16,7 +16,8 @@ sphinx:
     mathjax3_config:
       tex:
         macros:
-          "N": "\\mathbb{N}"
+          "N": ["\\mathbb{N}"]
+          "vec": ["\\boldsymbol{#1}",1]
           "floor": ["\\lfloor#1\\rfloor", 1]
           "bmat" : ["\\left[\\begin{array}"]
           "emat" : ["\\end{array}\\right]"]
@@ -62,27 +63,6 @@ sphinx:
           "evalue": ["\\mathbf{E}"]
           "variance": ["\\mathbf{V}"]
           "mmp": ["",1]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 launch_buttons:
   colab_url: "https://colab.research.google.com"
@@ -133,6 +113,9 @@ html:
   use_multitoc_numbering    : true   # Continuous numbering across parts/chapters
   extra_footer              : |
     <section>
+        For comprehensive discussions please contact one of our team members: 
+        {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
+
             <div style="margin-top: 50px;" id="disqus_thread"></div>
 
             <script>
