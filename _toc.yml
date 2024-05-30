@@ -19,9 +19,9 @@ chapters:
   # sections:
   # - file: chapter-modelingAproxUncertainty/Version-space-learning
   # - file: chapter-modelingAproxUncertainty/Bayesian-inference
+- file: chapter-pe-scoring/scoring
 - file: chapter-pe-calibration/calibration
 - file: chapter-pe-ensemble/ensemble
-- file: chapter-pe-scoring/scoring
 - file: chapter-mle_and_fisher/intro
 - file: chapter-generative_models/intro
 - file: chapter-gaussianprocess/intro
