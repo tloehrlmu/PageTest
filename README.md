@@ -77,6 +77,13 @@ For additional subtitles, we add one more `#` then (i.e., `##` and `###`, better
 
 Note that we do **not** add `#` for the content in each Markdown cell, 
 which means, we create pure `latex-like` texts which align with the survey paper. 
+For a better view and alignment, we add the following in each contextual `Markdown cell`:
+
+```
+<div align="justify">
+
+</div>
+```
 
 We add an extra `sub-chapter` (another `.ipynb` file) in chapter folders for additional information or examples.
 
@@ -109,6 +116,7 @@ Also,
 there is no space between the last character and the [^footNoteIdentifier]
 
 ### TODO: 
+- plot size
 - cf.\ Section
 - domain name (feedback link)
 
