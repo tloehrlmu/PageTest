@@ -122,7 +122,7 @@ there is no space between the last character and the [^footNoteIdentifier]
 
 At least one example per chapter?
 
-## Contributions: 
+## Contributions
 | Package          | Presented by        | Verified by         |
 |:----------------:|:-------------------:|:-------------------:|
 |c                 |Evert Buzon          | |
