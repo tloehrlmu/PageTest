@@ -122,6 +122,17 @@ there is no space between the last character and the [^footNoteIdentifier]
 
 At least one example per chapter?
 
+## Contributions: 
+| Package          | Presented by        | Verified by         |
+|:----------------:|:-------------------:|:-------------------:|
+|c                 |Evert Buzon          | |
+|e                 |Longfei Zuo          | |
+|f                 |Jiawen Wang          |Santo Thies   |
+|m                 |Sven Morlock | |
+|n                 |Nico Plöhn           | |
+|p                 |Santo Thies          |Jiawen Wang & Sven Morlock|
+|q                 |Santo Thies          | |
+
 ## Citation
 If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
 
