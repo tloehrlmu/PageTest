@@ -16,8 +16,8 @@ chapters:
 - file: chapter-srcUncertainty/intro
 - file: chapter-auxilary/intro
 - file: chapter-modelingAproxUncertainty/modelingAproxUncertainty
-  # sections:
-  # - file: chapter-modelingAproxUncertainty/Version-space-learning
+  sections:
+  - file: chapter-modelingAproxUncertainty/set-based-versus-distributional-representations
   # - file: chapter-modelingAproxUncertainty/Bayesian-inference
 - file: chapter-pe-scoring/scoring
   sections:
