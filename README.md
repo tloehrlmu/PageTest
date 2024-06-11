@@ -133,7 +133,8 @@ At least one example per chapter?
 |m                 |Sven Morlock         | |
 |n                 |Nico Plöhn           | |
 |p                 |Santo Thies          |Jiawen Wang & Sven Morlock|
-|q                 |Santo Thies          | |
+|q                 |Santo Thies          |Jiawen Wang |
+|r                 |Santo Thies          | |
 
 ## Citation
 If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
