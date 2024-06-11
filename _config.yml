@@ -63,6 +63,8 @@ sphinx:
           "evalue": ["\\mathbf{E}"]
           "variance": ["\\mathbf{V}"]
           "mmp": ["",1]
+          "llbracket": ["\\lbrack\\lbrack"]
+          "rrbracket": ["\\rbrack\\rbrack"]
 
 launch_buttons:
   colab_url: "https://colab.research.google.com"
@@ -96,12 +98,13 @@ parse:
     # - deflist
     - dollarmath
     # - html_admonition
-    # - html_image
+    - html_image
     - linkify
     # - replacements
     # - smartquotes
     - substitution
     - tasklist
+
 
 
 # HTML-specific settings
