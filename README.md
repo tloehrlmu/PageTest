@@ -116,8 +116,6 @@ Also,
 there is no space between the last character and the [^footNoteIdentifier]
 
 ### TODO: 
-- plot size
-- cf.\ Section
 - domain name (feedback link)
 
 At least one example per chapter?
