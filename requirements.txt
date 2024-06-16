@@ -8,9 +8,10 @@ mapie
 properscoring
 scipy
 pyparsing
-pytorch
+torch
 statsmodels
 tqdm
 joblib
 pgmpy
 networkx
+mpltern
