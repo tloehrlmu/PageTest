@@ -16,3 +16,4 @@ pgmpy
 networkx
 mpltern
 venn-abers
+pycalib
