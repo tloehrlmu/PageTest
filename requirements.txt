@@ -15,4 +15,7 @@ joblib
 pgmpy
 networkx
 mpltern
+arviz
+pymc
+xarray
 venn-abers
