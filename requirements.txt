@@ -15,5 +15,12 @@ joblib
 pgmpy
 networkx
 mpltern
+<<<<<<< HEAD
 venn-abers
 pycalib
+=======
+arviz
+pymc
+xarray
+venn-abers
+>>>>>>> e2ea15080456c0a71d6a9177f063d78fcf353f01
