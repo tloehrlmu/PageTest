@@ -39,5 +39,5 @@ chapters:
 - file: chapter-conformel_regression/intro
 - file: chapter-setValued_utilityMaximization/intro
 
-root: references
+# - file: references
 
