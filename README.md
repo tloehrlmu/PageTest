@@ -124,12 +124,13 @@ At least one example per chapter?
 | Package          | Presented by        | Verified by         |
 |:----------------:|:-------------------:|:-------------------:|
 |c                 |Evert Buzon          | |
-|e                 |Longfei Zuo          | |
+|e                 |Longfei Zuo          |Santo Thies   |
 |f                 |Jiawen Wang          |Santo Thies   |
 |g                 |Jiawen Wang          | |
 |k                 |Sven Morlock         | |
 |m                 |Sven Morlock         | |
-|n                 |Nico Plöhn           | |
+|n                 |Nico Plöhn           |Santo Thies    |
+|o                 |Nico Plöhn           | |
 |p                 |Santo Thies          |Jiawen Wang & Sven Morlock|
 |q                 |Santo Thies          |Jiawen Wang |
 |r                 |Santo Thies          | |
