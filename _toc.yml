@@ -38,5 +38,6 @@ chapters:
   - file: chapter-conformel_classification/hypothesis-excurs
 - file: chapter-conformel_regression/intro
 - file: chapter-setValued_utilityMaximization/intro
-- file: references
+
+root: references
 
