@@ -129,7 +129,7 @@ At least one example per chapter?
 |b                 |Nico Plöhn           | |
 |c                 |Evert Buzon          | |
 |d                 |Longfei Zuo          | |
-|e                 |Longfei Zuo          |Santo Thies   |
+|e                 |Longfei Zuo          |Santo Thies & Jiawen Wang|
 |f                 |Jiawen Wang          |Santo Thies   |
 |g                 |Jiawen Wang          | |
 |h                 |Jiawen Wang          | |
