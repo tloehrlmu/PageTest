@@ -13,10 +13,10 @@ chapters:
 #   sections:
 #   - file: subchapterTest/plot_adaboost_regression.ipynb
 #   - file: subchapterTest/plot_classifier_comparison.ipynb
-- file: chapter-prelude/intro
+- file: chapter-prelude/prelude
 - file: chapter-intro/intro
-- file: chapter-srcUncertainty/intro
-- file: chapter-auxilary/intro
+- file: chapter-srcUncertainty/src
+- file: chapter-auxilary/auxilary
 - file: chapter-modelingAproxUncertainty/modelingAproxUncertainty
   sections:
   - file: chapter-modelingAproxUncertainty/set-based-versus-distributional-representations
@@ -26,18 +26,18 @@ chapters:
   # - file: chapter-pe-scoring/proper_scoring_rules
 - file: chapter-pe-calibration/calibration
 - file: chapter-pe-ensemble/ensemble
-- file: chapter-mle_and_fisher/intro
-- file: chapter-generative_models/intro
+- file: chapter-mle_and_fisher/mle
+- file: chapter-generative_models/gm
 - file: chapter-gaussianprocess/intro
 - file: chapter-deep_neuralnetwork/dnn
 - file: chapter-bayesian_neuralnetwork/bayesian
-- file: chapter-credal_sets/intro
-- file: chapter-reliable_classification/intro
-- file: chapter-conformel_classification/intro
+- file: chapter-credal_sets/credal_sets
+- file: chapter-reliable_classification/reliable_classification
+- file: chapter-conformel_classification/conformel_classification
   sections:
   - file: chapter-conformel_classification/hypothesis-excurs
-- file: chapter-conformel_regression/intro
-- file: chapter-setValued_utilityMaximization/intro
+- file: chapter-conformel_regression/conformel_regression
+- file: chapter-setValued_utilityMaximization/set
 
 # - file: references
 
