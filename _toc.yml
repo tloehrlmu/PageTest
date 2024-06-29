@@ -28,7 +28,7 @@ chapters:
 - file: chapter-pe-ensemble/ensemble
 - file: chapter-mle_and_fisher/mle
 - file: chapter-generative_models/gm
-- file: chapter-gaussianprocess/intro
+- file: chapter-gaussianprocess/gaussianprocess
 - file: chapter-deep_neuralnetwork/dnn
 - file: chapter-bayesian_neuralnetwork/bayesian
 - file: chapter-credal_sets/credal_sets
