@@ -115,6 +115,9 @@ Note that we consistently apply the `footrule` before the punctuation such as ".
 Also, 
 there is no space between the last character and the [^footNoteIdentifier]
 
+For some redundant information in the input or output cell, 
+we `hide-input` or `hide-output` by adding the Tag.
+
 ### TODO: 
 - domain name (feedback link)
 - chapter number

@@ -20,4 +20,3 @@ pycalib
 arviz
 pymc
 xarray
-venn-abers
