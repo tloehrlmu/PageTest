@@ -17,6 +17,9 @@ chapters:
 - file: chapter-intro/intro
 - file: chapter-srcUncertainty/src
 - file: chapter-auxilary/auxilary
+  sections:
+  - file: chapter-auxilary/hypothesis-excurs
+  - file: chapter-auxilary/exchangeability-excursus
 - file: chapter-modelingAproxUncertainty/modelingAproxUncertainty
   sections:
   - file: chapter-modelingAproxUncertainty/set-based-versus-distributional-representations
@@ -34,8 +37,6 @@ chapters:
 - file: chapter-credal_sets/credal_sets
 - file: chapter-reliable_classification/reliable_classification
 - file: chapter-conformel_classification/conformel_classification
-  sections:
-  - file: chapter-conformel_classification/hypothesis-excurs
 - file: chapter-conformel_regression/conformel_regression
 - file: chapter-setValued_utilityMaximization/set
 
