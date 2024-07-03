@@ -21,9 +21,8 @@ chapters:
   - file: chapter-auxilary/hypothesis-excurs
   - file: chapter-auxilary/exchangeability-excursus
 - file: chapter-modelingAproxUncertainty/modelingAproxUncertainty
-  sections:
-  - file: chapter-modelingAproxUncertainty/set-based-versus-distributional-representations
-  # - file: chapter-modelingAproxUncertainty/Bayesian-inference
+  # sections:
+  # - file: chapter-modelingAproxUncertainty/set-based-versus-distributional-representations
 - file: chapter-pe-scoring/scoring
   # sections:
   # - file: chapter-pe-scoring/proper_scoring_rules
