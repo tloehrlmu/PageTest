@@ -128,8 +128,8 @@ At least one example per chapter?
 ## Contributions
 | Package          | Presented by        | Verified by         |
 |:----------------:|:-------------------:|:-------------------:|
-|a                 |Evert Buzon          | |
-|b                 |Nico Plöhn           | |
+|a                 |Nico Plöhn           | |
+|b                 |Evert Buzon          | |
 |c                 |Evert Buzon          | |
 |d                 |Longfei Zuo          | |
 |e                 |Longfei Zuo          |Santo Thies & Jiawen Wang|
