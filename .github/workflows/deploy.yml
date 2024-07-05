@@ -30,7 +30,8 @@ jobs:
         run: jupyter-book build .
 
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Publishing from main branch"
-          ghp-import -n -p -f _build/html
+          ghp-import -n -p -f _build/html -m "Deploy Jupyter Book Automatically"
