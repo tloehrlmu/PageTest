@@ -6,13 +6,6 @@ root: startPage
 options:  # The options key will be applied to all chapters, but not sub-sections
   numbered: True
 chapters:
-# - file: notebooks
-# - file: markdown-notebooks
-# - file: jupyter_try
-# - file: subchapterTest/bigChapter
-#   sections:
-#   - file: subchapterTest/plot_adaboost_regression.ipynb
-#   - file: subchapterTest/plot_classifier_comparison.ipynb
 - file: chapter-prelude/prelude
 - file: chapter-intro/intro
 - file: chapter-srcUncertainty/src
