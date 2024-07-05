@@ -1,0 +1,40 @@
+name: Deploy Jupyter Book Automatically
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jupyter-book ghp-import
+
+      - name: Clean Jupyter Book
+        run: jupyter-book clean .
+
+      - name: Build Jupyter Book
+        run: jupyter-book build .
+
+      - name: Deploy to GitHub Pages
+        run: |
+          if [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then
+            echo "Publishing from main branch"
+            ghp-import -n -p -f _build/html
+          else
+            echo "Not Publishing changes. Changes are only locally visible."
+            echo "If you want to publish to website, please switch to main branch and merge your changes into it."
+          }
