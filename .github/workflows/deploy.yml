@@ -31,9 +31,9 @@ jobs:
       - name: Build Jupyter Book
         run: jupyter-book build .
 
-    #   - name: Deploy to GitHub Pages
-    #     env:
-    #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     run: |
-    #       echo "Publishing from main branch"
-    #       ghp-import -n -p -f _build/html -m "Deploy Jupyter Book Automatically"
+      - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Publishing from main branch"
+          ghp-import -n -p -f _build/html -m "Deploy Jupyter Book Automatically"
