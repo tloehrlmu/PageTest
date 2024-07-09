@@ -20,3 +20,4 @@ pycalib
 arviz
 pymc
 xarray
+aesara
