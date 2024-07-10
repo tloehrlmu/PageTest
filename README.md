@@ -115,21 +115,34 @@ Note that we consistently apply the `footrule` before the punctuation such as ".
 Also, 
 there is no space between the last character and the [^footNoteIdentifier]
 
+For some redundant information in the input or output cell, 
+we `hide-input` or `hide-output` by adding the Tag.
+
 ### TODO: 
 - domain name (feedback link)
+- chapter number
+- color
 
 At least one example per chapter?
 
 ## Contributions
 | Package          | Presented by        | Verified by         |
 |:----------------:|:-------------------:|:-------------------:|
+|a                 |Nico Plöhn           | |
+|b                 |Evert Buzon          | |
 |c                 |Evert Buzon          | |
-|e                 |Longfei Zuo          | |
+|d                 |Longfei Zuo          | |
+|e                 |Longfei Zuo          |Santo Thies & Jiawen Wang|
 |f                 |Jiawen Wang          |Santo Thies   |
 |g                 |Jiawen Wang          | |
+|h                 |Jiawen Wang          | |
+|i                 |Longfei Zuo          | |
+|j                 |Evert Buzon          | |
 |k                 |Sven Morlock         | |
+|l                 |Sven Morlock         | |
 |m                 |Sven Morlock         | |
-|n                 |Nico Plöhn           | |
+|n                 |Nico Plöhn           |Santo Thies    |
+|o                 |Nico Plöhn           | |
 |p                 |Santo Thies          |Jiawen Wang & Sven Morlock|
 |q                 |Santo Thies          |Jiawen Wang |
 |r                 |Santo Thies          | |

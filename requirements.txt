@@ -16,3 +16,8 @@ pgmpy
 networkx
 mpltern
 venn-abers
+pycalib
+arviz
+pymc
+xarray
+aesara
