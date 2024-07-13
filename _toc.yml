@@ -3,8 +3,8 @@
 
 format: jb-book
 root: startPage
-options:  # The options key will be applied to all chapters, but not sub-sections
-  numbered: True
+# options:  # The options key will be applied to all chapters, but not sub-sections
+#   numbered: True
 chapters:
 - file: chapter-prelude/prelude
 - file: chapter-intro/intro
@@ -32,5 +32,7 @@ chapters:
 - file: chapter-conformel_regression/conformel_regression
 - file: chapter-setValued_utilityMaximization/set
 
-# - file: references
+- file: references
+
+- file: chapter-appendix
 

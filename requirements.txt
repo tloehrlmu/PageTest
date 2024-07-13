@@ -21,3 +21,4 @@ arviz
 pymc
 xarray
 aesara
+seaborn

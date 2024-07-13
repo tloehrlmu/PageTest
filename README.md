@@ -121,7 +121,6 @@ we `hide-input` or `hide-output` by adding the Tag.
 ### TODO: 
 - domain name (feedback link)
 - chapter number
-- color
 
 At least one example per chapter?
 
