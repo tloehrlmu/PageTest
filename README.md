@@ -142,7 +142,7 @@ At least one example per chapter?
 |l                 |Sven Morlock         | |
 |m                 |Sven Morlock         | |
 |n                 |Nico Plöhn           |Santo Thies    |
-|o                 |Nico Plöhn           | |
+|o                 |Nico Plöhn           |Jiawen Wang |
 |p                 |Santo Thies          |Jiawen Wang & Sven Morlock|
 |q                 |Santo Thies          |Jiawen Wang |
 |r                 |Santo Thies          | Nico Plöhn |
