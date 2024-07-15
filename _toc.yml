@@ -17,8 +17,6 @@ chapters:
   # sections:
   # - file: chapter-modelingAproxUncertainty/set-based-versus-distributional-representations
 - file: chapter-pe-scoring/scoring
-  # sections:
-  # - file: chapter-pe-scoring/proper_scoring_rules
 - file: chapter-pe-calibration/calibration
 - file: chapter-pe-ensemble/ensemble
 - file: chapter-mle_and_fisher/mle
