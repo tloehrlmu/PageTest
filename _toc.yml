@@ -13,6 +13,7 @@ chapters:
   sections:
   - file: chapter-auxilary/hypothesis-excurs
   - file: chapter-auxilary/exchangeability-excursus
+  - file: chapter-auxilary/maxmin-vs-sumproduct
 - file: chapter-modelingAproxUncertainty/modelingAproxUncertainty
   # sections:
   # - file: chapter-modelingAproxUncertainty/set-based-versus-distributional-representations
