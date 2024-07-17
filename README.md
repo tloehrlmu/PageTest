@@ -107,7 +107,9 @@ we replace them into the Markdown format (See examples as below).
 | \cite{gnei_sp05} | {cite:t}\`gnei_sp05\`  |
 | \\"i             | ï  |
 | \prob            | p |
+|\begin{itemize}   | - |
 | \ref{eq:xxxx}    | {eq}\`xxxx\` |
+| cf.\ Section     |cf. Section |
 | \begin{equation}\label{xxx}...\end{equation} | \$\$......\$\$(xxxx) |
 | yyyyy\footnote{xxxx}. | yyyyy[^footNoteIdentifier]. *`in the last Markdown cell` or anywhere* [^footNoteIdentifier]: xxxxx |
 
@@ -115,24 +117,36 @@ Note that we consistently apply the `footrule` before the punctuation such as ".
 Also, 
 there is no space between the last character and the [^footNoteIdentifier]
 
+For some redundant information in the input or output cell, 
+we `hide-input`, `hide-output`, or `remove-output` by adding the Tag.
+
 ### TODO: 
 - domain name (feedback link)
+- chapter number
 
 At least one example per chapter?
 
 ## Contributions
 | Package          | Presented by        | Verified by         |
 |:----------------:|:-------------------:|:-------------------:|
+|a                 |Nico Plöhn           | |
+|b                 |Evert Buzon          | |
 |c                 |Evert Buzon          | |
-|e                 |Longfei Zuo          | |
+|d                 |Longfei Zuo          | |
+|e                 |Longfei Zuo          |Santo Thies & Jiawen Wang|
 |f                 |Jiawen Wang          |Santo Thies   |
-|g                 |Jiawen Wang          | |
+|g                 |Jiawen Wang          |Santo Thies & Nico Plöhn|
+|h                 |Jiawen Wang          | |
+|i                 |Longfei Zuo          | |
+|j                 |Evert Buzon          | |
 |k                 |Sven Morlock         | |
+|l                 |Sven Morlock         | |
 |m                 |Sven Morlock         | |
-|n                 |Nico Plöhn           | |
+|n                 |Nico Plöhn           |Santo Thies    |
+|o                 |Nico Plöhn           |Jiawen Wang |
 |p                 |Santo Thies          |Jiawen Wang & Sven Morlock|
 |q                 |Santo Thies          |Jiawen Wang |
-|r                 |Santo Thies          | |
+|r                 |Santo Thies          |Nico Plöhn |
 
 ## Citation
 If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
