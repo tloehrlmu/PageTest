@@ -22,3 +22,4 @@ pymc
 xarray
 aesara
 seaborn
+ffmpeg-python
