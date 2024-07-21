@@ -1,6 +1,6 @@
 _build
 *.DS_Store
 *.ipynb_checkpoints
-
+chapter-setValued_utilityMaximization/NestedDichotomies/nd/__pycache__
 # ignore virtual environment
 venv/
