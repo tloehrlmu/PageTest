@@ -1,0 +1,4 @@
+/*Makes all texts to be justified*/
+p {
+    text-align: justify;
+}
