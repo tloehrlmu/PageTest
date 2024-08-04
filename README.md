@@ -132,12 +132,12 @@ At least one example per chapter?
 |a                 |Nico Plöhn           | |
 |b                 |Evert Buzon          | |
 |c                 |Evert Buzon          | |
-|d                 |Longfei Zuo          | |
+|d                 |Longfei Zuo          |Santo Thies |
 |e                 |Longfei Zuo          |Santo Thies & Jiawen Wang|
 |f                 |Jiawen Wang          |Santo Thies   |
 |g                 |Jiawen Wang          |Santo Thies & Nico Plöhn|
 |h                 |Jiawen Wang          | |
-|i                 |Longfei Zuo          | |
+|i                 |Longfei Zuo          |Santo Thies |
 |j                 |Evert Buzon          | |
 |k                 |Sven Morlock         | |
 |l                 |Sven Morlock         | |
