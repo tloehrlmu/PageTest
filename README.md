@@ -151,7 +151,7 @@ At least one example per chapter?
 ## Citation
 If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
 
-```
+```{bibtex}
 @article{DBLP:journals/ml/HullermeierW21,
   author       = {Eyke H{\"{u}}llermeier and
                   Willem Waegeman},
