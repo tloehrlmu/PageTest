@@ -139,7 +139,7 @@ At least one example per chapter?
 |h                 |Jiawen Wang          |Longfei Zuo |
 |i                 |Longfei Zuo          |Santo Thies |
 |j                 |Evert Buzon          | |
-|k                 |Sven Morlock         | |
+|k                 |Sven Morlock         |Evert Buzon |
 |l                 |Sven Morlock         | |
 |m                 |Sven Morlock         | |
 |n                 |Nico Plöhn           |Santo Thies    |
