@@ -129,7 +129,7 @@ At least one example per chapter?
 ## Contributions
 | Package          | Presented by        | Verified by         |
 |:----------------:|:-------------------:|:-------------------:|
-|a                 |Nico Plöhn           | |
+|a                 |Nico Plöhn           |Santo Thies & Jiawen Wang|
 |b                 |Evert Buzon          | |
 |c                 |Evert Buzon          | |
 |d                 |Longfei Zuo          |Santo Thies |
