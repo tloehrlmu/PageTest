@@ -130,8 +130,8 @@ At least one example per chapter?
 | Package          | Presented by        | Verified by         |
 |:----------------:|:-------------------:|:-------------------:|
 |a                 |Nico Plöhn           |Santo Thies & Jiawen Wang|
-|b                 |Evert Buzon          | |
-|c                 |Evert Buzon          | |
+|b                 |Evert Buzon          |Santo Thies |
+|c                 |Evert Buzon          |Santo Thies |
 |d                 |Longfei Zuo          |Santo Thies |
 |e                 |Longfei Zuo          |Santo Thies & Jiawen Wang|
 |f                 |Jiawen Wang          |Santo Thies   |
