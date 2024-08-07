@@ -136,14 +136,14 @@ At least one example per chapter?
 |e                 |Longfei Zuo          |Santo Thies & Jiawen Wang|
 |f                 |Jiawen Wang          |Santo Thies   |
 |g                 |Jiawen Wang          |Santo Thies & Nico Plöhn|
-|h                 |Jiawen Wang          |Longfei Zuo |
+|h                 |Jiawen Wang          |Longfei Zuo & Santo Thies |
 |i                 |Longfei Zuo          |Santo Thies |
 |j                 |Evert Buzon          | |
 |k                 |Sven Morlock         |Evert Buzon |
 |l                 |Sven Morlock         | |
 |m                 |Sven Morlock         |Evert Buzon |
-|n                 |Nico Plöhn           |Santo Thies    |
-|o                 |Nico Plöhn           |Jiawen Wang |
+|n                 |Nico Plöhn           |Santo Thies |
+|o                 |Nico Plöhn           |Jiawen Wang & Santo Thies |
 |p                 |Santo Thies          |Jiawen Wang & Sven Morlock|
 |q                 |Santo Thies          |Jiawen Wang |
 |r                 |Santo Thies          |Nico Plöhn |
