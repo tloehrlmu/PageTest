@@ -9,6 +9,7 @@ properscoring
 scipy
 pyparsing
 torch
+tensorflow
 statsmodels
 tqdm
 joblib
