@@ -138,7 +138,7 @@ At least one example per chapter?
 |g                 |Jiawen Wang          |Santo Thies & Nico Plöhn|
 |h                 |Jiawen Wang          |Longfei Zuo & Santo Thies |
 |i                 |Longfei Zuo          |Santo Thies |
-|j                 |Evert Buzon          | |
+|j                 |Evert Buzon          |Sven Morlock |
 |k                 |Sven Morlock         |Evert Buzon |
 |l                 |Sven Morlock         | |
 |m                 |Sven Morlock         |Evert Buzon |
