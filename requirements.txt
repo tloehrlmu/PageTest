@@ -8,7 +8,6 @@ mapie
 properscoring
 scipy
 pyparsing
-torch
 tensorflow
 statsmodels
 tqdm
@@ -18,13 +17,13 @@ networkx
 mpltern
 venn-abers
 pycalib
-arviz
-pymc
 xarray
 aesara
 seaborn
 ffmpeg-python
+pymc==5.15.1
+arviz==0.18.0
 pytensor==2.22.1
-sphinx-proof==0.1.3
-pyro-ppl==1.9.1
 gpytorch==1.11
+torch==2.3.0
+torchvision==0.18.0
