@@ -120,31 +120,25 @@ there is no space between the last character and the [^footNoteIdentifier]
 For some redundant information in the input or output cell, 
 we `hide-input`, `hide-output`, or `remove-output` by adding the Tag.
 
-### TODO: 
-- domain name (feedback link)
-- chapter number
-
-At least one example per chapter?
-
 ## Contributions
 | Package          | Presented by        | Verified by         |
 |:----------------:|:-------------------:|:-------------------:|
-|a                 |Nico Plöhn           |Santo Thies & Jiawen Wang|
+|a 💻               |Nico Plöhn           |Santo Thies & Jiawen Wang|
 |b                 |Evert Buzon          |Santo Thies |
 |c                 |Evert Buzon          |Santo Thies |
 |d                 |Longfei Zuo          |Santo Thies |
-|e                 |Longfei Zuo          |Santo Thies & Jiawen Wang|
+|e 💻                |Longfei Zuo          |Santo Thies & Jiawen Wang|
 |f                 |Jiawen Wang          |Santo Thies   |
-|g                 |Jiawen Wang          |Santo Thies & Nico Plöhn|
+|g 💻                |Jiawen Wang          |Santo Thies & Nico Plöhn|
 |h                 |Jiawen Wang          |Longfei Zuo & Santo Thies |
 |i                 |Longfei Zuo          |Santo Thies |
-|j                 |Evert Buzon          |Sven Morlock |
+|j 💻                |Evert Buzon          |Sven Morlock |
 |k                 |Sven Morlock         |Evert Buzon |
 |l                 |Sven Morlock         | |
-|m                 |Sven Morlock         |Evert Buzon |
-|n                 |Nico Plöhn           |Santo Thies |
+|m 💻                |Sven Morlock         |Evert Buzon |
+|n 💻                |Nico Plöhn           |Santo Thies |
 |o                 |Nico Plöhn           |Jiawen Wang & Santo Thies |
-|p                 |Santo Thies          |Jiawen Wang & Sven Morlock|
+|p 💻                |Santo Thies          |Jiawen Wang & Sven Morlock|
 |q                 |Santo Thies          |Jiawen Wang |
 |r                 |Santo Thies          |Nico Plöhn |
 
