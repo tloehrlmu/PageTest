@@ -129,21 +129,21 @@ At least one example per chapter?
 ## Contributions
 | Package          | Presented by        | Verified by         |
 |:----------------:|:-------------------:|:-------------------:|
-|a                 |Nico Plöhn           | |
-|b                 |Evert Buzon          | |
-|c                 |Evert Buzon          | |
-|d                 |Longfei Zuo          | |
+|a                 |Nico Plöhn           |Santo Thies & Jiawen Wang|
+|b                 |Evert Buzon          |Santo Thies |
+|c                 |Evert Buzon          |Santo Thies |
+|d                 |Longfei Zuo          |Santo Thies |
 |e                 |Longfei Zuo          |Santo Thies & Jiawen Wang|
 |f                 |Jiawen Wang          |Santo Thies   |
 |g                 |Jiawen Wang          |Santo Thies & Nico Plöhn|
-|h                 |Jiawen Wang          | |
-|i                 |Longfei Zuo          | |
+|h                 |Jiawen Wang          |Longfei Zuo & Santo Thies |
+|i                 |Longfei Zuo          |Santo Thies |
 |j                 |Evert Buzon          | |
-|k                 |Sven Morlock         | |
+|k                 |Sven Morlock         |Evert Buzon |
 |l                 |Sven Morlock         | |
-|m                 |Sven Morlock         | |
-|n                 |Nico Plöhn           |Santo Thies    |
-|o                 |Nico Plöhn           |Jiawen Wang |
+|m                 |Sven Morlock         |Evert Buzon |
+|n                 |Nico Plöhn           |Santo Thies |
+|o                 |Nico Plöhn           |Jiawen Wang & Santo Thies |
 |p                 |Santo Thies          |Jiawen Wang & Sven Morlock|
 |q                 |Santo Thies          |Jiawen Wang |
 |r                 |Santo Thies          |Nico Plöhn |
@@ -151,7 +151,7 @@ At least one example per chapter?
 ## Citation
 If you found this toolbox helpful, please cite the following [_Paper_](https://link.springer.com/article/10.1007/s10994-021-05946-3):
 
-```
+```{bibtex}
 @article{DBLP:journals/ml/HullermeierW21,
   author       = {Eyke H{\"{u}}llermeier and
                   Willem Waegeman},

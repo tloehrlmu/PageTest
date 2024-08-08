@@ -3,20 +3,13 @@
 
 format: jb-book
 root: startPage
-# options:  # The options key will be applied to all chapters, but not sub-sections
-#   numbered: True
+options:  # The options key will be applied to all chapters, but not sub-sections
+  numbered: True
 chapters:
 - file: chapter-prelude/prelude
 - file: chapter-intro/intro
 - file: chapter-srcUncertainty/src
-- file: chapter-auxilary/auxilary
-  sections:
-  - file: chapter-auxilary/hypothesis-excurs
-  - file: chapter-auxilary/exchangeability-excursus
-  - file: chapter-auxilary/maxmin-vs-sumproduct
 - file: chapter-modelingAproxUncertainty/modelingAproxUncertainty
-  # sections:
-  # - file: chapter-modelingAproxUncertainty/set-based-versus-distributional-representations
 - file: chapter-pe-scoring/scoring
 - file: chapter-pe-calibration/calibration
 - file: chapter-pe-ensemble/ensemble
@@ -31,7 +24,9 @@ chapters:
 - file: chapter-conformel_regression/conformel_regression
 - file: chapter-setValued_utilityMaximization/set
 
+# - file: chapter-auxilary/auxilary
+- file: chapter-appendix/appendix
 - file: references
 
-- file: chapter-appendix/appendix
+
 
