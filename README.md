@@ -134,7 +134,7 @@ we `hide-input`, `hide-output`, or `remove-output` by adding the Tag.
 |i                 |Longfei Zuo          |Santo Thies |
 |j 💻                |Evert Buzon          |Sven Morlock |
 |k                 |Sven Morlock         |Evert Buzon |
-|l                 |Sven Morlock         | |
+|l                 |Sven Morlock         |Evert Buzon |
 |m 💻                |Sven Morlock         |Evert Buzon |
 |n 💻                |Nico Plöhn           |Santo Thies |
 |o                 |Nico Plöhn           |Jiawen Wang & Santo Thies |
