@@ -28,4 +28,4 @@ gpytorch==1.11
 torch==2.3.0
 torchvision==0.18.0
 graphviz==0.20.3
-
+sphinx-proof
