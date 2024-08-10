@@ -115,7 +115,7 @@ we replace them into the Markdown format (See examples as below).
 
 Note that we consistently apply the `footrule` before the punctuation such as ".". \
 Also, 
-there is no space between the last character and the [^footNoteIdentifier]
+there is no space between the last character and the [^footNoteIdentifier].
 
 For some redundant information in the input or output cell, 
 we `hide-input`, `hide-output`, or `remove-output` by adding the Tag.
