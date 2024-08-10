@@ -110,7 +110,7 @@ we replace them into the Markdown format (See examples as below).
 |\begin{itemize}   | - |
 | \ref{eq:xxxx}    | {eq}\`xxxx\` |
 | cf.\ Section     |cf. Section |
-| \begin{equation}\label{xxx}...\end{equation} | \$\$......\$\$(xxxx) |
+| \begin{equation}\label{xxxx}...\end{equation} | `$$`<br>&nbsp;&nbsp;&nbsp;&nbsp;...<br>`$$`(xxxx) |
 | yyyyy\footnote{xxxx}. | yyyyy[^footNoteIdentifier]. *`in the last Markdown cell` or anywhere* [^footNoteIdentifier]: xxxxx |
 
 Note that we consistently apply the `footrule` before the punctuation such as ".". \
