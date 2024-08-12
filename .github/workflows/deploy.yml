@@ -23,7 +23,7 @@ jobs:
       - name: Install ffmpeg
         run: sudo apt-get install -y ffmpeg
 
-      - name: Install graphvit
+      - name: Install graphviz
         run: sudo apt-get install -y graphviz
 
       - name: Install Dependencies from requirements.txt
