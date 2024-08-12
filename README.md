@@ -110,12 +110,12 @@ we replace them into the Markdown format (See examples as below).
 |\begin{itemize}   | - |
 | \ref{eq:xxxx}    | {eq}\`xxxx\` |
 | cf.\ Section     |cf. Section |
-| \begin{equation}\label{xxx}...\end{equation} | \$\$......\$\$(xxxx) |
+| \begin{equation}\label{xxxx}...\end{equation} | `$$`<br>&nbsp;&nbsp;&nbsp;&nbsp;...<br>`$$`(xxxx) |
 | yyyyy\footnote{xxxx}. | yyyyy[^footNoteIdentifier]. *`in the last Markdown cell` or anywhere* [^footNoteIdentifier]: xxxxx |
 
 Note that we consistently apply the `footrule` before the punctuation such as ".". \
 Also, 
-there is no space between the last character and the [^footNoteIdentifier]
+there is no space between the last character and the [^footNoteIdentifier].
 
 For some redundant information in the input or output cell, 
 we `hide-input`, `hide-output`, or `remove-output` by adding the Tag.
