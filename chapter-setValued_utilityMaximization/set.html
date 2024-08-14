@@ -1,0 +1,1334 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>17. Set-valued Prediction Based on Utility Maximization &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myStyle.css?v=e90502a2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "vec": ["\\boldsymbol{#1}", 1], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "defeq": ["\\mathrel{\\vcenter{\\baselineskip0.5ex \\lineskiplimit0pt \\hbox{\\footnotesize.}\\hbox{\\footnotesize.}}}% ="], "given": ["\\, | \\,"], "cX": ["\\mathcal{X}"], "cY": ["\\mathcal{Y}"], "cH": ["\\mathcal{H}"], "cD": ["\\mathcal{D}"], "hath": ["\\hat{h}"], "haty": ["\\hat{y}"], "hatp": ["\\hat{p}"], "sety": ["\\widehat{Y}"], "argmin": ["\\operatorname*{argmin}"], "argmax": ["\\operatorname*{argmax}"], "db": ["\\set{M}"], "fkt": ["#1(\\cdot)", 1], "chrfkt": ["\\mathbb{I}_{#1}", 1], "kref": ["(\\ref{#1})", 1], "convto": ["(\\rightarrow"], "fft": ["(#1 :  #2 \\rightarrow #3", 3], "with": ["\\,  | \\,"], "sothat": ["\\,  : \\,"], "defi": ["\\stackrel{\\on{df}}{=}"], "set": ["\\mathcal{#1}", 1], "Prob": ["P"], "prob": ["p"], "impl": ["\\Rightarrow"], "on": ["\\operatorname"], "groesser": ["\\raisebox{#1mm}{} \\raisebox{-#1mm}{}", 1], "sgroesser": ["\\groesser{1.20}"], "xleftr": ["\\left( \\groesser{1.35} "], "xleftg": ["\\left\\{ \\groesser{1.35} "], "fftm": ["\\fft{#1}{#2}{#3} \\, ,\\, #4 \\mapsto #5", 5], "gdw": ["\\Leftrightarrow"], "gdwbd": ["\\stackrel{\\on{df}}{\\Leftrightarrow}"], "est": ["{est}"], "epd": ["\\Leftrightarrow_{\\on{def}}"], "fromto": ["\\longrightarrow"], "pref": ["\\succ"], "evalue": ["\\mathbf{E}"], "variance": ["\\mathbf{V}"], "mmp": ["", 1], "llbracket": ["\\lbrack\\lbrack"], "rrbracket": ["\\rbrack\\rbrack"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-setValued_utilityMaximization/set';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="18. Appendix" href="../chapter-appendix/appendix.html" />
+    <link rel="prev" title="16. Conformal Prediction for Regression" href="../chapter-conformel_regression/conformel_regression.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../startPage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../startPage.html">
+                    Toolbox for Uncertainty Quantification in Machine Learning
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter-prelude/prelude.html">1. Prelude</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-intro/intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-srcUncertainty/src.html">3. Sources of uncertainty in supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html">4. Modelling Approximation Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-scoring/scoring.html">5. Probability Estimation via Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-calibration/calibration.html">6. Probability Estimation and Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-ensemble/ensemble.html">7. Probability Estimation and Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-mle_and_fisher/mle.html">8. Maximum Likelihood and Fisher Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-generative_models/gm.html">9. Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-gaussianprocess/gaussianprocess.html">10. Gaussian Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-deep_neuralnetwork/dnn.html">11. Deep Neural Network Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-bayesian_neuralnetwork/bayesian.html">12. Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-credal_sets/credal_sets.html">13. Credal Sets and Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html">14. Reliable Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_classification/conformel_classification.html">15. Conformal Prediction for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_regression/conformel_regression.html">16. Conformal Prediction for Regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Set-valued Prediction Based on Utility Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-appendix/appendix.html">18. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">19. References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Advueu963/PageTest/blob/main/chapter-setValued_utilityMaximization/set.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/edit/main/chapter-setValued_utilityMaximization/set.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/issues/new?title=Issue%20on%20page%20%2Fchapter-setValued_utilityMaximization/set.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter-setValued_utilityMaximization/set.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Set-valued Prediction Based on Utility Maximization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-utility-function">17.1. General utility function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-recall-f1-utility-functions">17.1.1. Precision, Recall, F1 utility functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-utility-functions">17.1.2. Parametric Utility Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-multi-class-classification">17.2. Hierarchical multi-class classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-quantification">17.3. Uncertainty quantification</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="set-valued-prediction-based-on-utility-maximization">
+<span id="set-util"></span><h1><span class="section-number">17. </span>Set-valued Prediction Based on Utility Maximization<a class="headerlink" href="#set-valued-prediction-based-on-utility-maximization" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Patch</span>
+
+<span class="c1"># Vector Graphics</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib_inline</span>
+<span class="n">matplotlib_inline</span><span class="o">.</span><span class="n">backend_inline</span><span class="o">.</span><span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">naive_bayes</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">combinations</span>
+
+<span class="kn">import</span> <span class="nn">NestedDichotomies.nd</span> <span class="k">as</span> <span class="nn">nd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>Methods for set-valued prediction based on utility maximization (or loss minimization) are primarily used for multi-class classification problems.
+Similar to conformal prediction, such methods also return a set of classes when the classifier is too uncertain with respect to the class label to predict, but the interpretation of this set is different.
+Instead of returning a set that contains the true class label with high probability, sets that maximize a set-based utility score are sought.
+Besides, being based on the conditional distribution <span class="math notranslate nohighlight">\( \prob(y\,|\,\vec{x}_q) \)</span> of the outcome <span class="math notranslate nohighlight">\( y \)</span> given a query <span class="math notranslate nohighlight">\( \vec{x}_q \)</span>, most of these methods capture <em>conditional</em> uncertainty.</p>
+<p>Let <span class="math notranslate nohighlight">\(u(y,\sety)\)</span> be a set-based utility score, where <span class="math notranslate nohighlight">\(y\)</span> denotes the ground truth outcome and <span class="math notranslate nohighlight">\(\sety\)</span> the predicted set. Then, adopting a decision-theoretic perspective, the Bayes-optimal solution <span class="math notranslate nohighlight">\(\sety^{*}_u\)</span> is found by maximizing the following objective:</p>
+<div class="math notranslate nohighlight" id="equation-bayesoptimal">
+<span class="eqno">(17.1)<a class="headerlink" href="#equation-bayesoptimal" title="Link to this equation">#</a></span>\[
+\sety^{*}_u(\vec{x}_q) = \argmax_{\sety \in 2^{\mathcal{Y}}\setminus \{\emptyset\}} \evalue_{p(y\,|\,\vec{x}_q)} \big( u(y,\sety) \big) = \argmax_{\sety \in 2^{\mathcal{Y}}\setminus \{\emptyset\}} \sum_{y \in \mathcal{Y}} u(y,\sety) \, p(y\,|\,\vec{x}_q) \,.
+\]</div>
+<p>Solving <a class="reference internal" href="#equation-bayesoptimal">(17.1)</a> as a brute-force search requires checking all subsets of <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span>, resulting in an exponential time complexity.
+Assuming we have four classes as in the figure below, we are interested in predicting the set of the new point <span class="math notranslate nohighlight">\(\vec{x}_q =(-0.3,0)\)</span> (light blue in the plot).
+We can easily see that there is a large uncertainty aroung this query point as nearly all classes have an example close to this data point.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_synthetic_data</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">new_point</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">new_point</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">new_point</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+
+    <span class="c1"># produce a legend with the unique colors from the scatter</span>
+    <span class="n">legend1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Classes&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">legend1</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Feature 1&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Feature 2&quot;</span><span class="p">)</span>
+
+
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">n_classes</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">random_state</span> <span class="o">=</span> <span class="mi">41</span>
+
+<span class="c1"># parameters for toy data</span>
+<span class="n">means</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span>
+<span class="n">covs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mf">2.5</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.8</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">4.5</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">3.8</span><span class="p">,</span><span class="mi">2</span><span class="p">])]</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">cov</span><span class="p">,</span><span class="n">n_samples</span><span class="p">)</span> 
+    <span class="k">for</span> <span class="n">mean</span><span class="p">,</span><span class="n">cov</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">means</span><span class="p">,</span><span class="n">covs</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">])</span>
+
+<span class="n">x_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">plot_synthetic_data</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x_q</span><span class="p">,</span><span class="s2">&quot;Synthetic Classification Data&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/2e7b59e5d0adfdcafe47864fa627af6ef85cc4b5bc481546182c0a7162fbe333.svg" src="../_images/2e7b59e5d0adfdcafe47864fa627af6ef85cc4b5bc481546182c0a7162fbe333.svg" />
+</div>
+</div>
+<p>We firstly must train an classification model on the data, here we choose the <a class="reference external" href="https://scikit-learn.org/stable/modules/naive_bayes.html">Gaussian Naive Bayes classifier</a>, through  whom we get the conditional probability <span class="math notranslate nohighlight">\(p(y\,|\,\vec{x}_q)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gaussian_model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">gaussian_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">conditional_probability_query_point</span> <span class="o">=</span> <span class="n">gaussian_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_q</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(y = </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> | x_q) = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">conditional_probability_query_point</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(y = 1 | x_q) = 0.188
+P(y = 2 | x_q) = 0.34
+P(y = 3 | x_q) = 0.061
+P(y = 4 | x_q) = 0.412
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conditional_probability_query_point</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.18801898, 0.3396042 , 0.06080846, 0.41156836]])
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>To predict the set <span class="math notranslate nohighlight">\(\sety\)</span> we must iterate over all possible <span class="math notranslate nohighlight">\(\sety \in 2^{\mathcal{Y}}\setminus \{\emptyset\}\)</span> to construct the prediction interval.
+We choose as utility score</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}u(y,\sety) = \left \{ 
+\begin{array}{cl}
+0 &amp;\quad \mbox{if $y \notin \sety$} \ \\
+\frac{2}{ (1 + |\sety| }&amp;\quad \mbox{if $y \in \sety$} 
+\end{array} \, ,
+\right.\end{split}\]</div>
+<p>Intuitively it gives a reward of 0, if the true label is not contained in the prediction set and penalizes bigger sets over smaller ons.
+Especially for <span class="math notranslate nohighlight">\(|\sety| = 1\)</span> the utility score is maximized, i.e. <span class="math notranslate nohighlight">\(u(y,\sety) = 1\)</span> .
+A more general formulation of <span class="math notranslate nohighlight">\(u(y,\sety)\)</span> will be introduced in <a class="reference internal" href="#general-utility-function"><span class="std std-ref">General utility function</span></a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">choosen_utility_function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">):</span>    
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">set_prediction</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">set_prediction</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">score</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Applying this utility function to the query point <span class="math notranslate nohighlight">\(\vec{x}_q\)</span> results in the following prediction set:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_possible_prediction_sets</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+    <span class="s2">&quot;build_possible_prediction_sets([1,2]) → (True,False) (False,True) (True,True)&quot;</span>
+    <span class="n">power_set</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="p">)</span> <span class="c1"># powerset without the empty set</span>
+    
+    <span class="n">masked_power_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="c1"># build masked sets, where True indicates that the class is contained and False otherwise.</span>
+        <span class="p">[</span><span class="n">i</span> <span class="ow">in</span> <span class="nb">set</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">]</span>
+        <span class="k">for</span> <span class="nb">set</span> <span class="ow">in</span> <span class="n">power_set</span>
+    <span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">masked_power_set</span> <span class="c1"># we start with 1 to not have the empty set contained</span>
+
+<span class="k">def</span> <span class="nf">build_masked_prediction_set</span><span class="p">(</span><span class="n">utility_function</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build the set prediction based on utility_score and conditional_probability.</span>
+<span class="sd">       For each conditional probability in conditional_probability a set prediction is contstructed.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        utility_function (Y x classes -&gt; Float): </span>
+<span class="sd">            utility measure which takes the true y label in its first argument.</span>
+<span class="sd">            The second parameter is the possible prediction set. </span>
+<span class="sd">            The type is equal to the classes parameter.</span>
+<span class="sd">        classes (np.ndarray[int]): Array containing all possible class labels.</span>
+<span class="sd">        conditional_probability (np.ndarray([[float]])): the conditional probabilities where the dimension are: n_samples x n_classes</span>
+<span class="sd">        Thus entry (i,j) denotes the conditional probability P( Y= y_(j+1) | X = x_(i)).</span>
+
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray([[bool]]): Returns masked prediction sets with the dimension n_samples x n_classes.</span>
+<span class="sd">        For each entry (i,j) equal to True this means that for point i the prediction sets contains class (j+1).</span>
+<span class="sd">        An entry False means that for point i the prediction sets does not contain class (j+1).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n_samples</span><span class="p">,</span><span class="n">n_classes</span> <span class="o">=</span> <span class="n">conditional_probability</span><span class="o">.</span><span class="n">shape</span>
+    
+    <span class="c1">#  instead of sets we have boolean values indicating whether the class is contained in the possible prediction set</span>
+    <span class="n">masked_prediction_set</span> <span class="o">=</span> <span class="n">build_possible_prediction_sets</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
+    
+    <span class="c1"># Save the max_value for all samples, Save the prediction_sets for all samples as True,False Arrays indicating if the class is contained</span>
+    <span class="n">max_value</span><span class="p">,</span><span class="n">set_prediction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span><span class="n">n_classes</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    
+    <span class="c1"># iterate over all possible prediction_sets</span>
+    <span class="k">for</span> <span class="n">masked_sets</span> <span class="ow">in</span> <span class="n">masked_prediction_set</span><span class="p">:</span> 
+        <span class="c1"># build the averaged score the prediction set achieves given the conditional probability</span>
+        <span class="n">averaged_utility</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">utility_function</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">classes</span><span class="p">[</span><span class="n">masked_sets</span><span class="p">])</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">])</span> <span class="o">*</span> <span class="n">conditional_probability</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="c1"># find the max_value and set_prediction. Here update it for all samples in parallel.</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">max_value</span> <span class="o">&lt;</span> <span class="n">averaged_utility</span>
+        <span class="n">max_value</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">averaged_utility</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+        
+        <span class="c1"># update the prediction set</span>
+        <span class="n">set_prediction</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">masked_sets</span>
+            
+    <span class="k">return</span> <span class="n">set_prediction</span>
+
+
+<span class="k">def</span> <span class="nf">masked_set_to_prediction_set</span><span class="p">(</span><span class="n">masked_set</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
+    <span class="n">prediction_sets</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">classes</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="k">for</span> <span class="n">mask</span> <span class="ow">in</span> <span class="n">masked_set</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">prediction_sets</span>
+
+<span class="k">def</span> <span class="nf">build_prediction_set</span><span class="p">(</span><span class="n">utility_function</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Constructs true prediction sets based on utility_function and conditional_probability.</span>
+<span class="sd">    </span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        utility_function (Y x classes -&gt; Float): </span>
+<span class="sd">            utility measure which takes the true y label in its first argument.</span>
+<span class="sd">            The second parameter is the possible prediction set. </span>
+<span class="sd">            The type is equal to the classes parameter.</span>
+<span class="sd">        classes (np.ndarray[int]): Array containing all possible class labels.</span>
+<span class="sd">        conditional_probability (np.ndarray([[float]])): the conditional probabilities where the dimension are: n_samples x n_classes.</span>
+<span class="sd">        Thus entry (i,j) denotes the conditional probability P( Y= y_j | X = x_i)</span>
+
+
+<span class="sd">    Returns:</span>
+<span class="sd">        [[int]]: Returns a list of all set predictions for each data point represented in  conditional_probability.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Firstly we find for all samples the masked_prediction sets. True indicates the class is contained in the predicted set and False otherwise.</span>
+    <span class="n">masked_prediction_set</span> <span class="o">=</span> <span class="n">build_masked_prediction_set</span><span class="p">(</span><span class="n">utility_function</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability</span><span class="p">)</span> 
+    
+    <span class="c1"># Replace the True/False array with the class labels.</span>
+    <span class="n">prediction_set</span> <span class="o">=</span> <span class="n">masked_set_to_prediction_set</span><span class="p">(</span><span class="n">masked_prediction_set</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">prediction_set</span>
+
+<span class="n">prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">choosen_utility_function</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q: &quot;</span><span class="p">,</span> <span class="n">prediction_set</span> <span class="p">)</span> <span class="c1"># print the prediction set of the first query point</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction set for x_q:  [2 4]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="general-utility-function">
+<span id="id1"></span><h2><span class="section-number">17.1. </span>General utility function<a class="headerlink" href="#general-utility-function" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>However, for many utility scores, the Bayes-optimal prediction can be found more efficiently. Various methods in this direction have been proposed under different names and qualifications of predictions, such as “indeterminate” <span id="id2">Zaffalon [<a class="reference internal" href="../references.html#id2265" title="Marco Zaffalon. The naive credal classifier. Journal of Statistical Planning and Inference, 105(1):5–21, 2002.">Zaf02b</a>]</span>, <a class="reference internal" href="../chapter-credal_sets/credal_sets.html#set-predictions"><span class="std std-ref">“credal”</span></a> <span id="id3">Corani and Zaffalon [<a class="reference internal" href="../references.html#id233" title="G. Corani and M. Zaffalon. Learning reliable classifiers from small or incomplete data sets: The naive credal classifier 2. Journal of Machine Learning Research, 9:581–621, 2008.">CZ08a</a>]</span>, “non-deterministic” <span id="id4">Del Coz <em>et al.</em> [<a class="reference internal" href="../references.html#id232" title="J.J. Del Coz, J. Díez, and A. Bahamonde. Learning nondeterministic classifiers. The Journal of Machine Learning Research, 10:2273–2293, 2009.">DelCozDiezB09</a>]</span>, and “cautious” <span id="id5">Yang <em>et al.</em> [<a class="reference internal" href="../references.html#id2254" title="G. Yang, S. Destercke, and M. Masson. The costs of indeterminacy: how to determine them? IEEE Transactions on Cybernetics, 47:4316-4327, 2017.">YDM17b</a>]</span>.
+Although the methods typically differ in the exact shape of the utility function <span class="math notranslate nohighlight">\(u: \mathcal{Y} \times 2^{\mathcal{Y}}\setminus \{\emptyset\} \longrightarrow [0,1]\)</span>, most functions are specific members of the following family:</p>
+<div class="math notranslate nohighlight" id="equation-ufamily">
+<span class="eqno">(17.2)<a class="headerlink" href="#equation-ufamily" title="Link to this equation">#</a></span>\[\begin{split}u(y,\sety) = \left \{ 
+\begin{array}{cl}
+0 &amp;\quad \mbox{if $y \notin \sety$} \ \\
+g(|\sety|)&amp;\quad \mbox{if $y \in \sety$} 
+\end{array} \, ,
+\right.\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(|\sety|\)</span> denotes the cardinality of the predicted set <span class="math notranslate nohighlight">\(\sety\)</span>.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Depending on the application the g_function may contain additional parameters controlled by g_params[str, any].</span>
+<span class="k">def</span> <span class="nf">utility_function</span><span class="p">(</span><span class="n">g_function</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">,</span> <span class="n">g_params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct a utility function used in set-valued prediction.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        g (Int -&gt; [Args] -&gt; Int): Function which takes always as first argument a int representing the set size of Y containing the true y.</span>
+<span class="sd">            Optional parameters [Args] can be given defined by g_params argument.</span>
+<span class="sd">        y (int): the true class label</span>
+<span class="sd">        set_prediction (np.ndarray[int]): array with the predicted labels of the model</span>
+<span class="sd">        g_params ( dict[str,any] ): A dictionary containing the additional parameters of the g_function</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The utility of the set_prediction given g and y.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">set_prediction</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">g_function</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">set_prediction</span><span class="p">),</span> <span class="o">**</span><span class="n">g_params</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>This family is characterized  by a sequence <span class="math notranslate nohighlight">\((g(1), \ldots,g(K)) \in [0,1]^K\)</span> with <span class="math notranslate nohighlight">\(K\)</span> the number of classes.
+Ideally, <span class="math notranslate nohighlight">\(g\)</span> should obey the following properties:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(g(1) = 1\)</span>, i.e., the utility <span class="math notranslate nohighlight">\(u(y,\sety)\)</span> should be maximal when the classifier returns the true class label as a singleton set.</p></li>
+<li><p><span class="math notranslate nohighlight">\(g(s)\)</span> should be non-increasing, i.e., the utility <span class="math notranslate nohighlight">\(u(y,\sety)\)</span> should be higher if the true class is contained in a smaller set of predicted classes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(g(s) \geq 1/s\)</span>, i.e., the utility <span class="math notranslate nohighlight">\(u(y,\sety)\)</span> of predicting a set containing the true and <span class="math notranslate nohighlight">\(s-1\)</span> additional classes should not be lower than the expected utility of randomly guessing one of these <span class="math notranslate nohighlight">\(s\)</span> classes. This requirement formalizes the idea of risk-aversion: in the face of uncertainty, abstaining should be preferred to random guessing <span id="id6">[<a class="reference internal" href="../references.html#id2252" title="Marco Zaffalon, Corani Giorgio, and Denis Deratani Mauá. Evaluating credal classifiers by utility-discounted predictive accuracy. Int. J. Approx. Reasoning, 53:1282-1301, 2012.">ZGDMaua12</a>]</span>.</p></li>
+</ol>
+</div>
+<section id="precision-recall-f1-utility-functions">
+<h3><span class="section-number">17.1.1. </span>Precision, Recall, F1 utility functions<a class="headerlink" href="#precision-recall-f1-utility-functions" title="Link to this heading">#</a></h3>
+<div align="justify">
+<p>Many existing set-based utility scores are recovered as special cases of <a class="reference internal" href="#equation-ufamily">(17.2)</a>, including the three classical measures from information retrieval discussed by <span id="id7">Del Coz <em>et al.</em> [<a class="reference internal" href="../references.html#id232" title="J.J. Del Coz, J. Díez, and A. Bahamonde. Learning nondeterministic classifiers. The Journal of Machine Learning Research, 10:2273–2293, 2009.">DelCozDiezB09</a>]</span>: precision with <span class="math notranslate nohighlight">\(g_P(s) = 1/s\)</span>, recall with <span class="math notranslate nohighlight">\(g_R(s)=1\)</span>, and the F1-measure with <span class="math notranslate nohighlight">\(g_{F1}(s) = 2/(1+s)\)</span>.<br />
+Let us now apply precision, recall and F1 to the query point and look at the <span class="math notranslate nohighlight">\(\sety\)</span>:</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### Precision #####</span>
+<span class="k">def</span> <span class="nf">g_precision</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">score</span>
+<span class="k">def</span> <span class="nf">precision_utility</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">utility_function</span><span class="p">(</span><span class="n">g_precision</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">,</span> <span class="n">g_params</span><span class="o">=</span><span class="p">{})</span>
+
+<span class="c1">##### Recall #####</span>
+<span class="k">def</span> <span class="nf">g_recall</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span>
+<span class="k">def</span> <span class="nf">recall_utility</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">utility_function</span><span class="p">(</span><span class="n">g_recall</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">,</span> <span class="n">g_params</span><span class="o">=</span><span class="p">{})</span>
+
+<span class="c1">##### F1 #####</span>
+<span class="k">def</span> <span class="nf">g_f1</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">score</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">f1_utility</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">):</span>    
+    <span class="k">return</span> <span class="n">utility_function</span><span class="p">(</span><span class="n">g_f1</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">set_prediction</span><span class="p">,</span> <span class="n">g_params</span><span class="o">=</span><span class="p">{})</span>
+
+<span class="c1"># [0] is because we access the prediction set of the first (and only) query point</span>
+<span class="n">precision_prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">precision_utility</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">recall_prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">recall_utility</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">f1_prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">f1_utility</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q with Precision-measure: &quot;</span><span class="p">,</span> <span class="n">precision_prediction_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q with Recall-measure: &quot;</span><span class="p">,</span> <span class="n">recall_prediction_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q with F1-measure: &quot;</span><span class="p">,</span> <span class="n">f1_prediction_set</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction set for x_q with Precision-measure:  [4]
+Prediction set for x_q with Recall-measure:  [1 2 3 4]
+Prediction set for x_q with F1-measure:  [2 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>We see that precision and recall results in singleton and full set respecitively. Thus they can be seen as two extrema.
+The F1-measure balances this by constructing the set only containing the two classes with high probabilities for x_q (see conditional probabilities above).
+Let us now look at the prediction sets for every data point that might be observed in our example:</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">measure_set_builder</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generic set_builder function building the  prediction sets.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        measure (Y x classes -&gt; Float): </span>
+<span class="sd">            utility measure which takes the true y label in its first argument.</span>
+<span class="sd">            The second parameter is the possible prediction set. </span>
+<span class="sd">            The type is equal to the classes parameter.</span>
+<span class="sd">        classes (np.ndarray[int]): Array containing all possible class labels.</span>
+<span class="sd">        model (classifier): Classification model having a .predict_proba(X) giving the conditional probabilities for each class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">measure_set_builder</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">measure_set_builder</span>
+
+<span class="c1"># Default wrapper we use for the contour function. </span>
+<span class="c1"># Specifies both the classes and the model for our example</span>
+<span class="k">def</span> <span class="nf">default_measure_set_builder</span><span class="p">(</span><span class="n">measure</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">measure_set_builder</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">gaussian_model</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">set_builder</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots a contour plot of the set_sizes induced  by the set_builder.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ax (matplotlib.axes): axes of matplotlib </span>
+<span class="sd">        X (np.ndarray): The data points which span the grid for the contour plot.</span>
+<span class="sd">        y (np.ndarray): The labels of the data points X.</span>
+<span class="sd">        set_builder (X -&gt; [y]): function taking data points X and predicting class label sets.</span>
+<span class="sd">        title (str): The title of the contour plot.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+     
+    <span class="c1"># create all the points we will calculate the prediction set sizes</span>
+    <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+    
+    <span class="n">x_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span><span class="n">x_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">y_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    
+    <span class="n">xv</span><span class="p">,</span> <span class="n">yv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span><span class="n">y_grid</span><span class="p">)</span>
+    
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">xv</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yv</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+    
+    <span class="c1"># calculate set sizes</span>
+    <span class="n">set_sizes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span><span class="n">set_builder</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+    <span class="n">set_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">set_sizes</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  
+         
+    <span class="c1">#print(&quot;Set sizes: &quot;, np.unique(set_sizes))</span>
+            
+    <span class="c1"># Build the Discrete Color Map</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s2">&quot;tab10&quot;</span><span class="p">]</span>  <span class="c1"># define the colormap</span>
+
+    <span class="c1"># define the bins and normalize</span>
+    <span class="n">bounds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span>
+                                <span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+  
+    <span class="c1"># plot the data points</span>
+    <span class="n">plot_synthetic_data</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x_q</span><span class="p">,</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="c1"># create contour plot</span>
+    <span class="n">contour</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">,</span> <span class="n">set_sizes</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.75</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+
+
+    <span class="n">legend_labels</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">:</span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">:</span><span class="s2">&quot;3&quot;</span><span class="p">,</span>
+        <span class="mi">3</span><span class="p">:</span><span class="s2">&quot;4&quot;</span>
+    <span class="p">}</span>
+
+	<span class="c1"># Create legend patches</span>
+    <span class="n">patches</span> <span class="o">=</span> <span class="p">[</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">label</span> <span class="ow">in</span> <span class="n">legend_labels</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+	<span class="c1"># Add the legend with the patches</span>
+    <span class="n">legend</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">patches</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Prediction set size&quot;</span><span class="p">,</span><span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+          
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">default_measure_set_builder</span><span class="p">(</span><span class="n">f1_utility</span><span class="p">),</span> <span class="s2">&quot;$F_1$ prediction set sizes&quot;</span><span class="p">)</span>
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">default_measure_set_builder</span><span class="p">(</span><span class="n">precision_utility</span><span class="p">),</span><span class="s2">&quot;Precision prediction set sizes&quot;</span><span class="p">)</span>
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">default_measure_set_builder</span><span class="p">(</span><span class="n">recall_utility</span><span class="p">),</span> <span class="s2">&quot;Recall prediction set sizes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/a88395b85104dfa7a821a8f6320b91306488799809f205a3ad9beb2861f0598f.svg" src="../_images/a88395b85104dfa7a821a8f6320b91306488799809f205a3ad9beb2861f0598f.svg" />
+</div>
+</div>
+<div align="justify">
+<p>Recall does not build any singleton sets whereas precision only predicts singleton sets.
+The <span class="math notranslate nohighlight">\(F_1\)</span>-measure balances both recall and precision and constructs all possible sets.
+The set containing three and four classes are predicted for samples close to the center of the class overlaps.
+Thus the prediction sizes increases with increasing uncertainty of the model, i.e. overlapping areas of the data poins.</p>
+</div></section>
+<section id="parametric-utility-functions">
+<h3><span class="section-number">17.1.2. </span>Parametric Utility Functions<a class="headerlink" href="#parametric-utility-functions" title="Link to this heading">#</a></h3>
+<div align="justify">
+<p>In the literature on credal classification specific choices of <span class="math notranslate nohighlight">\(g\)</span> are studied, which are parametric <span id="id8">[<a class="reference internal" href="../references.html#id2249" title="Giorgio Corani and Marco Zaffalon. Learning reliable classifiers from small or incomplete data sets: the naive credal classifier 2. Journal of Machine Learning Research, 9:581–621, 2008.">CZ08b</a>, <a class="reference internal" href="../references.html#id2250" title="Giorgio Corani and Marco Zaffalon. Lazy naive credal classifier. In Proceedings of the 1st ACM SIGKDD Workshop on Knowledge Discovery from Uncertain Data, U '09, 30–37. New York, NY, USA, 2009. ACM. doi:10.1145/1610555.1610560.">CZ09</a>, <a class="reference internal" href="../references.html#id66" title="V.L. Nguyen, S. Destercke, M.H. Masson, and E. Hüllermeier. Reliable multi-class classification based on pairwise epistemic and aleatoric uncertainty. In Proceedings IJCAI 2018, 27th International Joint Conference on Artificial Intelligence, 5089–5095. Stockholm, Sweden, 2018.">NDMHullermeier18</a>, <a class="reference internal" href="../references.html#id2254" title="G. Yang, S. Destercke, and M. Masson. The costs of indeterminacy: how to determine them? IEEE Transactions on Cybernetics, 47:4316-4327, 2017.">YDM17b</a>, <a class="reference internal" href="../references.html#id2252" title="Marco Zaffalon, Corani Giorgio, and Denis Deratani Mauá. Evaluating credal classifiers by utility-discounted predictive accuracy. Int. J. Approx. Reasoning, 53:1282-1301, 2012.">ZGDMaua12</a>]</span>:</p>
+<div class="math notranslate nohighlight">
+\[g_{\delta,\gamma}(s) := \frac{\delta}{s} - \frac{\gamma}{s^2} \,, \quad g_{\exp}(s) := 1- \exp{\left(-\frac{\delta}{s}\right)},   \quad g_{log}(s) := \log \left(1 + \frac{1}{s} \right) \,.\]</div>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### Delta-Gamma #####</span>
+<span class="k">def</span> <span class="nf">g_delta_gamma</span><span class="p">(</span><span class="n">score</span><span class="p">,</span><span class="n">delta</span><span class="p">,</span><span class="n">gamma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">delta</span><span class="o">/</span><span class="n">score</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">gamma</span><span class="o">/</span><span class="n">score</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">delta_gamma_utility_wrapper</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="c1"># wrapper function is needed to have the delta/gamma parameter fixed before applying the utility function.</span>
+    <span class="k">def</span> <span class="nf">delta_gamma_utility</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">utility_function</span><span class="p">(</span><span class="n">g_delta_gamma</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">set_prediction</span><span class="p">,</span> <span class="n">g_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delta&quot;</span><span class="p">:</span><span class="n">delta</span><span class="p">,</span><span class="s2">&quot;gamma&quot;</span><span class="p">:</span><span class="n">gamma</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">delta_gamma_utility</span>
+
+<span class="c1">##### Exponential #####</span>
+<span class="k">def</span> <span class="nf">g_exponential</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">delta</span><span class="o">/</span><span class="n">score</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">exponential_utility_wrapper</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
+    <span class="c1"># wrapper function is needed to have the delta parameter fixed before applying the utility function.</span>
+    <span class="k">def</span> <span class="nf">exponential_utility</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">utility_function</span><span class="p">(</span><span class="n">g_exponential</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">set_prediction</span><span class="p">,</span> <span class="n">g_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delta&quot;</span><span class="p">:</span><span class="n">delta</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">exponential_utility</span>
+
+<span class="c1">##### Logarithmic #####</span>
+<span class="k">def</span> <span class="nf">g_logarithmic</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">score</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">logarithmic_utility</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">set_prediction</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">utility_function</span><span class="p">(</span><span class="n">g_logarithmic</span><span class="p">,</span> <span class="n">y</span> <span class="p">,</span> <span class="n">set_prediction</span> <span class="p">,</span><span class="n">g_params</span><span class="o">=</span><span class="p">{})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>Especially <span class="math notranslate nohighlight">\(g_{\delta,\gamma}(s)\)</span> is commonly used in this community, where <span class="math notranslate nohighlight">\(\delta\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span> can only take certain values to guarantee that the utility is in the interval <span class="math notranslate nohighlight">\([0,1].\)</span>
+Precision (here called discounted accuracy) corresponds to the case <span class="math notranslate nohighlight">\((\delta,\gamma)=(1,0)\)</span>.
+However, typical choices for <span class="math notranslate nohighlight">\((\delta,\gamma)\)</span> are <span class="math notranslate nohighlight">\((1.6,0.6)\)</span> and <span class="math notranslate nohighlight">\((2.2,1.2)\)</span> <span id="id9">[<a class="reference internal" href="../references.html#id66" title="V.L. Nguyen, S. Destercke, M.H. Masson, and E. Hüllermeier. Reliable multi-class classification based on pairwise epistemic and aleatoric uncertainty. In Proceedings IJCAI 2018, 27th International Joint Conference on Artificial Intelligence, 5089–5095. Stockholm, Sweden, 2018.">NDMHullermeier18</a>]</span>.
+The measure <span class="math notranslate nohighlight">\(g_{\exp}(s)\)</span> is an exponentiated version of precision, where the parameter <span class="math notranslate nohighlight">\(\delta\)</span> also defines the degree of risk aversion.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta_16_gamma_06</span> <span class="o">=</span> <span class="n">delta_gamma_utility_wrapper</span><span class="p">(</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
+<span class="n">delta_22_gamma_12</span> <span class="o">=</span>  <span class="n">delta_gamma_utility_wrapper</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+
+<span class="n">delta_16_prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">delta_16_gamma_06</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">delta_22_prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">delta_22_gamma_12</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">logarithmic_prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">logarithmic_utility</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q with delta=1.6 and gamma=0.6: &quot;</span><span class="p">,</span> <span class="n">delta_16_prediction_set</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q with delta=2.2 and gamma=1.2: &quot;</span><span class="p">,</span> <span class="n">delta_22_prediction_set</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q with logarithmic function: &quot;</span><span class="p">,</span> <span class="n">logarithmic_prediction_set</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction set for x_q with delta=1.6 and gamma=0.6:  [2 4]
+Prediction set for x_q with delta=2.2 and gamma=1.2:  [2 4]
+Prediction set for x_q with logarithmic function:  [2 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>We can see that all three approaches construct the same prediction set for <span class="math notranslate nohighlight">\(\vec x_q\)</span>.
+Yet the differ the region where <span class="math notranslate nohighlight">\(\sety\)</span> bigger one in predicted.
+Therefore we again visualize the prediction set sizes for all data points that might be observed in our example:</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                     <span class="n">X</span><span class="p">,</span>
+                     <span class="n">y</span><span class="p">,</span>
+                     <span class="n">default_measure_set_builder</span><span class="p">(</span><span class="n">delta_16_gamma_06</span><span class="p">),</span>
+                     <span class="sa">r</span><span class="s2">&quot;$g_(\delta,\gamma)=g_(1.6,0.6)$ prediction set sizes&quot;</span><span class="p">)</span>
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                     <span class="n">X</span><span class="p">,</span>
+                     <span class="n">y</span><span class="p">,</span>
+                     <span class="n">default_measure_set_builder</span><span class="p">(</span><span class="n">delta_22_gamma_12</span><span class="p">),</span>
+                     <span class="sa">r</span><span class="s2">&quot;$g_(\delta,\gamma)=g_(2.2,1.2)$ prediction set sizes&quot;</span><span class="p">)</span>
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                     <span class="n">X</span><span class="p">,</span>
+                     <span class="n">y</span><span class="p">,</span>
+                     <span class="n">default_measure_set_builder</span><span class="p">(</span><span class="n">logarithmic_utility</span><span class="p">),</span>
+                     <span class="s2">&quot;Logarithmic prediction set sizes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/aba98b14d4d9c8758327585feaf029ac1805fd9c321fa40b35ff88c80af50b82.svg" src="../_images/aba98b14d4d9c8758327585feaf029ac1805fd9c321fa40b35ff88c80af50b82.svg" />
+</div>
+</div>
+<div align="justify">
+<p>Known from <span id="id10">Nguyen <em>et al.</em> [<a class="reference internal" href="../references.html#id66" title="V.L. Nguyen, S. Destercke, M.H. Masson, and E. Hüllermeier. Reliable multi-class classification based on pairwise epistemic and aleatoric uncertainty. In Proceedings IJCAI 2018, 27th International Joint Conference on Artificial Intelligence, 5089–5095. Stockholm, Sweden, 2018.">NDMHullermeier18</a>]</span>, <span class="math notranslate nohighlight">\((\delta,\gamma) = (2.2,1.2)\)</span> has a higher risk aversion thus leading to larger areas were set sizes bigger than one are predicted.
+With <span class="math notranslate nohighlight">\((\delta,\gamma) = (1.6,0.6)\)</span> the areas were larger set sizes are predicted shrinks to the overlapping areas of the classes.
+The logarithmic score further narrows this corridor.
+Notice that for each utility function all four possible set sizes are predicted, yet the areas for <span class="math notranslate nohighlight">\(|\sety| = 4\)</span> are very narrow for both <span class="math notranslate nohighlight">\((\delta,\gamma) = (1.6,0.6)\)</span> and logarithmic score function..</p>
+</div><div align="justify">
+<p>Another example appears in the literature on binary or multi-class classification with reject option <span id="id11">[<a class="reference internal" href="../references.html#id238" title="R. Herbei and M.H. Wegkamp. Classification with reject option. Canadian Journal of Statistics, 34(4):709–721, 2006.">HW06</a>, <a class="reference internal" href="../references.html#id235" title="H. Linusson, U. Johansson, H. Boström, and T. Löfström. Classification with reject option using conformal prediction. In Proc. PAKDD, 22nd Pacific-Asia Conference on Knowledge Discovery and Data Mining. Melbourne, VIC, Australia, 2018.">LJBostromLofstrom18</a>, <a class="reference internal" href="../references.html#id2255" title="Harish G. Ramaswamy, Ambuj Tewari, and Shivani Agarwal. Consistent algorithms for multiclass classification with a reject option. CoRR, 2015.">RTA15</a>]</span>. Here, the prediction can only be a singleton or the full set <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> containing <span class="math notranslate nohighlight">\(K\)</span> classes. The first case typically gets a reward of one (if the predicted class is correct), while the second case should receive a lower reward, e.g. <span class="math notranslate nohighlight">\(1-\alpha\)</span>.  The latter corresponds to abstaining, i.e., not predicting any class label, and the (user-defined) parameter <span class="math notranslate nohighlight">\(\alpha\)</span> specifies a penalty for doing so, with the requirement <span class="math notranslate nohighlight">\(0&lt; \alpha &lt; 1-1/K\)</span> to be risk-averse.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### Abstain #####</span>
+
+<span class="k">def</span> <span class="nf">g_abstain</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">alpha_value</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">score</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># because of utility_function set_predictions == {y}, i.e. only contains y</span>
+                <span class="k">return</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">score</span> <span class="o">==</span> <span class="n">n_classes</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">1</span><span class="o">-</span><span class="n">alpha_value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Other options will be heavily penalized.</span>
+                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>        
+<span class="k">def</span> <span class="nf">abstain_utility_wrapper</span><span class="p">(</span><span class="n">alpha_value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">abstain_utility</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">set_predictions</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">utility_function</span><span class="p">(</span><span class="n">g_abstain</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">set_predictions</span><span class="p">,</span> <span class="n">g_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha_value&quot;</span><span class="p">:</span><span class="n">alpha_value</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">abstain_utility</span>
+
+<span class="n">risk_averse_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">n_classes</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># only valid risk-averse values 0 &lt; alpha &lt; 1 - 1/K</span>
+
+<span class="n">most_risk_averse_utility</span> <span class="o">=</span> <span class="n">abstain_utility_wrapper</span><span class="p">(</span><span class="n">risk_averse_values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># is close to 0 thus will be very risk averse</span>
+<span class="n">middle_risk_averse_utility</span> <span class="o">=</span> <span class="n">abstain_utility_wrapper</span><span class="p">(</span><span class="n">risk_averse_values</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># is inbetween 0 and 1 - 1/K</span>
+<span class="n">barly_risk_averse_utility</span>  <span class="o">=</span> <span class="n">abstain_utility_wrapper</span><span class="p">(</span><span class="n">risk_averse_values</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># is less risk averse as it is close to 1 - 1/K</span>
+
+<span class="n">biggest_prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">most_risk_averse_utility</span><span class="p">,</span><span class="n">classes</span><span class="p">,</span><span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">middle_prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">middle_risk_averse_utility</span><span class="p">,</span><span class="n">classes</span><span class="p">,</span><span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">smallest_prediction_set</span> <span class="o">=</span> <span class="n">build_prediction_set</span><span class="p">(</span><span class="n">barly_risk_averse_utility</span><span class="p">,</span><span class="n">classes</span><span class="p">,</span><span class="n">conditional_probability_query_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q with biggest risk-aversity: &quot;</span><span class="p">,</span> <span class="n">biggest_prediction_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q with middle risk-aversity: &quot;</span><span class="p">,</span> <span class="n">middle_prediction_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set for x_q with low rist-aversity: &quot;</span><span class="p">,</span> <span class="n">smallest_prediction_set</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction set for x_q with biggest risk-aversity:  [1 2 3 4]
+Prediction set for x_q with middle risk-aversity:  [1 2 3 4]
+Prediction set for x_q with low rist-aversity:  [1 2 3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">default_measure_set_builder</span><span class="p">(</span><span class="n">most_risk_averse_utility</span><span class="p">),</span> <span class="sa">r</span><span class="s2">&quot;Most risk-averse ($\alpha$ close to zero) prediction set sizes&quot;</span><span class="p">)</span>
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">default_measure_set_builder</span><span class="p">(</span><span class="n">middle_risk_averse_utility</span><span class="p">),</span><span class="sa">r</span><span class="s2">&quot;Middle risk-averse $(0 \ll \alpha \ll 1 - \frac</span><span class="si">{1}{K}</span><span class="s2">)$ prediction set sizes&quot;</span><span class="p">)</span>
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">default_measure_set_builder</span><span class="p">(</span><span class="n">barly_risk_averse_utility</span><span class="p">),</span> <span class="sa">r</span><span class="s2">&quot;Least risk-averse ($\alpha$ close to 1 - 1/K) prediction set sizes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/9a1e33d1bc3abf9bd16ed7902b642a58067624a5d6956a7ce709cc3e24251de0.svg" src="../_images/9a1e33d1bc3abf9bd16ed7902b642a58067624a5d6956a7ce709cc3e24251de0.svg" />
+</div>
+</div>
+<div align="justify">
+<p>The lower we set our <span class="math notranslate nohighlight">\(\alpha\)</span> value the more risk the classifier takes with predicting a single label. Increasing <span class="math notranslate nohighlight">\(\alpha\)</span> increases the tendency to predict the complete set. Hypothetically setting <span class="math notranslate nohighlight">\(\alpha = 0\)</span> would be identical to using recall as utility and <span class="math notranslate nohighlight">\(\alpha = 1\)</span> identical to precision.</p>
+</div></section>
+</section>
+<section id="hierarchical-multi-class-classification">
+<h2><span class="section-number">17.2. </span>Hierarchical multi-class classification<a class="headerlink" href="#hierarchical-multi-class-classification" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>Set-valued predictions are also considered in hierarchical multi-class classification, mostly in the form of internal nodes of the hierarchy  <span id="id12">[<a class="reference internal" href="../references.html#id2256" title="A. A. Freitas. A tutorial on hierarchical classification with applications in bioinformatics. In Research and Trends in Data Mining Technologies and Applications,, 175–208. 2007.">Fre07</a>, <a class="reference internal" href="../references.html#id2257" title="H. Rangwala and A. Naik. Large scale hierarchical classification: foundations, algorithms and applications. In The European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases. 2017.">RN17</a>, <a class="reference internal" href="../references.html#id2259" title="G. Yang, S. Destercke, and M. Masson. Cautious classification with nested dichotomies and imprecise probabilities. Soft Computing, 21:7447–7462, 2017.">YDM17a</a>]</span>.
+Compared to the ‘’flat’’ multi-class case, the prediction space is thus restricted, because only sets of classes that correspond to nodes of the hierarchy can be returned as a prediction. Some of the above utility scores also appear here.
+For example, <span id="id13">Yang <em>et al.</em> [<a class="reference internal" href="../references.html#id2259" title="G. Yang, S. Destercke, and M. Masson. Cautious classification with nested dichotomies and imprecise probabilities. Soft Computing, 21:7447–7462, 2017.">YDM17a</a>]</span> evaluate various members of the <span class="math notranslate nohighlight">\(u_{\delta,\gamma}\)</span> family in a framework where hierarchies are considered for computational reasons, while <span id="id14">Oh [<a class="reference internal" href="../references.html#id2253" title="Sechan Oh. Top-k hierarchical classification. In AAAI, 2450–2456. AAAI Press, 2017.">Oh17</a>]</span> optimizes recall by fixing <span class="math notranslate nohighlight">\(|\sety|\)</span> as a user-defined parameter.</p>
+<p>To gain an understanding of hierarchical multi-class classification we will use implementations provided by <span id="id15">[<a class="reference internal" href="../references.html#id2279" title="Vitalik Melnikov and Eyke Hüllermeier. On the effectiveness of heuristics for learning nested dichotomies: an empirical analysis. Mach. Learn., 107(8-10):1537–1560, 2018. URL: https://doi.org/10.1007/s10994-018-5733-1, doi:10.1007/S10994-018-5733-1.">MHullermeier18</a>]</span>. The idea is to divide the multi-class methods into a forest of nested dichotomy.
+The forest consists of 50 randomly constructed nested dichotomies, where the resulting prediction set is constructed through majority voting <span id="id16">[<a class="reference internal" href="../references.html#id2259" title="G. Yang, S. Destercke, and M. Masson. Cautious classification with nested dichotomies and imprecise probabilities. Soft Computing, 21:7447–7462, 2017.">YDM17a</a>]</span>, i.e. a class c is contained in the prediction set if a majority of the nested dichotomies predicted this class with the highest probability.
+If no class gets a majority the set containing all classes is returned.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_ensemble_random_nd</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">,</span><span class="n">number_nd</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span> <span class="n">naive_bayes</span><span class="o">.</span><span class="n">GaussianNB</span><span class="p">):</span>
+    <span class="n">ensemble</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="n">random_generator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_nd</span><span class="p">):</span>
+        <span class="n">nd2d</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">RandomGeneration</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">random_generator</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span> <span class="c1"># make &quot;random&quot; nested dichotomies</span>
+        <span class="n">nested_dichotomy</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">NestedDichotomy</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">nd2d</span><span class="p">)</span>
+
+        <span class="n">base_learner</span> <span class="o">=</span> <span class="n">model_type</span> <span class="c1"># this can be changed to any probabilitic classifier</span>
+        
+        <span class="n">nd</span><span class="o">.</span><span class="n">NestedDichotomy</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">nested_dichotomy</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">base_learner</span><span class="p">)</span> <span class="c1"># updates the models of the nested dichotomie inplace</span>
+        
+        <span class="n">ensemble</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nested_dichotomy</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ensemble</span>
+
+<span class="k">def</span> <span class="nf">build_nd_masked_prediction_sets</span><span class="p">(</span><span class="n">ensemble</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
+    <span class="n">n_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
+
+    
+    <span class="n">prediction_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span><span class="n">n_classes</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="c1"># constructs an array where True indicates that the class c has been predicted by the ensemble for the X_test data points</span>
+            <span class="n">c</span> <span class="o">==</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">nd</span><span class="o">.</span><span class="n">NestedDichotomy</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">nested_dichotomy</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># get the class with highest probability. Minimize the 0/1 loss</span>
+            <span class="k">for</span> <span class="n">nested_dichotomy</span> <span class="ow">in</span> <span class="n">ensemble</span>
+        <span class="p">])</span><span class="o">.</span><span class="n">T</span>
+        
+        <span class="c1"># Check if a majority of dichotomies have predicted this class</span>
+        <span class="n">majority_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ensemble</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        
+        <span class="n">prediction_set</span><span class="p">[</span>
+            <span class="n">majority_mask</span><span class="p">,</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># indicate that the majority of nested_dichotomies have predicted this class</span>
+    
+    <span class="n">mask_no_majorities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">prediction_set</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">prediction_set</span><span class="p">[</span><span class="n">mask_no_majorities</span><span class="p">,:]</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="k">return</span> <span class="n">prediction_set</span>
+
+<span class="k">def</span> <span class="nf">build_nd_prediction_sets</span><span class="p">(</span><span class="n">ensemble</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+    <span class="n">maked_predictions</span> <span class="o">=</span> <span class="n">build_nd_masked_prediction_sets</span><span class="p">(</span><span class="n">ensemble</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+    
+    <span class="n">prediction_sets</span> <span class="o">=</span> <span class="n">masked_set_to_prediction_set</span><span class="p">(</span><span class="n">maked_predictions</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">prediction_sets</span>
+
+<span class="k">def</span> <span class="nf">set_builder_nd</span><span class="p">(</span><span class="n">ensemble</span><span class="p">,</span><span class="n">classes</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_builder_nd</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">build_nd_prediction_sets</span><span class="p">(</span><span class="n">ensemble</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">set_builder_nd</span>
+
+<span class="n">ensemble</span> <span class="o">=</span> <span class="n">build_ensemble_random_nd</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span><span class="n">n_classes</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">number_nd</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="n">naive_bayes</span><span class="o">.</span><span class="n">GaussianNB</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">plot_setsize_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">set_builder_nd</span><span class="p">(</span><span class="n">ensemble</span><span class="p">,</span><span class="n">classes</span><span class="p">),</span><span class="s2">&quot;Nested Dichotomy Set Sizes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c475600f426ecaad36570027060f48639f8bb4658184e835af88a438562ee4fb.svg" src="../_images/c475600f426ecaad36570027060f48639f8bb4658184e835af88a438562ee4fb.svg" />
+</div>
+</div>
+<div align="justify">
+<p>We can deduce from the contour plot that the predicted set sizes in this example only are the singleton set or all classes.
+The overlapping areas and areas with sparse data leads the hierarchical classifier to predict the complete set.
+In all other regions with plenty of samples the classifier intuitively only predicts the singleton set.</p>
+</div><div align="justify">
+<p>A different approach in hierarchical classification is the tree-distance loss, which could also be interpreted as a way of evaluating set-valued predictions <span id="id17">[<a class="reference internal" href="../references.html#id2258" title="Wei Bi and James Kwok. Bayes-optimal hierarchical multilabel classification. IEEE Transactions on Knowledge and Data Engineering, 27:1-1, 11 2015. doi:10.1109/TKDE.2015.2441707.">BK15</a>]</span>.
+This loss is not a member of the family (<a class="reference internal" href="#equation-ufamily">(17.2)</a>), however.
+Besides, it appears to be a less interesting loss function from the perspective of abstention in cases of uncertainty, since by minimizing the tree distance loss, the classifier will almost never predict leaf nodes of the hierarchy.
+Instead, it will often predict nodes close to the root of the hierarchy, which correspond to sets with many elements,—,a behavior that is unfavored if one wants to abstain only in cases of sufficient uncertainty.</p>
+</div></section>
+<section id="uncertainty-quantification">
+<h2><span class="section-number">17.3. </span>Uncertainty quantification<a class="headerlink" href="#uncertainty-quantification" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>Quite obviously, methods that maximize set-based utility scores are closely connected to the quantification of uncertainty, since the decision about a suitable set of predictions is necessarily derived from information of that kind. The overwhelming majority of the above-mentioned methods depart from conditional class probabilities <span class="math notranslate nohighlight">\(p(y \given \vec{x}_q)\)</span> that are estimated in a classical frequentist way, so that uncertainties in decisions are of aleatoric nature.
+Exceptions include <span id="id18">[<a class="reference internal" href="../references.html#id2259" title="G. Yang, S. Destercke, and M. Masson. Cautious classification with nested dichotomies and imprecise probabilities. Soft Computing, 21:7447–7462, 2017.">YDM17a</a>]</span> and <span id="id19">[<a class="reference internal" href="../references.html#id66" title="V.L. Nguyen, S. Destercke, M.H. Masson, and E. Hüllermeier. Reliable multi-class classification based on pairwise epistemic and aleatoric uncertainty. In Proceedings IJCAI 2018, 27th International Joint Conference on Artificial Intelligence, 5089–5095. Stockholm, Sweden, 2018.">NDMHullermeier18</a>]</span>, who further explore ideas from imprecise probability theory and reliable classification to generate label sets that capture both aleatoric and epistemic uncertainty.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-setValued_utilityMaximization"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter-conformel_regression/conformel_regression.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Conformal Prediction for Regression</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter-appendix/appendix.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Appendix</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-utility-function">17.1. General utility function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-recall-f1-utility-functions">17.1.1. Precision, Recall, F1 utility functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-utility-functions">17.1.2. Parametric Utility Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-multi-class-classification">17.2. Hierarchical multi-class classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-quantification">17.3. Uncertainty quantification</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <section>
+    For comprehensive discussions please contact one of our team members: 
+    {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
+
+        <div style="margin-top: 50px;" id="disqus_thread"></div>
+
+        <script>
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://https-werywjw-github-io-toolbox-github-io.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section> 
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

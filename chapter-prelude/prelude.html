@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. Prelude &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myStyle.css?v=e90502a2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-prelude/prelude';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Introduction" href="../chapter-intro/intro.html" />
+    <link rel="prev" title="Toolbox for Uncertainty Quantification in Machine Learning" href="../startPage.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../startPage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../startPage.html">
+                    Toolbox for Uncertainty Quantification in Machine Learning
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Prelude</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-intro/intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-srcUncertainty/src.html">3. Sources of uncertainty in supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html">4. Modelling Approximation Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-scoring/scoring.html">5. Probability Estimation via Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-calibration/calibration.html">6. Probability Estimation and Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-ensemble/ensemble.html">7. Probability Estimation and Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-mle_and_fisher/mle.html">8. Maximum Likelihood and Fisher Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-generative_models/gm.html">9. Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-gaussianprocess/gaussianprocess.html">10. Gaussian Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-deep_neuralnetwork/dnn.html">11. Deep Neural Network Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-bayesian_neuralnetwork/bayesian.html">12. Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-credal_sets/credal_sets.html">13. Credal Sets and Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html">14. Reliable Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_classification/conformel_classification.html">15. Conformal Prediction for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_regression/conformel_regression.html">16. Conformal Prediction for Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-setValued_utilityMaximization/set.html">17. Set-valued Prediction Based on Utility Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-appendix/appendix.html">18. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">19. References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Advueu963/PageTest/blob/main/chapter-prelude/prelude.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/edit/main/chapter-prelude/prelude.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/issues/new?title=Issue%20on%20page%20%2Fchapter-prelude/prelude.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter-prelude/prelude.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Prelude</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-this-book">1.1. About this book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-and-structure">1.2. Content and Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">1.3. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format">1.4. Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-audience">1.5. Target Audience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q-a">1.6. Q&amp;A</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="prelude">
+<h1><span class="section-number">1. </span>Prelude<a class="headerlink" href="#prelude" title="Link to this heading">#</a></h1>
+<div align="justify"> 
+<p>The notion of uncertainty is of major importance in machine learning and constitutes a key element of machine learning methodology. In line with the statistical tradition, uncertainty has long been perceived as almost synonymous with standard probability and probabilistic predictions. Yet, due to the steadily increasing relevance of machine learning for practical applications and related issues such as safety requirements, new problems and challenges have recently been identified by machine learning scholars, and these problems may call for new methodological developments. In particular, this includes the importance of distinguishing between (at least) two different types of uncertainty, often referred to as aleatoric and epistemic. In this work, we provide an introduction to the topic of uncertainty in machine learning as well as an overview of attempts so far at handling uncertainty in general and formalizing this distinction in particular.</p>
+</div><section id="about-this-book">
+<h2><span class="section-number">1.1. </span>About this book<a class="headerlink" href="#about-this-book" title="Link to this heading">#</a></h2>
+<p>Even though the importance of uncertainty quantification steadily grows with the spread of machine learning, there are still few resources that make the topic accessible to a wider range of people. Most of the resources that can be found online are scientific publications and unlike for machine learning textbooks for a broad audience without scientific background are not available. The aim of this book is to change that by providing a comprehensive overview of the topic in an interactive format. Inspired by the <a class="reference external" href="https://d2l.ai/index.html">dive into deep learning</a> book we tried to include code examples in all chapters of the book that make it easier to understand abstracts concepts and encourage the reader to play around with the examples. The underlying content is based on a joint work of Eyke Hüllermeier and Willem Waegeman <span id="id1">[<a class="reference internal" href="../references.html#id2292" title="Eyke Hüllermeier and Willem Waegeman. Aleatoric and epistemic uncertainty in machine learning: an introduction to concepts and methods. Mach. Learn., 110(3):457–506, 2021. URL: https://doi.org/10.1007/s10994-021-05946-3, doi:10.1007/S10994-021-05946-3.">HullermeierW21</a>]</span>. The project has been developed by students at the Institute of Informatics and Center of Information and Language Processing at LMU Munich.</p>
+</section>
+<section id="content-and-structure">
+<h2><span class="section-number">1.2. </span>Content and Structure<a class="headerlink" href="#content-and-structure" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>The book consists out of three main parts, that focus on discussing the different sources of uncertainty, statistical approaches for modelling approximation uncertainty and machine learning specific methods for representing uncertainty.</p>
+<ul class="simple">
+<li><p><strong>Part 1: Sources of uncertainty in supervised learning.</strong> The distinction of different sources of uncertainty is discussed in <a class="reference internal" href="../chapter-srcUncertainty/src.html#know"><span class="std std-ref">Chapter 2</span></a>.</p></li>
+<li><p><strong>Part 2: Modelling approximation uncertainty: Set-based versus distributional representations.</strong> Different statistical approaches for modelling uncertainty are discussed in <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#sbvd"><span class="std std-ref">Chapter 4</span></a>.</p></li>
+<li><p><strong>Part 3: Machine learning methods for representing uncertainty.</strong> This is the main part of the book, which presents several different machine learning methods that allow for representing a learners uncertainty in a prediction. First, approaches that use classical frequentist statistics for quantifying uncertainty are discussed: Chapters <a class="reference internal" href="../chapter-pe-scoring/scoring.html#pe-scoring"><span class="std std-ref">5</span></a>, <a class="reference internal" href="../chapter-pe-calibration/calibration.html#pe-calibration"><span class="std std-ref">6</span></a>, and <a class="reference internal" href="../chapter-pe-ensemble/ensemble.html#pe-ensemble"><span class="std std-ref">7</span></a> discuss how to estimate probabilities via scoring, calibration and ensembles. <a class="reference internal" href="../chapter-mle_and_fisher/mle.html#fisher"><span class="std std-ref">Chapter 8</span></a> treat maximum likelihood estimation and the fisher information matrix. <a class="reference internal" href="../chapter-generative_models/gm.html#genmodels"><span class="std std-ref">Chapter 9</span></a> discusses generative models. Next, Bayesian approaches for uncertainty quantification are discussed: <a class="reference internal" href="../chapter-gaussianprocess/gaussianprocess.html#gaussian-processes"><span class="std std-ref">Chapter 10</span></a> presents gaussian processes. Chapters <a class="reference internal" href="../chapter-deep_neuralnetwork/dnn.html#deep-ensembles"><span class="std std-ref">11</span></a> and <span class="xref std std-ref">12</span> describe ensembles of deep neural networks and bayesian neural networks. <a class="reference internal" href="../chapter-credal_sets/credal_sets.html#credal"><span class="std std-ref">Chapter 13</span></a> addresses the concept of credal sets and <a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html#uqnl"><span class="std std-ref">chapter 14</span></a> reliable classification. Lastly, the concept of set valued prediction is introduced. Chapters <a class="reference internal" href="../chapter-conformel_classification/conformel_classification.html#conformal-class"><span class="std std-ref">15</span></a> and <a class="reference internal" href="../chapter-conformel_regression/conformel_regression.html"><span class="doc std std-doc">16</span></a> discuss conformal prediction for classification and regression respectively. <a class="reference internal" href="../chapter-setValued_utilityMaximization/set.html#set-util"><span class="std std-ref">Chapter 17</span></a> explains set-valued prediction based on utility maximization.</p></li>
+</ul>
+</div></section>
+<section id="code">
+<h2><span class="section-number">1.3. </span>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h2>
+<p>Most of the chapters include code examples implemented in Python. The readers are encouraged to change and play around with them. To do this a chapter can be either opened in Google Colab (first rocket sign 🚀 in the top right corner) or found as a notebook in the <a class="reference external" href="https://github.com/Advueu963/PageTest">GitHub repository</a>. The needed inputs are listed in the beginning cell of each chapter, all required libraries can be found in the <a class="reference external" href="https://github.com/Advueu963/PageTest/blob/main/requirements.txt">requirements.txt</a> file.</p>
+<p>Please note that the code examples have been developed for illustration purposes only. While some of the examples use well established libraries like scikit-learn for machine learning, we often found ourselves implementing concepts from scratch because there were no existing libraries to the best of our knowledge. While the authors put a lot of effort into developing these code examples a lot of the code is not thoroughly tested for reliability and efficiency in every scenario and should never be used in production environments without performing additional quality controls first.</p>
+</section>
+<section id="format">
+<h2><span class="section-number">1.4. </span>Format<a class="headerlink" href="#format" title="Link to this heading">#</a></h2>
+<p>The project was build using <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html#">Jupyter Book</a> and can be downloaded as PDF or <a class="reference external" href="https://jupyter.org">Jupyter NoteBook</a>.
+Additionally the whole project including all individual notebooks can be found on the projects <a class="reference external" href="https://github.com/Advueu963/PageTest">GitHub Page</a>. Readers are encouraged to leave feedback and comments in the discussion forum that can be found at the bottom of each page.</p>
+</section>
+<section id="target-audience">
+<h2><span class="section-number">1.5. </span>Target Audience<a class="headerlink" href="#target-audience" title="Link to this heading">#</a></h2>
+<p>This book is for students and researchers who want to get started with uncertainty quantification in machine learning or seek a accessible illustration of already known concepts. It is also intended for engineers, who want to learn about ways to build uncertainty aware machine learning models or quantify the uncertainty of existing ones. In general we explain all uncertainty quantification topics from the ground up, so no background knowledge in that field is required. However, since the aim of this book is to merely discuss topics of uncertainty quantification not to introduce basic machine learning concepts.
+We therefore assume the reader enters with some prior knowledge about machine learning as well as basic knowledge of probability theory and Python programming.</p>
+</section>
+<section id="q-a">
+<h2><span class="section-number">1.6. </span>Q&amp;A<a class="headerlink" href="#q-a" title="Link to this heading">#</a></h2>
+<div align="justify"> 
+<p>For communications, the easiest way is to post your questions and remarks via DISQUS (on the bottom of each chapter). We will reply as soon as possible when we receive the message.
+In terms of mathematical formulas and comprehensive discussions, we recommend you send the email (provided before the comment session and emoji feedback) to our team members, the listed names for corresponding chapters can be found in the <a class="reference external" href="https://github.com/Advueu963/PageTest/blob/main/README.md">README.md</a>.</p>
+</div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-prelude"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../startPage.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Toolbox for Uncertainty Quantification in Machine Learning</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter-intro/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-this-book">1.1. About this book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-and-structure">1.2. Content and Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">1.3. Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format">1.4. Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-audience">1.5. Target Audience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q-a">1.6. Q&amp;A</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <section>
+    For comprehensive discussions please contact one of our team members: 
+    {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
+
+        <div style="margin-top: 50px;" id="disqus_thread"></div>
+
+        <script>
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://https-werywjw-github-io-toolbox-github-io.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section> 
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

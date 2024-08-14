@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Sources of uncertainty in supervised learning &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myStyle.css?v=e90502a2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "vec": ["\\boldsymbol{#1}", 1], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "defeq": ["\\mathrel{\\vcenter{\\baselineskip0.5ex \\lineskiplimit0pt \\hbox{\\footnotesize.}\\hbox{\\footnotesize.}}}% ="], "given": ["\\, | \\,"], "cX": ["\\mathcal{X}"], "cY": ["\\mathcal{Y}"], "cH": ["\\mathcal{H}"], "cD": ["\\mathcal{D}"], "hath": ["\\hat{h}"], "haty": ["\\hat{y}"], "hatp": ["\\hat{p}"], "sety": ["\\widehat{Y}"], "argmin": ["\\operatorname*{argmin}"], "argmax": ["\\operatorname*{argmax}"], "db": ["\\set{M}"], "fkt": ["#1(\\cdot)", 1], "chrfkt": ["\\mathbb{I}_{#1}", 1], "kref": ["(\\ref{#1})", 1], "convto": ["(\\rightarrow"], "fft": ["(#1 :  #2 \\rightarrow #3", 3], "with": ["\\,  | \\,"], "sothat": ["\\,  : \\,"], "defi": ["\\stackrel{\\on{df}}{=}"], "set": ["\\mathcal{#1}", 1], "Prob": ["P"], "prob": ["p"], "impl": ["\\Rightarrow"], "on": ["\\operatorname"], "groesser": ["\\raisebox{#1mm}{} \\raisebox{-#1mm}{}", 1], "sgroesser": ["\\groesser{1.20}"], "xleftr": ["\\left( \\groesser{1.35} "], "xleftg": ["\\left\\{ \\groesser{1.35} "], "fftm": ["\\fft{#1}{#2}{#3} \\, ,\\, #4 \\mapsto #5", 5], "gdw": ["\\Leftrightarrow"], "gdwbd": ["\\stackrel{\\on{df}}{\\Leftrightarrow}"], "est": ["{est}"], "epd": ["\\Leftrightarrow_{\\on{def}}"], "fromto": ["\\longrightarrow"], "pref": ["\\succ"], "evalue": ["\\mathbf{E}"], "variance": ["\\mathbf{V}"], "mmp": ["", 1], "llbracket": ["\\lbrack\\lbrack"], "rrbracket": ["\\rbrack\\rbrack"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-srcUncertainty/src';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Modelling Approximation Uncertainty" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html" />
+    <link rel="prev" title="2. Introduction" href="../chapter-intro/intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../startPage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../startPage.html">
+                    Toolbox for Uncertainty Quantification in Machine Learning
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter-prelude/prelude.html">1. Prelude</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-intro/intro.html">2. Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Sources of uncertainty in supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html">4. Modelling Approximation Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-scoring/scoring.html">5. Probability Estimation via Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-calibration/calibration.html">6. Probability Estimation and Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-ensemble/ensemble.html">7. Probability Estimation and Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-mle_and_fisher/mle.html">8. Maximum Likelihood and Fisher Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-generative_models/gm.html">9. Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-gaussianprocess/gaussianprocess.html">10. Gaussian Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-deep_neuralnetwork/dnn.html">11. Deep Neural Network Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-bayesian_neuralnetwork/bayesian.html">12. Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-credal_sets/credal_sets.html">13. Credal Sets and Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html">14. Reliable Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_classification/conformel_classification.html">15. Conformal Prediction for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_regression/conformel_regression.html">16. Conformal Prediction for Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-setValued_utilityMaximization/set.html">17. Set-valued Prediction Based on Utility Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-appendix/appendix.html">18. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">19. References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Advueu963/PageTest/blob/main/chapter-srcUncertainty/src.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/edit/main/chapter-srcUncertainty/src.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/issues/new?title=Issue%20on%20page%20%2Fchapter-srcUncertainty/src.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter-srcUncertainty/src.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sources of uncertainty in supervised learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-and-predictive-uncertainty">3.1. Supervised learning and predictive uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-of-uncertainty">3.2. Sources of uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reducible-versus-irreducible-uncertainty">3.3. Reducible versus irreducible uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-and-model-uncertainty">3.4. Approximation and model uncertainty</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sources-of-uncertainty-in-supervised-learning">
+<span id="know"></span><h1><span class="section-number">3. </span>Sources of uncertainty in supervised learning<a class="headerlink" href="#sources-of-uncertainty-in-supervised-learning" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uncertainty occurs in various facets in machine learning, and different settings and learning problems will usually require a different handling from an uncertainty modeling point of view. In this paper, we focus on the standard setting of supervised learning (<a class="reference internal" href="#setting"><span class="std std-numref">Fig. 3.1</span></a>), which we briefly recall in this section. Moreover, we identify different sources of (predictive) uncertainty in this setting.</p>
+<section id="supervised-learning-and-predictive-uncertainty">
+<h2><span class="section-number">3.1. </span>Supervised learning and predictive uncertainty<a class="headerlink" href="#supervised-learning-and-predictive-uncertainty" title="Link to this heading">#</a></h2>
+<p>In supervised learning, a learner is given access to a set of training data</p>
+<!-- <a id="eq-td"></a> -->
+<div class="math notranslate nohighlight" id="equation-td">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-td" title="Link to this equation">#</a></span>\[
+\mathcal{D} := \big\{ (\vec{x}_1 , y_1 ), \ldots , (\vec{x}_N , y_N ) \big\} \subset \mathcal{X} \times \mathcal{Y} 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> is an instance space and <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> the set of outcomes that can be associated with an instance. Typically, the training examples <span class="math notranslate nohighlight">\((\vec{x}_i , y_i)\)</span> are assumed to be independent and identically distributed (i.i.d.) according to some unknown probability measure <span class="math notranslate nohighlight">\(P\)</span> on <span class="math notranslate nohighlight">\(\mathcal{X} \times \mathcal{Y}\)</span>. Given a hypothesis space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> (consisting of hypotheses <span class="math notranslate nohighlight">\(h:\, \mathcal{X} \longrightarrow \mathcal{Y}\)</span> mapping instances <span class="math notranslate nohighlight">\(\vec{x}\)</span> to outcomes <span class="math notranslate nohighlight">\(y\)</span>) and a loss function <span class="math notranslate nohighlight">\(\ell: \, \mathcal{Y} \times \mathcal{Y} \longrightarrow \mathbb{R}\)</span>, the goal of the learner is to induce a hypothesis <span class="math notranslate nohighlight">\(h^* \in \mathcal{H}\)</span> with low risk (expected loss)</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3c6b034e-5567-4280-933c-3cc2ef26fbeb">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-3c6b034e-5567-4280-933c-3cc2ef26fbeb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+R(h) := \int_{\mathcal{X} \times \mathcal{Y}} \ell( h(\vec{x}) , y) \, d \, P(\vec{x} , y) 
+\end{equation}\]</div>
+<p>Thus, given the training data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>, the learner needs to “guess” a good hypothesis <span class="math notranslate nohighlight">\(h\)</span>. This choice is commonly guided by the empirical risk</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ec6acfc1-ff44-4303-8c75-f430fe9193d0">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-ec6acfc1-ff44-4303-8c75-f430fe9193d0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+R_{emp}(h) :=  \frac{1}{N} \sum_{i=1}^N \ell(h(\vec{x}_i) , y_i) 
+\end{equation}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example loss function: Squared error loss</span>
+<span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="n">h_x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">h_x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Empirical risk function</span>
+<span class="k">def</span> <span class="nf">empirical_risk</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+    <span class="n">total_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="n">N</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>i.e., the performance of a hypothesis on the training data. However, since <span class="math notranslate nohighlight">\(R_{emp}(h)\)</span> is only an estimation of the true risk <span class="math notranslate nohighlight">\(R(h)\)</span>, the hypothesis (empirical risk minimizer)</p>
+<p><a id="eq-argerm"></a>
+<span class="math notranslate nohighlight">\(
+\hat{h} := \arg\min_{h \in \mathcal{H}} R_{emp}(h)
+\)</span></p>
+<p>favored by the learner will normally not coincide with the true risk minimizer</p>
+<p><a id="eq:bayespred"></a>
+<span class="math notranslate nohighlight">\(
+h^* := \operatorname{argmin}_{h \in \mathcal{H}} R(h)
+\)</span></p>
+<p>In the following code example, we illustrate the difference between the hypothesis (empirical risk minimizer) and the true risk minimizer. <span class="math notranslate nohighlight">\(100\)</span> points are generated for the interval between <span class="math notranslate nohighlight">\(-10\)</span> and <span class="math notranslate nohighlight">\(10\)</span>, following a normal distribution. Here, the two large dots represent the minima in both risks.”</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a set of hypotheses</span>
+<span class="n">hypotheses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Empirical risk function with added noise</span>
+<span class="k">def</span> <span class="nf">R_emp</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># True risk function without noise</span>
+<span class="k">def</span> <span class="nf">R_true</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Find the hypothesis that minimizes empirical risk</span>
+<span class="n">empirical_risks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">R_emp</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hypotheses</span><span class="p">])</span>
+<span class="n">h_hat</span> <span class="o">=</span> <span class="n">hypotheses</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">empirical_risks</span><span class="p">)]</span>
+
+<span class="c1"># Find the hypothesis that minimizes true risk</span>
+<span class="n">true_risks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">R_true</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hypotheses</span><span class="p">])</span>
+<span class="n">h_star</span> <span class="o">=</span> <span class="n">hypotheses</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">true_risks</span><span class="p">)]</span>
+
+<span class="c1"># Plotting to visualize</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hypotheses</span><span class="p">,</span> <span class="n">empirical_risks</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Empirical Risk&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hypotheses</span><span class="p">,</span> <span class="n">true_risks</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;True Risk&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">h_hat</span><span class="p">],</span> <span class="p">[</span><span class="n">R_emp</span><span class="p">(</span><span class="n">h_hat</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Empirical Hypothesis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">h_star</span><span class="p">],</span> <span class="p">[</span><span class="n">R_true</span><span class="p">(</span><span class="n">h_star</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;True Hypothesis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Hypotheses&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Risk&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/b018d0f929b4823bb0e0b957a4aec640e80a9b509abb9c853fc482285c58f771.png" src="../_images/b018d0f929b4823bb0e0b957a4aec640e80a9b509abb9c853fc482285c58f771.png" />
+</div>
+</div>
+<p>Correspondingly, there remains uncertainty regarding <span class="math notranslate nohighlight">\(h^*\)</span> as well as the approximation quality of <span class="math notranslate nohighlight">\(\hat h\)</span> (in the sense of its proximity to <span class="math notranslate nohighlight">\(h^*\)</span>) and its true risk <span class="math notranslate nohighlight">\(R(\hat h)\)</span>.</p>
+<figure class="align-default" id="setting">
+<a class="reference internal image-reference" href="../_images/pic-sl-setting.jpg"><img alt="The basic setting of supervised learning" src="../_images/pic-sl-setting.jpg" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">The basic setting of supervised learning: A hypothesis <span class="math notranslate nohighlight">\(\hat{h} \in \mathcal{H}\)</span> is induced from the training data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> and used to produce predictions for new query instances <span class="math notranslate nohighlight">\(\vec{x} \in \mathcal{X}\)</span>.</span><a class="headerlink" href="#setting" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Eventually, one is often interested in predictive uncertainty, i.e., the uncertainty related to the prediction <span class="math notranslate nohighlight">\(\hat y_{q}\)</span> for a concrete query instance <span class="math notranslate nohighlight">\(\vec{x}_{q} \in \mathcal{X}\)</span>. In other words, given a partial observation <span class="math notranslate nohighlight">\((\vec{x}_{q} , \cdot)\)</span>, we are wondering what can be said about the missing outcome, especially about the uncertainty related to a prediction of that outcome. Indeed, estimating and quantifying uncertainty in a transductive way, in the sense of tailoring it for individual instances, is arguably important and practically more relevant than a kind of average accuracy or confidence, which is often reported in machine learning. In medical diagnosis, for example, a patient will be interested in the reliability of a test result in her particular case, not in the reliability of the test on average. This view is also expressed, for example, by (<span id="id1">Kull and Flach [<a class="reference internal" href="../references.html#id1375" title="Meelis Kull and Peter Flach. Reliability maps: A tool to enhance probability estimates and improve classification accuracy. In Proc. ECML/PKDD, European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases, 18–33. Nancy, France, 2014.">KF14</a>]</span>) : “Being able to assess the reliability of a probability score for each instance is much more powerful than assigning an aggregate reliability score […] independent of the instance to be classified.”</p>
+<p>Emphasizing the transductive nature of the learning process, the learning task could also be formalized as a problem of predictive inference as follows:  Given a set (or sequence) of data points <span class="math notranslate nohighlight">\((X_1, Y_1), \ldots , (X_N, Y_N)\)</span> and a query point <span class="math notranslate nohighlight">\(X_{N+1}\)</span>, what is the associated outcome <span class="math notranslate nohighlight">\(Y_{N+1}\)</span>? Here, the data points are considered as (realizations of) random variables\footnote{whence they are capitalized here}, which are commonly assumed to be independent and identically distributed (i.i.d.). A prediction could be given in the form of a point prediction <span class="math notranslate nohighlight">\(\hat{Y}_{N+1} \in \mathcal{Y}\)</span>, but also (and perhaps preferably)  in the form of a predictive set <span class="math notranslate nohighlight">\(\hat{C}(X_{N+1}) \subseteq \mathcal{Y}\)</span> that is likely to cover the true outcome, for example an interval in the case of regression (Sections  <a class="reference internal" href="../chapter-conformel_classification/conformel_classification.html"><span class="doc std std-doc">Conformal Prediction for Classification</span></a> and <a class="reference internal" href="../chapter-setValued_utilityMaximization/set.html"><span class="doc std std-doc">Set-valued Prediction Based on Utility Maximization</span></a>). Regarding the aspect of uncertainty, different properties of <span class="math notranslate nohighlight">\(\hat{C}(X_{N+1})\)</span> might then be of interest. For example, coming back to the discussion from the previous paragraph, a basic distinction can be made between a statistical guarantee for marginal coverage, namely <span class="math notranslate nohighlight">\(P( Y_{N+1} \in \hat{C}(X_{N+1}) ) \geq 1 - \delta\)</span> for a (small) threshold <span class="math notranslate nohighlight">\(\delta &gt; 0\)</span>, and conditional coverage, namely</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ae6a264a-7a10-4394-b6e7-cc2e127b06c7">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-ae6a264a-7a10-4394-b6e7-cc2e127b06c7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+P \Big( Y_{N+1} \in \hat{C}(X_{N+1}) \in X_{N+1} = \vec{x} \Big) \geq 1 - \delta \quad \text{ for (almost) all } \vec{x} \in \mathcal{X} \, .
+\end{equation}\]</div>
+<p>Roughly speaking, in the case of marginal coverage, one averages over both <span class="math notranslate nohighlight">\(X_{N+1}\)</span> and <span class="math notranslate nohighlight">\(Y_{N+1}\)</span> (i.e., the probability <span class="math notranslate nohighlight">\(P\)</span> refers to a joint measure on <span class="math notranslate nohighlight">\(\mathcal{X} \times \mathcal{Y}\)</span>), while in the case of conditional coverage, <span class="math notranslate nohighlight">\(X_{N+1}\)</span> is fixed and the average in taken over <span class="math notranslate nohighlight">\(Y_{N+1}\)</span> only (<span id="id2">Barber <em>et al.</em> [<a class="reference internal" href="../references.html#id49" title="R.F. Barber, E.J. Candes, A. Ramdas, and R.J. Tibshirani. The limits of distribution-free conditional predictive inference. CoRR, 2020. URL: http://arxiv.org/abs/1903.04684v2.">BCRT20</a>]</span>). Note that predictive inference as defined here does not necessarily require the induction of a hypothesis <span class="math notranslate nohighlight">\(\hat h\)</span> in the form of a (global) map <span class="math notranslate nohighlight">\(\mathcal{X} \longrightarrow \mathcal{Y}\)</span>, i.e., the solution of an induction problem. While it is true that transductive inference can be realized via inductive inference (i.e., by inducing a hypothesis <span class="math notranslate nohighlight">\(\hat h\)</span> first and then producing a prediction <span class="math notranslate nohighlight">\(\hat{Y}_{N+1} = \hat h(X_{N+1})\)</span> by applying this hypothesis to the query <span class="math notranslate nohighlight">\(X_{N+1}\)</span>), one should keep in mind that induction is a more difficult problem than transduction (<span id="id3">Vapnik [<a class="reference internal" href="../references.html#id1583" title="V.N. Vapnik. Statistical Learning Theory. John Wiley &amp; Sons, 1998.">Vap98</a>]</span>).</p>
+</section>
+<section id="sources-of-uncertainty">
+<h2><span class="section-number">3.2. </span>Sources of uncertainty<a class="headerlink" href="#sources-of-uncertainty" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="approx">
+<a class="reference internal image-reference" href="../_images/pictureAndTable.jpg"><img alt="../_images/pictureAndTable.jpg" src="../_images/pictureAndTable.jpg" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Different types of uncertainties related to different types of discrepancies and approximation errors:  <span class="math notranslate nohighlight">\(f^*\)</span> is the pointwise Bayes predictor, <span class="math notranslate nohighlight">\(h^*\)</span> is the best predictor within the hypothesis space, and <span class="math notranslate nohighlight">\(\hat{h}\)</span> the predictor produced by the learning algorithm.</span><a class="headerlink" href="#approx" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As the prediction <span class="math notranslate nohighlight">\(\hat{y}_{q}\)</span> constitutes the end of a process that consists of different learning and approximation steps, all errors and uncertainties related to these steps may also contribute to the uncertainty about <span class="math notranslate nohighlight">\(\hat{y}_{q}\)</span> (<a class="reference internal" href="#approx"><span class="std std-numref">Fig. 3.2</span></a>):</p>
+<p>Since the dependency between <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> is typically non-deterministic, the description of a new prediction problem in the form of an instance <span class="math notranslate nohighlight">\(\vec{x}_{q}\)</span> gives rise to a conditional probability distribution</p>
+<div class="math notranslate nohighlight" id="equation-ccp">
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-ccp" title="Link to this equation">#</a></span>\[
+P(y \in \vec{x}_{q}) = \frac{P(\vec{x}_{q}, y)}{P(\vec{x}_q)}
+\quad 
+\]</div>
+<p>on <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span>, but it does not normally identify a single outcome <span class="math notranslate nohighlight">\(y\)</span> in a unique way. Thus, even given full information in the form of the measure <span class="math notranslate nohighlight">\(P\)</span> (and its density <span class="math notranslate nohighlight">\(P\)</span>), uncertainty about the actual outcome <span class="math notranslate nohighlight">\(y\)</span> remains. This uncertainty is of an aleatoric nature. In some cases, the distribution itself (called the predictive posterior distribution in Bayesian inference) might be delivered as a prediction. Yet, when being forced to commit to point estimates, the best predictions (in the sense of minimizing the expected loss) are prescribed by the pointwise Bayes predictor <span class="math notranslate nohighlight">\(f^*\)</span>, which is defined by</p>
+<div class="math notranslate nohighlight">
+\[
+f^*(\vec{x}) := \arg\min_{\hat{y} \in \mathcal{Y}} \int_{\mathcal{Y}} \ell(y, \hat{y}) \, dP(y \in \vec{x})
+\quad 
+\]</div>
+<p>for each <span class="math notranslate nohighlight">\(\vec{x} \in \mathcal{X}\)</span>.</p>
+<p>The Bayes predictor does not necessarily coincide with the pointwise Bayes predictor. This discrepancy between <span class="math notranslate nohighlight">\(h^*\)</span> and <span class="math notranslate nohighlight">\(f^*\)</span> is connected to the uncertainty regarding the right type of model to be fit, and hence the choice of the hypothesis space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> (which is part of what is called “background knowledge” in (<a class="reference internal" href="#setting"><span class="std std-numref">Fig. 3.1</span></a>). We shall refer to this uncertainty as model uncertainty. Thus, due to this uncertainty, one cannot guarantee that <span class="math notranslate nohighlight">\(h^*(\vec{x}) = f^*(\vec{x})\)</span>, or, in case the hypothesis <span class="math notranslate nohighlight">\(h^*\)</span> (e.g., a probabilistic classifier) delivers probabilistic predictions <span class="math notranslate nohighlight">\(P(y \mid \vec{x}, h^*)\)</span> instead of point predictions, that <span class="math notranslate nohighlight">\(P(\cdot \mid \vec{x}, h^*) = P(\cdot \mid \vec{x})\)</span>.</p>
+<p>The hypothesis <span class="math notranslate nohighlight">\(\hat{h}\)</span> produced by the learning algorithm, for example the empirical risk minimizer, is only an estimate of <span class="math notranslate nohighlight">\(h^*\)</span>, and the quality of this estimate strongly depends on the quality and the amount of training data. We shall refer to the discrepancy between <span class="math notranslate nohighlight">\(\hat{h}\)</span> and <span class="math notranslate nohighlight">\(h^*\)</span>, i.e., the uncertainty about how well the former approximates the latter, as approximation uncertainty.</p>
+</section>
+<section id="reducible-versus-irreducible-uncertainty">
+<h2><span class="section-number">3.3. </span>Reducible versus irreducible uncertainty<a class="headerlink" href="#reducible-versus-irreducible-uncertainty" title="Link to this heading">#</a></h2>
+<p>As already said, one way to characterize uncertainty as aleatoric or epistemic is to ask whether or not the uncertainty can be reduced through additional information: Aleatoric uncertainty refers to the irreducible part of the uncertainty, which is due to the non-deterministic nature of the sought input/output dependency, that is, to the stochastic dependency between instances <span class="math notranslate nohighlight">\(\vec{x}\)</span> and outcomes <span class="math notranslate nohighlight">\(y\)</span>, as expressed by the conditional probability. Model uncertainty and approximation uncertainty, on the other hand, are subsumed under the notion of epistemic uncertainty, that is, uncertainty due to a lack of knowledge about the perfect predictor (\ref{eq:pointbayespred}), for example caused by uncertainty about the parameters of a model. In principle, this uncertainty can be reduced.</p>
+<p>This characterization, while evident at first sight, may appear somewhat blurry upon closer inspection.
+What does “reducible” actually mean? An obvious source of additional information is the training data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>: The learner’s uncertainty can be reduced by observing more data, while the setting of the learning problem,—,the instance space <span class="math notranslate nohighlight">\(\mathcal{X}\)</span>, output space <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span>, hypothesis space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>, joint probability <span class="math notranslate nohighlight">\(P\)</span> on <span class="math notranslate nohighlight">\(\mathcal{X} \times \mathcal{Y}\)</span>,—,remains fixed. In practice, this is of course not always the case. Imagine, for example, that a learner can decide to extend the description of instances by additional features, which essentially means replacing the current instance space <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> by another space <span class="math notranslate nohighlight">\(\mathcal{X´}\)</span>. This change of the setting may have an influence on uncertainty. An example is shown in (<a class="reference internal" href="#overlapping-classes"><span class="std std-numref">Fig. 3.3</span></a>). In a low-dimensional space (here defined by a single feature <span class="math notranslate nohighlight">\(x_1\)</span>), two class distributions are overlapping, which causes (aleatoric) uncertainty in a certain region of the instance space. By embedding the data in a higher-dimensional space (here accomplished by adding a second feature <span class="math notranslate nohighlight">\(x_2\)</span>), the two classes become separable, and the uncertainty can be resolved. More generally, embedding data in a higher-dimensional space will reduce aleatoric and increase epistemic uncertainty, because fitting a model will become more difficult and require more data.</p>
+<figure class="align-default" id="overlapping-classes">
+<a class="reference internal image-reference" href="../_images/dimCombined.jpg"><img alt="../_images/dimCombined.jpg" src="../_images/dimCombined.jpg" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Left: The two classes are overlapping, which causes (aleatoric) uncertainty in a certain region of the instance space. Right: By adding a second feature, and hence embedding the data in a higher-dimensional space, the two classes become separable, and the uncertainty can be resolved. The two classes are overlapping in the left image, causing (aleatoric) uncertainty. In the right image, by adding a second feature and embedding the data in a higher-dimensional space, the two classes become separable, resolving the uncertainty.</span><a class="headerlink" href="#overlapping-classes" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now, let’s consider a concrete example. Doctors often encounter similar diseases, making it challenging to differentiate between them based on a few parameters alone. This is called differential diagnosis. In this scenario, a doctor is trying to distinguish between two diseases based on three factors: creatine kinase (CK) level, the troponin level at 3 hours, and the difference in troponin levels between 3 and 6 hours, which should be higher than 10% if it is a heart attack. Relying solely on the CK level could be misleading in the diagnosis of the diseases, and using only the first two parameters (CK and troponin at 3 hours) might not provide a definitive answer with 100% certainty. Therefore, the doctor must also consider the patient’s delta troponin after 6 hours. By incorporating this additional parameter, the uncertainty in diagnosis based on just two parameters is reduced. Here, a total of 100 data points per disease are randomly generated, following normal distributions with means in the thresholds that differentiate both diseases. The dots are samples representing the measurements performed on different patients.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate simulated data</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Increase the number of points</span>
+<span class="n">n_points</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Generate simulated values for CK (closer between heart attack and muscle pain)</span>
+<span class="n">ck_heart_attack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>  <span class="c1"># CK for heart attack</span>
+<span class="n">ck_muscle_pain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">345</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>  <span class="c1"># CK for muscle pain</span>
+
+<span class="c1"># Generate times (in hours)</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+
+<span class="c1"># Generate simulated values for troponin (closer between heart attack and muscle pain)</span>
+<span class="c1"># For heart attack</span>
+<span class="n">initial_troponin_heart_attack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+<span class="n">troponin_3h_heart_attack</span> <span class="o">=</span> <span class="n">initial_troponin_heart_attack</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+<span class="n">troponin_6h_heart_attack</span> <span class="o">=</span> <span class="n">troponin_3h_heart_attack</span> <span class="o">+</span> <span class="n">initial_troponin_heart_attack</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>  <span class="c1"># Ensure &gt;20% increase</span>
+<span class="n">delta_troponin_heart_attack</span> <span class="o">=</span> <span class="p">((</span><span class="n">troponin_6h_heart_attack</span> <span class="o">-</span> <span class="n">troponin_3h_heart_attack</span><span class="p">)</span> <span class="o">/</span> <span class="n">troponin_3h_heart_attack</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># For muscle pain</span>
+<span class="n">initial_troponin_muscle_pain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+<span class="n">troponin_3h_muscle_pain</span> <span class="o">=</span> <span class="n">initial_troponin_muscle_pain</span> <span class="o">+</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+<span class="n">troponin_6h_muscle_pain</span> <span class="o">=</span> <span class="n">troponin_3h_muscle_pain</span> <span class="o">+</span> <span class="n">initial_troponin_muscle_pain</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>  <span class="c1"># Ensure &lt;10% increase</span>
+<span class="n">delta_troponin_muscle_pain</span> <span class="o">=</span> <span class="p">((</span><span class="n">troponin_6h_muscle_pain</span> <span class="o">-</span> <span class="n">troponin_3h_muscle_pain</span><span class="p">)</span> <span class="o">/</span> <span class="n">troponin_3h_muscle_pain</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Adjust to make the points closer but with some overlap on the Y-axis</span>
+<span class="n">troponin_3h_heart_attack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+<span class="n">troponin_3h_muscle_pain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+
+<span class="c1"># Plot in 1 Dimension: Total CK</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ck_heart_attack</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_points</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Heart Attack&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ck_muscle_pain</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_points</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Muscle Pain&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;CK (Creatine Kinase)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Total CK&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plot in 2 Dimensions: CK vs Troponin at 3 hours (closer on the Y-axis)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ck_heart_attack</span><span class="p">,</span> <span class="n">troponin_3h_heart_attack</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Heart Attack&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ck_muscle_pain</span><span class="p">,</span> <span class="n">troponin_3h_muscle_pain</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Muscle Pain&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;CK (Creatine Kinase)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Troponin at 3 hours&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;CK vs Troponin at 3 hours&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plot in 3 Dimensions: CK vs Troponin at 3 hours vs Delta Troponin at 6 hours (separated classes)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ck_heart_attack</span><span class="p">,</span> <span class="n">troponin_3h_heart_attack</span><span class="p">,</span> <span class="n">delta_troponin_heart_attack</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Heart Attack&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ck_muscle_pain</span><span class="p">,</span> <span class="n">troponin_3h_muscle_pain</span><span class="p">,</span> <span class="n">delta_troponin_muscle_pain</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Muscle Pain&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;CK (Creatine Kinase)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Troponin at 3 hours&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Delta Troponin at 6 hours (%)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CK vs Troponin at 3 hours vs Delta Troponin at 6 hours&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/581cfb32240c1211b900d65acf2abae0f2b0b9fe93d300bbf5094633aad36f30.png" src="../_images/581cfb32240c1211b900d65acf2abae0f2b0b9fe93d300bbf5094633aad36f30.png" />
+<img alt="../_images/c8306c69d4be20c6aff0caaffe4e27b1358c72548e98ae02097be560ed42a89c.png" src="../_images/c8306c69d4be20c6aff0caaffe4e27b1358c72548e98ae02097be560ed42a89c.png" />
+<img alt="../_images/cf193fd128a7167d2f98e7bb18afc2e845d7f5b15e407a8eef9f0ab15242ff00.png" src="../_images/cf193fd128a7167d2f98e7bb18afc2e845d7f5b15e407a8eef9f0ab15242ff00.png" />
+</div>
+</div>
+<p>What this example shows is that aleatoric and epistemic uncertainty should not be seen as absolute notions. Instead, they are context-dependent in the sense of depending on the setting <span class="math notranslate nohighlight">\((\mathcal{X}, \mathcal{Y}, \mathcal{H}, P)\)</span>. Changing the context will also change the sources of uncertainty: aleatoric may turn into epistemic uncertainty and vice versa. Consequently, by allowing the learner to change the setting, the distinction between these two types of uncertainty will be somewhat blurred (and their quantification will become even more difficult). This view of the distinction between aleatoric and epistemic uncertainty is also shared by (<span id="id4">Der Kiureghian and Ditlevsen [<a class="reference internal" href="../references.html#id2" title="A. Der Kiureghian and O. Ditlevsen. Aleatory or epistemic? does it matter? Structural Safety, 31:105–112, 2009.">DerKiureghianD09</a>]</span>), who note that “these concepts only make unambiguous sense if they are defined within the confines of a model of analysis”, and that “In one model an addressed uncertainty may be aleatory, in another model it may be epistemic.”</p>
+</section>
+<section id="approximation-and-model-uncertainty">
+<h2><span class="section-number">3.4. </span>Approximation and model uncertainty<a class="headerlink" href="#approximation-and-model-uncertainty" title="Link to this heading">#</a></h2>
+<p>Assuming the setting <span class="math notranslate nohighlight">\((\mathcal{X}, \mathcal{Y}, \mathcal{H}, P)\)</span> to be fixed, the learner’s lack of knowledge will essentially depend on the amount of data it has seen so far: The larger the number <span class="math notranslate nohighlight">\(N = |\mathcal{D}|\)</span> of observations, the less ignorant the learner will be when having to make a new prediction. In the limit, when <span class="math notranslate nohighlight">\(N \rightarrow \infty\)</span>, a consistent learner will be able to identify <span class="math notranslate nohighlight">\(h^*\)</span> (<a class="reference internal" href="#aleatoric-uncertainty"><span class="std std-numref">Fig. 3.4</span></a>) for an illustration), i.e., it will get rid of its approximation uncertainty.</p>
+<figure class="align-default" id="aleatoric-uncertainty">
+<a class="reference internal image-reference" href="../_images/aleatoricCombined.jpg"><img alt="../_images/aleatoricCombined.jpg" src="../_images/aleatoricCombined.jpg" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">The two classes are overlapping in the left image, causing (aleatoric) uncertainty. In the right image, by adding a second feature and embedding the data in a higher-dimensional space, the two classes become separable, resolving the uncertainty.</span><a class="headerlink" href="#aleatoric-uncertainty" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>What is (implicitly) assumed here is a correctly specified hypothesis space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>, such that <span class="math notranslate nohighlight">\(f^* \in \mathcal{H}\)</span>. In other words, model uncertainty is simply ignored. For obvious reasons, this uncertainty is very difficult to capture, let alone quantify. In a sense, a kind of meta-analysis would be required: Instead of expressing uncertainty about the ground-truth hypothesis <span class="math notranslate nohighlight">\(h\)</span> within a hypothesis space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>, one has to express uncertainty about which <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> among a set <span class="math notranslate nohighlight">\(\mathbb{H}\)</span> of candidate hypothesis spaces might be the right one. Practically, such kind of analysis does not appear to be feasible. On the other side, simply assuming a correctly specified hypothesis space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> actually means neglecting the risk of model misspecification. To some extent, this appears to be unavoidable, however. In fact, the learning itself as well as all sorts of inference from the data are normally done under the assumption that the model is valid. Otherwise, since some assumptions are indeed always needed, it will be difficult to derive any useful conclusions.</p>
+<p>As an aside, let us note that these assumptions, in addition to the nature of the ground truth <span class="math notranslate nohighlight">\(f^*\)</span>, also include other (perhaps more implicit) assumptions about the setting and the data-generating process. For example, imagine that a sudden change of the distribution cannot be excluded, or a strong discrepancy between training and test data (<span id="id5">Malinin and Gales [<a class="reference internal" href="../references.html#id54" title="A. Malinin and M. Gales. Predictive uncertainty estimation via prior networks. In Proc. NeurIPS, 32nd Conference on Neural Information Processing Systems. Montreal, Canada, 2018.">MG18</a>]</span>). Not only prediction but also the assessment of uncertainty would then become difficult, if not impossible. Indeed, if one cannot exclude something completely unpredictable to happen, there is hardly any way to reduce predictive uncertainty. To take a simple example, (epistemic) uncertainty about the bias of a coin can be estimated and quantified, for example in the form of a confidence interval, from an i.i.d.\ sequence of coin tosses. But what if the bias may change from one moment to the other (e.g., because the coin is replaced by another one), or another outcome becomes possible (e.g., “invalid” if the coin has not been tossed in agreement with a new execution rule)? While this example may appear a bit artificial, there are indeed practical classification problems in which certain classes <span class="math notranslate nohighlight">\(y \in \mathcal{Y}\)</span> may “disappear” while new classes emerge, i.e., in which <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> may change in the course of time. Likewise, non-stationarity of the data-generating process (the measure <span class="math notranslate nohighlight">\(P\)</span>), including the possibility of drift or shift of the distribution, is a common assumption in learning on data streams (<span id="id6">Gama [<a class="reference internal" href="../references.html#id2201" title="J. Gama. A survey on learning from data streams: current and future trends. Progress in Artificial Intelligence, 1(1):45–55, 2012.">Gam12</a>]</span>).
+In (<span id="id7">de Oliveira Costa <em>et al.</em> [<a class="reference internal" href="../references.html#id2278" title="Filipe de Oliveira Costa, Michael Eckmann, Walter J. Scheirer, and Anderson Rocha. Open set source camera attribution. In 25th SIBGRAPI Conference on Graphics, Patterns and Images, SIBGRAPI 2012, Ouro Preto, Brazil, August 22-25, 2012, 71–78. IEEE Computer Society, 2012. URL: https://doi.org/10.1109/SIBGRAPI.2012.19, doi:10.1109/SIBGRAPI.2012.19.">dOCESR12</a>]</span>), a very intuitive example of this phenomenon is presented. The idea is that we have a model that classifies objects based on their shape. Initially, the model is trained on a certain number of shapes/classes like triangles and squares. Then, the model is confronted with a new type of shape, in this case, a circle. This showcases a problem where new classes emerge, and therefore <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> may change in the course of time.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate sample data with structured placement</span>
+<span class="k">def</span> <span class="nf">generate_polygon_data</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">num_vertices</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">spread</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">num_vertices</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="n">spread</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_vertices</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span>
+        <span class="n">x_poly</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span> <span class="o">+</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y_poly</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span> <span class="o">+</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_poly</span><span class="p">)</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_poly</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">generate_circle_data</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">spread</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+        <span class="n">radius</span> <span class="o">=</span> <span class="n">spread</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="c1"># Initial classes: Triangles, Squares, Pentagons</span>
+<span class="n">X_triangles</span><span class="p">,</span> <span class="n">y_triangles</span> <span class="o">=</span> <span class="n">generate_polygon_data</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">X_squares</span><span class="p">,</span> <span class="n">y_squares</span> <span class="o">=</span> <span class="n">generate_polygon_data</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">X_pentagons</span><span class="p">,</span> <span class="n">y_pentagons</span> <span class="o">=</span> <span class="n">generate_polygon_data</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># Combine data for initial plot</span>
+<span class="n">X_initial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">X_triangles</span><span class="p">,</span> <span class="n">X_squares</span><span class="p">,</span> <span class="n">X_pentagons</span><span class="p">))</span>
+<span class="n">y_initial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">y_triangles</span><span class="p">,</span> <span class="n">y_squares</span><span class="p">,</span> <span class="n">y_pentagons</span><span class="p">))</span>
+
+<span class="c1"># Plot initial classification</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">markers</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;p&#39;</span><span class="p">}</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_initial</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_initial</span><span class="p">[</span><span class="n">y_initial</span> <span class="o">==</span> <span class="n">label</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_initial</span><span class="p">[</span><span class="n">y_initial</span> <span class="o">==</span> <span class="n">label</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span> 
+                <span class="n">marker</span><span class="o">=</span><span class="n">markers</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">-gon&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Initial Classification&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Feature 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Feature 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Add new class: Circles</span>
+<span class="n">X_circles</span><span class="p">,</span> <span class="n">y_circles</span> <span class="o">=</span> <span class="n">generate_circle_data</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="n">X_updated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">X_initial</span><span class="p">,</span> <span class="n">X_circles</span><span class="p">))</span>
+<span class="n">y_updated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">y_initial</span><span class="p">,</span> <span class="n">y_circles</span><span class="p">))</span>
+
+<span class="c1"># Plot updated classification</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">markers</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;o&#39;</span><span class="p">}</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;purple&#39;</span><span class="p">}</span>
+
+<span class="n">plotted_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">point</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X_updated</span><span class="p">,</span> <span class="n">y_updated</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">point</span>
+    <span class="n">shape_label</span> <span class="o">=</span> <span class="n">label</span>
+    <span class="k">if</span> <span class="n">shape_label</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">plotted_labels</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">markers</span><span class="p">[</span><span class="n">shape_label</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">shape_label</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">shape_label</span><span class="si">}</span><span class="s1">-gon&#39;</span> <span class="k">if</span> <span class="n">shape_label</span> <span class="o">!=</span> <span class="mi">6</span> <span class="k">else</span> <span class="s1">&#39;Circle&#39;</span><span class="p">,</span> 
+                    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+        <span class="n">plotted_labels</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">shape_label</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">markers</span><span class="p">[</span><span class="n">shape_label</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">shape_label</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Updated Classification with Circles&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Feature 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Feature 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="c1"># Adding an overall title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Classification of Polygons by Number of Vertices&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/5cfc9563c74556a1de5e0c8893dbbed80e9ef28cad17c7a7f085426d8fcd6b35.png" src="../_images/5cfc9563c74556a1de5e0c8893dbbed80e9ef28cad17c7a7f085426d8fcd6b35.png" />
+</div>
+</div>
+<p>Coming back to the assumptions about the hypothesis space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>, the latter is actually very large for some learning methods, such as nearest neighbor classification or (deep) neural networks. Thus, the learner has a high capacity (or “universal approximation” capability) and can express hypotheses in a very flexible way. In such cases, <span class="math notranslate nohighlight">\(h^* = f^*\)</span> or at least <span class="math notranslate nohighlight">\(h^* \approx f^*\)</span> can safely be assumed. In other words, since the model assumptions are so weak, model uncertainty essentially disappears (at least when disregarding or taking for granted other assumptions as discussed above). Yet, the approximation uncertainty still remains a source of epistemic uncertainty. In fact, this uncertainty tends to be high for methods like nearest neighbors or neural networks, especially if data is sparse.</p>
+<p>In the next section, we recall two specific though arguably natural and important approaches for capturing this uncertainty, namely version space learning and Bayesian inference. In version space learning, uncertainty about <span class="math notranslate nohighlight">\(h^*\)</span> is represented in terms of a set of possible candidates, whereas in Bayesian learning, this uncertainty is modeled in terms of a probability distribution on <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>. In both cases, an explicit distinction is made between the uncertainty about <span class="math notranslate nohighlight">\(h^*\)</span>, and how this uncertainty translates into uncertainty about the outcome for a query <span class="math notranslate nohighlight">\(\vec{x}_q\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-srcUncertainty"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter-intro/intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Modelling Approximation Uncertainty</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-and-predictive-uncertainty">3.1. Supervised learning and predictive uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-of-uncertainty">3.2. Sources of uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reducible-versus-irreducible-uncertainty">3.3. Reducible versus irreducible uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-and-model-uncertainty">3.4. Approximation and model uncertainty</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <section>
+    For comprehensive discussions please contact one of our team members: 
+    {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
+
+        <div style="margin-top: 50px;" id="disqus_thread"></div>
+
+        <script>
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://https-werywjw-github-io-toolbox-github-io.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section> 
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

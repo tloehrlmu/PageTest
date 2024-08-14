@@ -1,0 +1,1362 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>15. Conformal Prediction for Classification &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myStyle.css?v=e90502a2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "vec": ["\\boldsymbol{#1}", 1], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "defeq": ["\\mathrel{\\vcenter{\\baselineskip0.5ex \\lineskiplimit0pt \\hbox{\\footnotesize.}\\hbox{\\footnotesize.}}}% ="], "given": ["\\, | \\,"], "cX": ["\\mathcal{X}"], "cY": ["\\mathcal{Y}"], "cH": ["\\mathcal{H}"], "cD": ["\\mathcal{D}"], "hath": ["\\hat{h}"], "haty": ["\\hat{y}"], "hatp": ["\\hat{p}"], "sety": ["\\widehat{Y}"], "argmin": ["\\operatorname*{argmin}"], "argmax": ["\\operatorname*{argmax}"], "db": ["\\set{M}"], "fkt": ["#1(\\cdot)", 1], "chrfkt": ["\\mathbb{I}_{#1}", 1], "kref": ["(\\ref{#1})", 1], "convto": ["(\\rightarrow"], "fft": ["(#1 :  #2 \\rightarrow #3", 3], "with": ["\\,  | \\,"], "sothat": ["\\,  : \\,"], "defi": ["\\stackrel{\\on{df}}{=}"], "set": ["\\mathcal{#1}", 1], "Prob": ["P"], "prob": ["p"], "impl": ["\\Rightarrow"], "on": ["\\operatorname"], "groesser": ["\\raisebox{#1mm}{} \\raisebox{-#1mm}{}", 1], "sgroesser": ["\\groesser{1.20}"], "xleftr": ["\\left( \\groesser{1.35} "], "xleftg": ["\\left\\{ \\groesser{1.35} "], "fftm": ["\\fft{#1}{#2}{#3} \\, ,\\, #4 \\mapsto #5", 5], "gdw": ["\\Leftrightarrow"], "gdwbd": ["\\stackrel{\\on{df}}{\\Leftrightarrow}"], "est": ["{est}"], "epd": ["\\Leftrightarrow_{\\on{def}}"], "fromto": ["\\longrightarrow"], "pref": ["\\succ"], "evalue": ["\\mathbf{E}"], "variance": ["\\mathbf{V}"], "mmp": ["", 1], "llbracket": ["\\lbrack\\lbrack"], "rrbracket": ["\\rbrack\\rbrack"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-conformel_classification/conformel_classification';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="16. Conformal Prediction for Regression" href="../chapter-conformel_regression/conformel_regression.html" />
+    <link rel="prev" title="14. Reliable Classification" href="../chapter-reliable_classification/reliable_classification.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../startPage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../startPage.html">
+                    Toolbox for Uncertainty Quantification in Machine Learning
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter-prelude/prelude.html">1. Prelude</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-intro/intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-srcUncertainty/src.html">3. Sources of uncertainty in supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html">4. Modelling Approximation Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-scoring/scoring.html">5. Probability Estimation via Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-calibration/calibration.html">6. Probability Estimation and Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-ensemble/ensemble.html">7. Probability Estimation and Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-mle_and_fisher/mle.html">8. Maximum Likelihood and Fisher Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-generative_models/gm.html">9. Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-gaussianprocess/gaussianprocess.html">10. Gaussian Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-deep_neuralnetwork/dnn.html">11. Deep Neural Network Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-bayesian_neuralnetwork/bayesian.html">12. Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-credal_sets/credal_sets.html">13. Credal Sets and Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html">14. Reliable Classification</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Conformal Prediction for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_regression/conformel_regression.html">16. Conformal Prediction for Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-setValued_utilityMaximization/set.html">17. Set-valued Prediction Based on Utility Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-appendix/appendix.html">18. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">19. References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Advueu963/PageTest/blob/main/chapter-conformel_classification/conformel_classification.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/edit/main/chapter-conformel_classification/conformel_classification.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/issues/new?title=Issue%20on%20page%20%2Fchapter-conformel_classification/conformel_classification.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter-conformel_classification/conformel_classification.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Conformal Prediction for Classification</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transductive-conformal-prediction">15.1. Transductive Conformal Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inductive-conformal-prediction">15.2. Inductive Conformal Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-quantification-in-conformal-prediction">15.3. Uncertainty Quantification in Conformal Prediction</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="conformal-prediction-for-classification">
+<span id="conformal-class"></span><h1><span class="section-number">15. </span>Conformal Prediction for Classification<a class="headerlink" href="#conformal-prediction-for-classification" title="Link to this heading">#</a></h1>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="c1"># Vector Graphics</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib_inline</span>
+
+<span class="n">matplotlib_inline</span><span class="o">.</span><span class="n">backend_inline</span><span class="o">.</span><span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+
+<span class="c1"># Conformal Prediction Package</span>
+<span class="o">%</span><span class="k">pip</span> install mapie
+<span class="kn">from</span> <span class="nn">mapie.classification</span> <span class="kn">import</span> <span class="n">MapieClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="transductive-conformal-prediction">
+<h2><span class="section-number">15.1. </span>Transductive Conformal Prediction<a class="headerlink" href="#transductive-conformal-prediction" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>Conformal prediction (<span id="id1">Balasubramanian <em>et al.</em> [<a class="reference internal" href="../references.html#id1896" title="V. Balasubramanian, S.S. Ho, and V. Vovk, editors. Conformal Prediction for Reliable Machine Learning: Theory, Adaptations and Applications. Morgan Kaufmann, 2014.">BHV14</a>], Shafer and Vovk [<a class="reference internal" href="../references.html#id1897" title="G. Shafer and V. Vovk. A tutorial on conformal prediction. Journal of Machine Learning Research, pages 371–421, 2008.">SV08</a>], Vovk <em>et al.</em> [<a class="reference internal" href="../references.html#id1986" title="V. Vovk, A. Gammerman, and G. Shafer. Algorithmic Learning in a Random World. Springer-Verlag, 2003.">VGS03</a>]</span>) is a framework for reliable prediction that is rooted in classical frequentist statistics, more specifically in hypothesis testing<a class="footnote-reference brackets" href="#revision" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
+Given a sequence of training observations and a new query <span class="math notranslate nohighlight">\(\vec{x}_{q}\)</span> (which in the following plot is marked red) with unknown outcome <span class="math notranslate nohighlight">\(y_{N+1}\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-cpseq">
+<span class="eqno">(15.1)<a class="headerlink" href="#equation-cpseq" title="Link to this equation">#</a></span>\[
+(\vec{x}_1, y_1), \,  (\vec{x}_2, y_2), \ldots ,  (\vec{x}_N, y_N), \, (\vec{x}_{N+1}, \bullet)
+\enspace ,
+\]</div>
+</div>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_synthetic_data</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">new_point</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">new_point</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">new_point</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+    <span class="c1"># produce a legend with the unique colors from the scatter</span>
+    <span class="n">legend1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Classes&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">legend1</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Feature 1&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Feature 2&quot;</span><span class="p">)</span>
+
+
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">n_classes</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_classes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">random_state</span> <span class="o">=</span> <span class="mi">41</span>
+
+<span class="c1"># parameters for toy data</span>
+<span class="n">means</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">covs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">])]</span>
+
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># This choice is the central point of conformal prediction</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">mean</span><span class="p">,</span> <span class="n">cov</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">covs</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">])</span>
+
+<span class="n">x_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">plot_synthetic_data</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_q</span><span class="p">,</span> <span class="s2">&quot;Synthetic Classification Data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<figure class="align-default" id="synthetic-data">
+<img alt="../_images/5e34aeefd2599b454bec602bb11a041ce3d6a54b38f43b43af20ff164e8d3d13.svg" src="../_images/5e34aeefd2599b454bec602bb11a041ce3d6a54b38f43b43af20ff164e8d3d13.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.1 </span><span class="caption-text">Synthetic data created through four Gaussian distributions. A new query point is marked as red dot.</span><a class="headerlink" href="#synthetic-data" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div align="justify">
+<p>the basic idea is to hypothetically replace <span class="math notranslate nohighlight">\(\bullet\)</span> by each candidate, i.e., to test the hypothesis <span class="math notranslate nohighlight">\(y_{N+1} = y\)</span> for all <span class="math notranslate nohighlight">\(y \in \mathcal{Y}\)</span>. Only those outcomes <span class="math notranslate nohighlight">\(y\)</span> for which this hypothesis can be rejected at a predefined level of confidence are excluded, while those for which the hypothesis cannot be rejected are collected to form the prediction set or <em>prediction region</em> <span class="math notranslate nohighlight">\(Y^\epsilon \subseteq \mathcal{Y}\)</span>. The construction of a set-valued prediction <span class="math notranslate nohighlight">\(Y^\epsilon = Y^\epsilon(\vec{x}_{n+1})\)</span> that is guaranteed to cover the true outcome <span class="math notranslate nohighlight">\(y_{N+1}\)</span> with a given probability <span class="math notranslate nohighlight">\(1- \epsilon\)</span> (for example 95 %), instead of producing a point prediction <span class="math notranslate nohighlight">\(\hat{y}_{N+1} \in \mathcal{Y}\)</span>, is the basic idea of conformal prediction. Here, <span class="math notranslate nohighlight">\(\epsilon \in (0,1)\)</span> is a pre-specified level of significance. In the case of classification, <span class="math notranslate nohighlight">\(Y^\epsilon\)</span> is a subset of the set of classes <span class="math notranslate nohighlight">\(\mathcal{Y} = \{ y_1, \ldots , y_K \}\)</span>, whereas in regression, a prediction region is commonly represented in terms of an interval<a class="footnote-reference brackets" href="#regressioncase" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+</div>
+<div align="justify">
+<p>Hypothesis testing is done in a nonparametric way: Consider any <em>nonconformity</em> function <span class="math notranslate nohighlight">\(f: \, \mathcal{X} \times \mathcal{Y} \longrightarrow \mathbb{R}\)</span> that assigns a score <span class="math notranslate nohighlight">\(\alpha = f(\vec{x}, y)\)</span> to an input/output tuple. The latter can be interpreted as a measure of <em>strangeness</em> of the pattern <span class="math notranslate nohighlight">\((\vec{x}, y)\)</span>, i.e., the higher the score, the less the data point <span class="math notranslate nohighlight">\((\vec{x}, y)\)</span> conforms to the expected pattern.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The error bounds are valid and well calibrated by construction, regardless of the nonconformity function <span class="math notranslate nohighlight">\(f\)</span>. However, the choice of this function has an important influence on the <em>efficiency</em> of conformal prediction, that is, the size of prediction regions: The more suitable the nonconformity function is chosen, the smaller these sets <span class="math notranslate nohighlight">\(Y^\epsilon\)</span> will be.</p>
+</div>
+<p>An example of a nonconformity score based on nearest neighbors:</p>
+<div class="math notranslate nohighlight">
+\[
+f(\vec{x},y) = \frac{\sum_{i=1}^k d_i^+}{\sum_{i=1}^k d_i^-}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(d_i^+\)</span> is the distance from the <span class="math notranslate nohighlight">\(i^{th}\)</span> nearest neighbor labeled y, and <span class="math notranslate nohighlight">\(d_i^-\)</span> the distance from the <span class="math notranslate nohighlight">\(i^{th}\)</span> nearest neighbor labeled differently.
+Applying this function to the sequence <a class="reference internal" href="#equation-cpseq">(15.1)</a>, with a specific (though hypothetical) choice of <span class="math notranslate nohighlight">\(y = y_{N+1}\)</span> (i.e., with <span class="math notranslate nohighlight">\(y = 1\)</span>), yields a sequence of scores</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_1, \, \alpha_2, \ldots , \alpha_N , \, \alpha_{N+1} \enspace .
+\]</div>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span>
+        <span class="n">x</span> <span class="o">-</span> <span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>  <span class="c1"># L2-norm (euclidean distance between x and all data points in X)</span>
+    <span class="k">return</span> <span class="n">dist</span>
+
+
+<span class="k">def</span> <span class="nf">nearest_neighbors_idx</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span>
+        <span class="n">distances</span><span class="p">,</span> <span class="n">k</span>
+    <span class="p">)</span>  <span class="c1"># makes the kth element as pivot such that left from it are all smaller elements</span>
+    <span class="k">return</span> <span class="n">idx</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">nearest_neighbors_distance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">nearest_neighbors_idx</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dist</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>  <span class="c1"># get the distances of the k nearest neighbors</span>
+
+
+<span class="k">def</span> <span class="nf">split_data_classes</span><span class="p">(</span><span class="n">y_i</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="c1"># create two datasets one where each point has the same class as y_i the other points in the second dataset.</span>
+    <span class="n">mask_same_class</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y_i</span>
+    <span class="n">data_with_same_class</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">mask_same_class</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">data_with_other_class</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="o">~</span><span class="n">mask_same_class</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="k">return</span> <span class="n">data_with_same_class</span><span class="p">,</span> <span class="n">data_with_other_class</span>
+
+
+<span class="k">def</span> <span class="nf">nearest_neighbors_non_conformity_function</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">data_with_same_class</span><span class="p">,</span> <span class="n">data_with_other_class</span> <span class="o">=</span> <span class="n">split_data_classes</span><span class="p">(</span><span class="n">y_i</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">distance_to_same_class</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+        <span class="n">nearest_neighbors_distance</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">data_with_same_class</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">distance_to_other_class</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+        <span class="n">nearest_neighbors_distance</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">data_with_other_class</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">distance_to_same_class</span> <span class="o">/</span> <span class="n">distance_to_other_class</span>
+
+
+<span class="k">def</span> <span class="nf">get_nonconformity_scores</span><span class="p">(</span><span class="n">x_q</span><span class="p">,</span> <span class="n">y_new</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># merge X and y into one array</span>
+    <span class="n">new_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">x_q</span><span class="p">,</span> <span class="n">y_new</span><span class="p">))</span>  <span class="c1"># make the new data point</span>
+    <span class="n">complete_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">data</span><span class="p">,</span> <span class="n">new_point</span><span class="p">))</span>  <span class="c1"># put all together</span>
+
+    <span class="n">resulting_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">nearest_neighbors_non_conformity_function</span><span class="p">(</span>
+                <span class="n">x_i</span><span class="o">=</span><span class="n">complete_data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">y_i</span><span class="o">=</span><span class="n">complete_data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">complete_data</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">complete_data</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">complete_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">resulting_scores</span>
+
+
+<span class="k">def</span> <span class="nf">plot_nearest_neighbors_distance</span><span class="p">(</span><span class="n">y_new</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Non conformity function for $y_</span><span class="se">{{</span><span class="s2">N+1</span><span class="se">}}</span><span class="s2"> =</span><span class="si">{</span><span class="n">y_new</span><span class="si">}</span><span class="s2">$ (zoomed in)&quot;</span><span class="p">)</span>
+
+    <span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">x_q</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># visualize the distance to the equally labeled points:</span>
+    <span class="n">data_with_same_class</span><span class="p">,</span> <span class="n">data_with_other_class</span> <span class="o">=</span> <span class="n">split_data_classes</span><span class="p">(</span><span class="n">y_new</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nearest_neighbors_idx</span><span class="p">(</span>
+            <span class="n">euclidean_distance</span><span class="p">(</span><span class="n">x_q</span><span class="p">,</span> <span class="n">data_with_same_class</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span>
+    <span class="p">):</span>
+        <span class="n">x_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data_with_same_class</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+        <span class="n">y_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data_with_same_class</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+        <span class="p">(</span><span class="n">line1</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">x_values</span><span class="p">,</span> <span class="n">y_values</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;d_i^+&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span>
+        <span class="p">)</span>
+
+    <span class="c1"># visualize the distance to the differently labeled points:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nearest_neighbors_idx</span><span class="p">(</span>
+            <span class="n">euclidean_distance</span><span class="p">(</span><span class="n">x_q</span><span class="p">,</span> <span class="n">data_with_other_class</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span>
+    <span class="p">):</span>
+        <span class="n">x_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_q</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data_with_other_class</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+        <span class="n">y_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_q</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data_with_other_class</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+        <span class="p">(</span><span class="n">line2</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">x_values</span><span class="p">,</span> <span class="n">y_values</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;d_i^-&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span>
+        <span class="p">)</span>
+
+    <span class="c1"># produce a legend with the unique colors from the scatter</span>
+    <span class="n">legend1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Classes&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">legend1</span><span class="p">)</span>
+
+    <span class="c1"># produce a legend with the distance</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">line1</span><span class="p">,</span> <span class="n">line2</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distances&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Feature 1&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Feature 2&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_non_conformity_scores</span><span class="p">(</span><span class="n">non_conformity_scores</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribution of non-conformity scores&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">non_conformity_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;non-conformity score&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+
+
+<span class="n">alpha_values_y1</span> <span class="o">=</span> <span class="n">get_nonconformity_scores</span><span class="p">(</span><span class="n">x_q</span><span class="o">=</span><span class="n">x_q</span><span class="p">,</span> <span class="n">y_new</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">((</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">plot_nearest_neighbors_distance</span><span class="p">(</span><span class="n">y_new</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plot_non_conformity_scores</span><span class="p">(</span><span class="n">alpha_values_y1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># plot_nearest_neighbors_distance(y_new=1, ax=ax)</span>
+<span class="c1"># plot_nearest_neighbors_distance(y_new=2, ax=ax)</span>
+<span class="c1"># plot_nearest_neighbors_distance(y_new=3, ax=ax)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/e464189b611535a72721c114bac28947b0cf6ca3dda39a2ea94771ff69df9b73.svg" src="../_images/e464189b611535a72721c114bac28947b0cf6ca3dda39a2ea94771ff69df9b73.svg" />
+</div>
+</div>
+<div align="justify">
+<p>Denote by <span class="math notranslate nohighlight">\(\sigma\)</span> the permutation of <span class="math notranslate nohighlight">\(\{1, \ldots , N+1\}\)</span> that sorts the scores in increasing order, i.e., such that <span class="math notranslate nohighlight">\(\alpha_{\sigma(1)} \leq \ldots \leq \alpha_{\sigma(N+1)}\)</span>. Under the assumption that the hypothetical choice of <span class="math notranslate nohighlight">\(y_{N+1}\)</span> is in agreement with the true data-generating process, and that this process has the property of exchangeability<a class="footnote-reference brackets" href="#exchangeability" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> (which assumes that the order of observations is irrelevant), every permutation <span class="math notranslate nohighlight">\(\sigma\)</span> has the same probability of occurrence. Consequently, the probability that <span class="math notranslate nohighlight">\(\alpha_{N+1}\)</span> is among the <span class="math notranslate nohighlight">\(\epsilon\)</span>-% highest nonconformity scores should be low. This notion can be captured by the <span class="math notranslate nohighlight">\(p\)</span>-values associated with the candidate <span class="math notranslate nohighlight">\(y\)</span>, defined as</p>
+<div class="math notranslate nohighlight" id="equation-probability-y-highestnonconformity">
+<span class="eqno">(15.2)<a class="headerlink" href="#equation-probability-y-highestnonconformity" title="Link to this equation">#</a></span>\[
+p(y)   := \frac{\# \{ i \given \alpha_i \geq \alpha_{N+1} \}}{N+1}
+\]</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_probability</span><span class="p">(</span><span class="n">nonconformity_sequence</span><span class="p">):</span>
+    <span class="c1"># calculate the proportion that at least new data points nonconformity score occurs.</span>
+    <span class="n">new_datapoint_nonconformityScore</span> <span class="o">=</span> <span class="n">nonconformity_sequence</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">probability</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+        <span class="n">nonconformity_sequence</span> <span class="o">&gt;=</span> <span class="n">new_datapoint_nonconformityScore</span>
+    <span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span>
+        <span class="n">nonconformity_sequence</span>
+    <span class="p">)</span>  <span class="c1"># the N + 1 is inherently in the length of the sequence</span>
+    <span class="k">return</span> <span class="n">probability</span>
+
+
+<span class="n">probability_y1</span> <span class="o">=</span> <span class="n">calculate_probability</span><span class="p">(</span><span class="n">alpha_values_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Probability of y = 1: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">probability_y1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Probability of y = 1:  0.039
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>According to what we said, the probability that <span class="math notranslate nohighlight">\(p(y) &lt; \epsilon\)</span> (i.e., <span class="math notranslate nohighlight">\(\alpha_{N+1}\)</span> is among the <span class="math notranslate nohighlight">\(\epsilon\)</span>-% highest <span class="math notranslate nohighlight">\(\alpha\)</span>-values) is upper-bounded by <span class="math notranslate nohighlight">\(\epsilon\)</span>.
+Thus, the hypothesis <span class="math notranslate nohighlight">\(y_{N+1} = y\)</span> can be rejected for those candidates <span class="math notranslate nohighlight">\(y\)</span> for which <span class="math notranslate nohighlight">\(p(y) &lt; \epsilon\)</span>.
+For the initial choice <span class="math notranslate nohighlight">\(y = 1\)</span>, we can reject this candidate, because <span class="math notranslate nohighlight">\(p(y) \approx 0.038 &lt; 0.05 = \epsilon\)</span>.
+The complete <span class="math notranslate nohighlight">\(Y_\epsilon\)</span> can then be constructed iterating through all possible candidates <span class="math notranslate nohighlight">\(y = y_{N+1}\)</span>.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probabilities</span> <span class="o">=</span> <span class="p">{</span><span class="n">possible_class</span><span class="p">:</span> <span class="n">calculate_probability</span><span class="p">(</span><span class="n">get_nonconformity_scores</span><span class="p">(</span><span class="n">x_q</span><span class="p">,</span> <span class="n">possible_class</span><span class="p">))</span>
+                 <span class="k">for</span> <span class="n">possible_class</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">}</span>
+
+<span class="n">Y_epsilon</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">prediction</span>
+        <span class="k">for</span> <span class="n">prediction</span><span class="p">,</span> <span class="n">probability</span> <span class="ow">in</span> <span class="n">probabilities</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="mf">0.05</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction set Y:&quot;</span><span class="p">,</span> <span class="n">Y_epsilon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction set Y: {2, 4}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inductive-conformal-prediction">
+<h2><span class="section-number">15.2. </span>Inductive Conformal Prediction<a class="headerlink" href="#inductive-conformal-prediction" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>Conformal prediction as outlined above realizes transductive inference, although inductive variants also exist (<span id="id5">Papadopoulos [<a class="reference internal" href="../references.html#id1987" title="H. Papadopoulos. Inductive conformal prediction: theory and application to neural networks. Tools in Artificial Intelligence, 18(2):315–330, 2008.">Pap08</a>]</span>). For transductive inference the nonconformity scores <span class="math notranslate nohighlight">\(\alpha_1, \, \alpha_2, \ldots , \alpha_N , \, \alpha_{N+1}\)</span> have to be re-calculated for each new proposal <span class="math notranslate nohighlight">\(y_{N+1}=y\)</span>. In inductive inference this problem is solved by using a <em>calibration</em> dataset. Many packages have already been published implementing the inductive inference, such as <a class="reference external" href="https://mapie.readthedocs.io/en/latest/index.html">MAPIE</a>. We again use the above-mentioned synthetic dataset and split it into <span class="math notranslate nohighlight">\(l\)</span> training and <span class="math notranslate nohighlight">\(N-l\)</span> testing points.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_synthetic_data</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_q</span><span class="p">,</span> <span class="s2">&quot;Synthetic training classification data&quot;</span><span class="p">)</span>
+<span class="n">plot_synthetic_data</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span><span class="s2">&quot;Synthetic validation classification data &quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/2a9e2b7ae604c580ba09d36bbbfa2c556294ec52963ee29c052abea6f99be393.svg" src="../_images/2a9e2b7ae604c580ba09d36bbbfa2c556294ec52963ee29c052abea6f99be393.svg" />
+</div>
+</div>
+<div align="justify">
+<p>In the next step, we take an arbitrary classifier such as the <a class="reference external" href="https://scikit-learn.org/stable/modules/naive_bayes.html">Gaussian Naive Bayes classifier</a> and train it on the classification dataset. Then on the validation dataset the corresponding nonconformity scores are computed for which we use the wrapper <a class="reference external" href="https://mapie.readthedocs.io/en/latest/generated/mapie.classification.MapieClassifier.html#mapie.classification.MapieClassifier">MapieClassifier</a>. As a corresponding nonconformity function <span class="math notranslate nohighlight">\(f\)</span> we use the <em>Least Ambiguous Set-Valued Classifier</em> (LAC) method from <span id="id6">Sadinle <em>et al.</em> [<a class="reference internal" href="../references.html#id571" title="M. Sadinle, J. Lei, and L. Wasserman. Least ambiguous set-valued classifiers with bounded error levels. Journal of the American Statistical Association, 114(525):223–234, 2019.">SLW19</a>]</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+    f(\vec{x},y) = 1 - \hath(\vec{x})_y
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hath\)</span> is a classifier and <span class="math notranslate nohighlight">\(\hath(\vec{x})_y\)</span> the probability of classifying the data point <span class="math notranslate nohighlight">\(\vec{x}\)</span> as <span class="math notranslate nohighlight">\(y\)</span>.
+Applying this function to the validation dataset yields a sequence of nonconformity scores <span class="math notranslate nohighlight">\(\alpha_{l+1}, \, \alpha_{l+2}, \ldots , \alpha_{N-1}, \alpha_{N}\)</span> which is represented by the histogram below.</p>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>From an user perspective it is not necessary to split the data into train and validation beforehand.
+The <em>MapieClassifier</em> would do this automatically controlled by the parameter <code class="docutils literal notranslate"><span class="pre">cv</span></code>.
+Here, we want to illustrate this, therefore we choose <code class="docutils literal notranslate"><span class="pre">cv=&quot;prefit&quot;</span></code></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">naive_bayes</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">naive_bayes</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">conformal_classifier</span> <span class="o">=</span> <span class="n">MapieClassifier</span><span class="p">(</span><span class="n">naive_bayes</span><span class="p">,</span>
+                                       <span class="n">method</span><span class="o">=</span><span class="s2">&quot;lac&quot;</span><span class="p">,</span>
+                                       <span class="n">cv</span><span class="o">=</span><span class="s2">&quot;prefit&quot;</span><span class="p">,</span>
+                                       <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+<span class="n">conformal_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">)</span>
+
+<span class="n">nonconformity_scores</span> <span class="o">=</span> <span class="n">conformal_classifier</span><span class="o">.</span><span class="n">conformity_scores_</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the score distribution</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nonconformity_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribution of nonconformity scores&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Nonconformity scores&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/a638fbe7a8d343c7c0953cd110e58e03cd7240c19229493b3229f4bd11a6fb2d.svg" src="../_images/a638fbe7a8d343c7c0953cd110e58e03cd7240c19229493b3229f4bd11a6fb2d.svg" />
+</div>
+</div>
+<div align="justify">
+<p>Given an <span class="math notranslate nohighlight">\(\epsilon\)</span> one can define based on the above distribution a threshold <span class="math notranslate nohighlight">\(q\)</span> such that all candidates <span class="math notranslate nohighlight">\(y_{N+1}=y\)</span> can be rejected if <span class="math notranslate nohighlight">\(f(\vec{x}_{N+1},y_{N+1}) \geq q\)</span>. The value of <span class="math notranslate nohighlight">\(q\)</span> is chosen such that <a class="reference internal" href="#equation-probability-y-highestnonconformity">(15.2)</a> holds. The resulting prediction set is as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+    Y^\epsilon = \{
+            y \given 1 - \hath(x_{N+1})_y \leq q
+        \}
+\]</div>
+<p>To calculate <span class="math notranslate nohighlight">\(q\)</span> one must think of a value such that <span class="math notranslate nohighlight">\((1-\epsilon)\)</span>% of the nonconformity scores <span class="math notranslate nohighlight">\(\alpha_{l+1}, \, \alpha_{l+2}, \ldots , \alpha_{N-1}, \alpha_{N}\)</span> are smaller than <span class="math notranslate nohighlight">\(q\)</span>.
+This is exactly what the <span class="math notranslate nohighlight">\((1-\epsilon)\)</span> quantile represents!
+To find our threshold q, we calculate the <span class="math notranslate nohighlight">\(\frac{\lceil (N-l+1)*(1-\epsilon) \rceil}{n}\)</span> quantile on the sequence <span class="math notranslate nohighlight">\(\alpha_{l+1}, \, \alpha_{l+2}, \ldots , \alpha_{N-1}, \alpha_{N}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    q = \textit{Quantile}\left(\alpha_{l+1}, \, \alpha_{l+2}, \ldots , \alpha_{N-1}, \alpha_{N}, \frac{\lceil (N-l+1) (1-\epsilon) \rceil}{N-l}\right)
+\]</div>
+<p>We use <span class="math notranslate nohighlight">\((N-l+1)\)</span> instead of <span class="math notranslate nohighlight">\((N-l)\)</span> to take into account the finite sample size.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper function converting the mapie output to a &quot;real&quot; prediction set</span>
+<span class="k">def</span> <span class="nf">to_prediction_set</span><span class="p">(</span><span class="n">prediction_set_indicator</span><span class="p">):</span>
+    <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">,</span> <span class="n">n_alpha</span> <span class="o">=</span> <span class="n">prediction_set_indicator</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="n">prediction_sets_with_zero_fills</span> <span class="o">=</span> <span class="n">prediction_set_indicator</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">classes</span><span class="p">)[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span>
+
+    <span class="n">datapoint_sets</span> <span class="o">=</span> <span class="p">[[]]</span> <span class="o">*</span> <span class="n">n_alpha</span>  <span class="c1"># we need so many prediction sets for each data point as we defined alpha values</span>
+    <span class="n">prediction_sets</span> <span class="o">=</span> <span class="p">[</span><span class="n">datapoint_sets</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_samples</span>
+    <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">epsilon</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_alpha</span><span class="p">):</span>
+            <span class="n">current_mask</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">prediction_sets_with_zero_fills</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span> <span class="p">:,</span> <span class="n">epsilon</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="p">)</span>  <span class="c1"># mask to indicate the classes included in set</span>
+            <span class="n">prediction_sets</span><span class="p">[</span><span class="n">sample</span><span class="p">][</span><span class="n">epsilon</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">prediction_sets_with_zero_fills</span><span class="p">[</span>
+                                                   <span class="n">sample</span><span class="p">,</span> <span class="p">:,</span> <span class="n">epsilon</span>
+                                                   <span class="p">][</span>
+                                                       <span class="n">current_mask</span>
+                                                   <span class="p">])</span>  <span class="c1"># put these values in the prediction set</span>
+    <span class="k">return</span> <span class="n">prediction_sets</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point</span><span class="p">,</span> <span class="n">prediction_set_indicator</span> <span class="o">=</span> <span class="n">conformal_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+    <span class="n">x_q</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+    <span class="c1"># note that what we denote as epsilon is called alpha in MAPIE. Also we can use mutliple epsilon values</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Point estimate: &quot;</span><span class="p">,</span> <span class="n">point</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Prediction Indicator Set(epsilon=0.05; epsilon=0.1): </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">prediction_set_indicator</span>
+<span class="p">)</span>  <span class="c1"># The output indicates whether the corresponding class is contained in the set prediction set for the given epsilon niveau.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction sets (epsilon=.05; epsilon=0.1): </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="n">to_prediction_set</span><span class="p">(</span><span class="n">prediction_set_indicator</span><span class="o">=</span><span class="n">prediction_set_indicator</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Point estimate:  [2]
+Prediction Indicator Set(epsilon=0.05; epsilon=0.1): 
+ [[[False False]
+  [ True False]
+  [False False]
+  [ True False]]]
+Prediction sets (epsilon=.05; epsilon=0.1): 
+ [[{2, 4}, set()]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To reproduce the above output one can retrace the individual steps. The first step is to obtain the nonconformity scores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#1. Step: Create nonconformity scores</span>
+<span class="k">def</span> <span class="nf">get_lac_nonconformity_scores</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">conditional_probabilities</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="c1"># creates boolean array where True indicates the conditional probability value we need for nonconformity score.</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_classes</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">==</span> <span class="n">y</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="n">lac_nonconformity_scores</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">conditional_probabilities</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">lac_nonconformity_scores</span>
+
+
+<span class="n">lac_nonconformity_scores</span> <span class="o">=</span> <span class="n">get_lac_nonconformity_scores</span><span class="p">(</span><span class="n">naive_bayes</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To reproduce the above output one can retrace the individual steps.
+The second step is to calculate the quantile q.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2. Step: Create Quantile</span>
+<span class="k">def</span> <span class="nf">calculate_quantile</span><span class="p">(</span><span class="n">nonconformity_scores</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span>
+        <span class="n">nonconformity_scores</span><span class="p">,</span>
+        <span class="n">q</span><span class="o">=</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">nonconformity_scores</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">))</span>
+          <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">nonconformity_scores</span><span class="p">),</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;higher&quot;</span><span class="p">,</span>  <span class="c1"># rounds the quantile to the upper value</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># compute the threshold q such that only 5% proportion of the data is bigger than q</span>
+
+<span class="n">q_5percent</span> <span class="o">=</span> <span class="n">calculate_quantile</span><span class="p">(</span><span class="n">lac_nonconformity_scores</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Threshold with epsilon=0.05: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">q_5percent</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="n">q_10percent</span> <span class="o">=</span> <span class="n">calculate_quantile</span><span class="p">(</span><span class="n">lac_nonconformity_scores</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Threshold with epsilon=0.10: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">q_10percent</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Threshold with epsilon=0.05:  0.783
+Threshold with epsilon=0.10:  0.565
+</pre></div>
+</div>
+</div>
+</div>
+<p>As for the next step we calculate the nonconformity scores for the data point <span class="math notranslate nohighlight">\(\vec{x}_{N+1}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#3.Step: Obtain nonconformity scores for the new_points.</span>
+<span class="k">def</span> <span class="nf">get_new_points_nonconformity_scores</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">new_points</span><span class="p">):</span>
+    <span class="c1"># compute nonconformity scores for the new data points</span>
+    <span class="n">nonconformity_scores</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">new_points</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">nonconformity_scores</span>
+
+
+<span class="c1"># compute nonconformity scores for the new data point x_q</span>
+<span class="n">nonconformity_scores_x_q</span> <span class="o">=</span> <span class="n">get_new_points_nonconformity_scores</span><span class="p">(</span><span class="n">naive_bayes</span><span class="p">,</span> <span class="n">x_q</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Output the to 4 decimal places rounded nonconformity scores</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nonconformity_scores_x_q</span><span class="o">.</span><span class="n">flatten</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nonconformity score for y=</span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nonconformity score for y=1:  0.914
+Nonconformity score for y=2:  0.571
+Nonconformity score for y=3:  0.903
+Nonconformity score for y=4:  0.612
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the final step, we construct the <span class="math notranslate nohighlight">\(Y^\epsilon\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_prediction_set</span><span class="p">(</span><span class="n">prediction_set</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">prediction_set</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># Check if empty set for nice printing</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediction set for epsilon = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">epsilon</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s2">%: &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediction set for epsilon = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">epsilon</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s2">%: &quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prediction_set</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">prediction_set_5percent</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span>
+    <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nonconformity_scores_x_q</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span> <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="n">q_5percent</span>
+<span class="p">])</span>
+
+<span class="n">prediction_set_10percent</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span>
+    <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nonconformity_scores_x_q</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span> <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;=</span> <span class="n">q_10percent</span>
+<span class="p">])</span>
+
+<span class="n">print_prediction_set</span><span class="p">(</span><span class="n">prediction_set_5percent</span><span class="p">,</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">print_prediction_set</span><span class="p">(</span><span class="n">prediction_set_10percent</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediction set for epsilon = 5%: {2, 4}
+Prediction set for epsilon = 10%: {}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Conformal prediction primarily focuses on constructing valid prediction regions, setting it apart from most other machine learning methods that generate point predictions <span class="math notranslate nohighlight">\(y \in \mathcal{Y}\)</span>, regardless of whether they include a measure of uncertainty. In a way, conformal prediction takes an orthogonal approach: it specifies the degree of uncertainty (confidence level) beforehand and then adjusts its predictions accordingly, rather than producing predictions first and quantifying uncertainty afterward.</p>
+</section>
+<section id="uncertainty-quantification-in-conformal-prediction">
+<h2><span class="section-number">15.3. </span>Uncertainty Quantification in Conformal Prediction<a class="headerlink" href="#uncertainty-quantification-in-conformal-prediction" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>Although conformal prediction is mainly concerned with constructing prediction regions, the calculated scores can also be used to quantify uncertainty. In this regard, the notions of <em>confidence</em> and <em>credibility</em> have been introduced (<span id="id7">Gammerman and Vovk [<a class="reference internal" href="../references.html#id2174" title="A. Gammerman and V. Vovk. Prediction algorithms and confidence measures based on algorithmic randomness theory. Theoretical Computer Science, 287:209–217, 2002.">GV02</a>]</span>): Let <span class="math notranslate nohighlight">\(p_1, \ldots , p_K\)</span> denote the <span class="math notranslate nohighlight">\(p\)</span>-values that correspond, respectively, to the candidate outcomes <span class="math notranslate nohighlight">\(y_1, \ldots , y_K\)</span> in a classification setting.
+In the transductive case <span class="math notranslate nohighlight">\(p\)</span>-values are calculated directly, while they need to be calculated separately in the inductive case. Let us assume an <span class="math notranslate nohighlight">\(\epsilon=0.05\)</span>.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_p_values</span><span class="p">(</span><span class="n">nonconformity_scores_validation</span><span class="p">,</span> <span class="n">nonconformity_scores_new_point</span><span class="p">):</span>
+    <span class="c1"># the +1 is for the score itself which is also part of the nonconformity score sequence in general but not in nonconformity_scores_validation</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="c1"># Sum over all n_validation scores for each data point and each class in nonconformity_scores_newPoint</span>
+            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">nonconformity_scores_validation</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">nonconformity_scores_new_point</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span>
+                    <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nonconformity_scores_validation</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="n">p_values</span> <span class="o">=</span> <span class="n">get_p_values</span><span class="p">(</span>
+    <span class="n">nonconformity_scores_validation</span><span class="o">=</span><span class="n">nonconformity_scores</span><span class="p">,</span>
+    <span class="n">nonconformity_scores_new_point</span><span class="o">=</span><span class="n">nonconformity_scores_x_q</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">p_values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.03726708, 0.09937888, 0.03726708, 0.09937888])
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>Based on the above calculations we can infer that the p-value for</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y_1 = 1\)</span> is equal to <span class="math notranslate nohighlight">\(p_1=0.037\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_2 = 2\)</span> is equal to <span class="math notranslate nohighlight">\(p_2=0.099\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_3 = 3\)</span> is equal to <span class="math notranslate nohighlight">\(p_3=0.037\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_4 = 4\)</span> is equal to <span class="math notranslate nohighlight">\(p_4=0.099\)</span>.</p></li>
+</ul>
+<p>If a single class (point prediction) <span class="math notranslate nohighlight">\(\hat{y}\)</span> has to be predicted, it is natural to pick the <span class="math notranslate nohighlight">\(y_i\)</span> with the highest <span class="math notranslate nohighlight">\(p\)</span>-value, i.e. here it would be either <span class="math notranslate nohighlight">\(\hat{y}=y_2\)</span> or <span class="math notranslate nohighlight">\(\hat{y}=y_4\)</span>.
+The value <span class="math notranslate nohighlight">\(p_i\)</span> itself is then a natural measure of credibility, since the larger (closer to 1) this value, the more likely the prediction is correct.
+Note that the value also corresponds to the largest significance level <span class="math notranslate nohighlight">\(\epsilon\)</span> for which the prediction region <span class="math notranslate nohighlight">\(Y^\epsilon\)</span> would be empty (since all candidates would be rejected).
+In other words, it is a degree to which <span class="math notranslate nohighlight">\(y_i\)</span> is indeed a plausible candidate that cannot be excluded.
+In our example, we have a low credibility (<span class="math notranslate nohighlight">\(p_2\)</span>=0.099) indicating that the model has difficulty to correctly classify <span class="math notranslate nohighlight">\(x_{N+1}\)</span> given the training points (<span id="id8">Papadopoulos [<a class="reference internal" href="../references.html#id1987" title="H. Papadopoulos. Inductive conformal prediction: theory and application to neural networks. Tools in Artificial Intelligence, 18(2):315–330, 2008.">Pap08</a>]</span>).
+This reasoning is illustrated in <a class="reference internal" href="#synthetic-data"><span class="std std-numref">Fig. 15.1</span></a>, where it is evident that the point lies close to examples from both class two and class four.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_point_prediction_uncertainty</span><span class="p">(</span><span class="n">p_values</span><span class="p">):</span>
+    <span class="c1"># get for each data point the class with highest p_value. If multiple classes have same p_value we return the first one.</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Get the unique p_values and sort them from lowest to highest for each data point in p_values.shape[0]</span>
+    <span class="n">sorted_probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Compute the Confidence and Credibility Scores</span>
+    <span class="n">credibility</span><span class="p">,</span> <span class="n">confidence</span> <span class="o">=</span> <span class="n">sorted_probabilities</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">sorted_probabilities</span><span class="p">[:,</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">credibility</span><span class="p">,</span> <span class="n">confidence</span>
+
+
+<span class="n">y_hat</span><span class="p">,</span> <span class="n">credibility</span><span class="p">,</span> <span class="n">confidence</span> <span class="o">=</span> <span class="n">get_point_prediction_uncertainty</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Credibility: &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">credibility</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Credibility:  0.099
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>Besides credibility one may also inquire to what extent <span class="math notranslate nohighlight">\(y_i\)</span> is the unique candidate meaning how definitively other candidates can be excluded.
+This can be quantified in terms of the greatest <span class="math notranslate nohighlight">\(1 - \epsilon\)</span> for which <span class="math notranslate nohighlight">\(Y^\epsilon\)</span> is the singleton set <span class="math notranslate nohighlight">\(\{ y_i \}\)</span>, that is, <span class="math notranslate nohighlight">\(1\)</span> minus the second-highest <span class="math notranslate nohighlight">\(p\)</span>-value.
+For our concrete example, we have a high confidence (<span class="math notranslate nohighlight">\(1-p_1=0.963\)</span>).
+If we look at the p-values, both class two and four have identical ones. Thus, our model can easily disregard class one and three, but has problems with disregarding class four. Because both classes are quite close to the new point this implies aleatoric uncertainty.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confidence: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">confidence</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confidence:  0.963
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Other methods have been proposed for quantifying uncertainty of a point prediction in the context of conformal prediction (<span id="id9">Linusson <em>et al.</em> [<a class="reference internal" href="../references.html#id236" title="H. Linusson, U. Johansson, H. Boström, and T. Löfström. Reliable confidence predictions using conformal prediction. In Proc. PAKDD, 20th Pacific-Asia Conference on Knowledge Discovery and Data Mining. Auckland, New Zealand, 2016.">LJBostromLofstrom16</a>]</span>).</p>
+</div>
+<div align="justify">
+<p>To conclude the uncertainty quantification for conformal prediction, we display the credibility and confidence values for all possible data points.
+The Naive Bayes model is hereby trained on all synthetic data points (see <a class="reference internal" href="#synthetic-data"><span class="std std-numref">Fig. 15.1</span></a>).</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_credibility_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots a contour plot of the set_sizes induced  by the set_builder.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ax (matplotlib.axes): axes of matplotlib </span>
+<span class="sd">        X (np.ndarray): The data points which span the grid for the contour plot.</span>
+<span class="sd">        y (np.ndarray): The labels of the data points X.</span>
+<span class="sd">        title (str): The title of the contour plot.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># create all the points we will calculate the prediction set sizes</span>
+    <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">x_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">y_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">xv</span><span class="p">,</span> <span class="n">yv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">)</span>
+
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">xv</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yv</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+
+    <span class="c1"># calculate set sizes</span>
+    <span class="n">naive_bayes</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">nonconform_scores</span> <span class="o">=</span> <span class="n">get_new_points_nonconformity_scores</span><span class="p">(</span><span class="n">naive_bayes</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
+    <span class="n">p_values</span> <span class="o">=</span> <span class="n">get_p_values</span><span class="p">(</span><span class="n">nonconformity_scores_validation</span><span class="o">=</span><span class="n">lac_nonconformity_scores</span><span class="p">,</span>
+                            <span class="n">nonconformity_scores_new_point</span><span class="o">=</span><span class="n">nonconform_scores</span><span class="p">)</span>
+    <span class="n">y_hat</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="n">credibility</span> <span class="o">=</span> <span class="n">get_point_prediction_uncertainty</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>
+
+    <span class="n">confidence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">confidence</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">credibility</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">credibility</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1">#print(&quot;Set sizes: &quot;, np.unique(set_sizes))</span>
+
+    <span class="c1"># plot the data points</span>
+    <span class="n">plot_synthetic_data</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_q</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+    <span class="n">plot_synthetic_data</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_q</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+
+    <span class="c1"># create contour plot</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s2">&quot;BuGn&quot;</span><span class="p">]</span>  <span class="c1"># define the colormap</span>
+    <span class="n">contour</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s2">&quot;GnBu&quot;</span><span class="p">]</span>  <span class="c1"># define the colormap</span>
+    <span class="n">contour2</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">,</span> <span class="n">credibility</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Credibility&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Confidence&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">contour</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">contour2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_credibility_contour</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/8a6190837a70c24d0b844a51b0d98ca8cdc7499446f3a83ca072ce06c78f1cf8.svg" src="../_images/8a6190837a70c24d0b844a51b0d98ca8cdc7499446f3a83ca072ce06c78f1cf8.svg" />
+</div>
+</div>
+<p>The following information can be extracted:</p>
+<ul class="simple">
+<li><p>Credibility: The closer the data points are to other class regions, the lower the value becomes. This is intuitive because the probabilities are less distinct in such cases.</p></li>
+<li><p>Confidence: This is a similar scenario with a different interpretation: the closer data points are to overlapping class regions, the less likely it is that the prediction will be a singleton set.</p></li>
+</ul>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="revision" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>If this concept is new to you we recommend visiting our site on <a class="reference internal" href="../chapter-appendix/appendix.html#hypothesis-testing"><span class="std std-ref">Hypothesis Testing</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="regressioncase" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>Obviously, since <span class="math notranslate nohighlight">\(\mathcal{Y} = \mathbb{R}\)</span> is infinite in regression, a hypothesis test cannot be conducted explicitly for each candidate outcome <span class="math notranslate nohighlight">\(y\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="exchangeability" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>If unfamiliar with the concept we recommend reading our <a class="reference internal" href="../chapter-appendix/appendix.html#exchangeability-excursus"><span class="std std-ref">exchangeability</span></a> example.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-conformel_classification"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter-reliable_classification/reliable_classification.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Reliable Classification</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter-conformel_regression/conformel_regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Conformal Prediction for Regression</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transductive-conformal-prediction">15.1. Transductive Conformal Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inductive-conformal-prediction">15.2. Inductive Conformal Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-quantification-in-conformal-prediction">15.3. Uncertainty Quantification in Conformal Prediction</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <section>
+    For comprehensive discussions please contact one of our team members: 
+    {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
+
+        <div style="margin-top: 50px;" id="disqus_thread"></div>
+
+        <script>
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://https-werywjw-github-io-toolbox-github-io.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section> 
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

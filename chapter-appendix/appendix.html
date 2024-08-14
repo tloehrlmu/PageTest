@@ -1,0 +1,1674 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>18. Appendix &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myStyle.css?v=e90502a2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "vec": ["\\boldsymbol{#1}", 1], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "defeq": ["\\mathrel{\\vcenter{\\baselineskip0.5ex \\lineskiplimit0pt \\hbox{\\footnotesize.}\\hbox{\\footnotesize.}}}% ="], "given": ["\\, | \\,"], "cX": ["\\mathcal{X}"], "cY": ["\\mathcal{Y}"], "cH": ["\\mathcal{H}"], "cD": ["\\mathcal{D}"], "hath": ["\\hat{h}"], "haty": ["\\hat{y}"], "hatp": ["\\hat{p}"], "sety": ["\\widehat{Y}"], "argmin": ["\\operatorname*{argmin}"], "argmax": ["\\operatorname*{argmax}"], "db": ["\\set{M}"], "fkt": ["#1(\\cdot)", 1], "chrfkt": ["\\mathbb{I}_{#1}", 1], "kref": ["(\\ref{#1})", 1], "convto": ["(\\rightarrow"], "fft": ["(#1 :  #2 \\rightarrow #3", 3], "with": ["\\,  | \\,"], "sothat": ["\\,  : \\,"], "defi": ["\\stackrel{\\on{df}}{=}"], "set": ["\\mathcal{#1}", 1], "Prob": ["P"], "prob": ["p"], "impl": ["\\Rightarrow"], "on": ["\\operatorname"], "groesser": ["\\raisebox{#1mm}{} \\raisebox{-#1mm}{}", 1], "sgroesser": ["\\groesser{1.20}"], "xleftr": ["\\left( \\groesser{1.35} "], "xleftg": ["\\left\\{ \\groesser{1.35} "], "fftm": ["\\fft{#1}{#2}{#3} \\, ,\\, #4 \\mapsto #5", 5], "gdw": ["\\Leftrightarrow"], "gdwbd": ["\\stackrel{\\on{df}}{\\Leftrightarrow}"], "est": ["{est}"], "epd": ["\\Leftrightarrow_{\\on{def}}"], "fromto": ["\\longrightarrow"], "pref": ["\\succ"], "evalue": ["\\mathbf{E}"], "variance": ["\\mathbf{V}"], "mmp": ["", 1], "llbracket": ["\\lbrack\\lbrack"], "rrbracket": ["\\rbrack\\rbrack"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-appendix/appendix';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="19. References" href="../references.html" />
+    <link rel="prev" title="17. Set-valued Prediction Based on Utility Maximization" href="../chapter-setValued_utilityMaximization/set.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../startPage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../startPage.html">
+                    Toolbox for Uncertainty Quantification in Machine Learning
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter-prelude/prelude.html">1. Prelude</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-intro/intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-srcUncertainty/src.html">3. Sources of uncertainty in supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html">4. Modelling Approximation Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-scoring/scoring.html">5. Probability Estimation via Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-calibration/calibration.html">6. Probability Estimation and Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-ensemble/ensemble.html">7. Probability Estimation and Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-mle_and_fisher/mle.html">8. Maximum Likelihood and Fisher Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-generative_models/gm.html">9. Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-gaussianprocess/gaussianprocess.html">10. Gaussian Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-deep_neuralnetwork/dnn.html">11. Deep Neural Network Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-bayesian_neuralnetwork/bayesian.html">12. Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-credal_sets/credal_sets.html">13. Credal Sets and Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html">14. Reliable Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_classification/conformel_classification.html">15. Conformal Prediction for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_regression/conformel_regression.html">16. Conformal Prediction for Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-setValued_utilityMaximization/set.html">17. Set-valued Prediction Based on Utility Maximization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">19. References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Advueu963/PageTest/blob/main/chapter-appendix/appendix.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/edit/main/chapter-appendix/appendix.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/issues/new?title=Issue%20on%20page%20%2Fchapter-appendix/appendix.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter-appendix/appendix.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Appendix</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-on-uncertainty-modeling">18.1. Background on uncertainty modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-versus-distributions">18.1.1. Sets versus distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-of-distributions">18.1.2. Sets of distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions-of-sets">18.1.3. Distributions of sets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-min-versus-sum-product-aggregation">18.2. Max-min versus sum-product aggregation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">18.3. Hypothesis testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exchangeability">18.4. Exchangeability</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="appendix">
+<h1><span class="section-number">18. </span>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">combinations</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span><span class="p">,</span> <span class="n">rc</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.writer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ffmpeg&#39;</span>
+
+<span class="c1"># Vector Graphics</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib_inline</span>
+<span class="n">matplotlib_inline</span><span class="o">.</span><span class="n">backend_inline</span><span class="o">.</span><span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="background-on-uncertainty-modeling">
+<span id="unc"></span><h2><span class="section-number">18.1. </span>Background on uncertainty modeling<a class="headerlink" href="#background-on-uncertainty-modeling" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>The notion of uncertainty has been studied in various branches of science and scientific disciplines. For a long time, it plays a major role in fields like economics, psychology, and the social sciences, typically in the appearance of applied statistics. Likewise, its importance for artificial intelligence has been recognized very early on<a class="footnote-reference brackets" href="#footnoteidentifier1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, at the latest with the emergence of expert systems, which came along with the need for handling inconsistency, incompleteness, imprecision, and vagueness in knowledge representation (<span id="id2">Kruse <em>et al.</em> [<a class="reference internal" href="../references.html#id680" title="R. Kruse, E. Schwecke, and J. Heinsohn. Uncertainty and Vagueness in Knowledge Based Systems. Springer-Verlag, 1991.">KSH91</a>]</span>). More recently, the phenomenon of uncertainty has also attracted a lot of attention in engineering, where it is studied under the notion of “uncertainty quantification”  (<span id="id3">Owhadi <em>et al.</em> [<a class="reference internal" href="../references.html#id679" title="H. Owhadi, T.J. Sullivan, M. McKerns, M. Ortiz, and C. Scovel. Optimal uncertainty quantification. CoRR, 2012. URL: http://arxiv.org/abs/1009.0679.">OSM+12</a>]</span>); interestingly, a distinction between aleatoric and epistemic uncertainty, very much in line with our machine learning perspective, is also made there.</p>
+</div><div align="justify">
+<p>The contemporary literature on uncertainty is rather broad (cf. <a class="reference internal" href="#calcu"><span class="std std-numref">Fig. 18.1</span></a>). In the following, we give a brief overview, specifically focusing on the distinction between set-based and distributional (probabilistic) representations. Against the background of our discussion about aleatoric and epistemic uncertainty, this distinction is arguably important. Roughly speaking, while aleatoric uncertainty is appropriately modeled in terms of probability distributions, one may argue that a set-based approach is more suitable for modeling ignorance and a lack of knowledge, and hence more apt at capturing epistemic uncertainty.</p>
+</div><figure class="align-default" id="calcu">
+<a class="reference internal image-reference" href="../_images/pic-calculi.png"><img alt="calculi" src="../_images/pic-calculi.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18.1 </span><span class="caption-text">Various uncertainty calculi and common frameworks for uncertainty representation (<span id="id4">Destercke <em>et al.</em> [<a class="reference internal" href="../references.html#id5" title="S. Destercke, D. Dubois, and E. Chojnacki. Unifying practical uncertainty representations: I. Generalized p-boxes. International Journal of Approximate Reasoning, 49:649–663, 2008.">DDC08</a>]</span>). Most of these formalisms are generalizations of standard probability theory an arrow denotes an “is more general than” relationship</span><a class="headerlink" href="#calcu" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="sets-versus-distributions">
+<h3><span class="section-number">18.1.1. </span>Sets versus distributions<a class="headerlink" href="#sets-versus-distributions" title="Link to this heading">#</a></h3>
+<div align="justify">
+<p>A generic way for describing situations of uncertainty is to proceed from an underlying reference set <span class="math notranslate nohighlight">\(\Omega\)</span>, sometimes called the <em>frame of discernment</em> (<span id="id5">Shafer [<a class="reference internal" href="../references.html#id856" title="G. Shafer. A Mathematical Theory of Evidence. Princeton University Press, 1976.">Sha76</a>]</span>). This set consists of all hypotheses, or pieces of precise information, that ought to be distinguished in the current context.  Thus, the elements <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span> are exhaustive and mutually exclusive, and one of them, <span class="math notranslate nohighlight">\(\omega^*\)</span>, corresponds to the truth. For example, <span class="math notranslate nohighlight">\(\Omega = \{ H, T \}\)</span> in the case of coin tossing, <span class="math notranslate nohighlight">\(\Omega = \{ \text{win}, \text{loss}, \text{tie} \}\)</span> in predicting the outcome of a football match, or <span class="math notranslate nohighlight">\(\Omega = \mathbb{R} \times \mathbb{R}_+\)</span> in the estimation of the parameters (expected value and standar deviation) of a normal distribution from data. For ease of exposition and to avoid measure-theoretic complications, we will subsequently assume that <span class="math notranslate nohighlight">\(\Omega\)</span> is a discrete (finite or countable) set.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">football_omega</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;win&quot;</span><span class="p">,</span> <span class="s2">&quot;tie&quot;</span><span class="p">,</span><span class="s2">&quot;loss&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>As an aside, we note that the assumption of exhaustiveness of <span class="math notranslate nohighlight">\(\Omega\)</span> could be relaxed. In a classification problem in machine learning, for example, not all possible classes might be known beforehand, or new classes may emerge in the course of time(<span id="id6">Hendrycks and Gimpel [<a class="reference internal" href="../references.html#id50" title="D. Hendrycks and K. Gimpel. A baseline for detecting misclassified and out-of-distribution examples in neural networks. In Proc. ICLR, Int. Conference on Learning Representations. 2017.">HG17</a>]</span>; <span id="id7">Liang <em>et al.</em> [<a class="reference internal" href="../references.html#id51" title="S. Liang, Y. Li, and R. Srikant. Enhancing the reliability of out-of-distribution image detection in neural networks. In Proc. ICLR, Int. Conference on Learning Representations. 2018.">LLS18</a>]</span>; <span id="id8">DeVries and Taylor [<a class="reference internal" href="../references.html#id52" title="T. DeVries and G.W. Taylor. Learning confidence for out-of-distribution detection in neural networks. CoRR, 2018. URL: http://arxiv.org/abs/1802.04865.">DT18</a>]</span>). In the literature, this is often called the “open world assumption”, whereas an exhaustive <span class="math notranslate nohighlight">\(\Omega\)</span> is considered as a “closed world” (<span id="id9">Deng [<a class="reference internal" href="../references.html#id225" title="Y. Deng. Generalized evidence theory. CoRR, 2014. URL: http://arxiv.org/abs/404.4801.">Den14a</a>]</span>). Although this distinction may look technical at first sight, it has important consequences with regard to the representation and processing of uncertain information, which specifically concern the role of the empty set. While the empty set is logically excluded as a valid piece of information under the closed world assumption, it may suggest that the true state <span class="math notranslate nohighlight">\(\omega^*\)</span> is outside <span class="math notranslate nohighlight">\(\Omega\)</span> under the open world assumption.</p>
+</div><div align="justify">
+<p>There are two basic ways for expressing uncertain information about <span class="math notranslate nohighlight">\(\omega^*\)</span>, namely, in terms of <em>subsets</em> and in terms of <em>distributions</em>. A subset <span class="math notranslate nohighlight">\(C \subseteq \Omega\)</span> corresponds to a constraint suggesting that <span class="math notranslate nohighlight">\(\omega^* \in C\)</span>. Thus, information or knowledge<a class="footnote-reference brackets" href="#footnoteidentifier2" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> expressed in this way distinguishes between values that are (at least provisionally) considered possible and those that are definitely excluded. As suggested by common examples such as specifying incomplete information about a numerical quantity in terms of an interval <span class="math notranslate nohighlight">\(C= [l,u]\)</span>, a set-based representation is appropriate for capturing uncertainty in the sense of <em>imprecision</em>.</p>
+<p>Going beyond this rough dichotomy, a distribution assigns a weight <span class="math notranslate nohighlight">\(p(\omega)\)</span> to each element <span class="math notranslate nohighlight">\(\omega\)</span>, which can generally be understood as a degree of belief. At first sight, this appears to be a proper generalization of the set-based approach. Indeed, without any constraints on the weights, each subset <span class="math notranslate nohighlight">\(C\)</span> can be characterized in terms of its indicator function <span class="math notranslate nohighlight">\(\mathbb{I}_C\)</span> on <span class="math notranslate nohighlight">\(\Omega\)</span> (which is a specific distribution assigning a weight of 1 to each <span class="math notranslate nohighlight">\(\omega \in C\)</span> and 0 to all <span class="math notranslate nohighlight">\(\omega \not\in \Omega\)</span>). However, for the specifically important case of probability distributions, this view is actually not valid.</p>
+</div><div align="justify">
+<p>First, probability distributions need to obey a normalization constraint. In particular, a probability distribution requires the weights to be nonnegative and integrate to 1. A corresponding probability measure on <span class="math notranslate nohighlight">\(\Omega\)</span> is a set-function <span class="math notranslate nohighlight">\(\Prob: \, 2^\Omega \longrightarrow [0,1]\)</span> such that <span class="math notranslate nohighlight">\(\Prob(\emptyset) = 0\)</span>, <span class="math notranslate nohighlight">\(\Prob(\Omega)=1\)</span>, and</p>
+<div class="math notranslate nohighlight" id="equation-addi1">
+<span class="eqno">(18.1)<a class="headerlink" href="#equation-addi1" title="Link to this equation">#</a></span>\[
+\Prob(A \cup B) = \Prob(A) + \Prob(B) 
+\]</div>
+<p>for all disjoint sets (events) <span class="math notranslate nohighlight">\(A, B \subseteq \Omega\)</span>. With <span class="math notranslate nohighlight">\(\prob(\omega) = \Prob(\{ \omega \})\)</span> for all <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span> it follows that <span class="math notranslate nohighlight">\(\Prob(A) = \sum_{\omega \in A} \prob(\omega)\)</span>, and hence <span class="math notranslate nohighlight">\(\sum_{\omega \in \Omega} \prob(\omega)=1\)</span>. Since the set-based approach does not (need to) satify this constraint, it is no longer a special case.</p>
+<p>Let us now define a probability distribution for the outcomes of a football match, i.e. <span class="math notranslate nohighlight">\(\Omega = \{ \text{win}, \text{loss}, \text{tie} \}\)</span> with
+<span class="math notranslate nohighlight">\(\Prob(\{\text{win} \}) = 0.5\)</span> and <span class="math notranslate nohighlight">\(\Prob(\{\text{loss} \}) = \Prob(\{\text{tie} \}) = 0.25\)</span>. Then we can easily calculate the probability for all subsets <span class="math notranslate nohighlight">\(S\subseteq \Omega\)</span>:</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">powerset</span><span class="p">(</span><span class="n">iterable</span><span class="p">):</span>
+    <span class="s2">&quot;powerset([1,2,3]) --&gt; () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">probability_distribution_football</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">match</span> <span class="n">event</span><span class="p">:</span>
+        <span class="k">case</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">case</span> <span class="s2">&quot;win&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.5</span>
+        <span class="k">case</span> <span class="s2">&quot;tie&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.25</span>
+        <span class="k">case</span> <span class="s2">&quot;loss&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.25</span>
+        <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">probability_distribution_football</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">event</span><span class="p">])</span>
+
+<span class="n">probability_values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">x</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">probability_distribution_football</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">powerset</span><span class="p">(</span><span class="n">football_omega</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="n">probability_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{(): 0,
+ (&#39;win&#39;,): 0.5,
+ (&#39;tie&#39;,): 0.25,
+ (&#39;loss&#39;,): 0.25,
+ (&#39;win&#39;, &#39;tie&#39;): 0.75,
+ (&#39;win&#39;, &#39;loss&#39;): 0.75,
+ (&#39;tie&#39;, &#39;loss&#39;): 0.5,
+ (&#39;win&#39;, &#39;tie&#39;, &#39;loss&#39;): 1.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>S</p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\Prob(S)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>{}</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win}</p></td>
+<td class="text-right"><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss}</p></td>
+<td class="text-right"><p>0.25</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{tie}</p></td>
+<td class="text-right"><p>0.25</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{win,tie}</p></td>
+<td class="text-right"><p>0.75</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss}</p></td>
+<td class="text-right"><p>0.75</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss,tie}</p></td>
+<td class="text-right"><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss,tie}</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div align="justify">
+<p>Second, in addition to the question of how information is represented, it is of course important to ask how the information is processed. In this regard, the probabilistic calculus differs fundamentally from constraint-based (set-based) information processing. The characteristic property of probability is its additivity <a class="reference internal" href="#equation-addi1">(18.1)</a>, suggesting that the belief in the disjunction (union) of two (disjoint) events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> is the sum of the belief in either of them. In contrast to this, the set-based approach is more in line with a logical interpretation and calculus. Interpreting a constraint <span class="math notranslate nohighlight">\(C\)</span> as a logical proposition <span class="math notranslate nohighlight">\((\omega \in C)\)</span>, an event <span class="math notranslate nohighlight">\(A \subseteq \Omega\)</span> is possible as soon as <span class="math notranslate nohighlight">\(A \cap C \neq \emptyset\)</span> and impossible otherwise. Thus, the information <span class="math notranslate nohighlight">\((\omega \in C)\)</span> can be associated with a set-function <span class="math notranslate nohighlight">\(\Pi:\, 2^\Omega \longrightarrow \{ 0, 1 \}\)</span> such that <span class="math notranslate nohighlight">\(\Pi(A) = \llbracket A \cap C \neq \emptyset \rrbracket\)</span>. Obviously, this set-function satisfies <span class="math notranslate nohighlight">\(\Pi(\emptyset) = 0\)</span>, <span class="math notranslate nohighlight">\(\Pi(\Omega) = 1\)</span>, and</p>
+<div class="math notranslate nohighlight" id="equation-maxi1">
+<span class="eqno">(18.2)<a class="headerlink" href="#equation-maxi1" title="Link to this equation">#</a></span>\[
+\Pi(A \cup B) = \max \big( \Pi(A) , \Pi(B) \big) 
+\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(\Pi\)</span> is “maxitive” instead of additive (<span id="id11">Shilkret [<a class="reference internal" href="../references.html#id1840" title="N. Shilkret. Maxitive measure and integration. Nederl. Akad. Wetensch. Proc. Ser. A 74 = Indag. Math., 33:109–116, 1971.">Shi71</a>]</span>;<span id="id12">Dubois [<a class="reference internal" href="../references.html#id941" title="D. Dubois. Possibility theory and statistical reasoning. Computational Statistics and Data Analysis, 51(1):47–69, 2006.">Dub06</a>]</span>). Roughly speaking, an event <span class="math notranslate nohighlight">\(A\)</span> is evaluated according to its (logical) consistency with a constraint <span class="math notranslate nohighlight">\(C\)</span>, whereas in probability theory, an event <span class="math notranslate nohighlight">\(A\)</span> is evaluated in terms of its probability of occurrence. The latter is reflected by the probability mass assigned to <span class="math notranslate nohighlight">\(A\)</span>, and requires a comparison of this mass with the mass of other events (since only one outcome <span class="math notranslate nohighlight">\(\omega\)</span> is possible, the elementary events compete with each other). Consequently, the calculus of probability, including rules for combination of information, conditioning, etc., is quite different from the corresponding calculus of constraint-based information processing (<span id="id13">Dubois [<a class="reference internal" href="../references.html#id941" title="D. Dubois. Possibility theory and statistical reasoning. Computational Statistics and Data Analysis, 51(1):47–69, 2006.">Dub06</a>]</span>).</p>
+<p>For our football example we choose <span class="math notranslate nohighlight">\(C = \{ \text{win}, \text{tie} \}\)</span> and the resulting values of the subsets can be easily computed:</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraint</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;win&quot;</span><span class="p">,</span><span class="s2">&quot;tie&quot;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">pi_function</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c1"># the np.any takes over the role of the max()</span>
+    <span class="c1"># the (1*) is to convert the output directly into a number</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">([</span><span class="n">e</span> <span class="ow">in</span> <span class="n">constraint</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">event</span><span class="p">])</span>
+
+
+<span class="n">constraint_based_information</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">x</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">pi_function</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">powerset</span><span class="p">(</span><span class="n">football_omega</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="n">constraint_based_information</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{(): 0,
+ (&#39;win&#39;,): 1,
+ (&#39;tie&#39;,): 1,
+ (&#39;loss&#39;,): 0,
+ (&#39;win&#39;, &#39;tie&#39;): 1,
+ (&#39;win&#39;, &#39;loss&#39;): 1,
+ (&#39;tie&#39;, &#39;loss&#39;): 1,
+ (&#39;win&#39;, &#39;tie&#39;, &#39;loss&#39;): 1}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>S</p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\Pi(S)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>{}</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win}</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss}</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{tie}</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{win,tie}</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss}</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss,tie}</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss,tie}</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="sets-of-distributions">
+<h3><span class="section-number">18.1.2. </span>Sets of distributions<a class="headerlink" href="#sets-of-distributions" title="Link to this heading">#</a></h3>
+<div align="justify">
+<p>Given the complementary nature of sets and distributions, and the observation that both have advantages and disadvantages, one may wonder whether the two could not be combined in a meaningful way. Indeed, the argument that a single (probability) distribution is not enough for representing uncertain knowledge is quite prominent in the literature, and many generalized theories of uncertainty can be considered as a combination of that kind (<span id="id14"></span>;<span id="id15">Walley [<a class="reference internal" href="../references.html#id939" title="P. Walley. Statistical Reasoning with Imprecise Probabilities. Chapman and Hall, 1991.">Wal91</a>]</span>;<span id="id16">Shafer [<a class="reference internal" href="../references.html#id856" title="G. Shafer. A Mathematical Theory of Evidence. Princeton University Press, 1976.">Sha76</a>]</span>;<span id="id17">Smets and Kennes [<a class="reference internal" href="../references.html#id1228" title="P. Smets and R. Kennes. The transferable belief model. Artificial Intelligence, 66:191-234, 1994.">SK94</a>]</span>).</p>
+<p>Since we are specifically interested in aleatoric and epistemic uncertainty, and since these two types of uncertainty are reasonably captured in terms of sets and probability distributions, respectively, a natural idea is to consider <em>sets of probability distributions</em>. In the literature on imprecise probability, these are also called <a class="reference internal" href="../chapter-credal_sets/credal_sets.html"><span class="doc std std-doc">credal sets</span></a> (<span id="id18">Cozman [<a class="reference internal" href="../references.html#id1727" title="F.G. Cozman. Credal networks. Artificial Intelligence, 120(2):199–233, 2000.">Coz00</a>]</span>;<span id="id19">Zaffalon [<a class="reference internal" href="../references.html#id1726" title="M. Zaffalon. The naive credal classifier. Journal of Statistical Planning and Inference, 105(1):5–21, 2002.">Zaf02a</a>]</span>). An illustration is given in <a class="reference internal" href="#bary1"><span class="std std-numref">Fig. 18.2</span></a>, where probability distributions on <span class="math notranslate nohighlight">\(\Omega = \{ a,b,c \}\)</span> are represented as points in a Barycentric coordinate systems. A credal set then corresponds to a subset of such points, suggesting a lack of knowledge about the true distribution but restricting it in terms of a set of possible candidates.</p>
+</div><figure class="align-default" id="bary1">
+<a class="reference internal image-reference" href="../_images/pic-bary.png"><img alt="bary" src="../_images/pic-bary.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18.2 </span><span class="caption-text">Probability distributions on <span class="math notranslate nohighlight">\(\Omega = \{ a,b,c \}\)</span> as points in a Barycentric coordinate system: Precise knowledge (left) versus incomplete knowledge (middle) and complete ignorance (right) about the true distribution.</span><a class="headerlink" href="#bary1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div align="justify">
+<p>Credal sets are typically assumed to be convex subsets of the class <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> of all probability distributions on <span class="math notranslate nohighlight">\(\Omega\)</span>. Such sets can be specified in different ways, for example in terms of upper and lower bounds on the probabilities <span class="math notranslate nohighlight">\(\Prob(A)\)</span> of events <span class="math notranslate nohighlight">\(A \subseteq \Omega\)</span>. A specifically simple approach (albeit of limited expressivity) is the use of so-called <em>possibility distributions</em> and related <em>possibility measures</em> (<span id="id20">Dubois and Prade [<a class="reference internal" href="../references.html#id420" title="D. Dubois and H. Prade. Possibility Theory. Plenum Press, 1988.">DP88</a>]</span>). A possibility distribution is a mapping <span class="math notranslate nohighlight">\(\pi: \, \Omega \longrightarrow [0,1]\)</span>, and the associated measure is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\Pi: \, 2^\Omega \longrightarrow [0,1], \, A \mapsto \sup_{\omega \in A} \pi(\omega) \, .
+\]</div>
+</div><div align="justify">
+<p>A measure of that kind can be interpreted as an upper bound, and thus defines a set <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> of dominated probability distributions:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{P} := \big\{ \Prob \in \mathbb{P} \vert \Prob(A) \leq \Pi(A) \text{ for all } A \subseteq \Omega \big\}
+\]</div>
+<p>Formally, a possibility measure on <span class="math notranslate nohighlight">\(\Omega\)</span> satisfies <span class="math notranslate nohighlight">\(\Pi(\emptyset)=0\)</span>, <span class="math notranslate nohighlight">\(\Pi(\Omega)=1\)</span>, and <span class="math notranslate nohighlight">\(\Pi(A \cup B) = \max(\Pi(A), \Pi(B))\)</span> for all <span class="math notranslate nohighlight">\(A, B \subseteq \Omega\)</span>. Thus, it generalizes the maxitivity <a class="reference internal" href="#equation-maxi1">(18.2)</a> of sets in the sense that <span class="math notranslate nohighlight">\(\Pi\)</span> is not (necessarily) an indicator function, i.e., <span class="math notranslate nohighlight">\(\Pi(A)\)</span> is in <span class="math notranslate nohighlight">\([0,1]\)</span> and not restricted to <span class="math notranslate nohighlight">\(\{ 0, 1 \}\)</span>. A related <em>necessity measure</em> is defined as <span class="math notranslate nohighlight">\(N(A) = 1 - \Pi(\bar{A})\)</span>, where <span class="math notranslate nohighlight">\(\bar{A} = \Omega \setminus A\)</span>. Thus, an event <span class="math notranslate nohighlight">\(A\)</span> is plausible insofar as the complement of <span class="math notranslate nohighlight">\(A\)</span> is not necessary. Or, stated differently, an event <span class="math notranslate nohighlight">\(A\)</span> necessarily occurs if the complement of <span class="math notranslate nohighlight">\(A\)</span> is not possible.</p>
+<p>Let us again compute the possibility measures <span class="math notranslate nohighlight">\(\Pi\)</span> for the football example with <span class="math notranslate nohighlight">\(\pi(\text{win}) = 0.9, \pi(\text{tie}) = 0.7\)</span> and <span class="math notranslate nohighlight">\(\pi(\text{loss}) = 0.3\)</span>:</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">possibility_measure_football</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">match</span> <span class="n">event</span><span class="p">:</span>
+        <span class="k">case</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">case</span> <span class="s2">&quot;win&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.9</span>
+        <span class="k">case</span> <span class="s2">&quot;tie&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.7</span>
+        <span class="k">case</span> <span class="s2">&quot;loss&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.3</span>
+        <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">probability_distribution_football</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">event</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">max</span><span class="p">([</span><span class="n">possibility_measure_football</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">event</span><span class="p">])</span>
+
+<span class="n">possibility_values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">x</span><span class="p">:</span><span class="nb">round</span><span class="p">(</span><span class="n">possibility_measure_football</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">powerset</span><span class="p">(</span><span class="n">football_omega</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="n">possibility_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{(): 0,
+ (&#39;win&#39;,): 0.9,
+ (&#39;tie&#39;,): 0.7,
+ (&#39;loss&#39;,): 0.3,
+ (&#39;win&#39;, &#39;tie&#39;): 0.9,
+ (&#39;win&#39;, &#39;loss&#39;): 0.9,
+ (&#39;tie&#39;, &#39;loss&#39;): 0.7,
+ (&#39;win&#39;, &#39;tie&#39;, &#39;loss&#39;): 0.9}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>S</p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\Pi(S)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>{}</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win}</p></td>
+<td class="text-right"><p>0.9</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss}</p></td>
+<td class="text-right"><p>0.3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{tie}</p></td>
+<td class="text-right"><p>0.7</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{win,tie}</p></td>
+<td class="text-right"><p>0.9</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss}</p></td>
+<td class="text-right"><p>0.9</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss,tie}</p></td>
+<td class="text-right"><p>0.7</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss,tie}</p></td>
+<td class="text-right"><p>0.9</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div align="justify">
+<p>We take <span class="math notranslate nohighlight">\(C = \{ \text{win}, \text{tie} \}\)</span> as an example. So the complement of <span class="math notranslate nohighlight">\(C\)</span> is <span class="math notranslate nohighlight">\(\bar{C} = \Omega \setminus C = \{ \text{loss}\}\)</span>. The neccessity measure <span class="math notranslate nohighlight">\(N(C) = 1 - \Pi(\bar{C}) = 0.7\)</span></p>
+</div><div align="justify">
+<p>In a sense, possibility theory combines aspects of both set-based and distributional approaches. In fact, a possibility distribution can be seen as both a generalized set (in which elements can have graded degrees of membership) and a non-additive measure. Just like a probability, it allows for expressing graded degrees of belief (instead of merely distinguishing possible from impossible events), but its calculus is maxitive instead of additive<a class="footnote-reference brackets" href="#footnoteidentifier3" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<p>The dual pair of measures <span class="math notranslate nohighlight">\((N, \Pi)\)</span> allows for expressing ignorance in a proper way, mainly because <span class="math notranslate nohighlight">\(A\)</span> can be declared plausible without declaring <span class="math notranslate nohighlight">\(\bar{A}\)</span> implausible. In particular, <span class="math notranslate nohighlight">\(\Pi(A) \equiv 1\)</span> on <span class="math notranslate nohighlight">\(2^\Omega \setminus \emptyset\)</span> models complete ignorance: Everything is fully plausible, and hence nothing is necessary (<span class="math notranslate nohighlight">\(N(A) = 1 - \Pi(\bar{A}) = 0\)</span> for all <span class="math notranslate nohighlight">\(A\)</span>). A probability measure, on the other hand, is self-dual in the sense that <span class="math notranslate nohighlight">\(\Prob(A) = 1 - \Prob(\bar{A})\)</span>. Thus, a probability measure is playing both roles simultaneously, namely the role of the possibility and the role of the necessity measure. Therefore, it is more constrained than a representation <span class="math notranslate nohighlight">\((N, \Pi)\)</span>. In a sense, probability and possibility distributions can be seen as two extremes on the scale of uncertainty representations<a class="footnote-reference brackets" href="#footnoteidentifier4" id="id22" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">necessity_measure_football</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">event_complement</span>  <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">football_omega</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">event</span><span class="p">]</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">possibility_measure_football</span><span class="p">(</span><span class="n">event_complement</span><span class="p">)</span>
+
+<span class="n">necessity_values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">necessity_measure_football</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">powerset</span><span class="p">(</span><span class="n">football_omega</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="n">necessity_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{(): 0.1,
+ (&#39;win&#39;,): 0.3,
+ (&#39;tie&#39;,): 0.1,
+ (&#39;loss&#39;,): 0.1,
+ (&#39;win&#39;, &#39;tie&#39;): 0.7,
+ (&#39;win&#39;, &#39;loss&#39;): 0.3,
+ (&#39;tie&#39;, &#39;loss&#39;): 0.1,
+ (&#39;win&#39;, &#39;tie&#39;, &#39;loss&#39;): 1}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>S</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\Pi(S)\)</span></p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(N(S)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>{}</p></td>
+<td><p>0</p></td>
+<td class="text-right"><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win}</p></td>
+<td><p>0.9</p></td>
+<td class="text-right"><p>0.3</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss}</p></td>
+<td><p>0.7</p></td>
+<td class="text-right"><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{tie}</p></td>
+<td><p>0.3</p></td>
+<td class="text-right"><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{win,tie}</p></td>
+<td><p>0.9</p></td>
+<td class="text-right"><p>0.7</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss}</p></td>
+<td><p>0.9</p></td>
+<td class="text-right"><p>0.3</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss,tie}</p></td>
+<td><p>0.7</p></td>
+<td class="text-right"><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss,tie}</p></td>
+<td><p>0.9</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="distributions-of-sets">
+<span id="dos"></span><h3><span class="section-number">18.1.3. </span>Distributions of sets<a class="headerlink" href="#distributions-of-sets" title="Link to this heading">#</a></h3>
+<div align="justify">
+<p>Sets and distributions can also be combined the other way around, namely in terms of distributions of sets. Formalisms based on this idea include the calculus of <em>random sets</em> (<span id="id23">Matheron [<a class="reference internal" href="../references.html#id734" title="G. Matheron. Random Sets and Integral Geometry. John Wiley and Sons, 1975.">Mat75</a>]</span>;<span id="id24">Nguyen [<a class="reference internal" href="../references.html#id1205" title="H.T. Nguyen. On random sets and belief functions. Journal of Mathematical Analysis and Applications, 65:531-542, 1978.">Ngu78</a>]</span>) as well as the Dempster-Shafer theory of evidence (<span id="id25">Shafer [<a class="reference internal" href="../references.html#id856" title="G. Shafer. A Mathematical Theory of Evidence. Princeton University Press, 1976.">Sha76</a>]</span>).</p>
+<p>In evidence theory, uncertain information is again expressed in terms of a dual pair of measures on <span class="math notranslate nohighlight">\(\Omega\)</span>, a measure of <em>plausibility</em> and a measure of <em>belief</em>. Both can be derived from an underlying <em>mass function</em> or <em>basic belief assignment</em> <span class="math notranslate nohighlight">\(m:\, 2^\Omega \longrightarrow [0,1]\)</span>, for which <span class="math notranslate nohighlight">\(m(\emptyset) = 0\)</span> and <span class="math notranslate nohighlight">\(\sum_{B \subseteq \Omega} m(B) = 1\)</span>. Obviously, <span class="math notranslate nohighlight">\(m\)</span> defines a probability distribution on the subsets of <span class="math notranslate nohighlight">\(\Omega\)</span>. Thus, instead of a single set or constraint <span class="math notranslate nohighlight">\(C\)</span>, like in the set-based approach, we are now dealing with a set of such constraints, each one being assigned a weight <span class="math notranslate nohighlight">\(m(C)\)</span>. Each <span class="math notranslate nohighlight">\(C \subseteq \Omega\)</span> such that <span class="math notranslate nohighlight">\(m(C) &gt; 0\)</span> is called a <em>focal element</em> and represents a single piece of evidence (in favor of <span class="math notranslate nohighlight">\(\omega^* \in C\)</span>). Assigning masses to subsets <span class="math notranslate nohighlight">\(C\)</span> instead of single elements <span class="math notranslate nohighlight">\(\omega\)</span> allows for combining randomness and imprecision.</p>
+<p>Let us now define a mass assignment <span class="math notranslate nohighlight">\(m\)</span> with <span class="math notranslate nohighlight">\(m(\{\text{win}\}) = 0.3, m(\emptyset) = 0, m(\{\text{win}, \text{tie}\}) = 0.5 \)</span> and <span class="math notranslate nohighlight">\(m(\{ \text{tie}, \text{loss} \}) = 0.2\)</span>. <span class="math notranslate nohighlight">\(\emptyset\)</span> is not a focal element because the weight is not &gt; 0.</p>
+</div><div align="justify">
+<p>A plausibility and belief function are derived from a mass function <span class="math notranslate nohighlight">\(m\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\on{Pl}(A) := \sum_{B \cap A \neq \emptyset} m(B)  \, ,  \quad
+\on{Bel}(A) := \sum_{B \subseteq A } m(B) \, .
+\]</div>
+<p>So the belief and plausibility values for the defined mass assignments are:</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mass_assignment</span><span class="p">(</span><span class="n">events</span><span class="p">):</span>
+    <span class="k">match</span> <span class="n">events</span><span class="p">:</span>
+        <span class="k">case</span> <span class="p">(</span><span class="s2">&quot;win&quot;</span><span class="p">,):</span>
+            <span class="k">return</span> <span class="mf">0.3</span>
+        <span class="k">case</span> <span class="p">(</span><span class="s2">&quot;win&quot;</span><span class="p">,</span><span class="s2">&quot;tie&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mf">0.5</span>
+        <span class="k">case</span> <span class="p">(</span><span class="s2">&quot;tie&quot;</span><span class="p">,</span><span class="s2">&quot;loss&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mf">0.2</span>
+        <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        
+<span class="k">def</span> <span class="nf">plausibility_measure</span><span class="p">(</span><span class="n">events</span><span class="p">):</span>
+    <span class="n">plausibility</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">powerset</span><span class="p">(</span><span class="n">football_omega</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">events</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">():</span>
+            <span class="n">plausibility</span> <span class="o">+=</span> <span class="n">mass_assignment</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plausibility</span>
+
+<span class="k">def</span> <span class="nf">belief_measure</span><span class="p">(</span><span class="n">events</span><span class="p">):</span>
+    <span class="n">belief</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">powerset</span><span class="p">(</span><span class="n">events</span><span class="p">)):</span>
+        <span class="n">belief</span> <span class="o">+=</span> <span class="n">mass_assignment</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">belief</span>
+
+<span class="n">plausibility_values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">plausibility_measure</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">powerset</span><span class="p">(</span><span class="n">football_omega</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="n">belief_values</span> <span class="o">=</span> <span class="p">{</span>    
+    <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">belief_measure</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">powerset</span><span class="p">(</span><span class="n">football_omega</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="n">plausibility_values</span><span class="p">,</span> <span class="n">belief_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({(): 0,
+  (&#39;win&#39;,): 0.8,
+  (&#39;tie&#39;,): 0.7,
+  (&#39;loss&#39;,): 0.2,
+  (&#39;win&#39;, &#39;tie&#39;): 1.0,
+  (&#39;win&#39;, &#39;loss&#39;): 1.0,
+  (&#39;tie&#39;, &#39;loss&#39;): 0.7,
+  (&#39;win&#39;, &#39;tie&#39;, &#39;loss&#39;): 1.0},
+ {(): 0,
+  (&#39;win&#39;,): 0.3,
+  (&#39;tie&#39;,): 0,
+  (&#39;loss&#39;,): 0,
+  (&#39;win&#39;, &#39;tie&#39;): 0.8,
+  (&#39;win&#39;, &#39;loss&#39;): 0.3,
+  (&#39;tie&#39;, &#39;loss&#39;): 0.2,
+  (&#39;win&#39;, &#39;tie&#39;, &#39;loss&#39;): 1.0})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>S</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\on{Pl}(S)\)</span></p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\on{Bel}(S)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>{}</p></td>
+<td><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win}</p></td>
+<td><p>0.8</p></td>
+<td class="text-right"><p>0.3</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss}</p></td>
+<td><p>0.2</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{tie}</p></td>
+<td><p>0.7</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{win,tie}</p></td>
+<td><p>1</p></td>
+<td class="text-right"><p>0.8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss}</p></td>
+<td><p>1</p></td>
+<td class="text-right"><p>0.3</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>{loss,tie}</p></td>
+<td><p>0.7</p></td>
+<td class="text-right"><p>0.2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>{win,loss,tie}</p></td>
+<td><p>1</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div align="justify">
+<p>Plausibility (or belief) functions indeed generalize both probability and possibility distributions. A probability distribution is obtained in the case where all focal elements are singleton sets. We still take the football match as an example. <span class="math notranslate nohighlight">\(\Omega = \{ \text{win}, \text{loss}, \text{tie} \}\)</span> and <span class="math notranslate nohighlight">\(m(\{\text{win} \}) = 0.5\)</span> and <span class="math notranslate nohighlight">\(m(\{\text{loss} \}) =0.2\)</span> <span class="math notranslate nohighlight">\(m(\{\text{tie} \}) = 0.3\)</span>, this is actually a probability distribution.</p>
+<p>A possibility measure is obtained as a special case of a plausibility measure (and, correspondingly, a necessity measure as a special case of a belief measure) for a mass function the focal sets of which are nested, i.e., such that <span class="math notranslate nohighlight">\(C_1 \subset C_2 \subset \cdots \subset C_r\)</span>. The corresponding possibility distribution is the <em>contour function</em> of the plausibility measure: <span class="math notranslate nohighlight">\(\pi(\omega) = \on{Pl}(\{ \omega\}) := \sum_{C : \, \omega \in C} m(C)\)</span> for all <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span>. Thus, <span class="math notranslate nohighlight">\(\pi(\omega)\)</span> can be interpreted as the probability that <span class="math notranslate nohighlight">\(\omega\)</span> is contained in a subset <span class="math notranslate nohighlight">\(C\)</span> that is randomly chosen according to the distribution <span class="math notranslate nohighlight">\(m\)</span> (see <a class="reference internal" href="#contour1"><span class="std std-numref">Fig. 18.3</span></a> for an illustration).</p>
+<p>We further calculte the possibility distribution based on the previous mass assignment: <span class="math notranslate nohighlight">\(m(\{\text{win}\}) = 0.3, m(\{\text{win}, \text{tie}\}) = 0.5 \)</span> and <span class="math notranslate nohighlight">\(m(\{ \text{tie}, \text{loss} \}) = 0.2\)</span> and <span class="math notranslate nohighlight">\(\pi(\text{win}) = \on{Pl}(\{ \text{win}\}) := m(\{\text{win}\}) + m(\{\text{win}, \text{tie}\}) = 0.8\)</span>. Below is the visualization of possibility distribution.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">possibility_values</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">x</span><span class="p">:</span><span class="n">plausibility_measure</span><span class="p">((</span><span class="n">x</span><span class="p">,))</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">football_omega</span>
+<span class="p">}</span>
+<span class="n">possibility_distribution</span> <span class="o">=</span> <span class="n">possibility_values</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">football_omega</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="n">possibility_distribution</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Possibility distribution from mass-assignment&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Events&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Possibility&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/390c357f6167aef0ec262f634b61ed6a3fa0433dceecc397688792342f0b7cb6.svg" src="../_images/390c357f6167aef0ec262f634b61ed6a3fa0433dceecc397688792342f0b7cb6.svg" />
+</div>
+</div>
+<figure class="align-default" id="contour1">
+<a class="reference internal image-reference" href="../_images/pic-contour.png"><img alt="contour" src="../_images/pic-contour.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18.3 </span><span class="caption-text">Possibility distribution as a contour function of a basic belief assignment <span class="math notranslate nohighlight">\(m\)</span> (values assigned to focal sets on the right). In this example, <span class="math notranslate nohighlight">\(\pi(\omega_5)=1\)</span>, because <span class="math notranslate nohighlight">\(\omega_5\)</span> is contained in all focal sets, whereas <span class="math notranslate nohighlight">\(\pi(\omega_3)=0.6\)</span>.</span><a class="headerlink" href="#contour1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div align="justify">
+<p>Note that we have obtained a possibility distribution in two ways and for two different interpretations, representing a set of distributions as well as a distribution of sets. One concrete way to define a possibility distribution <span class="math notranslate nohighlight">\(\pi\)</span> in a data-driven way, which is specifically interesting in the context of statistical inference, is in terms of the <em>normalized</em> or <em>relative likelihood</em>. Consider the case where <span class="math notranslate nohighlight">\(\omega^*\)</span> is the parameter of a probability distribution, and we are interested in estimating this parameter based on observed data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>; in other words, we are interested in identifying the distribution within the family <span class="math notranslate nohighlight">\(\{ \Prob_\omega \with \omega \in \Omega \}\)</span> from which the data was generated. The likelihood function is then given by <span class="math notranslate nohighlight">\(L(\omega; \mathcal{D}) := \Prob_\omega(\mathcal{D})\)</span>, and the normalized likelihood as</p>
+<div class="math notranslate nohighlight">
+\[
+L^{n}(\omega; \mathcal{D}) := \frac{L(\omega; \mathcal{D})}{\sup_{\omega' \in \Omega} L(\omega; \mathcal{D})} \enspace .
+\]</div>
+<p>This function can be taken as the contour function of a (consonant) plausibility function <span class="math notranslate nohighlight">\(\pi\)</span>, i.e., <span class="math notranslate nohighlight">\(\pi(\omega) = L^{n}(\omega; \mathcal{D})\)</span> for all <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span>; the focal sets then simply correspond to the confidence intervals that can be extracted from the likelihood function, which are of the form <span class="math notranslate nohighlight">\(C_\alpha = \{ \omega \with L^{n}(\omega; \mathcal{D}) \geq \alpha \}\)</span>. This is an interesting illustration of the idea of a distribution of sets: A confidence interval can be seen as a constraint, suggesting that the true parameter is located inside that interval. However, a single (deterministic) constraint is not meaningful, since there is a tradeoff between the correctness and the precision of the constraint. Working with a set of constraints—or, say, a flexible constraint—is a viable alternative.</p>
+</div><div align="justify">
+<p>Note that we have obtained a possibility distribution in two ways and for two different interpretations, representing a set of distributions as well as a distribution of sets. One concrete way to define a possibility distribution <span class="math notranslate nohighlight">\(\pi\)</span> in a data-driven way, which is specifically interesting in the context of statistical inference, is in terms of the <em>normalized</em> or <em>relative likelihood</em>. Consider the case where <span class="math notranslate nohighlight">\(\omega^*\)</span> is the parameter of a probability distribution, and we are interested in estimating this parameter based on observed data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>; in other words, we are interested in identifying the distribution within the family <span class="math notranslate nohighlight">\(\{ \Prob_\omega \with \omega \in \Omega \}\)</span> from which the data was generated. The likelihood function is then given by <span class="math notranslate nohighlight">\(L(\omega; \mathcal{D}) := \Prob_\omega(\mathcal{D})\)</span>, and the normalized likelihood as</p>
+<div class="math notranslate nohighlight">
+\[
+L^{n}(\omega; \mathcal{D}) := \frac{L(\omega; \mathcal{D})}{\sup_{\omega' \in \Omega} L(\omega; \mathcal{D})} \enspace .
+\]</div>
+<p>This function can be taken as the contour function of a (consonant) plausibility function <span class="math notranslate nohighlight">\(\pi\)</span>, i.e., <span class="math notranslate nohighlight">\(\pi(\omega) = L^{n}(\omega; \mathcal{D})\)</span> for all <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span>; the focal sets then simply correspond to the confidence intervals that can be extracted from the likelihood function, which are of the form <span class="math notranslate nohighlight">\(C_\alpha = \{ \omega \with L^{n}(\omega; \mathcal{D}) \geq \alpha \}\)</span>. This is an interesting illustration of the idea of a distribution of sets: A confidence interval can be seen as a constraint, suggesting that the true parameter is located inside that interval. However, a single (deterministic) constraint is not meaningful, since there is a tradeoff between the correctness and the precision of the constraint. Working with a set of constraints—or, say, a flexible constraint—is a viable alternative.</p>
+</div><div align="justify">
+<p>The normalized likelihood was originally introduced by <span id="id26">Shafer [<a class="reference internal" href="../references.html#id856" title="G. Shafer. A Mathematical Theory of Evidence. Princeton University Press, 1976.">Sha76</a>]</span>, and has been justified axiomatically in the context of statistical inference by <span id="id27">Wasserman [<a class="reference internal" href="../references.html#id855" title="L.A. Wasserman. Belief functions and statistical evidence. The Canadian Journal of Statistics, 18(3):183–196, 1990.">Was90</a>]</span>. Further arguments in favor of using the relative likelihood as the contour function of a (consonant) plausibility function are provided by <span id="id28">Denoeux [<a class="reference internal" href="../references.html#id1836" title="T. Denoeux. Likelihood-based belief function: justification and some extensions to low-quality data. International Journal of Approximate Reasoning, 55(7):1535–1547, 2014.">Den14b</a>]</span>, who shows that it can be derived from three basic principles: the likelihood principle, compatibility with Bayes’ rule, and the so-called minimal commitment principle. See also (<span id="id29">Dubois <em>et al.</em> [<a class="reference internal" href="../references.html#id945" title="D. Dubois, S. Moral, and H. Prade. A semantics for possibility theory based on likelihoods. Journal of Mathematical Analysis and Applications, 205(2):359–380, 1997.">DMP97</a>]</span>) and (<span id="id30">Cattaneo [<a class="reference internal" href="../references.html#id948" title="M. Cattaneo. Likelihood-based statistical decisions. In Proc. 4th Int. Symposium on Imprecise Probabilities and their Applications, 107–116. 2005.">Cat05</a>]</span>) for a discussion of the normalized likelihood in the context of possibility theory.</p>
+</div></section>
+</section>
+<section id="max-min-versus-sum-product-aggregation">
+<span id="maxmin"></span><h2><span class="section-number">18.2. </span>Max-min versus sum-product aggregation<a class="headerlink" href="#max-min-versus-sum-product-aggregation" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>Recall the definition of plausibility degrees <span class="math notranslate nohighlight">\(\pi(y | \vec{x}_{q})\)</span> as introduced in <a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html#uqnl"><span class="std std-ref">Reliable Classification</span></a>.
+The computation of <span class="math notranslate nohighlight">\(\pi(+1 \given \vec{x}_{q})\)</span> according to <a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html#equation-plaus">(14.3)</a> is illustrated in <a class="reference internal" href="#inf1"><span class="std std-numref">Fig. 18.4</span></a>, where the hypothesis space <span class="math notranslate nohighlight">\(\cH\)</span> is shown schematically as one of the axes. In comparison to Bayesian inference <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#equation-pd">(4.6)</a>, two important differences are notable:</p>
+<ul class="simple">
+<li><p>First, evidence of hypotheses is represented in terms of normalized likelihood <span class="math notranslate nohighlight">\(\pi_{\cH}(h)\)</span> instead of posterior probabilities <span class="math notranslate nohighlight">\(\prob(h \given \cD)\)</span>, and support for a class <span class="math notranslate nohighlight">\(y\)</span> in terms of <span class="math notranslate nohighlight">\(\pi(y \given h, \vec{x}_{q})\)</span> instead of probabilities <span class="math notranslate nohighlight">\(h(\vec{x}_{q}) = \prob(y \given \vec{x}_{q})\)</span>.</p></li>
+<li><p>Second, the “sum-product aggregation” in Bayesian inference is replaced by a “max-min aggregation”.</p></li>
+</ul>
+</div><figure class="align-default" id="inf1">
+<a class="reference internal image-reference" href="../_images/pic-inference.jpg"><img alt="settings" src="../_images/pic-inference.jpg" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18.4 </span><span class="caption-text">The plausibility <span class="math notranslate nohighlight">\(\pi(+1 \given \vec{x}_{q})\)</span> of the positive class is given by the maximum (dashed line) over the pointwise minima of the plausibility of hypotheses <span class="math notranslate nohighlight">\(h\)</span> (blue line) and the corresponding plausibility of the positive class given <span class="math notranslate nohighlight">\(h\)</span> (green line).</span><a class="headerlink" href="#inf1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div align="justify">
+<p>More formally, the meaning of sum-product aggregation is that <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#equation-pd">(4.6)</a> corresponds to the computation of the standard (Lebesque) integral of the class probability <span class="math notranslate nohighlight">\(\prob(y \given \vec{x}_{q})\)</span> with respect to the (posterior) probability distribution <span class="math notranslate nohighlight">\(\prob(h \given \cD)\)</span>. Here, instead, the definition of <span class="math notranslate nohighlight">\(\pi(y \given \vec{x}_{q})\)</span> corresponds to the Sugeno integral (<span id="id31">Sugeno [<a class="reference internal" href="../references.html#id1492" title="M. Sugeno. Theory of Fuzzy Integrals and its Application. PhD thesis, Tokyo Institute of Technology, 1974.">Sug74</a>]</span>) of the support <span class="math notranslate nohighlight">\(\pi(y \given h, \vec{x}_{q})\)</span> with respect to the possibility measure <span class="math notranslate nohighlight">\(\Pi_{\cH}\)</span> induced by the distribution <a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html#equation-noli">(14.1)</a> on <span class="math notranslate nohighlight">\(\cH\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi(y \vert \vec{x}_{q}) =  S \!\!\!\!\!\! \int_{\cH} \pi(y \vert h, \vec{x}_{q}) \circ \Pi_{\cH}
+\]</div>
+<p>In general, given a measurable space <span class="math notranslate nohighlight">\((X,\mathcal{A})\)</span> and an <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>-measurable function <span class="math notranslate nohighlight">\(f:\, X \longrightarrow [0,1]\)</span>, the Sugeno integral of <span class="math notranslate nohighlight">\(f\)</span> with respect to a monotone measure <span class="math notranslate nohighlight">\(g\)</span> (i.e., a measure on <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> such that <span class="math notranslate nohighlight">\(g(\emptyset) = 0\)</span>, <span class="math notranslate nohighlight">\(g(X) = 1\)</span>, and <span class="math notranslate nohighlight">\(g(A) \leq g(B)\)</span> for <span class="math notranslate nohighlight">\(A \subseteq B\)</span>) is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+S \!\!\!\!\!\! \int_X f(x) \circ g := \sup_{A \in \mathcal{A}} \left[ \min \left( \min_{x \in A} f(x) , g(A) \right) \right] = \sup_{\alpha \in [0,1]} \Big[ \min \big( \alpha , g(F_\alpha) \big) \Big] \, , 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(F_\alpha := \{ x \with f(x) \geq \alpha \}\)</span>.</p>
+<p>In comparison to sum-product aggregation, max-min aggregation avoids the loss of information due to averaging and is more in line with the “existential” aggregation in version space learning. In fact, it can be seen as a graded generalization of <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#equation-cbi">(4.4)</a>. Note that max-min inference requires the two measures <span class="math notranslate nohighlight">\(\pi_{\cH}(h)\)</span> and <span class="math notranslate nohighlight">\(\pi(+1 \vert h, \vec{x}_{q})\)</span> to be commensurable. This is why the normalization of the likelihood according to <a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html#equation-noli">(14.1)</a> is important.</p>
+<p>Compared to MAP inference <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#equation-map">(4.7)</a>, max-min inference takes more information into account. Indeed, MAP inference only looks at the probability of hypotheses but ignores the probabilities assigned to the classes. In contrast, a class can be considered plausible according to <a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html#equation-plaus">(14.3)</a> even if not being strongly supported by the most likely hypothesis <span class="math notranslate nohighlight">\(h^{ml}\)</span>—this merely requires sufficient support by another hypothesis <span class="math notranslate nohighlight">\(h\)</span>, which is not much less likely than <span class="math notranslate nohighlight">\(h^{ml}\)</span>.</p>
+</div></section>
+<section id="hypothesis-testing">
+<span id="id32"></span><h2><span class="section-number">18.3. </span>Hypothesis testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>Let us first revise the basic idea of hypothesis testing, the underlying concept of conformal prediction.
+Assume you have been invited to a friends home and let a food delivery bring delicious food.
+Let us call the friend B.<br />
+Both of you agree to have a coin decide which one has to pay the bill.
+Yet only one coin toss would be unfair, B suggests to toss a coin 20 times.
+The proportion of <em>heads</em> in the sequence would be the amount you have to pay of the bill and the proportion of <em>tails</em> is the amount your friend has to pay.
+Because of modern days you do not have a coin with you and you have to take the coin of B.
+Having a certain doubt B wants to only the the faith decide on the bill split you want to check whether he uses a fair coin.
+With your basic knowledge in statistics you tackle this problem with hypothesis testing.</p>
+</div><div align="justify">
+<p>Firstly you formalize the problem. The assumption of a fair coin is your null hypothesis <span class="math notranslate nohighlight">\(H_0: \theta = \frac{1}{2}\)</span> and the alternative hypothesis <span class="math notranslate nohighlight">\(H_1: \theta \neq \frac{1}{2}\)</span>. If B provides a fair coin the probability of having k heads in a sequence with 20 coin flips should follow the following distribution.</p>
+<div class="math notranslate nohighlight">
+\[
+P(H = k | H_0) = B(k, \frac{1}{2}) = \binom{20}{k}(\frac{1}{2})^k(\frac{1}{2})^{N-k} = \binom{20}{k}(\frac{1}{2})^N
+\]</div>
+<p>In the following we define the probability distribution for general sequence with N realizations.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binomial_distribution</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="c1"># denote that this function works with both k being integer and k being an array of integers</span>
+    <span class="n">binomial_coefficient</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">k</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">binomial_coefficient</span> <span class="o">*</span><span class="p">(</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">**</span> <span class="n">k</span> <span class="p">)</span><span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">k</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>Let us visualize this distibution for our 20 coin flips.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coin_flips</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">head_amount</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">coin_flips</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">binomial_distribution</span><span class="p">(</span><span class="n">head_amount</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">coin_flips</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">head_amount</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">probabilities</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Binomial distribution for </span><span class="si">{</span><span class="n">coin_flips</span><span class="si">}</span><span class="s2"> coin flips&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of heads&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/049d939d24bf91868c3c78d47561fc6ca60133f436ee7fcf1f9607aa58188e4d.svg" src="../_images/049d939d24bf91868c3c78d47561fc6ca60133f436ee7fcf1f9607aa58188e4d.svg" />
+</div>
+</div>
+<div align="justify">
+<p>But because we do not want to accuse our friend without statistically certainty, we want to have a guarantee that we only at most <span class="math notranslate nohighlight">\(\epsilon\)</span> probable falsely accuse him. In statistics we denote this as rejecting the null hypothesis <span class="math notranslate nohighlight">\(H_0\)</span> with a significance niveau of <span class="math notranslate nohighlight">\(\epsilon\)</span>.
+Therefore we choose a threshold <span class="math notranslate nohighlight">\(r\)</span> for the amount of heads such that</p>
+<div class="math notranslate nohighlight" id="equation-probabilityequation">
+<span class="eqno">(18.3)<a class="headerlink" href="#equation-probabilityequation" title="Link to this equation">#</a></span>\[
+    A:=P(H \leq r \lor H \geq 20-r) = \sum_{k=0}^r B(k,\frac{1}{2}) + \sum_{k=20-r}^{20} B(k,\frac{1}{2}) \leq \epsilon
+\]</div>
+<p>In the  following we show this in an animation, where the red area depicts the probability in <a class="reference internal" href="#equation-probabilityequation">(18.3)</a>.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">coin_flips</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">rc</span><span class="p">(</span><span class="s2">&quot;animation&quot;</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="s2">&quot;html5&quot;</span><span class="p">)</span>
+
+<span class="n">barcollection</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">head_amount</span><span class="p">,</span> 
+        <span class="n">height</span><span class="o">=</span><span class="n">probabilities</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">number_of_heads</span><span class="p">):</span>
+    <span class="n">probability_sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">coin_flips</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">number_of_heads</span><span class="p">:</span>
+            <span class="c1"># the left first bars must be color changed</span>
+            <span class="n">barcollection</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">coin_flips</span> <span class="o">-</span> <span class="p">(</span><span class="n">number_of_heads</span><span class="p">):</span>
+            <span class="n">barcollection</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">probability_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">probabilities</span><span class="p">[:</span><span class="n">number_of_heads</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">coin_flips</span><span class="o">-</span><span class="n">number_of_heads</span><span class="p">:])</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; A = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">probability_sum</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">, r = </span><span class="si">{</span><span class="n">number_of_heads</span><span class="si">}</span><span class="s2">,&quot;</span><span class="p">)</span>
+<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">coin_flips</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span><span class="n">interval</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">anim</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><video width="640" height="480" controls autoplay loop>
+  <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAAPPBtZGF0AAACrQYF//+p
+3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE2MyByMzA2MCA1ZGI2YWE2IC0gSC4yNjQvTVBF
+Ry00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAyMSAtIGh0dHA6Ly93d3cudmlkZW9sYW4u
+b3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFs
+eXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVk
+X3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBk
+ZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTYg
+bG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRl
+cmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJf
+cHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9
+MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTEgc2NlbmVjdXQ9NDAgaW50cmFfcmVm
+cmVzaD0wIHJjX2xvb2thaGVhZD00MCByYz1jcmYgbWJ0cmVlPTEgY3JmPTIzLjAgcWNvbXA9MC42
+MCBxcG1pbj0wIHFwbWF4PTY5IHFwc3RlcD00IGlwX3JhdGlvPTEuNDAgYXE9MToxLjAwAIAAAB0n
+ZYiEABf//vfUt8yy7VNvtguo96KeJl9DdSUBm5bE7TqAAAADAAADAAAevBc4Al+JCvOvAAADAMqO
+k//wkMfTZ1Kw0oU1lI0tePxdz8plTWEADl24UcP/PwBDzTKRI4SoKIr+wWvwm22PogJaT2hXj5x/
+ySkRWZeFaXa+aROVxEe/I4TIaVlbBrIlOFRTNAva8gcTW6p9g6vkl449eMCwh+QGr0svWHUvheLK
+k2DGMcj8kxgIIDXB0qlmiIV2Q693DDrwWhVoQDtlFXTHOowVPaww1I+eD+YCOtYXxo43Is7Qo9kG
+7kiGS9KV999PQVC9wJNByKStnIxQ8Cbq+JzNNN0sIDpvkZ5IwIx3CQXMcOb//q8BItLm7GZUxZGk
+uYGfZzP2EMJxlt18VIF4CLunduBEQIdaf6/3sSn7VB3HAyBV/zivQ/FSUkV0xZYgizda/HAvj1oe
+eSoIR6u1OGf0+lHOU8Hv2i33Ma9hnAjJ87o64ZxAHqP5NJk5hOEZ8rJlvVKbE21HqpdFCT3lxl52
+jr13cF01NjKjubSdbjq/ngC2wCJEfR7DI5qzfMCj0poIuyStbz7MAfrTXJmJA1KfoV8CY9Wnop35
+8L2qof/9MAt+Q38aEusw0rLlLqQhskHuqA9xpPQuoIcnXyCF7787MReHe9KxzF1pFh7HRL/vfcN/
+/+vX0JeAtMyxMO0Y2lADjS35VNSmuoCqmEu/Ay+Sr2ZkD5nkM/1pl0Mq1V6fLlF7+ZsT7czqmx6E
+8C9wWpQmGqzlxB+vD2OPmMk2a7uwnxwIhZf0g5wS7SqhGp5N7Nn5bWPOTQcA36ZPP92+ex0aPVk8
+seF25eJq03TKpIsc2CmQD27Ay3WCJOgwWzHcU4M+UjblQl2hBn8WvVdAEr0ecUozq7wm9K14SVYY
+XvXn/LkCaxVMGwm/dkPGZJ7IZmq1w2GGeMQiVXLAHC5594KrzcjnCqM4nbWASD8v3N2M8KjDYs06
+QQr51AdXQOLF5n95mZWvYal+/w/r6s4HYw1KWV5C7/LBikBvHhCvc3LtGDy/RIRnrwKbzv1koAp+
+T7a22d6iI6K97Fu5LECYkKx1+qtAW8vACFgY/IRSitq4CtXNfsuJhcHyM/3Mje3r2IE3WENca9aE
+ZADn6KvSdfVW4MLKYCxnicjbiJ+Hl+J2TPiqRbQOBAU+ywenrEORZIh0Jz1PDi4G3K61il0Tw3SQ
+Vv0uoS+WX8bYG90MFTyBI0pw0Hf7QQfRYS+ZNQhiBvGPos1lDSPc6y+0Yjh67SUz1L9GT0GWcNo1
+DOsLbyB2tsQvC38ASX9ay5nsT1LR/Z1RycFJ/ShjVjiUWE7TEf1nrCPvjtFp0zAa8Z7Ln5iKAY9A
+ZsIqOEhrJm68p9HoaCcYgFoELtgUcqkfa022OySFqCZOUBFIbVykCZHAsigfFgyACIrRo/mDX/gH
+KsMDodJvy4FW7brQo6uKHku3yrtb1YhPxO57TUxWeVKZJq7VJlH8ol/AIi8n5eywA1tmLtykAGtQ
+opCUzeQYjj8PRC3SNbWW794wszT9dzNbM0WhoopI6gPEdeBxolY7F8coMGyIJQ/ZkS8BEsgN7vip
+x1VyLoNcSHoTie+TxhOQvOilLfdUU7oVpEhI/esAxbe3dDUz9TE4OGfyAQnk98wDn6gJTXQ2R1ei
+WZ1pFKD1WcB0lpPZrrBKMPWdNYPoDLxfpBbctpSkpWcT32oTVMbe0N5iee74pKTsJo8u6AVKrs6m
+Y031ttQkQeBwV+CsK/FQLtRi3iVAFpwu4AaatD6pCZjEqubiXEKh3CtdP9JAqauRZBgjsekSXd5d
+kcQr/92o6PvzmjlhoH6wkRAYGezcNEhTASZiy92Gwwq+CuKdQHzP4QSvKpI4aHTQ7Rihx9966loT
+iNyAeJOS+1cW3R9cz+gHuPD8VJeMcMNIkwPa0Zir/k1+8qMLuiLPrum5Tj74vKRdbjFd4xZ+dVpl
+RdoXTqzjPfAAAHvS3ZHlkWFz7iO0VjLOHfLAuHRZQ7UxYv4TXmmpvjmJIP82DBsT0E6DKSeU8rQd
+5UIe/HkhkMb5B76jNaIPu6tKmBrzYBUtHnPECYbsPd88QI8QGvIPDsDYSMVcS9sbtxfg95xTQNQ4
++Ay/M8fyuGxsB1jO2DuZkim9cqE+lFx7nkLLS2wcZw/SsTbgF6aN3/SkWOIESfv//57ymRuvlTHL
+0zxS5CFYrx8GnW/P+UdGDhb2uKtDEuDVuiQyXR9Opx54aiWzKlCto2dVQ/T0YweswC0NbACWFwps
+GqM2e8wsJ8hFoYSMVvQMZINlHNM44EVMfTepkOJMcZMG5h04ozEbdKNQKXXKWh8pJfcdQYtDlOI0
+cvdBXaw6d6J7aXdUYxRTvNv56qOjt9w7WADRsHC//95oFJEFNYPD7QcCIyzgVf/hRqwDxYUWkYQx
+HW3GWHXK5Ik0HjgLOnVnvvmRO4Y9r5Tahzoegtkuk1B1lMyz0cG108abZmBSF+XtawEiRiqvE3+c
+UetEJhc/TpHckKQmJ4rBTcDacg0ye/Z0vNsoiFPzwWxK0n5dYJwbwP6bq7jLBnwegPMg4PpMv351
+XAvTTlNNe2rZL8SxuMYAsGVmzinD7ns/QreshSdk5ZINK7XXrYpIWKPoFunh7p2Q1FnQxxpXa/8R
+nezzE6SbISeyox58ysuTeAe3bfUxwB1ocK6J0g1aEnGr8SseutonoB7R+0incRJis2APHUIgUhhK
+IkRxCM10ND2t32alUNMIbeGHqb2U////2yDzoC+OZzdst4MYy2hAR1c5pjRiWiKBOgJULFrw0JVD
+/l8hGH/QnGU71KpW5SEnTCl3tnEWEvaUTSE7YBvmEhBOa8o93OqKJmxt3gH1U2W/KH46+XVBAcYR
+PZ72MPcZeSiTGYrKz5uPzq5J5uX+M3LPh59KEXY1DNj5Uq64CuMnRjgySZtJEkboYx6gR5ZoAOC6
+PqkNP+IIDzV28tex/3zfojVcIi7VD4fzj0AiLUhu1qHAM6obGMHOYbTOh8DGL1lgMF/rMFgjELn/
+WNiR7GgfKEcy6qxQZYjZzPWnfnjEp1xQ4hHnllQE94GpYnwXqQPhSYd+3gyRISPZL7DJdKqGmg7/
+vxs7x19D+/MbSmI7fcaVBmXhp9mdjXFuBcrAuFogN7SzyvzZLzM+hK4OdiG6OmAP6vfG/Z+KpLfu
+EpaakWULE48buUtDzAMsRGlbLpQpNWmZB0g+z15OeY9JM+EAy0wSQC8oLYNHnIhyYEc4lDLADHeT
+zhGbujh+qMYKvvSOP6Q8Ao8J/t2BdMpD5bxVq+3//s/LijowOWGHZ84tXhnmN8ylXNOyeKBdFRVC
+EYXVn7PQJNiQZxS+qkg8mSQ1pHbagRwr47AJUh+9+nQ6YnpQzEbueFT7qefDCvDJPu6i/mMaj7kv
+J7nEINQMLrH+GrhjrNku+Sm2tPrJtc/dqFFlb972J66RY908CB7rr8I4ofT7bzNv6DCpMcoDhMBR
+RgKSnARmHwxbiXblzIEJAwrQHB0jRIfBfnci96/nnXpP9GB8wKElylhtylFUg1pb7NT+hkJMBsrO
+o6P0HAXANBvv2F/7oNCEFWlKDoRruki2FN8c5Yfj3eCZCkT8DEX5BlE9sPLKIwq1v0/PiVXpOCId
+6bBJZVzy5IqEHQxmfAS6cRt9rjPd82UPZnKkBN436XmfPqqyezDjcNep6E43Me6p9MAsX/7YPvEr
+uBtKrz+wAfFph2Wl82jKaTLUJwmBm2mYdImczChVza20U1FDNvO2D8V2GUS/HqKFD2NMjATUT5Y6
+1qFMS/fXd//IIf+fknSfagRqE3gDxxXNSRK2wysqW7v19OtoaEJ2uFGsENOrQVs9DWYnM8OoqoMP
+x9ysdlMyiHAP9vq6NG/Y97Ha+jxLFMP/uZysfwEXRIOC1VFFenlmrMcb86Bh6KPK6p0baNl+QN7d
+lyOsz8pAszivE0En1yfCoqVEh49Vg9nJeD4M9Die+s+0xAYOyOvXa+gt2MjsapkbEoTwzc6ME8Uu
+OwJU4JBZCmHs4sf+xby31UgiIVMzOAXUQsV29UjCbGJRbmgOjS3JvBBc7APIb0jtDDYLUUOSSvHq
+Q1X2xgAJ4bNqy15jGdklr1/ncwZdiG3vSG4/b/L2Y29Z7IvKAB2ZPhAXdWY+qgtD+wkK5I2DNLg4
+BUcHM8xtOcs61k7ZJzCK7McpOjbaHmZlGNLcUV36GkeNKd5g7U5mNZqv+VP4N0fBsuo+l1Jy7QaV
+HHtcObMjad6ml5MNaceHK/FqCWx//ueH2evSMKIbYI3wn3ecisbgCOXuPS0SwKnV+bp573qVd+HY
+hmu4x/RNWneVS0Eq1w6UtjmKKZghZM4AxGqZN2YkUFA9UWXeD+au3sKzK43AZZQnSY8hgSUNXeQ6
+PAkMMxQrsNTJhxrY9yD1M/vTiZOXkEc/lo+3Ee8zXrBKOjsWa7i8Ofp5TwGIYIGjZOGgbCDUr47M
+51qa9skWwA37BWtGnI+52TQKqV2y7U2EH4qt+1dpkfX4zBPnqMdgg+uhYliPs9HZ6AMgwrIWoqC9
+WahGg4Y2pAyl4ykU3zFjcQWqnbGWXl/tpMMTrtj8hSpiojSHUkEZHeU1y1l4kCdOTJCYoGWEA5m+
+nArIssA7Q/GzuS7aUEywdY1BPAjV6ukbzb/+rdtvuQSGouEr+FCUXApzJwYtC9nB0p1Himw9Ki4B
+iexkPP+maPWM/jDOe0cXnvbvGl1eaISfweFJ+5J7b38uF2kfTnLEXHxm1FWcscO5B9ZtgiBvxrET
+93vor0DSPvrQUbjCl+0c50BMgvlYS2ACnWHox9tooskZaUOzqqPrimz0Og7DGBajgcAZ87WeNNtJ
+Ot7154byXiYni03bU4Yts0kzhO7d9CoqSWb7SDhVjWAr/9v86xWCbDRGmYxdk3zQ1hBOz9++e2Jv
+a9Bts8h830jy5Gs/kUAEwMoOAB/mwlZ0tCWA2/hBLChNEMHWKWhgN7Uos3kTpR0PfSuFu5nXMl3v
+4+gHekYZrrTM0lKPT+UIutr86TkAqIRkhuc81TY3rRXqXREfwDA2WoO0whKZAvtW2RWmPJ8rg8KZ
+Y8VhHS8YBgCzXydGg0S9pNnZia5yQLe2Lg5QkdCtWomjV4USL+t4mAAM2dq/XuVWl6GdpUrVus4s
+CUDj2MGTYE+/kpx4L/nVoLtHBNSGeAqBJ+IA0WZmRuvM93TjQMhnqqWYLHoY2Qzo0vxs3zvFcXr2
+Cljp5PJD6q1/XtR6ZEM2BLlxqtg9pvY8YXSfBSkoUgsXzM6mUtKkHzDvHHCDF3x160lnqyemCTEO
+uGqGvcvVqKtwsCab1OR6fH6Fc8iwTGo1hlYtuUdBJKm/oZwVCgGdEfQxIZ2VmqtEzLfuNEuClhzK
+y0dW0PLGjfoidJhuqKXQ0A6RiLR3vm0nFSjFKrmYI8TxsJFTeScRAYi4imoehbjx5wzegFrfUWAU
+IeAtDT5mFID8LukrosM8N/PqfZJI2MfV0II2wQQNLV+0v6Qcx9xvwKEq1TcUUQrubIngrsBrbBNx
+Fn5vXSZRLdQP9znLM0253e2ARbDlQ16BFV828UV+ga85Son0qG7VBK74ntJmQA5K79YfY43FFjIK
+sP+Ge1Q0Lw8WpTbXpvXRyuxk5ZaR/vARgAXQ78we+Qad886ujODTV2+eHdz8yTsK2lTTK/Gw6DXR
+Y3+SywtV5aO17NfYr3qpQCgE1+17QDzBWXp68Ulz//6t0CzZiQxxK+JUMblJHNo2p+5ss8w4uUKX
+4eOZyPFS39UIC+FwLK/l791SPRLbMMUnF2XuSw5vydG+wM6jzAsoEScXPPZ5iyajPDpKni9gZwjy
+Mfu5VQnT2fO7yYgB8oh0e+UxPuUuFiQEqIDLkmHCPewlGxlX86rM0kcQGwsRB6Stu5EUO1s3Tl9E
+v4dm0nU2/uz/YH13qmK+szG54zw1OwTtKXaNWGuqiaDuyAB8Yzek0oEKIhW4gBpJwlV5itkvwjVI
+++JG4LXFqavZFimwBYonCaPoxzn4sH1lK5LZ4ezzEhf329wV6b2AqGyJ8sjSmSGEKHT4Id+WMlex
+MyDHCPMz3bp6oXIpSrOJPihkiJmJjPdylBUb5iaPQyl9C4TLxm2QWUBjvX+b78ORgBdedME+Z6QN
+LZPJodo8PnC60im/1j/bxga0wl1vQYFebFEK3OacZMyxbPm3g3+DxauVwBlSL+bzO/pfuqvECpnY
+xcZDF+W67vXKPqc26LMjA/fbs8WntUU9RUxuqxRVOP5znNbTAxXzm6inK5z05TQFouKkC9EM0lg0
+zSy2k1vhIs+Nar9o1erpKyEtDIRzL2hTQkvtnoy7E8XPyCSVO59V//1cQkTGo7zyEZuIba5xCuKX
+yDzb//04nVDVfLYSj0zET4ykB8+fNty2E+4nhWQcIVqGBCUeUocZdXtNxttnU7pOhtC/9LavgmXJ
+NixgB5dUdQdxZOrGkyprmg17Za0q1N8q/K0/b5VmbevBbCc7K//znum8vaknXimRIYF6wWE9YPdD
+J5XQgxe1KaHI1gRXkRsR+1SfLf4p+OtRwI1/sv2RcW2gELgKx0cfiXLhVIwBEqtl37omJPbPFC0B
+yO6ZbRZXzhPcq/rqZjqSOU3lXZBVIlMhUnv5KmrVjML7uQTW1s39PgSc2Eu6oDznPqCBNj+QX2s3
+nODPULs+l28HZjnyMsEW1wfwLIjhF4S+p01JT4V/wTYLMbn6qdIqWYDdDOsZbvanGGYtLPMEGTHp
+gdLbaXlwLWLQQ3rvZ9Z/1D8Ic51w2Ph72hf4xPMdpALTH/ZfuZtfr6OdK4SALDXZ782JMac4jY0G
+9u7pe5gdUJ27ADCPBwoXUGsHGISDyotztAZarNvY8RMqf3XEI4hhKRcUsrRPM/7rxhLHbhaU5OTd
+MQTOL/lWD0y0d7MCJ/990xtizihFLqzo2jiMiMDUieAYH3FZHa2lZ9w7/iaX98E9u2tv+7OjS7ki
+1IqApwuTlBkV0dnyh0kh+tkz5Gqd1MuzSq+Fhvngs+1hdMQ2ba/KIslIY9PD6h7WjlVAQ70iSzWO
+TNfZ/Olcjk+r0xzilnfSq4KiUHj57ZKtW/tTVYoGm6KXEJ9Rr4wg+Bg43UU3ehM73a4qZ9L7FdYQ
+QUw0ThYVWnB63FujLQ0/dl/hePXHcPvMQ/D7b/TmMbwW7OF9wcm26bICO3YFVA0Zv3/eEEAqjjO3
+nJa//1nDfTcg+Yujz/ZiDb8Yv3yP1PIzXu0QpNtE5iO9hhP3lDLTbKw33MdfXzyvVS0hZgAYrv/S
+EfQn/2iCj0GiLqVu9+ipa9e6v4Zs7ZF030cPhIzQejtdAVjoa2tUg3s58zuGhfyXZOQ0KH1Hw38W
+ehhb2SSNEzl1JYSPmLANmNpbA/MZ593qanMKTGsCOwFaOuqy7Q4O79SbaQ/Mq1kqnfbGE4lXfj26
+Wu0P16z683UC3nJVTbkwdoYmrMpLoFov1KVBasQwMg9CX/9/0vjAGSAUeDrQySB97w6hSm7z5W27
+T72qhWGGA5PqTt71jFAXgvofLHmPV7NrvVE9VxI/TSdqApgpYTYs6YJU1M80RyA1JMMJw5ui0QD/
+eGbLj/J1KcmiakhnmdUqH2bMt+6LktW1/2m75Ew1l2Yt5GOzkwc3VPpTvEKz0U5AlMi7knxMQnaG
+lAt8HJN7To+7+oxQQfsLY+vUoah0mQ5wiAUAdIc2cAG72ZiZnnrH7iAfnz/mgD+o//B+DZppE4MS
+7zolsrsnZS8qIHq4/iWNoyz/gpk198zKKjO2wgIVPoh6wuSfqhKTtnogCA1WqB0zy5yAUibzrNRh
+WUL8TyCwVGsWnTteg2vhMB7NYUymS1owWAHoKes0/B3qNOTdnoSOEBqSJDDl1Dzzn8y9eCSBG8vX
+k31qKT6mlV7eelOJXbOInppKsyBmNFdoksRX2yKHw+hMnYBoTDgU/UJ06/MCcSxLyIbtZRIeRwIL
+1GTqm3Da3DbMVcdI9qqjNBPIHK/LVwzGgcgVwi0FuY8qnx0fkz/PncgR62Zw6yf6Wj90dhT9A0K4
+rVQZyN/3btDmc68BwqjT1VA1MHhsNk5Ug7kd/J5yDZJOg9hF6I6+TWKAenOisT2WMp3A4npxoM3o
+hrpoQLpuLIt8d2xxYaEfUXnpRaZHG4IrgAMN7FsTCfw7BhXsPt/9Rz6X2oWjsjzMhF7kv4jCNuil
+yzaySlx2jjIHdhvqcdb19nUg3lQkEDQ6GRUW/x7yDBR9wlIdtEJrNvqEfkLECtyqtlz4/xV3v6SS
+TxN4F5re+lWMhZsHlld+zJMN1Da9IJalwhU02gZl/Jzh3sxOkKx0mRqUo4R2sdRgU+5Du1a9p5bd
+xxdaF4rKddFkrPyk6GO3+VGPxm5hWVTBlf90v6Fz+4b7xOtzcW4UxsyFsbMunT0AMQl6HmOPy7Kb
+HBvb3pu3ZvW/g9Bh7+azRJQ1dt5PQcIbajGoBmeNlv3BnopFLuqxWpaaFO9/ESGH6qqiNtzqe/ge
+KUnyXblObi8FHjEokTqmCUfW9yTBwCrLiY00Jk0Wm6S37kRj+73Eilf3W8gJPy/oR7z4zOQxsWGB
+6pa9tH/gvNASKpuwQIMSqqPOv/DKWnCtRMsmzAwJnUvK/w0efzSOFvET00lUMpzT2k59auxOM/ql
+b+1a0ci/1hl52Rs/E5EdUDhO8yaB/3qz0b4DRukROC5cdprkhQ2h34JJLpxD/g/qzPVGfSAzbyyX
+c/OrCUm8jzlKYaWPRihx7KhixYVX+fI6nbSz1ktwqONTMcncfx/O5smKHbALhO/YWn/I5DnMLk5i
+A2ydULRd4kBZvnU+/wB+8I2cfJtveXiD1dy0Hg9ghaGXq8n5s0odC5qHrRmKqAVE8goqWcbVgZEL
+sQJs7xt4EiwjqXhr2vKXvB7i6ZIx4ZnLimriWZ5pOwDG58xbIsXoUhknhXiKJobh4F9r4hQd7TA2
+krnpzqBD6yrWClVAZ/pkvzmZpfi+5oBIthDZAsaFqnsxz5k7/zrW6tZsXKyzSOAlWrjZR6OIOpzr
+K5/tnXcSQdguK4nJZR+oANb0eqfAObbZPeaA1RKSzRUkmPqzqJyBfgRygun2OxE/RTgE9x11aOTb
+vGpxptpPqOXNlv6dqO+6w7C45sg1bMrARzSaRMdYeapFDLyEPj3JvGlHNgjNiTBxNtxpeoWFwRDE
+JUmfwy2yRuJe6bxxp8GrBb50wdR+nEBMXyaijqcJhSGHmGbfzb07Hz19+CD3dD/mlF3mhDlkpd8m
++hHZ0/YEeaXlZ+hn+oMXi2wuCK6dVqpaEZFx3FYgyUqgNUk62ZYtRygtE7FDvVGzQBqe0/XzCDHn
+1UjEQ86J9Wv+tY9P2mr4NWHe+FoVd6PLOgIGAbuZeS4xF+wpAfDWnpep/D1Jd9EBaRpgKzF+JsBy
+NtCbbh0lE5elr3V6QXXcMkdCiERetXJ3oXwyIqBxzX+IBRdWvzJYe+b3swkI6mFyh04mD2TrDy5p
+/UstLoUjUnjionvonqV3v/QvaZvkbb4mnlLUyxHDesfp/W1GfRQ4RbVdypeZcWj7NEb6tAr4NMx3
+ebNNtXJjI2V2BQPtz8LpRgsTN3o8s6AgX1YHoHbhKcrXpmMeZVcdtfhBERndDV/Jx/6x7eXDiGzE
+zy7JZ9XPjxy+ax1FbdqPGRX7rihgRHr9q+jiQjTFMqfGpTaXyWqBdeucAlfPb4WHcUHQkwK8QoK8
+P6d7v4/iWPaSQ5GFzwH00SxM4Px3KaCafoIfQT1EzteWxgm71Q6Bl0sZyKxwngMpj0QaC4yymoHa
+j/62qbB8Rmn+zFUL/gKjiJzWo8akUhSC43iLIK38xKCi/rL1Cz9pqnhkj0Rm2YV/uE0dmivGBBNV
+3qHy6D4cmjfp4OTsJPWGIkKhIEFmsXLDrKzq7eb34QIFFsd5TjEhs5sMpb8CArSTqJgACukAAAFi
+QZohbEF//tqmWAFdoUMGimTkluPWgAbLU/IidfUIkRqZZ2pn1o5XHX5KJIfM122Z6yJuysNt76Z2
+j9rYEEh/uZJ0NdK4sbee/UYDODbjQAuFu7YjQcmMoHXr04Met39WogB4hjv9y1FF4M6rMBSJMKEK
+Vn/+4FZcPaEtwp3MUmPcuixmWtX/myqbFeDKHlldoGL0GoJoGxN4qZQ+6cGQjaTeJeZ2Wo59b68k
+BnFKUcWhQ6Y6FdYod646L120OcT9uc0fZBalTTBZGzJs+xHB0QBl3mv58Inx5FOlxCSWB4N3gmWw
+OzrD1FbOu+9br5T1hPqYkMb0Y+cH56R75W11ti6bJeZqfYixsKquhQCAsXJfUCGJnqKzTTHI3A3l
+Z+yWbEcECFDC4sJhgJD4fVtzDfI8TuCC7ffTQJa1aOI39TuIgFFB62bhwdL0bUmpJZGBsnrol+OY
+FQU8j9kr61Za8BgQAAACp0GaQjwhkymEF//+2qZYAWbkv/hKfwKYU88tCm6P2ydQsvRlCjPfxnUU
+to8An9gM751oB0P/c2eQRAdvCvgOGGc7oXJsh1nTPXtTz7zFYM9XYra3UerW2WX0Tbi4ggcrgTNX
+rSvgt6IYCEn6eHCPLzt7pXYNaldt7l1giNXqC/0uQskIpLTmzIoHcVSTup4QspilhfFOFSe50i87
+4geaTnemlsC2+vrI/WIFhKnIhcFCCi21R5grSiqXguozbWATj4WzdqkLmtxLiiw8n7dfekdQuMLd
+/1CRMgv3Cy5pHHa03+7JCAg/pnE+Ycl+aoFoAXCCB7nV0S8eI8JAGHtHEfcGrKuSbHIHjIRAmUWR
+JMJVBzjVdLpbVQL+hPG/ErWVDc1wipf7PL5OCejwGFYr7pZxq3Aj5T09y/vFm8WHegF8D+mLEFQX
+mA8tYxpdsXeKb8GBCvGEUwWLpn8WsRcxFXaqKnrc40+KTGfiBTfd8vvg+T3Q28wC2W/xNxfQTFXA
+sSNlEaeX4Byl8BqDUDDQaeHtrVM4fausIJ3GynCO25X3kmFiM052zoKaIEbZtbYCUstohxkMxXjT
+i8W1Nm5xpgjoONkknIyEv6T+uEIpBmV+e2i6Wvv/iW87WwIaIAx2+GZ/vbC6ZVbMoQShOPyZQFDn
+ETHNVdKzPacANFueRV90/BT/lYez7Ke3EJQ4yiFGZIoJ/j+HMF9iPfiRlEyXQFFXdhW7rnoRemq+
+KSzKZvWEe7T5ninI8eEHJ1Y3lYVvxvxTUc0mpi+d3xJ8em/kcXPgxmo29kWH8kXv3/7oC8Wld+8u
+Sdc9znXJJW740o9mD97PpqEjsnZzvaAuUPg/lsJoyP/eRJuy9m3XDg/cr5s/4DNwABO1MJYw171p
+VUkopvynOW6RybUAAAXZQZpmSeEPJlMCC//+2qZYAULkv+DbLrRABzopHqih/wFlLgrepWoESq7a
+F/8OZJGUJrCABptnatW5VjC79OarH0wRZuh1DI2sAEmrBk6j7uEA9Pspn6Tb9HzgupbFTJ9q/UJv
+S2vaCZE4Mdqd2ntmvjuRhImIpL3LgAqmPp56W7uqiaN0T7wFHoVVpjn+GzK4iL/ygXGXMXuCXC7b
+XDcESV3m8AG0WQdz+GhKjf88F2wN45pjbkyDFsyk3IN0mHT2wHQ04SS/d0P+u8LpnoEWHrjbNzVq
+Pyo/l8oOmcXiCQnDjEc2KdEGKNOsAltzBBTiWSolduUgrWat11/YJhyjBZiI2dLSATXY9CgsrbKg
+3kp+aBQ0Nby/J8JvKRxPv1cIXCb6nxuOPEdNvKG66R4ebuzCPyjHCV3buhES0Of+e4x6towqDOdp
+vXxEQdTmg2NCc79WwUejTdOYMxwIpDNuw8dUYCHzBPJbUp7G2HG4oUkMt39pO91Z8wuZ3QuQnRwU
+h5woHNjX0KwvIcs8XXzFn5Uz4+TIbLCCuGCFtuTkS2J6XNV0h6UFpqOeXMT6hOPX4W/Iba33zkJJ
+QiW64w4g5uw/UcdWD7w7gRpXO7XmVShzzVIpTuWgtcO7foQ4JYmj9A2iBaNsVN7Jr6c7ReMR7U+v
+K60FhcdiuMfE0jqAvSt2Lfxw1cddzdFXFWfV56Rsw1IYUGh0X4x9YLpIytrawJ0FXaAnC5022I6z
+Sdq4Net2d6YW/NSyKo0aEHYKw02a/uhZ0CmsWxezMzXb7v+bGlNx8ImFp+rqBuErnkpBq/nPbVRJ
+rXJkylulrdYkf8dCYsdetxVMNtcrOcQAZ1UIdOtAlwSHTZ0scQVW2ttY/S2r0p+sW+Lct6CHOFP/
+2nZPra6iCaej1VJC/uE+qSJtPm9FAahdspuUDjXeJ8Y//66jd33cVqhZfID4HkQvvMip4ZSuANgU
+BLxx0SJcHMG9sskvORts6ybOuGddmz3oDb7aybwiA8uJm5L9ZE5gJPSOB5p75MaeSP/crObjZLNb
+CdEeHGAKzSxFm09VQu0ZcUuA6zVM1CuEGKwWcpJamNqq9Gqy3zaxY1rvgMB7nSDplwDNeHPfVoJp
+20ZUq30KMwNiHbKgvsaMKEHmlSvKa6wASC2Q0c7dPH03QJCbUNbjQ2e/q0b+rndDxQkurkFDJTSj
+2vhxDUo+8DZz09hJXGMJEpV+yKvayJzxeVWqqY/if54uUKGnH5zG226Nh05VlYdiGjEDnch8w3mM
+I82mZ3fNb3tjmZmHt3IU/0kKPwcwnHEdTiKG0tg61JWq3gP1ryrk9SZ9Fad5Khem6akTvO5al9z5
+/maD5M9Yvp8omBsN4x/aK+azillxCpvxfoKiNVIGWQ2+Cgg0F7z8NwdRydN3z7blja+YcdPtro+D
+EogIOxNSU3+oa68JlMSSEDNLeudcv2+RcteRjQNe3XMHgu/3eyoJb5wNVqOTgBbRCYVMqn3QoTJJ
+an7upycRdC8cwxHx3bLjZmQuONhOjbS01zHty97t9J4t4yD5wIBA3F3aDMVVrVv2m3h7sr7KulyF
+yKNnn1Vf6+j6SOd+f3Jc4ZUrypqV2g8xMLaHlSqvXZdRaOFADGuj09tfWcgo8WAhJQDcy15HfB5r
+svh7XbQ2kOYl+4JWuy1n8oLwIKSoEAu+En9kjb9tkCKT7j04L9aBTzPMUSXA55WQNP/3g4cIarDM
+s3H1kuFuFjwKQEgU6cf97PZY1TBKSCDvAF4vvrc8zJ8tNhgPkLGKD2ZCbcboChtYTFqRMSuwildA
+U6zbjPLVHl0vhvJ/CYykoPhxEATF7HZ9NN2QreQxSlE8zR7PookLJGSk4kj0A1bqbr7RCTy5VZBe
+VAtVlMV3jT27JnHEWPWFHNzVJXo2WO8S7UFuAdZ74bkVh1CKPHqmSiAKtaqJfCLfjOUs51sEBqVA
+gTUqntHuSbqNscM9sxV78g/5yj2xcnxAlyzxs35sAAACfEGehEURPBb/AACIu52LG77JQABEKnZ9
+m1eh3SCNVdNrJeSMYtjnw5nMcEt8Woy2gDwlGXASxz6TfDVhpa/fQQqkbXtE9VsQy1GWRLDz/aMl
+RBdL8r2W1ye89wIsavfGUD1Umz/+EXbnItOW/qNhF+tCO6ZauZQap7hlVZT8yNGY1nTg3La85nyQ
+CLmiEXm3EdW3jle4l04Zr3H8dAb4ENVxjhbGoscgu71ysyrheO9+Ah+zA8ZLCavEfj2PzfsxYrZo
+i+/E/2LmSNhAy+Q3tU51wGrKywea7I9FGZSPbBAMKOdcFk8aDpiNqBVxYLfI0qT5o/EFTWruUtFX
+2GvS3084cYqtd7tQh/AEkAWsntJoxKYcML9XI3cB5c0z6gORHSW2FLuigXNNTgaODXac7cBAburS
+DxDxdKobIOB5+irN5/idoDdMbn45RebKO2Q1pwcua1uWbUJ1QIjqS8hF1V74/Ng824BKFZSyg9kH
+SGnlAM5cE0wJfNqFQIrbCbgdx0ScLhIWRuE0QwpVyzH1gvYt0Hmu+y2Hsr5YTegf9tZzYST0zGPC
+BrHGmMCuuEF0jDg2VDWd3bq5QKtwrqeSMNMQ9AAAM14Zut1PPwEj9oivPp+dIhO8KMvB8BiwtusT
+uekC/5B/wPC5buNrV97hYslhy1QG2amZoJHsXB+xIl+/YIbxvSAMC6sd+HfvHv7Rns85CnHs7DzC
+cV3s4VjDCRAxhaQkI0xATopJtDCHZm4ANXn2nELNr0i/MZ7xh17LNlYuUti6u+0dKZH+IPUnjJT4
+437BCbkeLTPuW0mjEf4arCOBqGwvLd9BD7TmnNIFvEIyaCpfLaFed5li6QAAAXwBnqN0QV8AANda
+OtrDgwExRyZiuAA7N0HfbiGOZxar3o9o9UCiv8urjG+E6JNmSTuRS6lyXsXh/FHu8Ci12m1LDTqe
+4uhhtaMX9Y24E0QIJpIkeWaes5j9OeN8zA+c1Xnr5fxDr2Kw3sLokn9PONpJvgtMGug/oWDMzeAa
+RuP5RrYVXMDSpTHFPmAYhb9siZJmSkfILpnA+vki9t4IK8WSWlVAF4Kl0X/2OL4rLctEUdUkFFmx
+nu1xQKIIrFsJnfotmpVuTwb/DTdWAfHs3GWsUeTiXo+w5AP1M12z3jrNGEPwkH/R53FYEDzl2xxV
+hJd3QU0aCc2RHoPD4qmI1xA9sb6qZLmgAmBjbI2Lwzqjyu0ewiSlCvLIP5h+qO/GH00Cf6xwInsF
+FvIgNrJbW2EWzAAAAwI/DnJ1Ve8hz800VDqnqBEBTRjCcTzoUUc94w4SVo1mTW1fBrfC8aS0DCty
+d9SpLcgG+aM0Di7qUR0waGxZ2f/+4xIHBrC7gQAAAlABnqVqQV8AANdY5HQAIhUEtjL+H2d2+6ht
+79r+HUrd7qH4bnj7tl4+QGQYDa1gzKirA74SwJ3MkMRG+tKKC9cUxGIEPrGAB5qLUOV8MF4hQd3R
+CVBQ0BUmj2F3QEOGywN/CxDuxc+L966nGresu2xHzVCERgrlzFrjsrYm0daGmhUbjJG0U/5Zbmq2
+mUNpZSp8fq6rbh4ZyIiIKDvAgFQU/D6p0edNewvJQd9NXFjKvlShpVoTDG3nPtnDRcp0vXPFEAfI
+PntEtM4LDHiJqNaC9hqI6MBZZqnQGTvRRmFdZSozUL2BBK+rpAu2EmX8eFayPXS9I3irsbuIF5iV
+F4gNcqcHRyRVyZqFBNU6fRLDLlbTRUMLlKIzbF35TZfD2Z580xOEdlT0YXm6Xf1AMFSTpnote77X
+JiACjSR1FrvSrkbzsHhxG5JGekRz/it8dsmGykU1SP/42+0glXZhy8LScfVm8S/5WaL191RnLy8L
+7Bftx3LxZUpABgAAo5uQRr5lHH0vlC2OCSs5jq3GzNGKR7SIiy+QfH7BnNinE/JHZeF60MjfcDeT
+4/zVCTZSyZeP5oWB4cB5E6ydxGdp77aiiYGOL2On6NXFSvqdDUu/HJlF+9MP9R1lYyI1wZPu9hp/
+g2gIVGUwIStzzz698gk5jfJ7iLHbsXLlxiLqjiFO6LaGqy+fakirItEVxqRpPy9qQ9GFIcvfEuyD
+sRyFHhZvMeo+eOeSxuUqpECDeMC23FQZY7VTtSEeN3XSlecVkgP9AtSfrDXnLcQ/zF9HsF8vAAAE
+7UGaqUmoQWiZTAgr//7WpVABQQhCgAO03A3cLzrdkyxb0nd9aNJNYZBcAz3C2GA4t64MbGVRnwJB
+vwuyyJntpMpTF1KS782z6qjrv+9QRMCURwFwDWBbFoI4igFYMd2K5PsSn3VTcXXBopVKj0i2F86i
++0BwY47/9R4MQbwfqwDak4mo/BVkpmj2NKtse4kAAqTUA4VoCsLiPAuZkdcGOYdX90Dx488OKRBs
+/h1lk5PAqggEKgjo04Z73Ig0nqZip+RriKUUHPklvR/cq3UBtVFioXdfu3ZsGAMEGQz4/l9H0xRp
+IYJbU+NPS2Pu3IfpkHhAbSPoXxKCyVrEq+8+sMX6/6c4WWRWKN70S9yKxkOnH8vFm3TU5FLigWrK
+U5BEzQwkFmiRx3Y+P55aCdvHcLXvsO5AS6ckjQAfczCAjTEMKpLED+ijV596OmrNikMA05Nhecv8
+nDhaD5DyFptJoBuBOYJiSGBxtMzbA1GDtuGAmPexdueOuax6I7RMcXbvAMPuFDHqxEPCtPMPUt7z
+YwAV3WjnMSYax0xRzjX538BpQu7sr2t+758CM7ohYA+3LZslJ8HMLYczjdjOI0Oy2oIVJTNolm6q
+Vr8KxL52g1Qpke0ql6zt2wMHzZn//9uI0v0zj+SNOQiM7tEpaxh0QUjOKhHB+8oKo+8M/xF/vbaA
+WJYWfCNCgsnMlilUSoJOI5m5tQTcDP+w1aqNTQsPGsVSDfsqwMRvdoVsmbI3cTSCL4Y/ZfwXXZae
+9sEgW5fUMtsDR0ALTZu6O6t4wW30VQbZhnCwSv/MSXNacJt3yOHk+3WKYJLS6lBP94K/nhfcCgIa
+dDfnmJZ5p2COmVqffn3A/4GqPuuNv4kCsvqSNGSQcEZkPJe8bUNw7oo1oTHSPlsFrda5ZK67wl7o
+z8bgF9mHLH6K03R5m1IJBJFNh3UELYJYMOA6Svl38oK7jPaN8fqXX5DKzf97Mz5dOj65up28HVlV
+DzqZMnMc3Igb+Oyvt6nL8jsfFtOP2TfUZVmFWz8KT4+Q55bGocigZaJuR9/t5xNEG6i1ZEJBDs75
+1JHZ4qtxnh97GXfdTUPOuBAtvMMvcUsJj1yOZSlGs810gx24AS1/td3UC2/QUawEoh/j8kvwR1ed
+cIFf9foUh54jd/BUNR7Uha83jgwWdtRXyDjG7P4jwJFHgMCKBvgZPuIOsTp4vNTzHz0qephxpvDG
+8k5cL7IMzsTSDlX1ueqVFtr/KfSJ5+xnkWCSU1uOPD+2PtJzJ0pWOAU3BddXcKIYaaUXVTFPvh1h
+8Mk7+RMW0Y0aWudB1T7RTDhsndcvz2fU1vZyJ9kWmjgRJHkpITTVWltznTPf1LEKvQTAxZbHeMgT
+qP6llYtQZ8sRLT9XSK7FvAhRACqAclIX/93ppaAJbrFspqIR30vS+m1CBAcK3jiafAomMy0DUkVv
+fNXCmvTYT8R99yRfAzZ+78puigDJQRnTPhE29vlnQ93u0tvuVZsNH6KN2dilG9vq8N5dcL04KT/d
+AEAp1LL9QlHRFqBWwv0EjTCrnX5j6QwI16EgGbcMjEFgI/GJr9AK3/IKgD5sjQxKfvcz9Wwt833S
+pCWBWGBBqjSBbfZSwnM8QF9ImEmZ8P+omdUk2VjbPoH53ZBjNrxrBkTS2/8kw2WIdnSSshr+A7iQ
+6WvofbDMeGEAAAPeQZ7HRREsFf8AANf7IANq3870rPJu2cl1qv+CMe5R2T9uTCgTPoJhG6lcyej4
+z6czr/In80uIE4H/Zo2LsRJuRFQe4gcjGrODxmczE4pZJ3HmxIM6MP61Jk2W+VnbGZ3H/Ns7RnXm
+DphpO/F9sVEEQHG6/cdKeFInjFEQarhTKFUqVgo+8siiVpWnv7wa9cCHF5+fDLndXthabkkQsF13
+PUMtLPZ0xXt+r2+IzDl4Uxy/p/ZByj9Eoc77azf4SmKY/1v78YeE9uYKORGZQrV0mTNU8eiEiCDd
+6CqepYoKv4JMUnwC7TS8PN8FG/NsMC3oypg2U6px2Bcgnz/A1/FhzWpjNVUwFpoeO/BbWpmSKKuf
+J/bsSv7s+F7KAdYf1hb3cC3b9NScxpYVaQr1FZGO5cE4mOgMxbt6wPRx04l7Mvl4zpUKPoD+VNOy
+TIlhefTUUIo20vy/T6E/v1d3n2dBNmojBM/y/ZC2Bxgnz713xfuiPs6qXYIyeg/cPjl8TnD0HvD5
+X629mPwjdtvGAkSvwx7YqMzyMP1NGLDED+xhzl8NHs4pOU1BUJshk0FIckTmPu3N9jEnl9g7qhsB
+iOFSNov5hLhn9DHC+301/y4uN+Y3y/buCAEixu5YZzl/hwA+Fdy7NmagWx5GyAcXhGyNUKYZmk60
+nQ7ovvIgkCE1dDPSKsSi5g6BRpH4xT5RrYTdokd6StG6ipHR5mjTJYcBwxui55n3dKm+QrFWmRlg
+IMo/IpgMxRPrGHoZR7RkjXs/UEIgl3ub/J+hLEARVQILrcIvKV2Ou5QBS4REyoo/4v0CtBjRVRgZ
+xsjIw20WAWqrJJZX5lGQPIhkO+I8vNhqihtkO06vgdLoQt7PnKT4bouXR2allP6Ve+0mOePTtQY0
+wMrmgwbF7h8Fr61JA81lWG0+06QiPJ4hxDnkmb6rr29TGat6lkYnjQgDSVREJCKxqUEcp1hpbcDC
+zABw9TKwKeSilEjCfikMlHLXBH6EZaa5puhFaPQ4pRtlNo6MhwnrN8T8rmp2ox7MYeB5oS2IxH9p
+VD40+JKBtiLXovOun865E8V3l+13LsAauCk9xSx1y6TNkpo5VdxP7nJEHQbMah1azihoZnCNNPRY
+EtbE6frZCwY3v4+x05HOSl+7k4v6dleQ7InM1aa6TfE+MN38vXTRjZ9oxOrFn3+kUYb+4IHjI08E
+G431ea1298rmDytMIJwV3C3lMtHfhdbOz4cACMbuKFA6gnRa/+Vn+XR3/2abryfxTKFo66RdElmN
+8puC/FdyDQyMJHI37Jy/x3U+YThfwf//+n//7DPkcHpAAAAD8wGe6GpBXwAA11skoADtN/O85IN/
+T/+P/x9aE779V+/OwDLwUumSnbk/TZqVqqmf+7w1Y98FZS2MO2RKF+t4fe7GJxvH9plJcb/6RQUu
+i1nmiQo0qfeHrueUFf+VNL3Zz2/Fy5D74wdVlbI8Pc4syfowPYiOiWbAIFtnmPjUbgBZ4tGxwwQA
+l1Htuww8x4kDYly+7gMjGUL5KVi60lAjy2hacd/8iecrMzRpp5tCgvyum6AFil+1HLs2aJCExrzr
+L10FzL/xJv99x6SBe12bryVUhTA3Uxho1Ontka5/mxKM8zwTtNh9+bX85zIrrVaLWMIH3DzBiGcJ
+/5oLeqbjR7xcUgje0oIBSLq0N6PACby3ONFZHDVtf6faUFo8g3p+JQSF1TdfurSUg5dkiKr71I+z
+QArr3Wg5OnFSxrAB7kCmqd5+UZqOgcbjGOEAlZC9jKmYqa/fMg6Uo2GtuZ8fjB29wnQmNEFA/4jT
+VK6acMW3+/C3K+8usjCMAb2r9WZx6ZTgnO1b7c4AoYTng7C4IJfH/xWwDyDi1KHLgKjXP+U5fDKr
+gE/4+qSiDDgxTyA6LqkHg0MXfhdIVyLosTO1YSbTHV/+HVHZ1Xi2v4aLOAPHy2bI97LPk6aAN9Ai
+pCf975FSxzyq5iTvGDX+f/YQDExAMX4xMGe6c9+BzK053cy4TtkjzllMn9poU0yD8wCvXbvw1/9F
+5kSpARBskVqYE7vyv8pg59te0BnP1dpjkcLoLyzodhHif/8EKtxSojF5DFVOPmWMIvCedSENRsTT
+d0SoI0w3V8geFHO/B7bf9zF1N8qCL8DX6OIhaB7zIBtx5AWCuYORIne/bYYhrU79Pdc0MZFGmdxw
+uaMWTfu7MGZqKXAbmFTs/F1rMop3b1/GFWm+7Cowhr/X9MRAYoVkn2lFOIo5vgv+2WipVVgVsoQr
+Zp2mtm0RkQxVSZ8fJwNvMnxZHK5r6lVdWpV+QHn+/iJeWTM9Fn3WN8bQqnp+OBc5lddZKSDPAFQY
+yLBUwozW1Gi94TvPNNbInz/VsKaENIeRwB+LTHfcp74X/0ezh7LxiO5Zskp7lcT8z2Zsd4Amqs2/
+1SS0F5FU+aJhP3Ln3NPrLgxWxBmab/V2xXwsGCbwleLuPF8BxRBmdTLxvC837RgKQSsYNc4u6+CD
+M+YxkVwPRY5zWimetrhUAaesK/1TCf6wWBJYVgCcDEhVx1n4RZxBmeXLx3PvGSwAuA2PVqj8R/rj
+/VM/l49e34SqAagdBPGZi+JHxX0Ylf8QfrRaBz/Umn//exfq+gRl6oaOTI6Z8hz64ljIVtMzUYh0
+RoPzTaQg0wPuxdsNc4edsLk/g/S7HwAAA5Jtb292AAAAbG12aGQAAAAAAAAAAAAAAAAAAAPoAAAn
+EAABAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACvHRyYWsAAABcdGtoZAAAAAMAAAAAAAAAAAAAAAEA
+AAAAAAAnEAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAA
+AAACgAAAAeAAAAAAACRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAJxAAAIAAAAEAAAAAAjRtZGlhAAAA
+IG1kaGQAAAAAAAAAAAAAAAAAAEAAAAKAAFXEAAAAAAAtaGRscgAAAAAAAAAAdmlkZQAAAAAAAAAA
+AAAAAFZpZGVvSGFuZGxlcgAAAAHfbWluZgAAABR2bWhkAAAAAQAAAAAAAAAAAAAAJGRpbmYAAAAc
+ZHJlZgAAAAAAAAABAAAADHVybCAAAAABAAABn3N0YmwAAAC3c3RzZAAAAAAAAAABAAAAp2F2YzEA
+AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAACgAHgAEgAAABIAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAY//8AAAA1YXZjQwFkABb/4QAYZ2QAFqzZQKA9oQAAAwABAAADAAIP
+Fi2WAQAGaOvjyyLA/fj4AAAAABx1dWlka2hA8l8kT8W6OaUbzwMj8wAAAAAAAAAYc3R0cwAAAAAA
+AAABAAAACgAAQAAAAAAUc3RzcwAAAAAAAAABAAAAAQAAAEhjdHRzAAAAAAAAAAcAAAADAACAAAAA
+AAEAAUAAAAAAAQAAgAAAAAABAAAAAAAAAAEAAEAAAAAAAQABAAAAAAACAABAAAAAABxzdHNjAAAA
+AAAAAAEAAAABAAAACgAAAAEAAAA8c3RzegAAAAAAAAAAAAAACgAAH9wAAAFmAAACqwAABd0AAAKA
+AAABgAAAAlQAAATxAAAD4gAAA/cAAAAUc3RjbwAAAAAAAAABAAAAMAAAAGJ1ZHRhAAAAWm1ldGEA
+AAAAAAAAIWhkbHIAAAAAAAAAAG1kaXJhcHBsAAAAAAAAAAAAAAAALWlsc3QAAAAlqXRvbwAAAB1k
+YXRhAAAAAQAAAABMYXZmNTguNzYuMTAw
+">
+  Your browser does not support the video tag.
+</video></div></div>
+</div>
+<div align="justify">
+<p>If we would then want to have a significance of <span class="math notranslate nohighlight">\(\epsilon\)</span> = 5% we would have r = 5.</p>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nothing can be concluded if we do not reject the null hypothesis.
+For example with <span class="math notranslate nohighlight">\(\epsilon\)</span> = 1% and r = 5, then <span class="math notranslate nohighlight">\(A &gt; \epsilon\)</span> so that we can not reject the null hypothesis.
+In particular this does not imply that <span class="math notranslate nohighlight">\(H_0\)</span> is accepted.</p>
+</div>
+</section>
+<section id="exchangeability">
+<span id="exchangeability-excursus"></span><h2><span class="section-number">18.4. </span>Exchangeability<a class="headerlink" href="#exchangeability" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>The concept of <em>exchangeability</em> can be seen as a relaxation of the typical <em>i.i.d</em> (independently and identically distributed) assumption. Informally is means that the ordering of the random variables in the sequence is irrelevant for the joint probability. <br />
+More formally, a finite sequence of random variables <span class="math notranslate nohighlight">\(X_1, \dots, X_N\)</span> is <strong>exchangeable</strong>, if</p>
+<div class="math notranslate nohighlight">
+\[
+    P(X_1 = x_1, X_2 = x_2, \dots, X_N = x_N) = P(X_{\sigma(1)} = x_1, X_{\sigma(2)} = x_2, \dots, X_{\sigma(N)} = x_N)
+\]</div>
+<p>for every permutation  <span class="math notranslate nohighlight">\(\sigma : [N] \rightarrow [N]\)</span>.
+For an example we think of an urn with three red and two blue balls.
+We seek to draw all five from the urn <strong>without</strong> replacement.
+Pouring the example into a probabilistic framework the i-th drawn ball is denoted by a random variable <span class="math notranslate nohighlight">\(X_i = 1\)</span> if the ball is red and <span class="math notranslate nohighlight">\(X_i = 0\)</span> otherwise.
+We now are interested in the probability of any sequence <span class="math notranslate nohighlight">\(X_1 = x_1, \dots, X_5 = x_5\)</span>.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">urn</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">get_all_sequences</span><span class="p">(</span><span class="n">urn</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="n">urn</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">urn</span><span class="p">)))))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">),</span> <span class="n">b</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">calculate_probability_sequence</span><span class="p">(</span><span class="n">urn</span><span class="p">,</span> <span class="n">sequence</span><span class="p">):</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">urn</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">probability</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+        <span class="n">probability</span> <span class="o">*=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">probability</span>
+
+<span class="k">def</span> <span class="nf">visualize_all_probabilities</span><span class="p">(</span><span class="n">urn</span><span class="p">):</span>
+    <span class="n">sequences</span><span class="p">,</span> <span class="n">probabilites</span><span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">[(</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sequence</span><span class="p">),</span> <span class="n">calculate_probability_sequence</span><span class="p">(</span><span class="n">urn</span><span class="p">,</span> <span class="n">sequence</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">sequence</span> <span class="ow">in</span> <span class="n">get_all_sequences</span><span class="p">(</span><span class="n">urn</span><span class="p">)]</span>
+        <span class="p">))</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">sequences</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">probabilites</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">())</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Sequences&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probabilities&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Probability of any possible sequence in the urn&quot;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">visualize_all_probabilities</span><span class="p">(</span><span class="n">urn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c35ad4f4935ca78bafa89bfac57004f979150d18e7a59611e55deebc57e04da6.svg" src="../_images/c35ad4f4935ca78bafa89bfac57004f979150d18e7a59611e55deebc57e04da6.svg" />
+</div>
+</div>
+<div align="justify">
+<p>While it is not surprising that each sequence has equal probability it shows us that this sequence fulfills the property of <em>exchangeability</em>.
+Also the individual random variables are not independent, as the <span class="math notranslate nohighlight">\(i\)</span>-th realisation drawn ball influences the probability of the next <span class="math notranslate nohighlight">\((i+1)\)</span>-th realisation.
+If the random variables were independent (resulting in a binomial distribution), the <span class="math notranslate nohighlight">\(P(X_1,\dots, X_5) =\)</span> <span class="output text_plain">0.346</span>.</p>
+</div><hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnoteidentifier1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>The “Annual Conference on Uncertainty in Artificial Intelligence” (UAI) was launched in the mid 1980s.</p>
+</aside>
+<aside class="footnote brackets" id="footnoteidentifier2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">2</a><span class="fn-bracket">]</span></span>
+<p>We do not distinguish between the notions of information and knowledge in this paper.</p>
+</aside>
+<aside class="footnote brackets" id="footnoteidentifier3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id21">3</a><span class="fn-bracket">]</span></span>
+<p>For this reason, possibility measures can also be defined on non-numerical, purely ordinal structures.</p>
+</aside>
+<aside class="footnote brackets" id="footnoteidentifier4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id22">4</a><span class="fn-bracket">]</span></span>
+<p>Strictly speaking, possibilities are not more expressive than probabilities, since possibility distributions cannot model degenerate probability distributions: <span class="math notranslate nohighlight">\(\Pi \neq N\)</span> unless <span class="math notranslate nohighlight">\(\Pi(\{ \omega^* \}) = 1\)</span> for some <span class="math notranslate nohighlight">\(\omega^* \in \Omega\)</span> and <span class="math notranslate nohighlight">\(\Pi(\{ \omega \}) = 0\)</span> otherwise.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-appendix"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter-setValued_utilityMaximization/set.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Set-valued Prediction Based on Utility Maximization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-on-uncertainty-modeling">18.1. Background on uncertainty modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-versus-distributions">18.1.1. Sets versus distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-of-distributions">18.1.2. Sets of distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions-of-sets">18.1.3. Distributions of sets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-min-versus-sum-product-aggregation">18.2. Max-min versus sum-product aggregation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">18.3. Hypothesis testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exchangeability">18.4. Exchangeability</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <section>
+    For comprehensive discussions please contact one of our team members: 
+    {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
+
+        <div style="margin-top: 50px;" id="disqus_thread"></div>
+
+        <script>
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://https-werywjw-github-io-toolbox-github-io.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section> 
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

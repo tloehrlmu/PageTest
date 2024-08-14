@@ -1,0 +1,1112 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>19. References &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/myStyle.css?v=e90502a2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'references';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="18. Appendix" href="chapter-appendix/appendix.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="startPage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="startPage.html">
+                    Toolbox for Uncertainty Quantification in Machine Learning
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter-prelude/prelude.html">1. Prelude</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-intro/intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-srcUncertainty/src.html">3. Sources of uncertainty in supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-modelingAproxUncertainty/modelingAproxUncertainty.html">4. Modelling Approximation Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-pe-scoring/scoring.html">5. Probability Estimation via Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-pe-calibration/calibration.html">6. Probability Estimation and Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-pe-ensemble/ensemble.html">7. Probability Estimation and Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-mle_and_fisher/mle.html">8. Maximum Likelihood and Fisher Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-generative_models/gm.html">9. Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-gaussianprocess/gaussianprocess.html">10. Gaussian Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-deep_neuralnetwork/dnn.html">11. Deep Neural Network Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-bayesian_neuralnetwork/bayesian.html">12. Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-credal_sets/credal_sets.html">13. Credal Sets and Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-reliable_classification/reliable_classification.html">14. Reliable Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-conformel_classification/conformel_classification.html">15. Conformal Prediction for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-conformel_regression/conformel_regression.html">16. Conformal Prediction for Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-setValued_utilityMaximization/set.html">17. Set-valued Prediction Based on Utility Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter-appendix/appendix.html">18. Appendix</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/edit/main/references.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/issues/new?title=Issue%20on%20page%20%2Freferences.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/references.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>References</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1><span class="section-number">19. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<!-- Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
+in regular markdown files (`.md`), you'll write in the same flavor of markdown
+called **MyST Markdown**.
+This is a simple file to help you get started and show off some syntax.
+
+## What is MyST?
+
+MyST stands for "Markedly Structured Text". It
+is a slight variation on a flavor of markdown called "CommonMark" markdown,
+with small syntax extensions to allow you to write **roles** and **directives**
+in the Sphinx ecosystem.
+
+For more about MyST, see [the MyST Markdown Overview](https://jupyterbook.org/content/myst.html).
+
+## Sample Roles and Directives
+
+Roles and directives are two of the most powerful tools in Jupyter Book. They
+are like functions, but written in a markup language. They both
+serve a similar purpose, but **roles are written in one line**, whereas
+**directives span many lines**. They both accept different kinds of inputs,
+and what they do with those inputs depends on the specific role or directive
+that is being called.
+
+Here is a "note" directive:
+
+```{note}
+Here is a note
+```
+
+It will be rendered in a special box when you build your book.
+
+Here is an inline directive to refer to a document: {doc}`markdown-notebooks`.
+
+
+## Citations -->
+<!-- You can also cite references that are stored in a `bibtex` file. For example,
+the following syntax: `` {cite}`holdgraf_evidence_2014` `` will render like
+this: {cite}`holdgraf_evidence_2014`.
+
+Moreover, you can insert a bibliography into your page with this syntax:
+The `{bibliography}` directive must be used for all the `{cite}` roles to
+render properly.
+For example, if the references for your book are stored in `references.bib`,
+then the bibliography is inserted with: -->
+<div class="docutils container" id="id1">
+<div role="list" class="citation-list">
+<div class="citation" id="id45" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>AKM06<span class="fn-bracket">]</span></span>
+<p>J. Abellan, J. Klir, and S. Moral. Disaggregated total uncertainty measure for credal sets. <em>International Journal of General Systems</em>, 2006.</p>
+</div>
+<div class="citation" id="id44" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>AM00<span class="fn-bracket">]</span></span>
+<p>J. Abellan and S. Moral. A non-specificity measure for convex sets of probability distributions. <em>International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems</em>, 8:357–367, 2000.</p>
+</div>
+<div class="citation" id="id1493" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>AKG+14<span class="fn-bracket">]</span></span>
+<p>C.C. Aggarwal, X. Kong, Q. Gu, J. Han, and P.S. Yu. Active learning: A survey. In <em>Data Classification: Algorithms and Applications</em>, pages 571–606. 2014.</p>
+</div>
+<div class="citation" id="id2266" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ACG12<span class="fn-bracket">]</span></span>
+<p>Alessandro Antonucci, Giorgio Corani, and Sandra Gabaglio. Active learning by the naive credal classifier. In <em>Proceedings of the Sixth European Workshop on Probabilistic Graphical Models (PGM)</em>, 3–10. 2012.</p>
+</div>
+<div class="citation" id="id2282" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ABE+55<span class="fn-bracket">]</span></span>
+<p>Miriam Ayer, H Daniel Brunk, George M Ewing, William T Reid, and Edward Silverman. An empirical distribution function for sampling with incomplete information. <em>The annals of mathematical statistics</em>, pages 641–647, 1955.</p>
+</div>
+<div class="citation" id="id1896" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BHV14<span class="fn-bracket">]</span></span>
+<p>V. Balasubramanian, S.S. Ho, and V. Vovk, editors. <em>Conformal Prediction for Reliable Machine Learning: Theory, Adaptations and Applications</em>. Morgan Kaufmann, 2014.</p>
+</div>
+<div class="citation" id="id49" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BCRT20<span class="fn-bracket">]</span></span>
+<p>R.F. Barber, E.J. Candes, A. Ramdas, and R.J. Tibshirani. The limits of distribution-free conditional predictive inference. <em>CoRR</em>, 2020. URL: <a class="reference external" href="http://arxiv.org/abs/1903.04684v2">http://arxiv.org/abs/1903.04684v2</a>.</p>
+</div>
+<div class="citation" id="id2168" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BCandesRT19<span class="fn-bracket">]</span></span>
+<p>Rina Foygel Barber, Emmanuel J. Candès, Aaditya Ramdas, and Ryan J. Tibshirani. Predictive inference with the jackknife+. <em>The Annals of Statistics</em>, 2019. URL: <a class="reference external" href="https://api.semanticscholar.org/CorpusID:147704029">https://api.semanticscholar.org/CorpusID:147704029</a>.</p>
+</div>
+<div class="citation" id="id2262" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BMN19<span class="fn-bracket">]</span></span>
+<p>M. Bazargami and B. Mac-Namee. The elliptical basis function data descriptor network: a one-class classification approach for anomaly detection. In <em>European Conference on Machine Learning and Knowledge Discovery in Databases</em>. 2019.</p>
+</div>
+<div class="citation" id="id300" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Ber79<span class="fn-bracket">]</span></span>
+<p>J.M. Bernardo. Reference posterior distributions for Bayesian inference. <em>Journal of the Royal Statistical Society, Series B (Methodological)</em>, 41(2):113–147, 1979.</p>
+</div>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Ber05<span class="fn-bracket">]</span></span>
+<p>J.M. Bernardo. An introduction to the imprecise Dirichlet model for multinomial data. <em>International Journal of Approximate Reasoning</em>, 39(2–3):123–150, 2005.</p>
+</div>
+<div class="citation" id="id2258" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BK15<span class="fn-bracket">]</span></span>
+<p>Wei Bi and James Kwok. Bayes-optimal hierarchical multilabel classification. <em>IEEE Transactions on Knowledge and Data Engineering</em>, 27:1–1, 11 2015. <a class="reference external" href="https://doi.org/10.1109/TKDE.2015.2441707">doi:10.1109/TKDE.2015.2441707</a>.</p>
+</div>
+<div class="citation" id="id2178" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bre01<span class="fn-bracket">]</span></span>
+<p>L. Breiman. Random forests. <em>Machine Learning</em>, 45(1):5–32, 2001.</p>
+</div>
+<div class="citation" id="id2298" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bre96<span class="fn-bracket">]</span></span>
+<p>Leo Breiman. Bagging predictors. <em>Machine Learning</em>, 24(2):123–140, 1996.</p>
+</div>
+<div class="citation" id="id2284" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bri50<span class="fn-bracket">]</span></span>
+<p>Glenn W Brier. Verification of forecasts expressed in terms of probability. <em>Monthly weather review</em>, 78(1):1–3, 1950.</p>
+</div>
+<div class="citation" id="id948" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Cat05<span class="fn-bracket">]</span></span>
+<p>M. Cattaneo. Likelihood-based statistical decisions. In <em>Proc. 4th Int. Symposium on Imprecise Probabilities and their Applications</em>, 107–116. 2005.</p>
+</div>
+<div class="citation" id="id1544" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Cho70<span class="fn-bracket">]</span></span>
+<p>C.K. Chow. On optimum recognition error and reject tradeoff. <em>\sc IEEE Transactions on Information Theory</em>, IT-16:41–46, 1970.</p>
+</div>
+<div class="citation" id="id233" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>CZ08a<span class="fn-bracket">]</span></span>
+<p>G. Corani and M. Zaffalon. Learning reliable classifiers from small or incomplete data sets: The naive credal classifier 2. <em>Journal of Machine Learning Research</em>, 9:581–621, 2008.</p>
+</div>
+<div class="citation" id="id2249" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>CZ08b<span class="fn-bracket">]</span></span>
+<p>Giorgio Corani and Marco Zaffalon. Learning reliable classifiers from small or incomplete data sets: the naive credal classifier 2. <em>Journal of Machine Learning Research</em>, 9:581–621, 2008.</p>
+</div>
+<div class="citation" id="id2250" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>CZ09<span class="fn-bracket">]</span></span>
+<p>Giorgio Corani and Marco Zaffalon. Lazy naive credal classifier. In <em>Proceedings of the 1st ACM SIGKDD Workshop on Knowledge Discovery from Uncertain Data</em>, U '09, 30–37. New York, NY, USA, 2009. ACM. <a class="reference external" href="https://doi.org/10.1145/1610555.1610560">doi:10.1145/1610555.1610560</a>.</p>
+</div>
+<div class="citation" id="id1727" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Coz00<span class="fn-bracket">]</span></span>
+<p>F.G. Cozman. Credal networks. <em>Artificial Intelligence</em>, 120(2):199–233, 2000.</p>
+</div>
+<div class="citation" id="id2278" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>dOCESR12<span class="fn-bracket">]</span></span>
+<p>Filipe de Oliveira Costa, Michael Eckmann, Walter J. Scheirer, and Anderson Rocha. Open set source camera attribution. In <em>25th SIBGRAPI Conference on Graphics, Patterns and Images, SIBGRAPI 2012, Ouro Preto, Brazil, August 22-25, 2012</em>, 71–78. IEEE Computer Society, 2012. URL: <a class="reference external" href="https://doi.org/10.1109/SIBGRAPI.2012.19">https://doi.org/10.1109/SIBGRAPI.2012.19</a>, <a class="reference external" href="https://doi.org/10.1109/SIBGRAPI.2012.19">doi:10.1109/SIBGRAPI.2012.19</a>.</p>
+</div>
+<div class="citation" id="id225" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Den14a<span class="fn-bracket">]</span></span>
+<p>Y. Deng. Generalized evidence theory. <em>CoRR</em>, 2014. URL: <a class="reference external" href="http://arxiv.org/abs/404.4801">http://arxiv.org/abs/404.4801</a>.</p>
+</div>
+<div class="citation" id="id1836" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Den14b<span class="fn-bracket">]</span></span>
+<p>T. Denoeux. Likelihood-based belief function: justification and some extensions to low-quality data. <em>International Journal of Approximate Reasoning</em>, 55(7):1535–1547, 2014.</p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DDC08<span class="fn-bracket">]</span></span>
+<p>S. Destercke, D. Dubois, and E. Chojnacki. Unifying practical uncertainty representations: I. Generalized p-boxes. <em>International Journal of Approximate Reasoning</em>, 49:649–663, 2008.</p>
+</div>
+<div class="citation" id="id52" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DT18<span class="fn-bracket">]</span></span>
+<p>T. DeVries and G.W. Taylor. Learning confidence for out-of-distribution detection in neural networks. <em>CoRR</em>, 2018. URL: <a class="reference external" href="http://arxiv.org/abs/1802.04865">http://arxiv.org/abs/1802.04865</a>.</p>
+</div>
+<div class="citation" id="id941" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Dub06<span class="fn-bracket">]</span></span>
+<p>D. Dubois. Possibility theory and statistical reasoning. <em>Computational Statistics and Data Analysis</em>, 51(1):47–69, 2006.</p>
+</div>
+<div class="citation" id="id298" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DHullermeier07<span class="fn-bracket">]</span></span>
+<p>D. Dubois and E. Hüllermeier. Comparing probability measures using possibility theory: a notion of relative peakedness. <em>International Journal of Approximate Reasoning</em>, 45(2):364–385, 2007.</p>
+</div>
+<div class="citation" id="id945" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DMP97<span class="fn-bracket">]</span></span>
+<p>D. Dubois, S. Moral, and H. Prade. A semantics for possibility theory based on likelihoods. <em>Journal of Mathematical Analysis and Applications</em>, 205(2):359–380, 1997.</p>
+</div>
+<div class="citation" id="id420" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DP88<span class="fn-bracket">]</span></span>
+<p>D. Dubois and H. Prade. <em>Possibility Theory</em>. Plenum Press, 1988.</p>
+</div>
+<div class="citation" id="id1329" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DPS96<span class="fn-bracket">]</span></span>
+<p>D. Dubois, H. Prade, and P. Smets. Representing partial ignorance. <em>IEEE Transactions on Systems, Man and Cybernetics, Series A</em>, 26(3):361–377, 1996.</p>
+</div>
+<div class="citation" id="id2186" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Fla17<span class="fn-bracket">]</span></span>
+<p>P.A. Flach. Classifier calibration. In <em>Encyclopedia of Machine Learning and Data Mining</em>, pages 210–217. Springer, 2017.</p>
+</div>
+<div class="citation" id="id2256" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Fre07<span class="fn-bracket">]</span></span>
+<p>A. A. Freitas. A tutorial on hierarchical classification with applications in bioinformatics. In <em>Research and Trends in Data Mining Technologies and Applications,</em>, 175–208. 2007.</p>
+</div>
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Fri04<span class="fn-bracket">]</span></span>
+<p>B.R. Frieden. <em>Science from Fisher Information: A Unification</em>. Cambridge University Press, 2004.</p>
+</div>
+<div class="citation" id="id2201" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Gam12<span class="fn-bracket">]</span></span>
+<p>J. Gama. A survey on learning from data streams: current and future trends. <em>Progress in Artificial Intelligence</em>, 1(1):45–55, 2012.</p>
+</div>
+<div class="citation" id="id2174" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GV02<span class="fn-bracket">]</span></span>
+<p>A. Gammerman and V. Vovk. Prediction algorithms and confidence measures based on algorithmic randomness theory. <em>Theoretical Computer Science</em>, 287:209–217, 2002.</p>
+</div>
+<div class="citation" id="id2202" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GR05<span class="fn-bracket">]</span></span>
+<p>T. Gneiting and A.E. Raftery. Strictly proper scoring rules, prediction, and estimation. Technical Report 463R, Department of Statistics, University of Washington, 2005.</p>
+</div>
+<div class="citation" id="id2261" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GBC16a<span class="fn-bracket">]</span></span>
+<p>I. Goodfellow, Y. Bengio, and A. Courville. <em>Deep Learning</em>. Goodfellow, I., Bengio, Y., Courville, A.: Deep Learning. The MIT Press, Cambridge, Massachusetts, London, England, 2016.</p>
+</div>
+<div class="citation" id="id2293" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GBC16b<span class="fn-bracket">]</span></span>
+<p>Ian J. Goodfellow, Yoshua Bengio, and Aaron Courville. <em>Deep Learning</em>. MIT Press, Cambridge, MA, USA, 2016. <a class="reference external" href="http://www.deeplearningbook.org">http://www.deeplearningbook.org</a>.</p>
+</div>
+<div class="citation" id="id2288" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GPSW17<span class="fn-bracket">]</span></span>
+<p>Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q Weinberger. On calibration of modern neural networks. In <em>International conference on machine learning</em>, 1321–1330. PMLR, 2017.</p>
+</div>
+<div class="citation" id="id231" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HullermeierB08<span class="fn-bracket">]</span></span>
+<p>E. Hüllermeier and Klaus Brinker. Learning valued preference structures for solving classification problems. <em>Fuzzy Sets and Systems</em>, 159(18):2337–2352, 2008.</p>
+</div>
+<div class="citation" id="id40" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Har28<span class="fn-bracket">]</span></span>
+<p>R.V.L. Hartley. Transmission of information. <em>Bell Syst. Tech. Journal</em>, 7(3):535–563, 1928.</p>
+</div>
+<div class="citation" id="id234" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HPW19<span class="fn-bracket">]</span></span>
+<p>Y. Hechtlinger, B. Poczos, and L. Wasserman. Cautious deep learning. <em>CoRR</em>, 2019. URL: <a class="reference external" href="http://arxiv.org/abs/1805.09460">http://arxiv.org/abs/1805.09460</a>.</p>
+</div>
+<div class="citation" id="id1376" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Hel70<span class="fn-bracket">]</span></span>
+<p>M.E. Hellman. The nearest neighbor classification rule with a reject option. <em>IEEE Transactions on Systems, Man and Cybernetics</em>, SMC-6:179–185, 1970.</p>
+</div>
+<div class="citation" id="id50" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HG17<span class="fn-bracket">]</span></span>
+<p>D. Hendrycks and K. Gimpel. A baseline for detecting misclassified and out-of-distribution examples in neural networks. In <em>Proc. ICLR, Int. Conference on Learning Representations</em>. 2017.</p>
+</div>
+<div class="citation" id="id238" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HW06<span class="fn-bracket">]</span></span>
+<p>R. Herbei and M.H. Wegkamp. Classification with reject option. <em>Canadian Journal of Statistics</em>, 34(4):709–721, 2006.</p>
+</div>
+<div class="citation" id="id947" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Hor96<span class="fn-bracket">]</span></span>
+<p>S.C. Hora. Aleatory and epistemic uncertainty in probability elicitation with an example from hazardous waste management. <em>Reliability Engineering and System Safety</em>, 54(2–3):217–223, 1996.</p>
+</div>
+<div class="citation" id="id2292" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HullermeierW21<span class="fn-bracket">]</span></span>
+<p>Eyke Hüllermeier and Willem Waegeman. Aleatoric and epistemic uncertainty in machine learning: an introduction to concepts and methods. <em>Mach. Learn.</em>, 110(3):457–506, 2021. URL: <a class="reference external" href="https://doi.org/10.1007/s10994-021-05946-3">https://doi.org/10.1007/s10994-021-05946-3</a>, <a class="reference external" href="https://doi.org/10.1007/S10994-021-05946-3">doi:10.1007/S10994-021-05946-3</a>.</p>
+</div>
+<div class="citation" id="id2276" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HW21<span class="fn-bracket">]</span></span>
+<p>Eyke Hüllermeier and Willem Waegeman. Aleatoric and epistemic uncertainty in machine learning: an introduction to concepts and methods. <em>Machine Learning</em>, 110(3):457–506, March 2021. URL: <a class="reference external" href="http://dx.doi.org/10.1007/s10994-021-05946-3">http://dx.doi.org/10.1007/s10994-021-05946-3</a>, <a class="reference external" href="https://doi.org/10.1007/s10994-021-05946-3">doi:10.1007/s10994-021-05946-3</a>.</p>
+</div>
+<div class="citation" id="id299" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Jef46<span class="fn-bracket">]</span></span>
+<p>H. Jeffreys. An invariant form for the prior probability in estimation problems. <em>Proceedings of the Royal Society A</em>, 186:453–461, 1946.</p>
+</div>
+<div class="citation" id="id237" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>JLofstromS+18<span class="fn-bracket">]</span></span>
+<p>U. Johansson, T. Löfström, H. Sundell, H. Linusson, A. Gidenstam, and H. Boström. Venn predictors for well-calibrated probability estimation trees. In <em>Proc. COPA, 7th Symposium on Conformal and Probabilistic Prediction and Applications</em>, 3–14. Maastricht, The Netherlands, 2018.</p>
+</div>
+<div class="citation" id="id2295" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>JOD22<span class="fn-bracket">]</span></span>
+<p>A.A. Johnson, M.Q. Ott, and M. Dogucu. <em>Bayes Rules!: An Introduction to Applied Bayesian Modeling</em>. Chapman &amp; Hall/CRC texts in statistical science. CRC Press, 2022. ISBN 9781032191591. URL: <a class="reference external" href="https://books.google.de/books?id=pISQzgEACAAJ">https://books.google.de/books?id=pISQzgEACAAJ</a>.</p>
+</div>
+<div class="citation" id="id2297" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>JLB+22<span class="fn-bracket">]</span></span>
+<p>Laurent Valentin Jospin, Hamid Laga, Farid Boussaid, Wray Buntine, and Mohammed Bennamoun. Hands-on bayesian neural networks—a tutorial for deep learning users. <em>IEEE Computational Intelligence Magazine</em>, 17(2):29–48, 2022. <a class="reference external" href="https://doi.org/10.1109/MCI.2022.3155327">doi:10.1109/MCI.2022.3155327</a>.</p>
+</div>
+<div class="citation" id="id549" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KG17<span class="fn-bracket">]</span></span>
+<p>A. Kendall and Y. Gal. What uncertainties do we need in Bayesian deep learning for computer vision? In <em>Proc. NIPS, Advances in Neural Information Processing Systems</em>, 5574–5584. 2017.</p>
+</div>
+<div class="citation" id="id2263" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KM14<span class="fn-bracket">]</span></span>
+<p>Shehroz S. Khan and Michael G. Madden. One-class classification: taxonomy of study and review of techniques. <em>The Knowledge Engineering Review</em>, 29(3):345–374, Jan 2014. URL: <a class="reference external" href="http://dx.doi.org/10.1017/S026988891300043X">http://dx.doi.org/10.1017/S026988891300043X</a>.</p>
+</div>
+<div class="citation" id="id2029" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KMP02<span class="fn-bracket">]</span></span>
+<p>EP. Klement, R. Mesiar, and E. Pap. <em>Triangular Norms</em>. Kluwer Academic Publishers, 2002.</p>
+</div>
+<div class="citation" id="id1394" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Kli94<span class="fn-bracket">]</span></span>
+<p>G.J. Klir. Measures of uncertainty in the Dempster-Shafer theory of evidence. In R.R. Yager, M. Fedrizzi, and J. Kacprzyk, editors, <em>Advances in the Dempster-Shafer theory of evidence</em>, pages 35–49. Wiley, New York, 1994.</p>
+</div>
+<div class="citation" id="id41" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KM87<span class="fn-bracket">]</span></span>
+<p>G.J. Klir and M. Mariano. On the uniqueness of possibilistic measure of uncertainty and information. <em>Fuzzy Sets and Systems</em>, 24(2):197–219, 1987.</p>
+</div>
+<div class="citation" id="id2267" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Kol65<span class="fn-bracket">]</span></span>
+<p>A.N. Kolmogorov. Three approaches to the quantitative definition of information. <em>Problems Inform. Trans.</em>, 1(1):1–7, 1965.</p>
+</div>
+<div class="citation" id="id2189" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KLB+14<span class="fn-bracket">]</span></span>
+<p>J. Kruppa, Y. Liu, G. Biau, M. Kohler, I.R. König, J.D. Malley, and A. Ziegler. Probability estimation with machine learning methods for dichotomous and multi-category outcome: Theory. <em>Biometrical Journal</em>, 56(4):534–563, 2014.</p>
+</div>
+<div class="citation" id="id680" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KSH91<span class="fn-bracket">]</span></span>
+<p>R. Kruse, E. Schwecke, and J. Heinsohn. <em>Uncertainty and Vagueness in Knowledge Based Systems</em>. Springer-Verlag, 1991.</p>
+</div>
+<div class="citation" id="id2185" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KdMFF17<span class="fn-bracket">]</span></span>
+<p>M. Kull, T. de Menezes, S. Filho, and P.A. Flach. Beta calibration: a well-founded and easily implemented improvement on logistic calibration for binary classifiers. In <em>Proc. AISTATS, 20th International Conference on Artificial Intelligence and Statistics</em>, 623–631. Fort Lauderdale, FL, USA, 2017.</p>
+</div>
+<div class="citation" id="id1375" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KF14<span class="fn-bracket">]</span></span>
+<p>Meelis Kull and Peter Flach. Reliability maps: A tool to enhance probability estimates and improve classification accuracy. In <em>Proc. ECML/PKDD, European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases</em>, 18–33. Nancy, France, 2014.</p>
+</div>
+<div class="citation" id="id2291" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LPB17<span class="fn-bracket">]</span></span>
+<p>Balaji Lakshminarayanan, Alexander Pritzel, and Charles Blundell. Simple and scalable predictive uncertainty estimation using deep ensembles. <em>Advances in neural information processing systems</em>, 2017.</p>
+</div>
+<div class="citation" id="id2042" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LPG11<span class="fn-bracket">]</span></span>
+<p>A. Lambrou, H. Papadopoulos, and A. Gammerman. Reliable confidence measures for medical diagnosis with evolutionary algorithms. <em>IEEE Trans. on Information Technology in Biomedicine</em>, 15(1):93–99, 2011.</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Las20<span class="fn-bracket">]</span></span>
+<p>D. Lassiter. Representing credal imprecision: from sets of measures to hierarchical Bayesian models. <em>Philosophical Studies</em>, 2020. forthcoming.</p>
+</div>
+<div class="citation" id="id51" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LLS18<span class="fn-bracket">]</span></span>
+<p>S. Liang, Y. Li, and R. Srikant. Enhancing the reliability of out-of-distribution image detection in neural networks. In <em>Proc. ICLR, Int. Conference on Learning Representations</em>. 2018.</p>
+</div>
+<div class="citation" id="id236" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LJBostromLofstrom16<span class="fn-bracket">]</span></span>
+<p>H. Linusson, U. Johansson, H. Boström, and T. Löfström. Reliable confidence predictions using conformal prediction. In <em>Proc. PAKDD, 20th Pacific-Asia Conference on Knowledge Discovery and Data Mining</em>. Auckland, New Zealand, 2016.</p>
+</div>
+<div class="citation" id="id235" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LJBostromLofstrom18<span class="fn-bracket">]</span></span>
+<p>H. Linusson, U. Johansson, H. Boström, and T. Löfström. Classification with reject option using conformal prediction. In <em>Proc. PAKDD, 22nd Pacific-Asia Conference on Knowledge Discovery and Data Mining</em>. Melbourne, VIC, Australia, 2018.</p>
+</div>
+<div class="citation" id="id2260" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LTZ09<span class="fn-bracket">]</span></span>
+<p>Fei Tony Liu, Kai Ming Ting, and Zhi-hua Zhou. Isolation forest. In <em>Proc. ICDM 2008, Eighth IEEE International Conference on Data Mining</em>, 413–422. IEEE Computer Society, 2009.</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MCCdC17<span class="fn-bracket">]</span></span>
+<p>D. Deratani Maau, F.G. Cozman, D. Conaty, and C. Polpo de Campos. Credal sum-product networks. In <em>PMLR: Proceedings of Machine Learning Research (ISIPTA 2017)</em>, volume 62, 205–216. 2017.</p>
+</div>
+<div class="citation" id="id54" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MG18<span class="fn-bracket">]</span></span>
+<p>A. Malinin and M. Gales. Predictive uncertainty estimation via prior networks. In <em>Proc. NeurIPS, 32nd Conference on Neural Information Processing Systems</em>. Montreal, Canada, 2018.</p>
+</div>
+<div class="citation" id="id734" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Mat75<span class="fn-bracket">]</span></span>
+<p>G. Matheron. <em>Random Sets and Integral Geometry</em>. John Wiley and Sons, 1975.</p>
+</div>
+<div class="citation" id="id2279" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MHullermeier18<span class="fn-bracket">]</span></span>
+<p>Vitalik Melnikov and Eyke Hüllermeier. On the effectiveness of heuristics for learning nested dichotomies: an empirical analysis. <em>Mach. Learn.</em>, 107(8-10):1537–1560, 2018. URL: <a class="reference external" href="https://doi.org/10.1007/s10994-018-5733-1">https://doi.org/10.1007/s10994-018-5733-1</a>, <a class="reference external" href="https://doi.org/10.1007/S10994-018-5733-1">doi:10.1007/S10994-018-5733-1</a>.</p>
+</div>
+<div class="citation" id="id2281" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MS13<span class="fn-bracket">]</span></span>
+<p>Edgar C Merkle and Mark Steyvers. Choosing a strictly proper scoring rule. <em>Decision Analysis</em>, 10(4):292–304, 2013.</p>
+</div>
+<div class="citation" id="id1428" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Mit77<span class="fn-bracket">]</span></span>
+<p>T.M. Mitchell. Version spaces: A candidate elimination approach to rule learning. In <em>Proceedings \sc IJCAI-77</em>, 305–310. 1977.</p>
+</div>
+<div class="citation" id="id1613" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Mit80<span class="fn-bracket">]</span></span>
+<p>T.M. Mitchell. The need for biases in learning generalizations. Technical Report TR CBM–TR–117, Rutgers University, 1980.</p>
+</div>
+<div class="citation" id="id2289" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>NCH15<span class="fn-bracket">]</span></span>
+<p>Mahdi Pakdaman Naeini, Gregory Cooper, and Milos Hauskrecht. Obtaining well calibrated probabilities using bayesian binning. In <em>Proceedings of the AAAI conference on artificial intelligence</em>, volume 29. 2015.</p>
+</div>
+<div class="citation" id="id2287" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Nah22<span class="fn-bracket">]</span></span>
+<p>Francis Sahngun Nahm. Receiver operating characteristic curve: overview and practical use for clinicians. <em>Korean journal of anesthesiology</em>, 75(1):25, 2022.</p>
+</div>
+<div class="citation" id="id2299" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Nea96<span class="fn-bracket">]</span></span>
+<p>Radford M. Neal. <em>Bayesian Learning for Neural Networks</em>. Springer-Verlag, Berlin, Heidelberg, 1996. ISBN 0387947248.</p>
+</div>
+<div class="citation" id="id1205" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Ngu78<span class="fn-bracket">]</span></span>
+<p>H.T. Nguyen. On random sets and belief functions. <em>Journal of Mathematical Analysis and Applications</em>, 65:531–542, 1978.</p>
+</div>
+<div class="citation" id="id66" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>NDMHullermeier18<span class="fn-bracket">]</span></span>
+<p>V.L. Nguyen, S. Destercke, M.H. Masson, and E. Hüllermeier. Reliable multi-class classification based on pairwise epistemic and aleatoric uncertainty. In <em>Proceedings IJCAI 2018, 27th International Joint Conference on Artificial Intelligence</em>, 5089–5095. Stockholm, Sweden, 2018.</p>
+</div>
+<div class="citation" id="id2253" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Oh17<span class="fn-bracket">]</span></span>
+<p>Sechan Oh. Top-k hierarchical classification. In <em>AAAI</em>, 2450–2456. AAAI Press, 2017.</p>
+</div>
+<div class="citation" id="id679" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>OSM+12<span class="fn-bracket">]</span></span>
+<p>H. Owhadi, T.J. Sullivan, M. McKerns, M. Ortiz, and C. Scovel. Optimal uncertainty quantification. <em>CoRR</em>, 2012. URL: <a class="reference external" href="http://arxiv.org/abs/1009.0679">http://arxiv.org/abs/1009.0679</a>.</p>
+</div>
+<div class="citation" id="id1987" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Pap08<span class="fn-bracket">]</span></span>
+<p>H. Papadopoulos. Inductive conformal prediction: theory and application to neural networks. <em>Tools in Artificial Intelligence</em>, 18(2):315–330, 2008.</p>
+</div>
+<div class="citation" id="id53" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PM18<span class="fn-bracket">]</span></span>
+<p>N. Papernot and P. McDaniel. Deep k-nearest neighbors: Towards confident, interpretable and robust deep learning. <em>CoRR</em>, 2018. URL: <a class="reference external" href="http://arxiv.org/abs/1803.04765">http://arxiv.org/abs/1803.04765</a>.</p>
+</div>
+<div class="citation" id="id2268" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PNFKF16<span class="fn-bracket">]</span></span>
+<p>M. Perello-Nieto, T.M. Silva Filho, M. Kull, and P. Flach. Background check: A general technique to build more reliable and versatile classifiers. In <em>Proc. ICDM, International Conference on Data Mining</em>. 2016.</p>
+</div>
+<div class="citation" id="id212" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Pla99<span class="fn-bracket">]</span></span>
+<p>John Platt. Probabilistic outputs for support vector machines and comparison to regularized likelihood methods. In A.J. Smola, P. Bartlett, B. Schoelkopf, and D. Schuurmans, editors, <em>Advances in Large Margin Classifiers</em>, 61–74. Cambridge, MA, 1999. MIT Press.</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Puk06<span class="fn-bracket">]</span></span>
+<p>F. Pukelsheim. <em>Optimal Design of Experiments</em>. SIAM, 2006.</p>
+</div>
+<div class="citation" id="id42" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Renyi70<span class="fn-bracket">]</span></span>
+<p>A. Rényi. <em>Probability Theory</em>. North-Holland, Amsterdam, 1970.</p>
+</div>
+<div class="citation" id="id2255" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>RTA15<span class="fn-bracket">]</span></span>
+<p>Harish G. Ramaswamy, Ambuj Tewari, and Shivani Agarwal. Consistent algorithms for multiclass classification with a reject option. <em>CoRR</em>, 2015.</p>
+</div>
+<div class="citation" id="id2257" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>RN17<span class="fn-bracket">]</span></span>
+<p>H. Rangwala and A. Naik. Large scale hierarchical classification: foundations, algorithms and applications. In <em>The European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases</em>. 2017.</p>
+</div>
+<div class="citation" id="id2296" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>RC04<span class="fn-bracket">]</span></span>
+<p>C.P. Robert and G. Casella. <em>Monte Carlo statistical methods</em>. Springer Verlag, 2004.</p>
+</div>
+<div class="citation" id="id571" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SLW19<span class="fn-bracket">]</span></span>
+<p>M. Sadinle, J. Lei, and L. Wasserman. Least ambiguous set-valued classifiers with bounded error levels. <em>Journal of the American Statistical Association</em>, 114(525):223–234, 2019.</p>
+</div>
+<div class="citation" id="id2184" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SSSM18<span class="fn-bracket">]</span></span>
+<p>M. Sato, J. Suzuki, H. Shindo, and Y. Matsumoto. Interpretable adversarial perturbation in input embedding space for text. In <em>Proceedings IJCAI 2018, 27th International Joint Conference on Artificial Intelligence</em>, 4323–4330. Stockholm, Sweden, 2018.</p>
+</div>
+<div class="citation" id="id2286" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SGV99<span class="fn-bracket">]</span></span>
+<p>Craig Saunders, Alex Gammerman, and Volodya Vovk. Transduction with confidence and credibility. In Thomas Dean, editor, <em>Proceedings of the Sixteenth International Joint Conference on Artificial Intelligence, IJCAI 99, Stockholm, Sweden, July 31 - August 6, 1999. 2 Volumes, 1450 pages</em>, 722–726. Morgan Kaufmann, 1999. URL: <a class="reference external" href="http://ijcai.org/Proceedings/99-2/Papers/010.pdf">http://ijcai.org/Proceedings/99-2/Papers/010.pdf</a>.</p>
+</div>
+<div class="citation" id="id224" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SBosnerD+14<span class="fn-bracket">]</span></span>
+<p>R. Senge, S. Bösner, K. Dembczynski, J. Haasenritter, O. Hirsch, N. Donner-Banzhoff, and E. Hüllermeier. Reliable classification: learning classifiers that distinguish aleatoric and epistemic uncertainty. <em>Information Sciences</em>, 255:16–29, 2014.</p>
+</div>
+<div class="citation" id="id856" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Sha76<span class="fn-bracket">]</span></span>
+<p>G. Shafer. <em>A Mathematical Theory of Evidence</em>. Princeton University Press, 1976.</p>
+</div>
+<div class="citation" id="id1897" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SV08<span class="fn-bracket">]</span></span>
+<p>G. Shafer and V. Vovk. A tutorial on conformal prediction. <em>Journal of Machine Learning Research</em>, pages 371–421, 2008.</p>
+</div>
+<div class="citation" id="id1840" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Shi71<span class="fn-bracket">]</span></span>
+<p>N. Shilkret. Maxitive measure and integration. <em>Nederl. Akad. Wetensch. Proc. Ser. A 74 = Indag. Math.</em>, 33:109–116, 1971.</p>
+</div>
+<div class="citation" id="id2275" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SFSPN+23<span class="fn-bracket">]</span></span>
+<p>Telmo Silva Filho, Hao Song, Miquel Perello-Nieto, Raul Santos-Rodriguez, Meelis Kull, and Peter Flach. Classifier calibration: a survey on how to assess and improve predicted class probabilities. <em>Machine Learning</em>, 112(9):3211–3260, 2023.</p>
+</div>
+<div class="citation" id="id1228" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SK94<span class="fn-bracket">]</span></span>
+<p>P. Smets and R. Kennes. The transferable belief model. <em>Artificial Intelligence</em>, 66:191–234, 1994.</p>
+</div>
+<div class="citation" id="id572" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SPS19<span class="fn-bracket">]</span></span>
+<p>J. Fengand A. Sondhi, J. Perry, and N. Simon. Selective prediction-set models with coverage guarantees. <em>CoRR</em>, 2019. URL: <a class="reference external" href="http://arxiv.org/abs/1906.05473">http://arxiv.org/abs/1906.05473</a>.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SAE+18<span class="fn-bracket">]</span></span>
+<p>J. Sourati, M. Akcakaya, D. Erdogmus, T.K. Leen, and J.G. Dy. A probabilistic active learning algorithm based on Fisher information ratio. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, 2018.</p>
+</div>
+<div class="citation" id="id1492" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Sug74<span class="fn-bracket">]</span></span>
+<p>M. Sugeno. <em>Theory of Fuzzy Integrals and its Application</em>. PhD thesis, Tokyo Institute of Technology, 1974.</p>
+</div>
+<div class="citation" id="id2182" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>TL19<span class="fn-bracket">]</span></span>
+<p>M. Tan and Q.V. Le. EfficientNet: Rethinking model scaling for convolutional neural networks. In <em>Proc. ICML, 36th Int. Conference on Machine Learning</em>. Long Beach, California, 2019.</p>
+</div>
+<div class="citation" id="id2264" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>TD04<span class="fn-bracket">]</span></span>
+<p>David M.J. Tax and Robert P.W. Duin. Support vector data description. <em>Machine Learning</em>, 54(1):45–66, Jan 2004. URL: <a class="reference external" href="https://doi.org/10.1023/B:MACH.0000008084.60811.49">https://doi.org/10.1023/B:MACH.0000008084.60811.49</a>, <a class="reference external" href="https://doi.org/10.1023/B:MACH.0000008084.60811.49">doi:10.1023/B:MACH.0000008084.60811.49</a>.</p>
+</div>
+<div class="citation" id="id1583" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Vap98<span class="fn-bracket">]</span></span>
+<p>V.N. Vapnik. <em>Statistical Learning Theory</em>. John Wiley &amp; Sons, 1998.</p>
+</div>
+<div class="citation" id="id1839" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Var16<span class="fn-bracket">]</span></span>
+<p>K.R. Varshney. Engineering safety in machine learning. In <em>Proc. Inf. Theory Appl. Workshop</em>. La Jolla, CA, 2016.</p>
+</div>
+<div class="citation" id="id2183" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>VA16<span class="fn-bracket">]</span></span>
+<p>K.R. Varshney and H. Alemzadeh. On the safety of machine learning: Cyber-physical systems, decision sciences, and data products. <em>CoRR</em>, 2016. URL: <a class="reference external" href="http://arxiv.org/abs/1610.01256">http://arxiv.org/abs/1610.01256</a>.</p>
+</div>
+<div class="citation" id="id1986" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>VGS03<span class="fn-bracket">]</span></span>
+<p>V. Vovk, A. Gammerman, and G. Shafer. <em>Algorithmic Learning in a Random World</em>. Springer-Verlag, 2003.</p>
+</div>
+<div class="citation" id="id2290" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>VP12<span class="fn-bracket">]</span></span>
+<p>Vladimir Vovk and Ivan Petej. Venn-abers predictors. <em>arXiv preprint arXiv:1211.0025</em>, 2012.</p>
+</div>
+<div class="citation" id="id2285" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>VSN03<span class="fn-bracket">]</span></span>
+<p>Vladimir Vovk, Glenn Shafer, and Ilia Nouretdinov. Self-calibrating probability forecasting. <em>Advances in neural information processing systems</em>, 2003.</p>
+</div>
+<div class="citation" id="id939" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Wal91<span class="fn-bracket">]</span></span>
+<p>P. Walley. <em>Statistical Reasoning with Imprecise Probabilities</em>. Chapman and Hall, 1991.</p>
+</div>
+<div class="citation" id="id855" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Was90<span class="fn-bracket">]</span></span>
+<p>L.A. Wasserman. Belief functions and statistical evidence. <em>The Canadian Journal of Statistics</em>, 18(3):183–196, 1990.</p>
+</div>
+<div class="citation" id="id12" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Wol96<span class="fn-bracket">]</span></span>
+<p>D.H. Wolpert. The lack of a priori distinctions between learning algorithms. <em>Neural Computation</em>, 8(7):1341–1390, 1996.</p>
+</div>
+<div class="citation" id="id1519" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Yag83<span class="fn-bracket">]</span></span>
+<p>R.R. Yager. Entropy and specificity in a mathematical theory of evidence. <em>International Journal of General Systems</em>, 9:249–260, 1983.</p>
+</div>
+<div class="citation" id="id2039" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>YWM+09<span class="fn-bracket">]</span></span>
+<p>F. Yang, H. Zhen Wanga, H. Mi, C. de Lin, and W. Wen Cai. Using random forest for reliable classification and cost-sensitive learning for medical diagnosis. <em>BMC Bioinformatics</em>, 2009.</p>
+</div>
+<div class="citation" id="id2259" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>YDM17a<span class="fn-bracket">]</span></span>
+<p>G. Yang, S. Destercke, and M. Masson. Cautious classification with nested dichotomies and imprecise probabilities. <em>Soft Computing</em>, 21:7447–7462, 2017.</p>
+</div>
+<div class="citation" id="id2254" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>YDM17b<span class="fn-bracket">]</span></span>
+<p>G. Yang, S. Destercke, and M. Masson. The costs of indeterminacy: how to determine them? <em>IEEE Transactions on Cybernetics</em>, 47:4316–4327, 2017.</p>
+</div>
+<div class="citation" id="id113" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZE01a<span class="fn-bracket">]</span></span>
+<p>B. Zadrozny and C. Elkan. Obtaining calibrated probability estimates from decision trees and Naive Bayesian classifiers. In <em>Proc. ICML, Int. Conference on Machine Learning</em>, 609–616. 2001.</p>
+</div>
+<div class="citation" id="id112" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZE02<span class="fn-bracket">]</span></span>
+<p>B. Zadrozny and C. Elkan. Transforming classifier scores into accurate multiclass probability estimates. In <em>Proc. KDD–02, 8th International Conference on Knowledge Discovery and Data Mining</em>, 694–699. Edmonton, Alberta, Canada, 2002.</p>
+</div>
+<div class="citation" id="id2283" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZE01b<span class="fn-bracket">]</span></span>
+<p>Bianca Zadrozny and Charles Elkan. Learning and making decisions when costs and probabilities are both unknown. In <em>Proceedings of the seventh ACM SIGKDD international conference on Knowledge discovery and data mining</em>, 204–213. 2001.</p>
+</div>
+<div class="citation" id="id1726" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Zaf02a<span class="fn-bracket">]</span></span>
+<p>M. Zaffalon. The naive credal classifier. <em>Journal of Statistical Planning and Inference</em>, 105(1):5–21, 2002.</p>
+</div>
+<div class="citation" id="id2265" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Zaf02b<span class="fn-bracket">]</span></span>
+<p>Marco Zaffalon. The naive credal classifier. <em>Journal of Statistical Planning and Inference</em>, 105(1):5–21, 2002.</p>
+</div>
+<div class="citation" id="id2252" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZGDMaua12<span class="fn-bracket">]</span></span>
+<p>Marco Zaffalon, Corani Giorgio, and Denis Deratani Mauá. Evaluating credal classifiers by utility-discounted predictive accuracy. <em>Int. J. Approx. Reasoning</em>, 53:1282–1301, 2012.</p>
+</div>
+<div class="citation" id="id2294" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZLLS21<span class="fn-bracket">]</span></span>
+<p>Aston Zhang, Zachary C. Lipton, Mu Li, and Alexander J. Smola. Dive into deep learning. <em>CoRR</em>, 2021. URL: <a class="reference external" href="http://dblp.uni-trier.de/db/journals/corr/corr2106.html#abs-2106-11342">http://dblp.uni-trier.de/db/journals/corr/corr2106.html#abs-2106-11342</a>.</p>
+</div>
+<div class="citation" id="id2277" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZZC+22<span class="fn-bracket">]</span></span>
+<p>Jun-Jie Zhang, Dong-Xiao Zhang, Jian-Nan Chen, Long-Gang Pang, and Deyu Meng. On the uncertainty principle of neural networks. 2022. URL: <a class="reference external" href="https://arxiv.org/abs/2205.01493">https://arxiv.org/abs/2205.01493</a>, <a class="reference external" href="https://arxiv.org/abs/2205.01493">arXiv:2205.01493</a>.</p>
+</div>
+<div class="citation" id="id2269" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZWL+19<span class="fn-bracket">]</span></span>
+<p>Liu Ziyin, Zhikang Wang, Paul Pu Liang, Ruslan Salakhutdinov, Louis-Philippe Morency, and Masahito Ueda. Deep gamblers: learning to abstain with portfolio theory. 2019. <a class="reference external" href="https://arxiv.org/abs/1907.00208">arXiv:1907.00208</a>.</p>
+</div>
+<div class="citation" id="id232" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DelCozDiezB09<span class="fn-bracket">]</span></span>
+<p>J.J. Del Coz, J. Díez, and A. Bahamonde. Learning nondeterministic classifiers. <em>The Journal of Machine Learning Research</em>, 10:2273–2293, 2009.</p>
+</div>
+<div class="citation" id="id2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DerKiureghianD09<span class="fn-bracket">]</span></span>
+<p>A. Der Kiureghian and O. Ditlevsen. Aleatory or epistemic? does it matter? <em>Structural Safety</em>, 31:105–112, 2009.</p>
+</div>
+</div>
+</div>
+<!-- 
+## Learn more
+
+This is just a simple starter to get you started.
+You can learn a lot more at [jupyterbook.org](https://jupyterbook.org). -->
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter-appendix/appendix.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Appendix</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <section>
+    For comprehensive discussions please contact one of our team members: 
+    {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
+
+        <div style="margin-top: 50px;" id="disqus_thread"></div>
+
+        <script>
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://https-werywjw-github-io-toolbox-github-io.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section> 
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

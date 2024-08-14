@@ -1,0 +1,909 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>14. Reliable Classification &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myStyle.css?v=e90502a2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "vec": ["\\boldsymbol{#1}", 1], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "defeq": ["\\mathrel{\\vcenter{\\baselineskip0.5ex \\lineskiplimit0pt \\hbox{\\footnotesize.}\\hbox{\\footnotesize.}}}% ="], "given": ["\\, | \\,"], "cX": ["\\mathcal{X}"], "cY": ["\\mathcal{Y}"], "cH": ["\\mathcal{H}"], "cD": ["\\mathcal{D}"], "hath": ["\\hat{h}"], "haty": ["\\hat{y}"], "hatp": ["\\hat{p}"], "sety": ["\\widehat{Y}"], "argmin": ["\\operatorname*{argmin}"], "argmax": ["\\operatorname*{argmax}"], "db": ["\\set{M}"], "fkt": ["#1(\\cdot)", 1], "chrfkt": ["\\mathbb{I}_{#1}", 1], "kref": ["(\\ref{#1})", 1], "convto": ["(\\rightarrow"], "fft": ["(#1 :  #2 \\rightarrow #3", 3], "with": ["\\,  | \\,"], "sothat": ["\\,  : \\,"], "defi": ["\\stackrel{\\on{df}}{=}"], "set": ["\\mathcal{#1}", 1], "Prob": ["P"], "prob": ["p"], "impl": ["\\Rightarrow"], "on": ["\\operatorname"], "groesser": ["\\raisebox{#1mm}{} \\raisebox{-#1mm}{}", 1], "sgroesser": ["\\groesser{1.20}"], "xleftr": ["\\left( \\groesser{1.35} "], "xleftg": ["\\left\\{ \\groesser{1.35} "], "fftm": ["\\fft{#1}{#2}{#3} \\, ,\\, #4 \\mapsto #5", 5], "gdw": ["\\Leftrightarrow"], "gdwbd": ["\\stackrel{\\on{df}}{\\Leftrightarrow}"], "est": ["{est}"], "epd": ["\\Leftrightarrow_{\\on{def}}"], "fromto": ["\\longrightarrow"], "pref": ["\\succ"], "evalue": ["\\mathbf{E}"], "variance": ["\\mathbf{V}"], "mmp": ["", 1], "llbracket": ["\\lbrack\\lbrack"], "rrbracket": ["\\rbrack\\rbrack"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-reliable_classification/reliable_classification';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15. Conformal Prediction for Classification" href="../chapter-conformel_classification/conformel_classification.html" />
+    <link rel="prev" title="13. Credal Sets and Classifiers" href="../chapter-credal_sets/credal_sets.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../startPage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../startPage.html">
+                    Toolbox for Uncertainty Quantification in Machine Learning
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter-prelude/prelude.html">1. Prelude</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-intro/intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-srcUncertainty/src.html">3. Sources of uncertainty in supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html">4. Modelling Approximation Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-scoring/scoring.html">5. Probability Estimation via Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-calibration/calibration.html">6. Probability Estimation and Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-ensemble/ensemble.html">7. Probability Estimation and Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-mle_and_fisher/mle.html">8. Maximum Likelihood and Fisher Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-generative_models/gm.html">9. Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-gaussianprocess/gaussianprocess.html">10. Gaussian Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-deep_neuralnetwork/dnn.html">11. Deep Neural Network Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-bayesian_neuralnetwork/bayesian.html">12. Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-credal_sets/credal_sets.html">13. Credal Sets and Classifiers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Reliable Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_classification/conformel_classification.html">15. Conformal Prediction for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_regression/conformel_regression.html">16. Conformal Prediction for Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-setValued_utilityMaximization/set.html">17. Set-valued Prediction Based on Utility Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-appendix/appendix.html">18. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">19. References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Advueu963/PageTest/blob/main/chapter-reliable_classification/reliable_classification.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/edit/main/chapter-reliable_classification/reliable_classification.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/issues/new?title=Issue%20on%20page%20%2Fchapter-reliable_classification/reliable_classification.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter-reliable_classification/reliable_classification.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reliable Classification</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-the-plausibility-of-predictions">14.1. Modelling the plausibility of predictions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-likelihood">14.1.1. Normalized likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-plausability-to-epistemic-uncertainty">14.2. From plausability to epistemic uncertainty</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reliable-classification">
+<span id="uqnl"></span><h1><span class="section-number">14. </span>Reliable Classification<a class="headerlink" href="#reliable-classification" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>To the best of our knowledge, <span id="id1">Senge <em>et al.</em> [<a class="reference internal" href="../references.html#id224" title="R. Senge, S. Bösner, K. Dembczynski, J. Haasenritter, O. Hirsch, N. Donner-Banzhoff, and E. Hüllermeier. Reliable classification: learning classifiers that distinguish aleatoric and epistemic uncertainty. Information Sciences, 255:16–29, 2014.">SBosnerD+14</a>]</span> were the first to explicitly motivate the distinction between aleatoric and epistemic uncertainty in a machine learning context. Their approach leverages the concept of <em>normalized likelihood</em>. Moreover, it combines set-based and distributional (probabilistic) inference, and thus can be positioned in-between version space learning and Bayesian inference as discussed in Section <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#sbvd"><span class="std std-ref">Modelling Approximation Uncertainty</span></a>. Since the approach contains concepts that might be less known to a machine learning audience, our description is a bit more detailed than for the other methods discussed in this section.</p>
+<p>Consider the simplest case of binary classification with classes <span class="math notranslate nohighlight">\(\set{Y} := \{-1, +1\}\)</span>, which suffices to explain the basic idea (and which has been generalized to the multi-class case by <span id="id2">Nguyen <em>et al.</em> [<a class="reference internal" href="../references.html#id66" title="V.L. Nguyen, S. Destercke, M.H. Masson, and E. Hüllermeier. Reliable multi-class classification based on pairwise epistemic and aleatoric uncertainty. In Proceedings IJCAI 2018, 27th International Joint Conference on Artificial Intelligence, 5089–5095. Stockholm, Sweden, 2018.">NDMHullermeier18</a>]</span>). <span id="id3">Senge <em>et al.</em> [<a class="reference internal" href="../references.html#id224" title="R. Senge, S. Bösner, K. Dembczynski, J. Haasenritter, O. Hirsch, N. Donner-Banzhoff, and E. Hüllermeier. Reliable classification: learning classifiers that distinguish aleatoric and epistemic uncertainty. Information Sciences, 255:16–29, 2014.">SBosnerD+14</a>]</span> focus on predictive uncertainty and derive degrees of uncertainty in a prediction in two steps, which we are going to discuss in turn:</p>
+<ul class="simple">
+<li><p>First, given a query instance <span class="math notranslate nohighlight">\(\vec{x}_q\)</span>, a degree of “plausibility” is derived for each candidate outcome <span class="math notranslate nohighlight">\(y \in \set{Y}\)</span>. These are degrees in the unit interval, but no probabilities. As they are not constrained by a total mass of 1, they are more apt at capturing a lack of knowledge, and hence epistemic uncertainty (cf. Section <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#rlk"><span class="std std-ref">Representing a lack of knowledge</span></a>).</p></li>
+<li><p>Second, degrees of aleatoric and epistemic uncertainty are derived from the degrees of plausibility.</p></li>
+</ul>
+</div>
+<section id="modelling-the-plausibility-of-predictions">
+<h2><span class="section-number">14.1. </span>Modelling the plausibility of predictions<a class="headerlink" href="#modelling-the-plausibility-of-predictions" title="Link to this heading">#</a></h2>
+<div align="justify"> 
+<p>Recall that, in version space learning, the plausibility of both hypotheses and outcomes are expressed in a purely bivalent way: according to <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#equation-ee1">(4.2)</a>, a hypotheses is either considered possible/plausible or not (<span class="math notranslate nohighlight">\(\llbracket h \in \mathcal{V}\rrbracket\)</span>), and an outcome <span class="math notranslate nohighlight">\(y\)</span> is either supported or not (<span class="math notranslate nohighlight">\(\llbracket h(\vec{x}) = y \rrbracket\)</span>). <span id="id4">Senge <em>et al.</em> [<a class="reference internal" href="../references.html#id224" title="R. Senge, S. Bösner, K. Dembczynski, J. Haasenritter, O. Hirsch, N. Donner-Banzhoff, and E. Hüllermeier. Reliable classification: learning classifiers that distinguish aleatoric and epistemic uncertainty. Information Sciences, 255:16–29, 2014.">SBosnerD+14</a>]</span> generalize both parts of the prediction from bivalent to <em>graded</em> plausibility and support: A hypothesis <span class="math notranslate nohighlight">\(h \in \cH\)</span> has a degree of plausibility <span class="math notranslate nohighlight">\(\pi_{\cH}(h) \in [0,1]\)</span>, and the support of outcomes <span class="math notranslate nohighlight">\(y\)</span> is expressed in terms of probabilities <span class="math notranslate nohighlight">\(h(\vec{x}) = \prob(y \given \vec{x}) \in [0,1]\)</span>.</p>
+</div><section id="normalized-likelihood">
+<h3><span class="section-number">14.1.1. </span>Normalized likelihood<a class="headerlink" href="#normalized-likelihood" title="Link to this heading">#</a></h3>
+<div align="justify"> 
+<p>More specifically, referring to the notion of <em>normalized likelihood</em>,
+a plausibility distribution on <span class="math notranslate nohighlight">\(\cH\)</span> (i.e., a plausibility for each hypothesis <span class="math notranslate nohighlight">\(h \in \cH\)</span>) is defined as follows:</p>
+<div class="math notranslate nohighlight" id="equation-noli">
+<span class="eqno">(14.1)<a class="headerlink" href="#equation-noli" title="Link to this equation">#</a></span>\[
+\pi_{\cH}(h) := \frac{L(h)}{\sup_{h' \in \cH} L(h')}  = \frac{L(h)}{L(h^{ml})},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(L(h)\)</span> is the likelihood of the hypothesis <span class="math notranslate nohighlight">\(h\)</span> on the data <span class="math notranslate nohighlight">\(\set{D}\)</span> (i.e., the probability of <span class="math notranslate nohighlight">\(\set{D}\)</span> under this hypothesis), and <span class="math notranslate nohighlight">\(h^{ml} \in \cH\)</span> is the maximum likelihood (ML) estimation. Thus, the plausibility of a hypothesis is in proportion to its likelihood<a class="footnote-reference brackets" href="#footnoteidentifier" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, with the ML estimate having the highest plausibility of 1.</p>
+</div><div align="justify"> 
+<p>For illustration we use a simple biased coin flipping example. With probability <span class="math notranslate nohighlight">\(\theta\)</span> head is drawn (<span class="math notranslate nohighlight">\(1\)</span>) and with probability (<span class="math notranslate nohighlight">\(1 - \theta\)</span>) tails (<span class="math notranslate nohighlight">\(0\)</span>). We denote by <span class="math notranslate nohighlight">\(n\)</span> the number of heads in the data and by <span class="math notranslate nohighlight">\(m\)</span> the number of tails. To avoid numerical problems we use the log likelihood which is then given by:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-98e74b6e-76c0-4d02-92d6-58d84756fc91">
+<span class="eqno">(14.2)<a class="headerlink" href="#equation-98e74b6e-76c0-4d02-92d6-58d84756fc91" title="Permalink to this equation">#</a></span>\[\begin{equation}
+	\log L(\theta) = \sum_{i=1}^{N}\log(P(X_{i}|\theta)) = n \log(\theta) + m \log(1-\theta).
+\end{equation}\]</div>
+<p>The likelihood maximizer is then simply given by the share of heads in the data: <span class="math notranslate nohighlight">\(\hat{\theta}=\frac{n}{n + m}\)</span>.</p>
+</div><div align="justify"> 
+<p>We illustrate this by plotting the log likelihood as a function of the hypotheses for the different values of <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># computes the likelihood for a given theta</span>
+<span class="k">def</span> <span class="nf">log_likelihood</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+	<span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span>
+	<span class="n">ll</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">theta</span> <span class="o">+</span><span class="mf">1e-9</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">theta</span><span class="o">+</span><span class="mf">1e-9</span><span class="p">)</span>
+
+	<span class="k">return</span> <span class="n">ll</span>
+
+<span class="c1"># computes the normalized log likelihood L(h) / L(h_ml)</span>
+<span class="k">def</span> <span class="nf">norm_log_likelihood</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+
+	<span class="n">ll</span> <span class="o">=</span> <span class="n">log_likelihood</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+	<span class="n">ll_ml</span> <span class="o">=</span> <span class="n">log_likelihood</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+	<span class="n">norm_ll</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ll</span> <span class="o">-</span> <span class="n">ll_ml</span><span class="p">)</span>
+
+	<span class="k">return</span> <span class="n">norm_ll</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]:</span>
+
+	<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">h_theta</span><span class="p">)</span>
+
+	<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+	<span class="n">norm_likelihood</span> <span class="o">=</span> <span class="n">norm_log_likelihood</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">h_theta</span><span class="p">)</span>
+	<span class="n">result</span> <span class="o">+=</span> <span class="n">norm_likelihood</span>
+
+	<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h_theta</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta = </span><span class="si">{</span><span class="n">theta</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+
+	<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Log-Likelihood&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Normalized Log-Likelihood Function for Coin Flips&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6638d533d6c16354635bd50ab5fa97f06b79edda862326506fadbba38e7383bd.png" src="../_images/6638d533d6c16354635bd50ab5fa97f06b79edda862326506fadbba38e7383bd.png" />
+</div>
+</div>
+<div align="justify"> 
+<p>We can see that the normalized likelihood is the highest for the maximum likelihood estimate (blue line) and decreases symmetrically when diverging from it.</p>
+</div><div align="justify"> 
+<p>The second step, both in version space and Bayesian learning, consists of translating uncertainty on <span class="math notranslate nohighlight">\(\cH\)</span> into uncertainty about the prediction for a query <span class="math notranslate nohighlight">\(\vec{x}_q\)</span>. To this end, all predictions <span class="math notranslate nohighlight">\(h(\vec{x}_{q})\)</span> need to be aggregated, taking into account the plausibility of the hypotheses <span class="math notranslate nohighlight">\(h \in \cH\)</span>. Due to the problems of the averaging approach (<a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#equation-pd">(4.6)</a>) in Bayesian inference, a generalization of the existential aggregation <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#equation-ee1">(4.2)</a> used in version space learning is adopted:</p>
+<div class="math notranslate nohighlight" id="equation-plaus">
+<span class="eqno">(14.3)<a class="headerlink" href="#equation-plaus" title="Link to this equation">#</a></span>\[
+\pi(+1 \given \vec{x}_{q}) := \sup_{h \in \cH} \min\big( 
+\pi_{\cH}(h) , \pi(+1 \given h, \vec{x}_{q}) \big) ,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\pi(+1 \given h, \vec{x}_{q})\)</span> is the <em>degree of support</em> of the positive class provided by <span class="math notranslate nohighlight">\(h\)</span><a class="footnote-reference brackets" href="#footnote1" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. This measure of support, which generalizes the all-or-nothing support <span class="math notranslate nohighlight">\(\llbracket h(\vec{x}) = y \rrbracket\)</span> in <a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html#equation-ee1">(4.2)</a>, is defined as follows:</p>
+<div class="math notranslate nohighlight" id="equation-supp">
+<span class="eqno">(14.4)<a class="headerlink" href="#equation-supp" title="Link to this equation">#</a></span>\[
+\pi(+1 \given h, \vec{x}_{q}) := \max \big(2 h(\vec{x}_{q})-1, 0 \big).
+\]</div>
+<p>Thus, the support is 0 as long as the probability predicted by <span class="math notranslate nohighlight">\(h\)</span> is <span class="math notranslate nohighlight">\(\leq 1/2\)</span>, and linearly increases afterward, reaching 1 for <span class="math notranslate nohighlight">\(h(\vec{x}_{q})=1\)</span>. Recalling that <span class="math notranslate nohighlight">\(h\)</span> is a probabilistic classifier, this clearly makes sense, since values <span class="math notranslate nohighlight">\(h(\vec{x}_{q}) \leq 1/2\)</span> are actually more in favor of the negative class, and therefore no evidence for the positive class. Also, as will be seen further below, this definition assures a maximal degree of aleatoric uncertainty in the case of full certainty about the uniform distribution <span class="math notranslate nohighlight">\(h_{1/2}\)</span>, wich is a desirable property.
+Since the supremum operator in <a class="reference internal" href="#equation-plaus">(14.3)</a> can be seen as a generalized existential quantifier, the expression <a class="reference internal" href="#equation-plaus">(14.3)</a> can be read as follows: The class <span class="math notranslate nohighlight">\(+1\)</span> is plausible insofar there exists a hypothesis <span class="math notranslate nohighlight">\(h\)</span> that is plausible and that strongly supports <span class="math notranslate nohighlight">\(+1\)</span>. Analogously, the plausibility for <span class="math notranslate nohighlight">\(-1\)</span> is defined as follows:</p>
+<div class="math notranslate nohighlight" id="equation-plausminus">
+<span class="eqno">(14.5)<a class="headerlink" href="#equation-plausminus" title="Link to this equation">#</a></span>\[
+\pi(-1 \given \vec{x}_{q}) := \sup_{h \in \cH} \min\big( 
+\pi_{\cH}(h) , \pi(-1 | h, \vec{x}_{q}) \big) ,
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\pi(-1 \given h, \vec{x}_{q}) = \max(1 - 2 h(\vec{x}_{q}), 0)\)</span>.</p>
+</div><div align="justify"> 
+<p>We can illustrate the concept of plausability by plotting <span class="math notranslate nohighlight">\(\pi(+1 \given h, \vec{x}_{q})\)</span> and <span class="math notranslate nohighlight">\(\pi(-1 \given h, \vec{x}_{q})\)</span> as functions of the number of observations for different values of <span class="math notranslate nohighlight">\(\theta\)</span>. To have a smooth estimate we average over <span class="math notranslate nohighlight">\(100\)</span> repetitions:</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_plausability</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">return</span> <span class="mi">1</span>
+	<span class="n">h_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+	<span class="n">norm_likelihood</span> <span class="o">=</span> <span class="n">norm_log_likelihood</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">h_theta</span><span class="p">)</span>
+
+	<span class="n">support_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">h_theta</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">h_theta</span><span class="p">)]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">support_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">h_theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">h_theta</span><span class="p">)]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+	<span class="n">pl_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">norm_likelihood</span><span class="p">,</span> <span class="n">support_pos</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+	<span class="n">pl_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">norm_likelihood</span><span class="p">,</span> <span class="n">support_neg</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+	<span class="k">return</span> <span class="n">pl_pos</span><span class="p">,</span> <span class="n">pl_neg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">n_repetitions</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]:</span>
+
+	<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_repetitions</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repetitions</span><span class="p">):</span>
+		<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+		
+
+		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+			<span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_plausability</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="n">j</span><span class="p">])</span>
+
+	<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+	
+	<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+	<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+	
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Plausability Heads&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Plausability Tails&#39;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n observations&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n observations&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n observations&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$\pi(+1 | h, x_</span><span class="si">{q}</span><span class="s1">)$&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$\pi(-1 | h, x_</span><span class="si">{q}</span><span class="s1">)$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/8419e708dce392ced0d7182a4259fdf59819f55735c3cedd4a1edf45691af764.png" src="../_images/8419e708dce392ced0d7182a4259fdf59819f55735c3cedd4a1edf45691af764.png" />
+</div>
+</div>
+<div align="justify"> 
+<p>We can see that at the beginning everything is completely plausible as we did not make any observations yet. As the number of observations grows the plausability decreases and converges against some value.</p>
+</div></section>
+</section>
+<section id="from-plausability-to-epistemic-uncertainty">
+<h2><span class="section-number">14.2. </span>From plausability to epistemic uncertainty<a class="headerlink" href="#from-plausability-to-epistemic-uncertainty" title="Link to this heading">#</a></h2>
+<div align="justify"> 
+<p>Given the plausibilities <span class="math notranslate nohighlight">\(\pi(+1) = \pi(+1 | \vec{x}_{q})\)</span> and <span class="math notranslate nohighlight">\(\pi(-1) = \pi(-1 | \vec{x}_{q})\)</span> of the positive and negative class, respectively, and having to make a prediction, one would naturally decide in favor of the more plausible class. Perhaps more interestingly, meaningful definitions of epistemic uncertainty <span class="math notranslate nohighlight">\(u_e\)</span> and aleatoric uncertainty <span class="math notranslate nohighlight">\(u_a\)</span> can be defined on the basis of the two degrees of plausibility:</p>
+<div class="math notranslate nohighlight" id="equation-ep">
+<span class="eqno">(14.6)<a class="headerlink" href="#equation-ep" title="Link to this equation">#</a></span>\[\begin{split}
+u_e &amp; := \min \big( \pi(+1 ) , \pi(-1) \big) \\
+u_a &amp;  :=  1 - \max \big( \pi(+1) , \pi(-1) \big)
+\end{split}\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(u_e\)</span> is the degree to which both <span class="math notranslate nohighlight">\(+1\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> are plausible<a class="footnote-reference brackets" href="#footnote2" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, and <span class="math notranslate nohighlight">\(u_a\)</span> the degree to which neither <span class="math notranslate nohighlight">\(+1\)</span> nor <span class="math notranslate nohighlight">\(-1\)</span> are plausible.
+Since these two degrees of uncertainty satisfy <span class="math notranslate nohighlight">\(u_a + u_e  \leq 1\)</span>,
+the total uncertainty (aleatoric <span class="math notranslate nohighlight">\(+\)</span> epistemic) is upper-bounded by 1. Strictly speaking, since the degrees <span class="math notranslate nohighlight">\(\pi(y)\)</span> should be interpreted as upper bounds on plausibility, which decrease in the course of time (with increasing sample size), the uncertainty degrees <a class="reference internal" href="#equation-ep">(14.6)</a> should be interpreted as bounds as well. For example, in the very beginning, when no or very little data has been observed, both outcomes are fully plausible (<span class="math notranslate nohighlight">\(\pi(+1) = \pi(-1) = 1\)</span>), hence <span class="math notranslate nohighlight">\(u_e = 1\)</span> and <span class="math notranslate nohighlight">\(u_a = 0\)</span>. This does not mean, of course, that there is no aleatoric uncertainty involved. Instead, it is simply not yet known or, say, confirmed. Thus, <span class="math notranslate nohighlight">\(u_a\)</span> should be seen as a lower bound on the ‘’true’’ aleatoric uncertainty. For instance, when <span class="math notranslate nohighlight">\(y\)</span> is the outcome of a fair coin toss, the aleatoric uncertainty will increase over time and reach 1 in the limit, while <span class="math notranslate nohighlight">\(u_e\)</span> will decrease and vanish at some point: Eventually, the learner will be fully aware of facing full aleatoric uncertainty.</p>
+<p>We can demonstrate this by plotting the epistemic and aleatoric uncertainty for different values of <span class="math notranslate nohighlight">\(\theta\)</span> as a function of the number of observations:</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_uncertainty</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+	<span class="n">plausabilities</span> <span class="o">=</span> <span class="n">get_plausability</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="n">j</span><span class="p">])</span>
+
+	<span class="n">ue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">plausabilities</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+	<span class="n">ua</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">plausabilities</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+
+	<span class="k">return</span> <span class="n">ue</span><span class="p">,</span> <span class="n">ua</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">n_repetitions</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]:</span>
+
+	<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_repetitions</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repetitions</span><span class="p">):</span>
+		<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+		
+		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+			<span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_uncertainty</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="n">j</span><span class="p">])</span>
+
+	<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+	
+	<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+	<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+	
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Epistemic Uncertainty&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Aleatoric Uncertainty&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n observations&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n observations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Uncertainty as function of the number of observations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/21f4cee8b81cfd41852d71eed37623e23c0aaa1811885f48da0b60064028c96a.png" src="../_images/21f4cee8b81cfd41852d71eed37623e23c0aaa1811885f48da0b60064028c96a.png" />
+</div>
+</div>
+<div align="justify"> 
+<p>We can see that the epistemic uncertainty is very high at the beginning as we have no knowledge about the true <span class="math notranslate nohighlight">\(\theta\)</span>. As we see make more and more observations we gain more knowledge about <span class="math notranslate nohighlight">\(\theta\)</span> and the epistemic uncertainty increases. In the limit it will vanish comletely, because we can estimate <span class="math notranslate nohighlight">\(\theta\)</span> perfectly. The aleatoric uncertainty on the other hand increases with growing number of observations as the learner becomes more and more aware of the stochasticity of the process.</p>
+</div><div align="justify"> 
+<p>More generally, the following special cases might be of interest:</p>
+<ul class="simple">
+<li><p><em>Full epistemic uncertainty</em>: <span class="math notranslate nohighlight">\(u_e = 1\)</span> requires the existence of at least two fully plausible hypotheses (i.e., both with the highest likelihood), the one fully supporting the positive and the other fully supporting the negative class. This situation is likely to occur (at least approximately) in the case of a small sample size, for which the likelihood is not very peaked.</p></li>
+<li><p><em>No epistemic uncertainty</em>: <span class="math notranslate nohighlight">\(u_e = 0\)</span> requires either <span class="math notranslate nohighlight">\(\pi(+1) = 0\)</span> or <span class="math notranslate nohighlight">\(\pi(-1)=0\)</span>, which in turn means that <span class="math notranslate nohighlight">\(h(\vec{x}_{q}) &lt; 1/2\)</span> for all hypotheses with non-zero plausibility, or <span class="math notranslate nohighlight">\(h(\vec{x}_{q}) &gt; 1/2\)</span> for all these hypotheses. In other words, there is no disagreement about which of the two classes should be favored. Specifically, suppose that all plausible hypotheses agree on the same conditional probability distribution <span class="math notranslate nohighlight">\(\prob(+1 \given \vec{x}) = \alpha\)</span> and <span class="math notranslate nohighlight">\(\prob(-1 \given \vec{x}) = 1-\alpha\)</span>, and let <span class="math notranslate nohighlight">\(\beta = \max(\alpha , 1- \alpha)\)</span>. In this case, <span class="math notranslate nohighlight">\(u_e = 0\)</span>, and the degree of aleatoric uncertainty <span class="math notranslate nohighlight">\(u_a = 2(1- \beta)\)</span> depends on how close <span class="math notranslate nohighlight">\(\beta\)</span> is to 1.</p></li>
+<li><p><em>Full aleatoric uncertainty</em>: This is a special case of the previous one, in which <span class="math notranslate nohighlight">\(\beta = 1/2\)</span>. Indeed, <span class="math notranslate nohighlight">\(u_a = 1\)</span> means that all plausible hypotheses assign a probability of <span class="math notranslate nohighlight">\(1/2\)</span> to both classes. In other words, there is an agreement that the query instance is a boundary case.</p></li>
+<li><p><em>No uncertainty</em>: Again, this is a special case of the second one, with <span class="math notranslate nohighlight">\(\beta = 1\)</span>. A clear preference (close to 1) in favor of one of the two classes means that all plausible hypotheses, i.e., all hypotheses with a high likelihood, provide full support to that class.</p></li>
+</ul>
+<p>Although algorithmic aspects are not in the focus of this page, it is worth to mention that the computation of <a class="reference internal" href="#equation-plaus">(14.3)</a>, and likewise of <a class="reference internal" href="#equation-plausminus">(14.5)</a>, may become rather complex. In fact, the computation of the supremum comes down to solving an optimization problem, the complexity of which strongly depends on the hypothesis space <span class="math notranslate nohighlight">\(\cH\)</span>.</p>
+</div><hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnoteidentifier" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>In principle, the same idea can of course also be applied in Bayesian inference, namely by defining plausibility in terms of a normalized posterior distribution.</p>
+</aside>
+<aside class="footnote brackets" id="footnote1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">2</a><span class="fn-bracket">]</span></span>
+<p>Indeed, <span class="math notranslate nohighlight">\(\pi(\cdot \given h, \vec{x}_{q})\)</span> should not be interpreted as a measure of uncertainty.</p>
+</aside>
+<aside class="footnote brackets" id="footnote2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">3</a><span class="fn-bracket">]</span></span>
+<p>The minimum plays the role of a generalized logical conjunction <span id="id8">Klement <em>et al.</em> [<a class="reference internal" href="../references.html#id2029" title="EP. Klement, R. Mesiar, and E. Pap. Triangular Norms. Kluwer Academic Publishers, 2002.">KMP02</a>]</span>.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-reliable_classification"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter-credal_sets/credal_sets.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Credal Sets and Classifiers</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter-conformel_classification/conformel_classification.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Conformal Prediction for Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-the-plausibility-of-predictions">14.1. Modelling the plausibility of predictions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-likelihood">14.1.1. Normalized likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-plausability-to-epistemic-uncertainty">14.2. From plausability to epistemic uncertainty</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <section>
+    For comprehensive discussions please contact one of our team members: 
+    {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
+
+        <div style="margin-top: 50px;" id="disqus_thread"></div>
+
+        <script>
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://https-werywjw-github-io-toolbox-github-io.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section> 
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

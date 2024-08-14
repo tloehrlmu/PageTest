@@ -1,0 +1,1522 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6. Probability Estimation and Calibration &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myStyle.css?v=e90502a2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "vec": ["\\boldsymbol{#1}", 1], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "defeq": ["\\mathrel{\\vcenter{\\baselineskip0.5ex \\lineskiplimit0pt \\hbox{\\footnotesize.}\\hbox{\\footnotesize.}}}% ="], "given": ["\\, | \\,"], "cX": ["\\mathcal{X}"], "cY": ["\\mathcal{Y}"], "cH": ["\\mathcal{H}"], "cD": ["\\mathcal{D}"], "hath": ["\\hat{h}"], "haty": ["\\hat{y}"], "hatp": ["\\hat{p}"], "sety": ["\\widehat{Y}"], "argmin": ["\\operatorname*{argmin}"], "argmax": ["\\operatorname*{argmax}"], "db": ["\\set{M}"], "fkt": ["#1(\\cdot)", 1], "chrfkt": ["\\mathbb{I}_{#1}", 1], "kref": ["(\\ref{#1})", 1], "convto": ["(\\rightarrow"], "fft": ["(#1 :  #2 \\rightarrow #3", 3], "with": ["\\,  | \\,"], "sothat": ["\\,  : \\,"], "defi": ["\\stackrel{\\on{df}}{=}"], "set": ["\\mathcal{#1}", 1], "Prob": ["P"], "prob": ["p"], "impl": ["\\Rightarrow"], "on": ["\\operatorname"], "groesser": ["\\raisebox{#1mm}{} \\raisebox{-#1mm}{}", 1], "sgroesser": ["\\groesser{1.20}"], "xleftr": ["\\left( \\groesser{1.35} "], "xleftg": ["\\left\\{ \\groesser{1.35} "], "fftm": ["\\fft{#1}{#2}{#3} \\, ,\\, #4 \\mapsto #5", 5], "gdw": ["\\Leftrightarrow"], "gdwbd": ["\\stackrel{\\on{df}}{\\Leftrightarrow}"], "est": ["{est}"], "epd": ["\\Leftrightarrow_{\\on{def}}"], "fromto": ["\\longrightarrow"], "pref": ["\\succ"], "evalue": ["\\mathbf{E}"], "variance": ["\\mathbf{V}"], "mmp": ["", 1], "llbracket": ["\\lbrack\\lbrack"], "rrbracket": ["\\rbrack\\rbrack"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-pe-calibration/calibration';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Probability Estimation and Ensembles" href="../chapter-pe-ensemble/ensemble.html" />
+    <link rel="prev" title="5. Probability Estimation via Scoring" href="../chapter-pe-scoring/scoring.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../startPage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../startPage.html">
+                    Toolbox for Uncertainty Quantification in Machine Learning
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter-prelude/prelude.html">1. Prelude</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-intro/intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-srcUncertainty/src.html">3. Sources of uncertainty in supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-modelingAproxUncertainty/modelingAproxUncertainty.html">4. Modelling Approximation Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-scoring/scoring.html">5. Probability Estimation via Scoring</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Probability Estimation and Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-pe-ensemble/ensemble.html">7. Probability Estimation and Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-mle_and_fisher/mle.html">8. Maximum Likelihood and Fisher Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-generative_models/gm.html">9. Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-gaussianprocess/gaussianprocess.html">10. Gaussian Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-deep_neuralnetwork/dnn.html">11. Deep Neural Network Ensembles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-bayesian_neuralnetwork/bayesian.html">12. Bayesian Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-credal_sets/credal_sets.html">13. Credal Sets and Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-reliable_classification/reliable_classification.html">14. Reliable Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_classification/conformel_classification.html">15. Conformal Prediction for Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-conformel_regression/conformel_regression.html">16. Conformal Prediction for Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-setValued_utilityMaximization/set.html">17. Set-valued Prediction Based on Utility Maximization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter-appendix/appendix.html">18. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">19. References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/Advueu963/PageTest/blob/main/chapter-pe-calibration/calibration.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/edit/main/chapter-pe-calibration/calibration.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advueu963/PageTest/issues/new?title=Issue%20on%20page%20%2Fchapter-pe-calibration/calibration.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter-pe-calibration/calibration.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Probability Estimation and Calibration</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separating-hyperplane-in-support-vector-machines">6.1. Separating Hyperplane in Support Vector Machines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-binning">6.1.1. Histogram Binning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-scaling">6.1.2. Logistic Scaling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isotonic-regression">6.2. Isotonic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes">6.3. Gaussian Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#venn-predictors">6.3.1. Venn Predictors</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="probability-estimation-and-calibration">
+<span id="pe-calibration"></span><h1><span class="section-number">6. </span>Probability Estimation and Calibration<a class="headerlink" href="#probability-estimation-and-calibration" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
+<span class="kn">from</span> <span class="nn">venn_abers</span> <span class="kn">import</span> <span class="n">VennAbersCalibrator</span>
+
+<span class="c1"># Vector Graphics</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib_inline</span>
+<span class="n">matplotlib_inline</span><span class="o">.</span><span class="n">backend_inline</span><span class="o">.</span><span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.isotonic</span> <span class="kn">import</span> <span class="n">IsotonicRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">brier_score_loss</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">log_loss</span>
+<span class="kn">from</span> <span class="nn">sklearn.calibration</span> <span class="kn">import</span> <span class="n">calibration_curve</span><span class="p">,</span> <span class="n">CalibratedClassifierCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">check_random_state</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">DecisionBoundaryDisplay</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>The predictions delivered by corresponding methods (see <a class="reference internal" href="../chapter-pe-scoring/scoring.html"><span class="doc std std-doc">Probability Estimation via Scoring</span></a> from the previous chapter) are at best “pseudo-probabilities” that are often not very accurate.
+Besides, there are many methods that deliver natural scores,
+intuitively expressing a degree of confidence
+(like the distance from the <a class="reference internal" href="#svm"><span class="std std-ref">separating hyperplane in support vector machines</span></a>),
+but which do not immediately qualify as probabilities either.
+The idea of <em>scaling</em> or <em>calibration methods</em> is to turn such scores into proper,
+well-calibrated probabilities, that is,
+to learn a mapping from scores to the unit interval that can be applied to the output of a predictor as a kind of post-processing step (<span id="id1">Flach [<a class="reference internal" href="../references.html#id2186" title="P.A. Flach. Classifier calibration. In Encyclopedia of Machine Learning and Data Mining, pages 210–217. Springer, 2017.">Fla17</a>]</span>).
+Examples of such methods include <a class="reference internal" href="#binning"><span class="std std-ref">binning</span></a> (<span id="id2">Zadrozny and Elkan [<a class="reference internal" href="../references.html#id113" title="B. Zadrozny and C. Elkan. Obtaining calibrated probability estimates from decision trees and Naive Bayesian classifiers. In Proc. ICML, Int. Conference on Machine Learning, 609–616. 2001.">ZE01a</a>]</span>),
+<a class="reference internal" href="#ir"><span class="std std-ref">isotonic regression</span></a> (<span id="id3">Zadrozny and Elkan [<a class="reference internal" href="../references.html#id112" title="B. Zadrozny and C. Elkan. Transforming classifier scores into accurate multiclass probability estimates. In Proc. KDD–02, 8th International Conference on Knowledge Discovery and Data Mining, 694–699. Edmonton, Alberta, Canada, 2002.">ZE02</a>]</span>),
+<a class="reference internal" href="#ls"><span class="std std-ref">logistic scaling</span></a> (<span id="id4">Platt [<a class="reference internal" href="../references.html#id212" title="John Platt. Probabilistic outputs for support vector machines and comparison to regularized likelihood methods. In A.J. Smola, P. Bartlett, B. Schoelkopf, and D. Schuurmans, editors, Advances in Large Margin Classifiers, 61–74. Cambridge, MA, 1999. MIT Press.">Pla99</a>]</span>)
+and improvements thereof (<span id="id5">Kull <em>et al.</em> [<a class="reference internal" href="../references.html#id2185" title="M. Kull, T. de Menezes, S. Filho, and P.A. Flach. Beta calibration: a well-founded and easily implemented improvement on logistic calibration for binary classifiers. In Proc. AISTATS, 20th International Conference on Artificial Intelligence and Statistics, 623–631. Fort Lauderdale, FL, USA, 2017.">KdMFF17</a>]</span>),
+as well as the use of <a class="reference internal" href="#vp"><span class="std std-ref">Venn predictors</span></a> (<span id="id6">Johansson <em>et al.</em> [<a class="reference internal" href="../references.html#id237" title="U. Johansson, T. Löfström, H. Sundell, H. Linusson, A. Gidenstam, and H. Boström. Venn predictors for well-calibrated probability estimation trees. In Proc. COPA, 7th Symposium on Conformal and Probabilistic Prediction and Applications, 3–14. Maastricht, The Netherlands, 2018.">JLofstromS+18</a>]</span>).
+Calibration is still a topic of ongoing research.</p>
+</div><div align="justify">
+<p>Calibration is generally associated with classification tasks where we aim to adjust the predicted probabilities to better reflect the true likelihood of outcomes.
+The aim of calibration in binary classification is to take an uncalibrated scoring classifier <span class="math notranslate nohighlight">\(s=f(x)\)</span> and apply a calibration map <span class="math notranslate nohighlight">\(\mu\)</span> on top of it to produce calibrated probabilities <span class="math notranslate nohighlight">\(\mu(f(x))\)</span>.
+Formally, a scoring classifier is perfectly calibrated on a dataset if for each of its output scores <span class="math notranslate nohighlight">\(s\)</span> the proportion of positives within instances with model output score <span class="math notranslate nohighlight">\(s\)</span> is equal to <span class="math notranslate nohighlight">\(s\)</span>.
+Denoting the instances in the dataset by <span class="math notranslate nohighlight">\(\vec{x}_1, \cdots, \vec{x}_n\)</span> and their binary labels by <span class="math notranslate nohighlight">\(y_1, \cdots, y_n\)</span>,
+a model <span class="math notranslate nohighlight">\(f\)</span> is calibrated on this dataset if for each of its possible outputs <span class="math notranslate nohighlight">\(s_i = f(x_i)\)</span> the following holds:</p>
+<div class="math notranslate nohighlight">
+\[
+s_i = \mathbb{E}[Y\vert f(X)=s_i],
+\]</div>
+<p>where the random variables <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> denote respectively the features and label of a uniformly randomly drawn instance from the dataset,
+the labels <span class="math notranslate nohighlight">\(Y = 1\)</span> and <span class="math notranslate nohighlight">\(Y = 0\)</span> stand for a positive and negative, respectively.
+This expectation can be rewritten as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[Y\vert f(X)=s_i] = \frac{\sum_{j=1}^n y_j \cdot I[f(x_j)=s_i]}{\sum_{j=1}^n I[f(x_j)=s_i]},
+\]</div>
+<p>here <span class="math notranslate nohighlight">\(I[\cdot]\)</span> is the indicator function.
+For any fixed model <span class="math notranslate nohighlight">\(f\)</span> there exists a uniquely determined calibration map which produces perfectly calibrated probabilities on the given dataset.
+That calibration map can be defined as <span class="math notranslate nohighlight">\(\mu(s_i) = \mathbb{E}[Y\vert f(X)=s_i]\)</span>.
+However, usually we do not want to learn perfect calibration maps on the training data,
+because these would overfit and would be far from being calibrated on the test data (<span id="id7">Kull <em>et al.</em> [<a class="reference internal" href="../references.html#id2185" title="M. Kull, T. de Menezes, S. Filho, and P.A. Flach. Beta calibration: a well-founded and easily implemented improvement on logistic calibration for binary classifiers. In Proc. AISTATS, 20th International Conference on Artificial Intelligence and Statistics, 623–631. Fort Lauderdale, FL, USA, 2017.">KdMFF17</a>]</span>).</p>
+</div><section id="separating-hyperplane-in-support-vector-machines">
+<span id="svm"></span><h2><span class="section-number">6.1. </span>Separating Hyperplane in Support Vector Machines<a class="headerlink" href="#separating-hyperplane-in-support-vector-machines" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>For having a better understanding,
+let us first generate a synthetic binary classification dataset,
+then we create a support vector machine (SVM) with a <code class="docutils literal notranslate"><span class="pre">linear</span></code> kernel and separate the hyperplane in this SVM.</p>
+</div><div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">svm</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax0</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Synthetic binary classification dataset&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Data Points&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Feature 1&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Feature 2&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Separating hyperplane in a support vector machine&#39;</span><span class="p">)</span>
+<span class="n">DecisionBoundaryDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span><span class="n">svm</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">plot_method</span><span class="o">=</span><span class="s2">&quot;contour&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">svm</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">svm</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;Data Points&#39;</span><span class="p">,</span> <span class="s1">&#39;Support Vectors&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Feature 1&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Feature 2&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/f7b97defca9d8cc7427c5ece3d4a4cbb4dfa3c9a4255b5874967c68acb26706a.svg" src="../_images/f7b97defca9d8cc7427c5ece3d4a4cbb4dfa3c9a4255b5874967c68acb26706a.svg" />
+</div>
+</div>
+<div align="justify">
+<p>The solid line denotes the optimal hyperplane (best decision boundary),
+while the space between dashed lines is the margin.
+The data points with black circles are support vectors.</p>
+</div><div align="justify">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We use a large amount of data points here to get better comparisons for the below two calibration methods.</p>
+</div>
+</div><section id="histogram-binning">
+<span id="binning"></span><h3><span class="section-number">6.1.1. </span>Histogram Binning<a class="headerlink" href="#histogram-binning" title="Link to this heading">#</a></h3>
+<div align="justify">
+<p>Histogram binning assigns the same probability estimate to all examples in each bin,
+the ranking of examples inside bins is lost.
+The number of different probability estimates that binning can yield is limited by the number of alternative bins.
+Binning reduces the resolution, i.e., the degree of detail,
+of conditional probability estimates,
+while improving the accuracy of these estimates by reducing both variance and bias compared to uncalibrated estimates.</p>
+<p>If the shape of the mapping function is unknown,
+we can resort to a non-parametric method such as binning.
+In binning, the training examples are sorted according to their scores and the sorted set is divided into different subsets of equal size,
+called bins (<span id="id8">Zadrozny and Elkan [<a class="reference internal" href="../references.html#id113" title="B. Zadrozny and C. Elkan. Obtaining calibrated probability estimates from decision trees and Naive Bayesian classifiers. In Proc. ICML, Int. Conference on Machine Learning, 609–616. 2001.">ZE01a</a>], Zadrozny and Elkan [<a class="reference internal" href="../references.html#id2283" title="Bianca Zadrozny and Charles Elkan. Learning and making decisions when costs and probabilities are both unknown. In Proceedings of the seventh ACM SIGKDD international conference on Knowledge discovery and data mining, 204–213. 2001.">ZE01b</a>]</span>).</p>
+</div><div align="justify">
+<p><em>Expected Calibration Error</em> (ECE) and <em>Maximum Calibration Error</em> (MCE) are two common measures for the calibration.
+Specifically,
+ECE calculates the weighted average of the absolute differences between the predicted probabilities and the actual outcomes for each bin,
+while MCE identifies the maximum absolute difference between the predicted probabilities and the actual outcomes across all bins (<span id="id9">Guo <em>et al.</em> [<a class="reference internal" href="../references.html#id2288" title="Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q Weinberger. On calibration of modern neural networks. In International conference on machine learning, 1321–1330. PMLR, 2017.">GPSW17</a>], Naeini <em>et al.</em> [<a class="reference internal" href="../references.html#id2289" title="Mahdi Pakdaman Naeini, Gregory Cooper, and Milos Hauskrecht. Obtaining well calibrated probabilities using bayesian binning. In Proceedings of the AAAI conference on artificial intelligence, volume 29. 2015.">NCH15</a>]</span>).</p>
+<p>The Expected Calibration Error is defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{ECE} = \sum_{k=1}^{K} \frac{|B_k|}{N} \left| \text{acc}(B_k) - \text{conf}(B_k) \right|,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{acc}(B_k)\)</span> and <span class="math notranslate nohighlight">\(\text{conf}(B_k)\)</span> are the average accuracy and confidence of the <span class="math notranslate nohighlight">\(k\)</span>-th bin respectively.
+A lower ECE indicates better uncertainty calibration.</p>
+<p>In high-risk applications where reliable confidence measures are absolutely necessary,
+we may wish to minimize the worst-case deviation between confidence and accuracy.
+The Maximum Calibration Error can be represented:</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{MCE} = \max_{k \in \{ 1, \dots, K \}} \left| \text{acc}(B_k) - \text{conf}(B_k) \right|.
+\]</div>
+<p>In practice, we can define these two metrics in the following.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_ece</span><span class="p">(</span><span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="p">):</span>
+    <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_bins</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ece</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_bins</span><span class="p">):</span>
+        <span class="n">bin_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">prob_pred</span> <span class="o">&gt;=</span> <span class="n">bin_edges</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">prob_pred</span> <span class="o">&lt;</span> <span class="n">bin_edges</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bin_mask</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">bin_confidence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prob_pred</span><span class="p">[</span><span class="n">bin_mask</span><span class="p">])</span>
+            <span class="n">bin_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prob_true</span><span class="p">[</span><span class="n">bin_mask</span><span class="p">])</span>
+            <span class="n">bin_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bin_mask</span><span class="p">)</span>
+            <span class="n">ece</span> <span class="o">+=</span> <span class="n">bin_size</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">bin_accuracy</span> <span class="o">-</span> <span class="n">bin_confidence</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ece</span>
+
+<span class="k">def</span> <span class="nf">calculate_mce</span><span class="p">(</span><span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="p">):</span>
+    <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_bins</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">mce</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_bins</span><span class="p">):</span>
+        <span class="n">bin_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">prob_pred</span> <span class="o">&gt;=</span> <span class="n">bin_edges</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">prob_pred</span> <span class="o">&lt;</span> <span class="n">bin_edges</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bin_mask</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">bin_confidence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prob_pred</span><span class="p">[</span><span class="n">bin_mask</span><span class="p">])</span>
+            <span class="n">bin_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prob_true</span><span class="p">[</span><span class="n">bin_mask</span><span class="p">])</span>
+            <span class="n">mce</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">mce</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">bin_accuracy</span> <span class="o">-</span> <span class="n">bin_confidence</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">mce</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div align="justify">
+<p>Let us see the influence of different bins for the calibration.
+We plot below three calibration curves for different numbers of bins (i.e., 5, 10, and 20).
+We can visualize MCE and ECE on reliability diagrams.
+For perfectly (ideally) calibrated classifiers,
+MCE and ECE both equal 0 (<span id="id10">Guo <em>et al.</em> [<a class="reference internal" href="../references.html#id2288" title="Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q Weinberger. On calibration of modern neural networks. In International conference on machine learning, 1321–1330. PMLR, 2017.">GPSW17</a>]</span>).</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_prob</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">bins_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bins</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bins_list</span><span class="p">):</span>
+    <span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">)</span>
+    
+    <span class="n">brier_score</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+    <span class="n">ece</span> <span class="o">=</span> <span class="n">calculate_ece</span><span class="p">(</span><span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    <span class="n">mce</span> <span class="o">=</span> <span class="n">calculate_mce</span><span class="p">(</span><span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">bins</span><span class="p">,</span> <span class="n">ece</span><span class="p">,</span> <span class="n">mce</span><span class="p">,</span> <span class="n">brier_score</span><span class="p">))</span> 
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bins_list</span><span class="p">),</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prob_pred</span><span class="p">,</span> <span class="n">prob_true</span><span class="p">,</span> <span class="s2">&quot;s-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bins</span><span class="si">}</span><span class="s1"> bins&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ideally Calibrated&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mean predicted probability&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction of positives&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Calibration curve with </span><span class="si">{</span><span class="n">bins</span><span class="si">}</span><span class="s1"> bins</span><span class="se">\n</span><span class="s1"> ECE: </span><span class="si">{</span><span class="n">ece</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">, MCE: </span><span class="si">{</span><span class="n">mce</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">, Brier Score: </span><span class="si">{</span><span class="n">brier_score</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/bd752de9b09ddadc1edb3b471fa9e6a35130421bd4b07903b7e752122bea77f6.svg" src="../_images/bd752de9b09ddadc1edb3b471fa9e6a35130421bd4b07903b7e752122bea77f6.svg" />
+</div>
+</div>
+<div align="justify">
+<p>Obviously we can see, with fewer bins (e.g., 5 bins), each bin contains more samples,
+leading to a smoother but less detailed calibration curve.
+This can sometimes obscure finer details of the calibration performance of the model.
+With more bins (e.g., 20 bins), each bin contains fewer samples,
+providing a more detailed view of the calibration.
+However, this can introduce more noise,
+especially when some bins have very few samples.</p>
+<p>In this case, we achieve the same brier scores with respect to different bins.
+As observed by ECE and MCE, calibration with 5 bins has the best performance,
+indicating well alignment between predicted probability and actual outcomes,
+improving the reliability and interpretability of the predictions and helping processes of the decision-making.</p>
+</div></section>
+<section id="logistic-scaling">
+<span id="ls"></span><h3><span class="section-number">6.1.2. </span>Logistic Scaling<a class="headerlink" href="#logistic-scaling" title="Link to this heading">#</a></h3>
+<div align="justify">
+<p>Introduced by <span id="id11">Platt [<a class="reference internal" href="../references.html#id212" title="John Platt. Probabilistic outputs for support vector machines and comparison to regularized likelihood methods. In A.J. Smola, P. Bartlett, B. Schoelkopf, and D. Schuurmans, editors, Advances in Large Margin Classifiers, 61–74. Cambridge, MA, 1999. MIT Press.">Pla99</a>]</span>, logistic (Platt) scaling was originally a method for calibrating support vector machines.
+It works by finding the parameters of a <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> function maximizing the likelihood of the training set.
+Unlike the other approaches,
+Platt scaling is a parametric approach to calibration.
+The non-probabilistic predictions of a classifier are used as features for a <a class="reference internal" href="../chapter-pe-scoring/scoring.html#logistic"><span class="std std-ref">logistic regression model</span></a>,
+which is trained on the validation set to return probabilities (<span id="id12">Guo <em>et al.</em> [<a class="reference internal" href="../references.html#id2288" title="Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q Weinberger. On calibration of modern neural networks. In International conference on machine learning, 1321–1330. PMLR, 2017.">GPSW17</a>]</span>).
+We here apply such a logistic regression model to the outputs of the SVM classifier,
+transforming the raw scores of the SVM into calibrated probabilities.</p>
+</div>
+<div align="justify">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As lower ECE and MCE scores indicate better calibrations,
+we utilize all binning size from the previous section for plotting calibration curves and comparing performances here.</p>
+</div>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw_outputs</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">platt_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">platt_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">raw_outputs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="n">platt_probs</span> <span class="o">=</span> <span class="n">platt_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">raw_outputs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Calibration curve with 5 bins&quot;</span><span class="p">,</span> <span class="s2">&quot;Calibration curve with 10 bins&quot;</span><span class="p">,</span> <span class="s2">&quot;Calibration curve with 20 bins&quot;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bins</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bins_list</span><span class="p">):</span>
+    <span class="n">prob_true_svm</span><span class="p">,</span> <span class="n">prob_pred_svm</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="n">prob_true_platt</span><span class="p">,</span> <span class="n">prob_pred_platt</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">platt_probs</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bins_list</span><span class="p">),</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prob_pred_svm</span><span class="p">,</span> <span class="n">prob_true_svm</span><span class="p">,</span> <span class="s2">&quot;s-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SVM&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prob_pred_platt</span><span class="p">,</span> <span class="n">prob_true_platt</span><span class="p">,</span> <span class="s2">&quot;s-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SVM-Platt&quot;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;k:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ideally Calibrated&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean predicted probability&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fraction of positives&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/5fea8145eecde76040b16734b08df0c8328237bf332e97584636dd6f3f52d563.svg" src="../_images/5fea8145eecde76040b16734b08df0c8328237bf332e97584636dd6f3f52d563.svg" />
+</div>
+</div>
+<div align="justify">
+<p>As observed from calibration curves, Platt scaling only slightly improve the calibration with more bins.
+To get specific values of the calibration performance,
+we also calculate the <a class="reference internal" href="../chapter-pe-scoring/scoring.html#bs"><span class="std std-ref">Brier scores</span></a>, <a class="reference internal" href="../chapter-pe-scoring/scoring.html#ll"><span class="std std-ref">log loss</span></a>, as well as ECE and MCE, before and after the logistic scaling.
+The results below indicate that Platt scaling has indeed marginally improved the calibration of the SVM probabilities,
+as reflected in the lower log loss, ECE, and MCE for Platt scaling compared to the raw SVM probabilities.
+We explain that Platt scaling likely provides better calibration compared to the binning approach because it is more flexible,
+less prone to overfitting, and offers a continuous adjustment that better captures the relationship between the SVM scores and the true probabilities.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bins</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bins_list</span><span class="p">):</span>
+    <span class="n">prob_true_svm</span><span class="p">,</span> <span class="n">prob_pred_svm</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="n">prob_true_platt</span><span class="p">,</span> <span class="n">prob_pred_platt</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">platt_probs</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    
+    <span class="n">bs_svm</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+    <span class="n">bs_platt</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">platt_probs</span><span class="p">)</span>
+
+    <span class="n">ll_svm</span> <span class="o">=</span> <span class="n">log_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+    <span class="n">ll_platt</span> <span class="o">=</span> <span class="n">log_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">platt_probs</span><span class="p">)</span>
+
+    <span class="n">ece_svm</span> <span class="o">=</span> <span class="n">calculate_ece</span><span class="p">(</span><span class="n">prob_true_svm</span><span class="p">,</span> <span class="n">prob_pred_svm</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="n">ece_platt</span> <span class="o">=</span> <span class="n">calculate_ece</span><span class="p">(</span><span class="n">prob_true_platt</span><span class="p">,</span> <span class="n">prob_pred_platt</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+
+    <span class="n">mce_svm</span> <span class="o">=</span> <span class="n">calculate_mce</span><span class="p">(</span><span class="n">prob_true_svm</span><span class="p">,</span> <span class="n">prob_pred_svm</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="n">mce_platt</span> <span class="o">=</span> <span class="n">calculate_mce</span><span class="p">(</span><span class="n">prob_true_platt</span><span class="p">,</span> <span class="n">prob_pred_platt</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;Bins&#39;</span><span class="p">:</span> <span class="n">bins</span><span class="p">,</span>
+        <span class="s1">&#39;Method&#39;</span><span class="p">:</span> <span class="s1">&#39;SVM&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Brier Score&#39;</span><span class="p">:</span> <span class="n">bs_svm</span><span class="p">,</span>
+        <span class="s1">&#39;Log Loss&#39;</span><span class="p">:</span> <span class="n">ll_svm</span><span class="p">,</span>
+        <span class="s1">&#39;ECE&#39;</span><span class="p">:</span> <span class="n">ece_svm</span><span class="p">,</span>
+        <span class="s1">&#39;MCE&#39;</span><span class="p">:</span> <span class="n">mce_svm</span>
+    <span class="p">})</span>
+    
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;Bins&#39;</span><span class="p">:</span> <span class="n">bins</span><span class="p">,</span>
+        <span class="s1">&#39;Method&#39;</span><span class="p">:</span> <span class="s1">&#39;SVM-Platt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Brier Score&#39;</span><span class="p">:</span> <span class="n">bs_platt</span><span class="p">,</span>
+        <span class="s1">&#39;Log Loss&#39;</span><span class="p">:</span> <span class="n">ll_platt</span><span class="p">,</span>
+        <span class="s1">&#39;ECE&#39;</span><span class="p">:</span> <span class="n">ece_platt</span><span class="p">,</span>
+        <span class="s1">&#39;MCE&#39;</span><span class="p">:</span> <span class="n">mce_platt</span>
+    <span class="p">})</span>
+
+<span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">df_results</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bins</th>
+      <th>Method</th>
+      <th>Brier Score</th>
+      <th>Log Loss</th>
+      <th>ECE</th>
+      <th>MCE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5</td>
+      <td>SVM</td>
+      <td>0.034471</td>
+      <td>0.121599</td>
+      <td>0.019524</td>
+      <td>0.045800</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>SVM-Platt</td>
+      <td>0.034479</td>
+      <td>0.118904</td>
+      <td>0.016060</td>
+      <td>0.039840</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10</td>
+      <td>SVM</td>
+      <td>0.034471</td>
+      <td>0.121599</td>
+      <td>0.043880</td>
+      <td>0.187217</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10</td>
+      <td>SVM-Platt</td>
+      <td>0.034479</td>
+      <td>0.118904</td>
+      <td>0.041281</td>
+      <td>0.167196</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>20</td>
+      <td>SVM</td>
+      <td>0.034471</td>
+      <td>0.121599</td>
+      <td>0.099699</td>
+      <td>0.342157</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>20</td>
+      <td>SVM-Platt</td>
+      <td>0.034479</td>
+      <td>0.118904</td>
+      <td>0.089655</td>
+      <td>0.319817</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div align="justify">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A lower Brier loss, for instance, does not necessarily mean a better calibrated model,
+it could also mean a worse calibrated model with much more discriminatory power,
+e.g., using many more features (<span id="id13">Silva Filho <em>et al.</em> [<a class="reference internal" href="../references.html#id2275" title="Telmo Silva Filho, Hao Song, Miquel Perello-Nieto, Raul Santos-Rodriguez, Meelis Kull, and Peter Flach. Classifier calibration: a survey on how to assess and improve predicted class probabilities. Machine Learning, 112(9):3211–3260, 2023.">SFSPN+23</a>]</span>).</p>
+</div>
+</div></section>
+</section>
+<section id="isotonic-regression">
+<span id="ir"></span><h2><span class="section-number">6.2. </span>Isotonic Regression<a class="headerlink" href="#isotonic-regression" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>A difficulty of the binning method is that we have to choose the number of bins by cross-validation.
+If the dataset is small, or highly unbalanced, cross-validation is not likely to indicate the optimal number of bins.
+Also, the size of the bins is fixed and the position of the boundaries is chosen arbitrarily.
+If the boundaries are such that we average together the labels of examples that clearly should have different probability estimates,
+the binning method will fail to produce accurate probability estimates.</p>
+<p>Isotonic regression,
+an intermediary approach between sigmoid fitting and binning,
+is also arguably the most common non-parametric form of regression (<span id="id14">Guo <em>et al.</em> [<a class="reference internal" href="../references.html#id2288" title="Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q Weinberger. On calibration of modern neural networks. In International conference on machine learning, 1321–1330. PMLR, 2017.">GPSW17</a>]</span>),
+in which we assume that the function is chosen from the class of all isotonic (i.e., non-decreasing) functions.
+If we assume that the classifier ranks examples correctly,
+the mapping from scores into probabilities is non-decreasing,
+and we can use isotonic regression to learn this mapping.
+A commonly used algorithm for computing the isotonic regression is pair-adjacent violators (PAV) (<span id="id15">Ayer <em>et al.</em> [<a class="reference internal" href="../references.html#id2282" title="Miriam Ayer, H Daniel Brunk, George M Ewing, William T Reid, and Edward Silverman. An empirical distribution function for sampling with incomplete information. The annals of mathematical statistics, pages 641–647, 1955.">ABE+55</a>]</span>).
+This algorithm finds the stepwise-constant isotonic function that best fits the data according to a mean-squared error criterion (<span id="id16">Zadrozny and Elkan [<a class="reference internal" href="../references.html#id112" title="B. Zadrozny and C. Elkan. Transforming classifier scores into accurate multiclass probability estimates. In Proc. KDD–02, 8th International Conference on Knowledge Discovery and Data Mining, 694–699. Edmonton, Alberta, Canada, 2002.">ZE02</a>]</span>).</p>
+<p>Building upon the <a class="reference internal" href="../chapter-pe-scoring/scoring.html#linear"><span class="std std-ref">Linear Regressor</span></a> in the previous chapter,
+we utilize the Isotonic Regression for a comparison on the same dataset.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">rs</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span> <span class="o">+</span> <span class="mf">50.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">y_pred_lr</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+<span class="n">mse_lr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">)</span>
+<span class="n">normalized_mse_lr</span> <span class="o">=</span> <span class="n">mse_lr</span> <span class="o">/</span> <span class="n">variance</span>
+
+<span class="n">ir</span> <span class="o">=</span> <span class="n">IsotonicRegression</span><span class="p">(</span><span class="n">out_of_bounds</span><span class="o">=</span><span class="s2">&quot;clip&quot;</span><span class="p">)</span>
+<span class="n">y_pred_ir</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">mse_ir</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_ir</span><span class="p">)</span>
+<span class="n">normalized_mse_ir</span> <span class="o">=</span> <span class="n">mse_ir</span> <span class="o">/</span> <span class="n">variance</span>
+
+<span class="n">segments</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">i</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">y_pred_ir</span><span class="p">[</span><span class="n">i</span><span class="p">]]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="n">lc</span> <span class="o">=</span> <span class="n">LineCollection</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">lc</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+<span class="n">lc</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_pred_ir</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Isotonic Regressor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_pred_ir</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Linear Regressor&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Isotonic and linear regression fit on the synthetic dataset&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">ir</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Isotonic Regressor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ir</span><span class="o">.</span><span class="n">X_thresholds_</span><span class="p">,</span> <span class="n">ir</span><span class="o">.</span><span class="n">y_thresholds_</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Prediction function (</span><span class="si">%d</span><span class="s2"> thresholds)&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">ir</span><span class="o">.</span><span class="n">X_thresholds_</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/0cfed2f02cdb5537bd4811a69f3803c6674bf81119630bf6e86f67d867bb6cff.svg" src="../_images/0cfed2f02cdb5537bd4811a69f3803c6674bf81119630bf6e86f67d867bb6cff.svg" />
+</div>
+</div>
+<div align="justify">
+<p>Now we calculate the <a class="reference internal" href="../chapter-pe-scoring/scoring.html#mse"><span class="std std-ref">mean squared error</span></a> for both linear regression and isotonic regression in normalized manner.
+By plotting these calibration curves,
+we can visually assess the calibration of each regression model.
+Points closer to the black dashed line indicate the better calibration.
+Here isotonic regression can perform better than linear regression when the relationship between the independent and dependent variables is monotonic but not necessarily linear.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_pred_lr</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Calibration Results&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:pink&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ideally Calibrated&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted values&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True values&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Linear regression calibration</span><span class="se">\n</span><span class="s1">MSE: </span><span class="si">{</span><span class="n">normalized_mse_lr</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_pred_ir</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Calibration Results&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:pink&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ideally Calibrated&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted values&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True values&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Isotonic regression calibration</span><span class="se">\n</span><span class="s1">MSE: </span><span class="si">{</span><span class="n">normalized_mse_ir</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/4ccad18da6a34a3255331bab931e639abeaf354db773d930cb61f0326a8ad2d8.svg" src="../_images/4ccad18da6a34a3255331bab931e639abeaf354db773d930cb61f0326a8ad2d8.svg" />
+</div>
+</div>
+</section>
+<section id="gaussian-naive-bayes">
+<h2><span class="section-number">6.3. </span>Gaussian Naive Bayes<a class="headerlink" href="#gaussian-naive-bayes" title="Link to this heading">#</a></h2>
+<div align="justify">
+<p>Now let us take another example of gaussian naive bayes and compare previously introduced calibration methods in the following.
+We generate and split the synthetic dataset.
+To reduce the dimensionality of the data to 2D,
+we use principal component analysis (PCA) for visualization purposes.</p>
+</div><div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">nb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">nb_pca</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">nb_pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X_train_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_train_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X_train_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_train_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">nb_pca</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span> 
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Principal component 1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Principal component 2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Synthetic dataset (first two features)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_test_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Principal component 1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Principal component 2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Decision boundary (first two features)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/b282b2f1eeec08541810a2fc122b864ddfc987be79bcda17852f82cf466a600d.svg" src="../_images/b282b2f1eeec08541810a2fc122b864ddfc987be79bcda17852f82cf466a600d.svg" />
+</div>
+</div>
+<section id="venn-predictors">
+<span id="vp"></span><h3><span class="section-number">6.3.1. </span>Venn Predictors<a class="headerlink" href="#venn-predictors" title="Link to this heading">#</a></h3>
+<div align="justify">
+<p>Introduced by <span id="id17">Vovk <em>et al.</em> [<a class="reference internal" href="../references.html#id2285" title="Vladimir Vovk, Glenn Shafer, and Ilia Nouretdinov. Self-calibrating probability forecasting. Advances in neural information processing systems, 2003.">VSN03</a>]</span>,
+Venn predictors are multi-probabilistic predictors with proven validity properties.
+The multi-probabilistic prediction output by the Venn–Abers predictor is <span class="math notranslate nohighlight">\((p_0,p_1)\)</span>,
+where <span class="math notranslate nohighlight">\(p_0 := g_0(s_0(x))\)</span> and <span class="math notranslate nohighlight">\(p_1 := g_1(s_1(x))\)</span>,
+<span class="math notranslate nohighlight">\(s\)</span> is the scoring function and <span class="math notranslate nohighlight">\(g_0\)</span> is the isotonic calibrator for <span class="math notranslate nohighlight">\(((s_0(x_1), y_1), \ldots, (s_0(x_l), y_l), (s_0(x), 0))\)</span>,
+<span class="math notranslate nohighlight">\(g_1\)</span> is the isotonic calibrator for <span class="math notranslate nohighlight">\(((s_1(x_1), y_1), \ldots, (s_1(x_l), y_l), (s_1(x), 1))\)</span> (<span id="id18">Vovk and Petej [<a class="reference internal" href="../references.html#id2290" title="Vladimir Vovk and Ivan Petej. Venn-abers predictors. arXiv preprint arXiv:1211.0025, 2012.">VP12</a>]</span>).
+Here we can expect <span class="math notranslate nohighlight">\(p_0\)</span> and <span class="math notranslate nohighlight">\(p_1\)</span> to be close to each other unless direct isotonic regression overfits grossly.</p>
+<!-- The impossibility result described earlier for probabilistic prediction is circumvented in two ways: 
+1. Multiple probabilities for each label are outputted, with one of them being the valid one; 
+1. Statistical tests for validity are restricted to calibration.  -->
+<p>More specifically, the probabilities must be matched by observed frequencies.
+As an example, if we make a number of probabilistic predictions with the probability estimate 0.9 these predictions should be correct in about 90% of the cases.</p>
+<p>Now let us see the performance of the Venn predictors, as well as parametric (e.g., Platt scaling) and non-parametric (isotonic calibration) methods with calibration curves.</p>
+</div><div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nb_isotonic</span> <span class="o">=</span> <span class="n">CalibratedClassifierCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">nb</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;isotonic&#39;</span><span class="p">)</span>
+<span class="n">nb_isotonic</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">nb_sigmoid</span> <span class="o">=</span> <span class="n">CalibratedClassifierCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">nb</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)</span>
+<span class="n">nb_sigmoid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">nb_vennabers</span> <span class="o">=</span>  <span class="n">VennAbersCalibrator</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">nb</span><span class="p">,</span> <span class="n">inductive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">nb_vennabers</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">prob_nb</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">prob_isotonic</span> <span class="o">=</span> <span class="n">nb_isotonic</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">prob_sigmoid</span> <span class="o">=</span> <span class="n">nb_sigmoid</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">prob_vennabers</span> <span class="o">=</span> <span class="n">nb_vennabers</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_nb</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prob_pred</span><span class="p">,</span> <span class="n">prob_true</span><span class="p">,</span> <span class="s2">&quot;s-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GaussianNB&#39;</span><span class="p">)</span>
+<span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_isotonic</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prob_pred</span><span class="p">,</span> <span class="n">prob_true</span><span class="p">,</span> <span class="s2">&quot;s-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GaussianNB-Isotonic&#39;</span><span class="p">)</span>
+<span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_sigmoid</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prob_pred</span><span class="p">,</span> <span class="n">prob_true</span><span class="p">,</span> <span class="s2">&quot;s-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GaussianNB-Platt&#39;</span><span class="p">)</span>
+<span class="n">prob_true</span><span class="p">,</span> <span class="n">prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_vennabers</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prob_pred</span><span class="p">,</span> <span class="n">prob_true</span><span class="p">,</span> <span class="s2">&quot;s-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GaussianNB-VennAbers&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ideally Calibrated&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Calibration curves&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mean predicted probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction of positives&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/497e530c42e4e2c1f3d1b54c96e7828c1a4fd751c80a8f5f257343ef86d5752d.svg" src="../_images/497e530c42e4e2c1f3d1b54c96e7828c1a4fd751c80a8f5f257343ef86d5752d.svg" />
+</div>
+</div>
+<div align="justify"> 
+<p>Let us again calculate some metrics such as Brier score, log loss, ECE, and MCE for each method.
+The result table is shown below for comparisons.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bs_nb</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_nb</span><span class="p">)</span>
+<span class="n">bs_isotonic</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_isotonic</span><span class="p">)</span>
+<span class="n">bs_sigmoid</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_sigmoid</span><span class="p">)</span>
+<span class="n">bs_vennabers</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_vennabers</span><span class="p">)</span>
+
+<span class="n">ll_nb</span> <span class="o">=</span> <span class="n">log_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_nb</span><span class="p">)</span>
+<span class="n">ll_isotonic</span> <span class="o">=</span> <span class="n">log_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_isotonic</span><span class="p">)</span>
+<span class="n">ll_sigmoid</span> <span class="o">=</span> <span class="n">log_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_sigmoid</span><span class="p">)</span>
+<span class="n">ll_vennabers</span> <span class="o">=</span> <span class="n">log_loss</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_vennabers</span><span class="p">)</span>
+
+<span class="n">nb_prob_true</span><span class="p">,</span> <span class="n">nb_prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_nb</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">)</span>
+<span class="n">nb_ece</span> <span class="o">=</span> <span class="n">calculate_ece</span><span class="p">(</span><span class="n">nb_prob_true</span><span class="p">,</span> <span class="n">nb_prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">nb_mce</span> <span class="o">=</span> <span class="n">calculate_mce</span><span class="p">(</span><span class="n">nb_prob_true</span><span class="p">,</span> <span class="n">nb_prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">isotonic_prob_true</span><span class="p">,</span> <span class="n">isotonic_prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_isotonic</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">)</span>
+<span class="n">isotonic_ece</span> <span class="o">=</span> <span class="n">calculate_ece</span><span class="p">(</span><span class="n">isotonic_prob_true</span><span class="p">,</span> <span class="n">isotonic_prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">isotonic_mce</span> <span class="o">=</span> <span class="n">calculate_mce</span><span class="p">(</span><span class="n">isotonic_prob_true</span><span class="p">,</span> <span class="n">isotonic_prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">sigmoid_prob_true</span><span class="p">,</span> <span class="n">sigmoid_prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_sigmoid</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">)</span>
+<span class="n">sigmoid_ece</span> <span class="o">=</span> <span class="n">calculate_ece</span><span class="p">(</span><span class="n">sigmoid_prob_true</span><span class="p">,</span> <span class="n">sigmoid_prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">sigmoid_mce</span> <span class="o">=</span> <span class="n">calculate_mce</span><span class="p">(</span><span class="n">sigmoid_prob_true</span><span class="p">,</span> <span class="n">sigmoid_prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">vennabers_prob_true</span><span class="p">,</span> <span class="n">vennabers_prob_pred</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prob_vennabers</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">)</span>
+<span class="n">vennabers_ece</span> <span class="o">=</span> <span class="n">calculate_ece</span><span class="p">(</span><span class="n">vennabers_prob_true</span><span class="p">,</span> <span class="n">vennabers_prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">vennabers_mce</span> <span class="o">=</span> <span class="n">calculate_mce</span><span class="p">(</span><span class="n">vennabers_prob_true</span><span class="p">,</span> <span class="n">vennabers_prob_pred</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Method&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GaussianNB&#39;</span><span class="p">,</span> <span class="s1">&#39;GaussianNB-Isotonic&#39;</span><span class="p">,</span> <span class="s1">&#39;GaussianNB-Platt&#39;</span><span class="p">,</span> <span class="s1">&#39;GaussianNB-VennAbers&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Brier Score&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">bs_nb</span><span class="p">,</span> <span class="n">bs_isotonic</span><span class="p">,</span> <span class="n">bs_sigmoid</span><span class="p">,</span> <span class="n">bs_vennabers</span><span class="p">],</span>
+    <span class="s1">&#39;Log Loss&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ll_nb</span><span class="p">,</span> <span class="n">ll_isotonic</span><span class="p">,</span> <span class="n">ll_sigmoid</span><span class="p">,</span> <span class="n">ll_vennabers</span><span class="p">],</span>
+    <span class="s1">&#39;ECE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">nb_ece</span><span class="p">,</span> <span class="n">isotonic_ece</span><span class="p">,</span> <span class="n">sigmoid_ece</span><span class="p">,</span> <span class="n">vennabers_ece</span><span class="p">],</span>
+    <span class="s1">&#39;MCE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">nb_mce</span><span class="p">,</span> <span class="n">isotonic_mce</span><span class="p">,</span> <span class="n">sigmoid_mce</span><span class="p">,</span> <span class="n">vennabers_mce</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Method</th>
+      <th>Brier Score</th>
+      <th>Log Loss</th>
+      <th>ECE</th>
+      <th>MCE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>GaussianNB</td>
+      <td>0.095557</td>
+      <td>0.370992</td>
+      <td>0.083817</td>
+      <td>0.193427</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>GaussianNB-Isotonic</td>
+      <td>0.092362</td>
+      <td>0.309668</td>
+      <td>0.023785</td>
+      <td>0.075471</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>GaussianNB-Platt</td>
+      <td>0.094912</td>
+      <td>0.324644</td>
+      <td>0.094052</td>
+      <td>0.223966</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>GaussianNB-VennAbers</td>
+      <td>0.091977</td>
+      <td>0.310659</td>
+      <td>0.047786</td>
+      <td>0.150190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div align="justify"> 
+<p>As shown in the table, isotonic method exhibits superior performance among all other methods measured by proposed metrics.
+Venn predictors also show comparable results.
+We propose the following hypothesis:</p>
+<ol class="arabic simple">
+<li><p>Unlike Platt scaling,
+which assumes a parametric form (sigmoid function) to map predicted probabilities,
+isotonic regression and Venn predictors do not make any parametric assumptions.
+Non-parametric methods can be more flexible and adapt better to the true underlying distribution of the data.</p></li>
+<li><p>Venn predictors generate multiple calibrated scores (one for each possible label) and use these to produce interval predictions.
+This approach inherently incorporates the measure of epistemic uncertainty,
+which can lead to more reliable probability estimates.</p></li>
+</ol>
+<p>We also provide histogram counts for predicted probabilities in terms of different methods to have a better understanding of distribution and calibration of prediction.
+Generally speaking, these histograms reveal that while Gaussian Naive Bayes tends to produce very confident predictions, calibration methods such as isotonic regression, Platt scaling, and venn predictors can modify these predictions slightly, aiming to provide more accurate probability estimates.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">prob_nb</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;GaussianNB&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mean predicted probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">prob_isotonic</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;GaussianNB-Isotonic&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mean predicted probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">prob_sigmoid</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;GaussianNB-Platt&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mean predicted probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">prob_vennabers</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;GaussianNB-VennAbers&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mean predicted probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/addc5ea98d2a0ddd1626266f0a5f61398729ce89cff6b9504a03eed7a4d78550.svg" src="../_images/addc5ea98d2a0ddd1626266f0a5f61398729ce89cff6b9504a03eed7a4d78550.svg" />
+</div>
+</div>
+<div align="justify">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Venn predictors are related to the more well-known Conformal Prediction (CP) framework,
+which was introduced as an approach for associating predictions with confidence measures (<span id="id19">Saunders <em>et al.</em> [<a class="reference internal" href="../references.html#id2286" title="Craig Saunders, Alex Gammerman, and Volodya Vovk. Transduction with confidence and credibility. In Thomas Dean, editor, Proceedings of the Sixteenth International Joint Conference on Artificial Intelligence, IJCAI 99, Stockholm, Sweden, July 31 - August 6, 1999. 2 Volumes, 1450 pages, 722–726. Morgan Kaufmann, 1999. URL: http://ijcai.org/Proceedings/99-2/Papers/010.pdf.">SGV99</a>]</span>).</p>
+</div>
+</div></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-pe-calibration"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter-pe-scoring/scoring.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Probability Estimation via Scoring</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter-pe-ensemble/ensemble.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Probability Estimation and Ensembles</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separating-hyperplane-in-support-vector-machines">6.1. Separating Hyperplane in Support Vector Machines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-binning">6.1.1. Histogram Binning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-scaling">6.1.2. Logistic Scaling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isotonic-regression">6.2. Isotonic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes">6.3. Gaussian Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#venn-predictors">6.3.1. Venn Predictors</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <section>
+    For comprehensive discussions please contact one of our team members: 
+    {Evert.Buzon,Jiawen.Wang,Nico.Ploehn,S.Thies,Sven.Morlock,Zuo.Longfei}@campus.lmu.de
+
+        <div style="margin-top: 50px;" id="disqus_thread"></div>
+
+        <script>
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://https-werywjw-github-io-toolbox-github-io.disqus.com/embed.js';  
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section> 
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
